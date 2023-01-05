@@ -1,0 +1,37 @@
+import tkinter as tk
+import random
+
+# Create the main window
+window = tk.Tk()
+window.title("Live Bar Chart")
+
+# Create the canvas for the bar chart
+canvas = tk.Canvas(window, width=500, height=400)
+canvas.pack()
+
+# Initialize the bar chart with random percentages
+bar_percentages = [random.uniform(0, 100) for i in range(7)]
+bar_heights = [percentage * 2.8 for percentage in bar_percentages]
+
+# Create the bars on the bar chart
+bars = [canvas.create_rectangle(50 + i * 60, 300, 75 + i * 60, 300 - height, fill="blue") for i, height in enumerate(bar_heights)]
+
+# Create the labels for the bar chart
+emotion_labels = ["Anger", "Boredom", "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
+font = ("Helvetica", 14)
+labels = [canvas.create_text(62.5 + i * 60, 325, text=label, anchor="n", font=font) for i, label in enumerate(emotion_labels)]
+
+# Update the bar chart with new percentages every 10 milliseconds
+def update_bar_chart():
+    global bar_percentages
+    bar_percentages = [random.uniform(0, 100) for i in range(7)]
+    bar_heights = [percentage * 2.8 for percentage in bar_percentages]
+    for i, bar in enumerate(bars):
+        canvas.coords(bar, 50 + i * 60, 300, 75 + i * 60, 300 - bar_heights[i])
+    window.after(100, update_bar_chart)
+
+# Start updating the bar chart
+update_bar_chart()
+
+# Run the Tkinter event loop
+window.mainloop()

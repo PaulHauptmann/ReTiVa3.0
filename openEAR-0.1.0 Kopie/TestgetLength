@@ -1,0 +1,23 @@
+import os
+import wave
+
+
+
+def get_length_of_last_wav(directory):
+    # Find the last wav file in the given directory
+    wav_file = None
+    for file in os.listdir(directory):
+        if file.startswith("output_segment_") and file.endswith(".wav"):
+            wav_file = file
+    if wav_file is None:
+        raise ValueError("No wav file found in the given directory")
+
+    # Open the wav file and get its length
+    with wave.open(os.path.join(directory, wav_file), 'rb') as w:
+        return w.getnframes() / w.getframerate()
+
+directory = '/Users/paul/Desktop/openEAR-0.1.0/'
+length = get_length_of_last_wav(directory)
+print(f'The length of the wav file is {length} seconds')
+
+print(length)
