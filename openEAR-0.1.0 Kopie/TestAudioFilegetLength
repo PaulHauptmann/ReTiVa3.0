@@ -9,7 +9,7 @@ def get_length_of_last_added_wav(directory):
     last_modified_time = 0
     for file in os.listdir(directory):
         if file.startswith("output_segment_") and file.endswith(".wav"):
-            wav_file = file
+            modified_time = os.path.getmtime(os.path.join(directory, file))
             if modified_time > last_modified_time:
                 wav_file = file
                 last_modified_time = modified_time
