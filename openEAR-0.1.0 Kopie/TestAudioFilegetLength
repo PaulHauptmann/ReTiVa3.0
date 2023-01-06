@@ -34,4 +34,4 @@ while True:
         print(f'The length of the last added wav file is {length} seconds')
         print('lentgh Liste:', LengthList)
 
-    time.sleep(0.5)
+    time.sleep(0.1)
