@@ -3,6 +3,22 @@ import customtkinter
 import re
 from dataclasses import dataclass#
 import openpyxl
+import os
+import wave
+
+
+#Deleter
+dir_path = '/Users/paul/Desktop/openEAR-0.1.0 Kopie/'
+
+# Get a list of all the files in the directory
+files = os.listdir(dir_path)
+
+# Iterate through the list of files
+for file in files:
+  # If the file starts with "output_segment_", delete it
+  if file.startswith('output_segment_'):
+    os.remove(os.path.join(dir_path, file))
+
 
 #listen Initialisierung
 DataTime = [0]
@@ -25,6 +41,7 @@ DataLoi1 = [0]
 DataLoi2 = [0]
 DataLoi3 = [0]
 
+#Faktoren (noch nicht funktionsfähig)
 FaktorDataTime = 1
 FaktorDataArousal = 1
 FaktorDataValence = 1
@@ -68,6 +85,12 @@ class EMO:
     Loi3: float
 
 
+
+
+
+
+
+
 def update_text_window(text_window, file_path):
     # Open the file in read mode
     with open(file_path, 'r') as file:
@@ -88,6 +111,13 @@ def update_text_window(text_window, file_path):
         result.pop(2)
 
         emo = EMO(*result)
+
+
+        
+
+
+
+       
 
         
         
@@ -116,7 +146,7 @@ def update_text_window(text_window, file_path):
             DataLoi2.append(emo.Loi2)
             DataLoi3.append(emo.Loi3)
 
-
+            
 
             #Ausgabe der Listen
             print('Time:                  ', DataTime)
@@ -138,6 +168,11 @@ def update_text_window(text_window, file_path):
             print('Loi1:                  ', DataLoi1)
             print('Loi2:                  ', DataLoi2)
             print('Loi3:                  ', DataLoi3)
+
+
+            
+            
+            
 
             
             
@@ -180,7 +215,7 @@ text_window = tk.Text(window)
 text_window.pack()
 
 # Set the file path
-file_path = '/Users/paul/Desktop/openEAR-0.1.0/smile.log'
+file_path = '/Users/paul/Desktop/openEAR-0.1.0 Kopie/smile.log'
 
 # Update the text widget with the initial contents of the file
 update_text_window(text_window, file_path)
