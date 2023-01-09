@@ -3,14 +3,14 @@ import tkinter.messagebox
 import customtkinter
 #from  StartWindowDef import CustomWindow
 from time import *
-from TestDataExtractor import *
+import TestDataExtractor2 as TDE
 
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 #customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 #Color-Theme Einstellungen aus eigener Datei übernehmen (Custom CI, muss nur in der .json Datei verändert werden)
-customtkinter.set_default_color_theme("openEAR-0.1.0 Kopie/GUI/CustomTkinter/retiva_dark-blue.json")
+customtkinter.set_default_color_theme('/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/retiva_dark-blue.json')
 
 
 #Die eigentliche App
@@ -97,10 +97,12 @@ class App(customtkinter.CTk):
         self.optionmenu_1.set("CTkOptionmenu")
         self.combobox_1.set("CTkComboBox")
         
-        while True:
-
-            self.textbox.insert("0.0", DataEmodbEmotionBoredom )
-            sleep(2)
+        
+        TDE.Main.read_log_file(TDE.Main.file_path)
+        self.textbox.insert("0.0", TDE.Main.DataAbcAffectAgressiv)
+        #self.textbox.insert("0.0", live_schleif() )
+        #self.textbox.insert("0.0",  )
+        #sleep(1)
             
         # self.textbox.insert("0.0", "CTkTextbox\n\n" + "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n\n" * 20)
         
