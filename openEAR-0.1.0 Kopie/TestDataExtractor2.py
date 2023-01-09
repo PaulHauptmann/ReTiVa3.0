@@ -8,9 +8,9 @@ import wave
 
 
 #path definitionen
-file_path = '/Users/paul/Desktop/openEAR-0.1.0/smile.log'
-directory_path = '/Users/paul/Desktop/openEAR-0.1.0/'
-archive_path = '/Users/paul/Desktop/SmileArchiv/'
+file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.conf'
+directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie'
+archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv'
 
 #listen Initialisierung
 DataSpeakRatio = [0]
@@ -64,8 +64,6 @@ class EMO:
 
 
 
-
-
 def delete_old_wav_files(directory):
 
     files = os.listdir(directory)
@@ -76,9 +74,6 @@ def delete_old_wav_files(directory):
         # If the file starts with "output_segment_", delete it
         if file.startswith('output_segment_'):
             os.remove(os.path.join(directory, file))
-
-
-
 
 
 def read_log_file(file_path):
@@ -148,9 +143,6 @@ def read_log_file(file_path):
             print('Loi3:                  ', DataLoi3)
 
 
-
-
-
 def get_length_of_last_added_wav(directory):
     # Find the last wav file in the given directory
     wav_file = None
@@ -177,9 +169,6 @@ def get_length_of_last_added_wav(directory):
     except (OSError, EOFError):
 
         return 0
-
-
-
 
 
 def write_excel_file(directory, filename):
@@ -215,9 +204,6 @@ def write_excel_file(directory, filename):
             workbook.save(directory+file_name)
  
 
-
-
-
 def get_new_filename(directory):
     # Find all files in the specified directory that start with "Archive_File_" and end with ".xlsx"
     files = [f for f in os.listdir(directory) if f.startswith('Archive_File_') and f.endswith('.xlsx')]
@@ -230,9 +216,6 @@ def get_new_filename(directory):
     else:
         return 'Archive_File_{:04d}.xlsx'.format(max(numbers) + 1)
        
-
-
-
 
 def get_speak_ratio():
 
@@ -260,7 +243,7 @@ while True:
     get_speak_ratio()
     write_excel_file(archive_path, filename)
 
-    time.sleep(0.1)
+    time.sleep(0.2)
 
 
 
