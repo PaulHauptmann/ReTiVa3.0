@@ -4,10 +4,6 @@ TestAudioFileDeleter: erster funktionierender Prototyp der alle Wav. Dateien die
 
 TestAudioFilegetLength: erster funktionierender Prototyp der die länge des zuletzt hinzugefügtem audiofiles, dass mit "output_segment_" startet extrahiert und abspeichert
 
-                        update: perfomanceverbesserung und dauerhafte suche 
-
 TestDataExtractor: schreibt in eine DataClass live alle !neuen! werte der jeweiligen emotionen den emotionsvariablen zu und speichert zudem jede neue Daten in jeweilige Listen + erstes TKinter Fenster, gibt aber nur die rohdaten aus!
-
-                   update: beim start löscht er alle alten audio.wav files 
 
 TestGUI: GUI-Prototyp zum testen der funktionsweise mit Balkendiagrammen
