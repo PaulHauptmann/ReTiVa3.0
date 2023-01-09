@@ -63,7 +63,6 @@ class EMO:
     Loi3: float
 
 
-
 def delete_old_wav_files(directory):
 
     files = os.listdir(directory)
@@ -174,8 +173,8 @@ def get_length_of_last_added_wav(directory):
 def write_excel_file(directory, filename):
     # Create the Excel file
             #now = datetime.now()
-            #file_name = now.strftime("%Y-%m-%d %H:%M:%S") + '.xlsx'
-            file_name = filename + '.xlsx'
+            #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
+            file_name = filename
             workbook = openpyxl.Workbook()
             worksheet = workbook.active
 
