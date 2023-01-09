@@ -8,7 +8,7 @@ import wave
 
 
 #path definitionen
-file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.conf'
+file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
 directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie'
 archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv'
 
