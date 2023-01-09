@@ -1,77 +1,18 @@
-[ 05.01.2023 - 14:43:40 ]
+[ 09.01.2023 - 16:36:46 ]
     (MSG) [2] in SMILExtract : openSMILE starting!
-[ 05.01.2023 - 14:43:40 ]
+[ 09.01.2023 - 16:36:46 ]
     (MSG) [2] in SMILExtract : config file is: /Users/paul/Desktop/openEAR-0.1.0/config/emobase_live4.conf
-[ 05.01.2023 - 14:43:40 ]
+[ 09.01.2023 - 16:36:46 ]
     (MSG) [2] in cComponentManager : successfully registered 73 component types.
-[ 05.01.2023 - 14:43:40 ]
+[ 09.01.2023 - 16:36:46 ]
     (MSG) [2] in configManager : reading config file '/Users/paul/Desktop/openEAR-0.1.0/config/emobase_live4.conf'
-[ 05.01.2023 - 14:43:40 ]
+[ 09.01.2023 - 16:36:47 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'arousal' ...
-[ 05.01.2023 - 14:43:41 ]
+[ 09.01.2023 - 16:36:48 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'valence' ...
-[ 05.01.2023 - 14:43:42 ]
+[ 09.01.2023 - 16:36:49 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'emodbEmotion' ...
-[ 05.01.2023 - 14:43:43 ]
+[ 09.01.2023 - 16:36:50 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'abcAffect' ...
-[ 05.01.2023 - 14:43:43 ]
+[ 09.01.2023 - 16:36:50 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'avicInterest' ...
-[ 05.01.2023 - 14:43:44 ]
-    (MSG) [2] in cComponentManager : successfully finished createInstances
-                                 (31 component instances were finalised, 1 data memories were finalised)
-[ 05.01.2023 - 14:43:44 ]
-    (MSG) [2] in cComponentManager : starting single thread processing loop
-[ 05.01.2023 - 14:43:44 ]
-    (MSG) [2] in cPortaudioSource : recording from portAudio device with index 5
-
- LibSVM  'arousal' result (@ time: 8.507146) :  ~~> 0.99 <~~
-
- LibSVM  'valence' result (@ time: 8.507146) :  ~~> 0.36 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 8.507146) :  ~~> neutral <~~
-     prob. class 'anger': 	 0.022212
-     prob. class 'boredom': 	 0.123717
-     prob. class 'disgust': 	 0.204917
-     prob. class 'fear': 	 0.061435
-     prob. class 'happiness': 	 0.053103
-     prob. class 'neutral': 	 0.514947
-     prob. class 'sadness': 	 0.019668
-
- LibSVM  'abcAffect' result (@ time: 8.507146) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.976449
-     prob. class 'cheerful': 	 0.013541
-     prob. class 'intoxicated': 	 0.003914
-     prob. class 'nervous': 	 0.000319
-     prob. class 'neutral': 	 0.005571
-     prob. class 'tired': 	 0.000207
-
- LibSVM  'avicInterest' result (@ time: 8.507146) :  ~~> loi3 <~~
-     prob. class 'loi1': 	 0.000293
-     prob. class 'loi2': 	 0.010048
-     prob. class 'loi3': 	 0.989659
-
- LibSVM  'arousal' result (@ time: 10.595937) :  ~~> 0.58 <~~
-
- LibSVM  'valence' result (@ time: 10.595937) :  ~~> 0.17 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 10.595937) :  ~~> neutral <~~
-     prob. class 'anger': 	 0.002244
-     prob. class 'boredom': 	 0.470099
-     prob. class 'disgust': 	 0.004676
-     prob. class 'fear': 	 0.024260
-     prob. class 'happiness': 	 0.024984
-     prob. class 'neutral': 	 0.471277
-     prob. class 'sadness': 	 0.002460
-
- LibSVM  'abcAffect' result (@ time: 10.595937) :  ~~> tired <~~
-     prob. class 'agressiv': 	 0.139535
-     prob. class 'cheerful': 	 0.021726
-     prob. class 'intoxicated': 	 0.143269
-     prob. class 'nervous': 	 0.008566
-     prob. class 'neutral': 	 0.010508
-     prob. class 'tired': 	 0.676396
-
- LibSVM  'avicInterest' result (@ time: 10.595937) :  ~~> loi3 <~~
-     prob. class 'loi1': 	 0.004949
-     prob. class 'loi2': 	 0.048048
-     prob. class 'loi3': 	 0.947003
