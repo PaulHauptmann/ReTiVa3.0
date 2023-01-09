@@ -1,26 +1,21 @@
-import tkinter as tk
-import customtkinter
 import re
 from dataclasses import dataclass#
-import openpyxl
+from datetime import datetime
+import time
 import os
+import openpyxl
 import wave
 
 
-#Deleter
-dir_path = '/Users/paul/Desktop/openEAR-0.1.0 Kopie/'
-
-# Get a list of all the files in the directory
-files = os.listdir(dir_path)
-
-# Iterate through the list of files
-for file in files:
-  # If the file starts with "output_segment_", delete it
-  if file.startswith('output_segment_'):
-    os.remove(os.path.join(dir_path, file))
-
+#path definitionen
+file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.conf'
+directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie'
+archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv'
 
 #listen Initialisierung
+DataSpeakRatio = [0]
+DataSpeakTime = [0]
+DataLength = [0]
 DataTime = [0]
 DataArousal = [0]
 DataValence = [0]
@@ -41,26 +36,9 @@ DataLoi1 = [0]
 DataLoi2 = [0]
 DataLoi3 = [0]
 
-#Faktoren (noch nicht funktionsfähig)
-FaktorDataTime = 1
-FaktorDataArousal = 1
-FaktorDataValence = 1
-FaktorDataEmodbEmotionAnger = 1
-FaktorDataEmodbEmotionBoredom = 1
-FaktorDataEmodbEmotionDisgust = 1
-FaktorDataEmodbEmotionFear = 1
-FaktorDataEmodbEmotionHappiness = 1
-FaktorDataEmodbEmotionNeutral = 1
-FaktorDataEmodbEmotionSadness = 1
-FaktorDataAbcAffectAgressiv = 1
-FaktorDataAbcAffectCheerfull = 1
-FaktorDataAbcAffectIntoxicated = 1
-FaktorDataAbcAffectNervous = 1
-FaktorDataAbcAffectNeutral = 1
-FaktorDataAbcAffectTired = 1
-FaktorDataLoi1 = 1
-FaktorDataLoi2 = 1
-FaktorDataLoi3 = 1
+
+
+
 
 @dataclass
 class EMO:
@@ -85,13 +63,19 @@ class EMO:
     Loi3: float
 
 
+def delete_old_wav_files(directory):
+
+    files = os.listdir(directory)
+
+    # Iterate through the list of files
+    for file in files:
+    
+        # If the file starts with "output_segment_", delete it
+        if file.startswith('output_segment_'):
+            os.remove(os.path.join(directory, file))
 
 
-
-
-
-
-def update_text_window(text_window, file_path):
+def read_log_file(file_path):
     # Open the file in read mode
     with open(file_path, 'r') as file:
         # Read the contents of the file
@@ -113,17 +97,7 @@ def update_text_window(text_window, file_path):
         emo = EMO(*result)
 
 
-        
-
-
-
-       
-
-        
-        
-
-
-        
+ 
         #schreibt pro tick in die jeweilige Liste hinten dran neuesten wert, wenn der wert sich ändert
         if DataTime[-1] != emo.time:
             DataTime.append(emo.time)
@@ -145,8 +119,6 @@ def update_text_window(text_window, file_path):
             DataLoi1.append(emo.Loi1)
             DataLoi2.append(emo.Loi2)
             DataLoi3.append(emo.Loi3)
-
-            
 
             #Ausgabe der Listen
             print('Time:                  ', DataTime)
@@ -170,63 +142,111 @@ def update_text_window(text_window, file_path):
             print('Loi3:                  ', DataLoi3)
 
 
-            
-            
-            
+def get_length_of_last_added_wav(directory):
+    # Find the last wav file in the given directory
+    wav_file = None
+    last_modified_time = 0
+    for file in os.listdir(directory):
+        if file.startswith("output_segment_") and file.endswith(".wav"):
+            modified_time = os.path.getmtime(os.path.join(directory, file))
+            if modified_time > last_modified_time:
+                wav_file = file
+                last_modified_time = modified_time
+    if wav_file is None:
+        return 0
 
-            
-            
-        
-        
-        # Excel stuff
-        #filename = "/Users/paul/Desktop/openEAR-0.1.0/output2.xlsx"
-        #wb = openpyxl.load_workbook(filename)
-        #ws = wb.worksheets[0]
-        #ws.append(emo.abcAffectAgressiv)
+    # Open the wav file and get its length
+    try:
+        with wave.open(os.path.join(directory, wav_file), 'rb') as w:
+            length = w.getnframes() / w.getframerate()
+            if DataLength[-1] != length and length != 0:
+                DataLength.append(length)
+                print('Length:                ', DataLength)
+            return w.getnframes() / w.getframerate()
 
-        #wb.save(filename)
-                
+    
+    except (OSError, EOFError):
 
-        
-
-        # Update the text widget with the contents of the file
-        text_window.config(state='normal')
-        text_window.delete('1.0', tk.END)
-        text_window.insert('1.0', result)
-        text_window.config(state='disabled')
-        text_window.see(tk.END)
-
-
-
+        return 0
 
 
+def write_excel_file(directory, filename):
+    # Create the Excel file
+            #now = datetime.now()
+            #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
+            file_name = filename
+            workbook = openpyxl.Workbook()
+            worksheet = workbook.active
+
+            # Write the 19 lists to the file
+            worksheet.append(DataTime)
+            worksheet.append(DataArousal)
+            worksheet.append(DataValence)
+            worksheet.append(DataEmodbEmotionAnger)
+            worksheet.append(DataEmodbEmotionBoredom)
+            worksheet.append(DataEmodbEmotionDisgust)
+            worksheet.append(DataEmodbEmotionFear)
+            worksheet.append(DataEmodbEmotionHappiness)
+            worksheet.append(DataEmodbEmotionNeutral)
+            worksheet.append(DataEmodbEmotionSadness)
+            worksheet.append(DataAbcAffectAgressiv)
+            worksheet.append(DataAbcAffectCheerfull)
+            worksheet.append(DataAbcAffectIntoxicated)
+            worksheet.append(DataAbcAffectNervous)
+            worksheet.append(DataAbcAffectNeutral)
+            worksheet.append(DataAbcAffectTired)
+            worksheet.append(DataLoi1)
+            worksheet.append(DataLoi2)
+            worksheet.append(DataLoi3)
+
+            # Save the file
+            workbook.save(directory+file_name)
+ 
+
+def get_new_filename(directory):
+    # Find all files in the specified directory that start with "Archive_File_" and end with ".xlsx"
+    files = [f for f in os.listdir(directory) if f.startswith('Archive_File_') and f.endswith('.xlsx')]
+    # Extract the numbers from the end of the filenames
+    numbers = [int(f.split('_')[-1].split('.')[0]) for f in files]
+    # If there are no files, start with number 1
+    if not numbers:
+        return 'Archive_File_0001.xlsx'
+    # Otherwise, get the next highest number
+    else:
+        return 'Archive_File_{:04d}.xlsx'.format(max(numbers) + 1)
+       
+
+def get_speak_ratio():
+
+    SpeakDuration = sum(DataLength)
+    SpeakTime = float(DataTime[-1])
+
+    if SpeakDuration != 0 and SpeakTime != DataSpeakTime[-1]:
+       
+        SpeakRatio = SpeakDuration/SpeakTime
+        DataSpeakTime.append(SpeakTime)
+        DataSpeakRatio.append(SpeakRatio)
+        print('SpeakRatio:            ', SpeakRatio)
+
+
+
+
+
+delete_old_wav_files(directory_path)
+filename = get_new_filename(archive_path)
+
+while True:
+
+    read_log_file(file_path)    
+    get_length_of_last_added_wav(directory_path)
+    get_speak_ratio()
+    write_excel_file(archive_path, filename)
+
+    time.sleep(0.2)
 
 
 
 
 
 
-# Create the tkinter window
-window = tk.Tk()
-window.title("Live Text Mirror")
 
-# Create a text widget to display the contents of the file
-text_window = tk.Text(window)
-text_window.pack()
-
-# Set the file path
-file_path = '/Users/paul/Desktop/openEAR-0.1.0 Kopie/smile.log'
-
-# Update the text widget with the initial contents of the file
-update_text_window(text_window, file_path)
-
-# Create a function that will be called every 1 second to update the text widget
-def update_text_window_periodically():
-    update_text_window(text_window, file_path)
-    window.after(10, update_text_window_periodically)
-
-# Call the function to start the updating
-update_text_window_periodically()
-
-# Run the tkinter event loop
-window.mainloop()

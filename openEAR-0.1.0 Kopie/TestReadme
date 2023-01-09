@@ -1,9 +1,17 @@
 Alle Programme mit einem "Test" davor sind aktuell die von Tom und mir erstellten Programme.
 
-TestAudioFileDeleter: erster funktionierender Prototyp der alle Wav. Dateien die mit "output_segment_" !!!permanent!!! löscht
-
-TestAudioFilegetLength: erster funktionierender Prototyp der die länge des zuletzt hinzugefügtem audiofiles, dass mit "output_segment_" startet extrahiert und abspeichert
-
 TestDataExtractor: schreibt in eine DataClass live alle !neuen! werte der jeweiligen emotionen den emotionsvariablen zu und speichert zudem jede neue Daten in jeweilige Listen + erstes TKinter Fenster, gibt aber nur die rohdaten aus!
+                   update: Alle Funktionen jetzt in TestDataExtractor
+                           liest Logfile aus
+                           alle daten extrahiert und sowohl als Variable als auch in Liste gespeichert
+                           löscht beim ausführen als erstes alle wav. files im Directory
+                           definiert einen namen für xlsx. datei nach prinzip nächst freier name
+                           überschreibt und speichert alle daten live durch while schleife
+                           beenden mit strg+c 
 
-TestGUI: GUI-Prototyp zum testen der funktionsweise mit Balkendiagrammen
+
+!!outdated!! TestAudioFileDeleter: erster funktionierender Prototyp der alle Wav. Dateien die mit "output_segment_" !!!permanent!!! löscht
+
+!!outdated!! TestAudioFilegetLength: erster funktionierender Prototyp der die länge des zuletzt hinzugefügtem audiofiles, dass mit "output_segment_" startet extrahiert und abspeichert
+
+!!outdated!! TestGUI: GUI-Prototyp zum testen der funktionsweise mit Balkendiagrammen
