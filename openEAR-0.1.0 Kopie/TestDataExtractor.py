@@ -235,6 +235,8 @@ def get_speak_ratio():
 delete_old_wav_files(directory_path)
 filename = get_new_filename(archive_path)
 
+
+
 while True:
 
     read_log_file(file_path)    
