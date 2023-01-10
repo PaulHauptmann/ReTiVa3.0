@@ -18,6 +18,7 @@ class AudioDeviceListFrame (customtkinter.CTkFrame):
         self.devices = listaudiodevices.get_input_devices()
         #print(self.devices)
 
+
         self.v = customtkinter.StringVar()
         self.v.set(self.devices[0][1])
         self.device_radios = []
@@ -27,6 +28,7 @@ class AudioDeviceListFrame (customtkinter.CTkFrame):
             self.device_radios.append(device_radio)
         
         self.device_radios[0].select()
+
 
 
         

@@ -60,7 +60,7 @@ class App(customtkinter.CTk):
         
         # set default values
         self.sidebar_button_3.configure(state="disabled", text="Disabled CTkButton")
-        self.appearance_mode_optionemenu.set("Dark")
+        self.appearance_mode_optionemenu.set("System")
         self.scaling_optionemenu.set("100%")
         
         
@@ -88,6 +88,7 @@ class App(customtkinter.CTk):
     
     def new_analysis_button_event(self):
         self.new_analysis_window = NewAnalysisWindow(self)
+        self.new_analysis_window.grab_set()
     
     
     
