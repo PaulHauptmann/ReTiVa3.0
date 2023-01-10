@@ -1,7 +1,7 @@
 import tkinter
 import tkinter.messagebox
 import customtkinter
-from  Frames import *
+from  Frames.New_Analysis_Frames import *
 from Windows import *
 from time import *
 #from ...GUI import Test
