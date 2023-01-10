@@ -1,7 +1,8 @@
 import tkinter
 import tkinter.messagebox
 import customtkinter
-from  StartWindowDef import *
+from  Frames import *
+from Windows import *
 from time import *
 #from ...GUI import Test
 #from ... import TestDataExtractor
@@ -69,19 +70,7 @@ class App(customtkinter.CTk):
             #sleep(2)
             
         # self.textbox.insert("0.0", "CTkTextbox\n\n" + "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n\n" * 20)
-        
-
-    ## Neue-Analyse Fenster ##
-
-    def new_analysis_window(self):
-        window = customtkinter.CTkToplevel(self)
-        window.title("Neue Analyse")
-        window.geometry("400x200")
-
-        start_button = customtkinter.CTkButton(window, text="Start")
-        start_button.pack( anchor = tkinter.CENTER)
-
-        
+            
 
 
     ## Button-Events ##
@@ -98,7 +87,7 @@ class App(customtkinter.CTk):
         print("sidebar_button click")
     
     def new_analysis_button_event(self):
-        self.new_analysis_window()
+        self.new_analysis_window = NewAnalysisWindow(self)
     
     
     
