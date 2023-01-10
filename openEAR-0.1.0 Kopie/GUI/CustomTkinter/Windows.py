@@ -1,6 +1,7 @@
 import tkinter
 import customtkinter
 from Frames import *
+from CustomObjects import *
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
