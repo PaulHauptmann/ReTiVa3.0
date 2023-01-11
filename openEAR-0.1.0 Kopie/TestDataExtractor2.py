@@ -248,7 +248,9 @@ class Main:
 
         
 
-        Main.read_log_file(Main.file_path)    
+        Main.read_log_file(Main.file_path) 
+
+        return(Main.DataTime)   
         #Main.get_length_of_last_added_wav(Main.directory_path)
         #time.sleep(0.5)
         #Main.get_speak_ratio()
