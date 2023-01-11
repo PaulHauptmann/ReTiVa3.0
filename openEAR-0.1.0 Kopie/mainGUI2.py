@@ -99,7 +99,7 @@ class App(customtkinter.CTk):
 
         
         # set default values
-        self.sidebar_button_3.configure(state="disabled", text="Disabled CTkButton")
+        #self.sidebar_button_3.configure(state="disabled", text="Disabled CTkButton")
         
         self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
@@ -144,7 +144,7 @@ class App(customtkinter.CTk):
         while True and not stop:
         
         
-            self.textbox.insert("0.0", T3.update())
+            self.textbox.insert("0.0", T3.Main.update())
             
             time.sleep(0.1)
             j = j+1

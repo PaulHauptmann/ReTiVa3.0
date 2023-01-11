@@ -244,7 +244,7 @@ class Main:
     filename = get_new_filename(archive_path)
 
 
-    def updater():
+    def update():
 
         
 
