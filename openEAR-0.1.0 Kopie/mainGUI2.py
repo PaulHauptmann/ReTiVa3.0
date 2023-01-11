@@ -1,11 +1,10 @@
 import tkinter as tk
 import customtkinter
 from time import *
-import TestReader3 as T3
+import TestDataExtractor2 as T3
 import time
 import threading
 
-window = tk.Tk()
 
 
 
@@ -122,10 +121,8 @@ class App(customtkinter.CTk):
         customtkinter.set_widget_scaling(new_scaling_float)
 
     def sidebar_button_event(self):
-        #self.textbox.insert("0.0", str(T3.update()))
         print("check")
-        #time.sleep(1)
-        window.after(1000, self.sidebar_button_event)
+        
 
 
 
