@@ -1,9 +1,17 @@
+import sys
 import tkinter as tk
 import customtkinter
 from time import *
 #import TestDataExtractor2 as T3
 import time
 import threading
+
+sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter/Frames')
+
+#GUI - Imports
+from GUI.CustomTkinter.Windows import *
+from GUI.CustomTkinter.Frames.New_Analysis_Frames import *
+
 
 
 
@@ -45,7 +53,7 @@ class App(customtkinter.CTk):
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="ReTiVA", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, text="Neue Analyse")
+        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, text="Neue Analyse", command=self.new_analysis_button_event)
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
         self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Start", command=self.button_starter)
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
@@ -91,6 +99,11 @@ class App(customtkinter.CTk):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
+    def new_analysis_button_event(self):
+        self.new_analysis_window = NewAnalysisWindow(self)
+        self.new_analysis_window.grab_set()
+    
+    
 
 
     
