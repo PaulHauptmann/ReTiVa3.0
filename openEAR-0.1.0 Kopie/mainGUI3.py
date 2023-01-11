@@ -49,10 +49,7 @@ class App(customtkinter.CTk):
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
         self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Start", command=self.button_starter)
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
-        
-        #stop-Button
         self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Stop", command=self.button_stop_command)
-
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
@@ -91,7 +88,8 @@ class App(customtkinter.CTk):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
-
+    
+    
 
     
    
