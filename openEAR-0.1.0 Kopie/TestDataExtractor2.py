@@ -250,11 +250,12 @@ class Main:
 
             Main.read_log_file(Main.file_path)    
             Main.get_length_of_last_added_wav(Main.directory_path)
+            time.sleep(0.5)
             Main.get_speak_ratio()
             Main.write_excel_file(Main.archive_path, Main.filename)
 
             time.sleep(0.2)
-        return Main.DataTime
+        #return Main.DataTime
 
 
 Main.live_schleif()
