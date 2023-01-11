@@ -2,16 +2,18 @@ import sys
 import tkinter as tk
 import customtkinter
 from time import *
-import TestDataExtractor2 as T3
+#import TestDataExtractor2 as T3
 import time
 import threading
 
-sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter/Frames')
 
-#GUI - Imports
-from GUI.CustomTkinter.Windows import *
-from GUI.CustomTkinter.Frames.New_Analysis_Frames import *
+## GUI - Imports ##
 
+# Path added, so kann direkt auf Ordner "CustomTkinter" refer
+sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter')
+
+from Windows import *
+from Frames.New_Analysis_Frames import *
 
 
 
@@ -123,8 +125,8 @@ class App(customtkinter.CTk):
             self.textbox.delete("0.0", tk.END)
 
             #Neuen Text aus T3 einfügen
-            self.textbox.insert("0.0", T3.Main.update())
-            
+            #self.textbox.insert("0.0", T3.Main.update())
+            self.textbox.insert("0.0", "Test")
             time.sleep(0.5)
             
 
