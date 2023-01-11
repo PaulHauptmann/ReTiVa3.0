@@ -9,7 +9,7 @@ import threading
 
 ## GUI - Imports ##
 
-# Path added, so kann direkt auf Ordner "CustomTkinter" refer
+# Path added, so kann direkt auf Ordner "CustomTkinter" referenziert werden
 sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter')
 
 from Windows import *
