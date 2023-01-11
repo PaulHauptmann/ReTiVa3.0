@@ -36,9 +36,9 @@ class EMO:
 class Main:
 
     #path definitionen
-    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
-    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie'
-    archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv'
+    file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    directory_path = 'openEAR-0.1.0 Kopie/'
+    archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv'
 
     #listen Initialisierung
     DataSpeakRatio = [0]
@@ -240,25 +240,25 @@ class Main:
 
 
 
-    delete_old_wav_files(directory_path)
+    #delete_old_wav_files(directory_path)
     filename = get_new_filename(archive_path)
 
 
-    def live_schleif():
+    def updater():
 
-        while True:
+        
 
-            Main.read_log_file(Main.file_path)    
-            Main.get_length_of_last_added_wav(Main.directory_path)
-            time.sleep(0.5)
-            Main.get_speak_ratio()
-            Main.write_excel_file(Main.archive_path, Main.filename)
+        Main.read_log_file(Main.file_path)    
+        #Main.get_length_of_last_added_wav(Main.directory_path)
+        #time.sleep(0.5)
+        #Main.get_speak_ratio()
+        #Main.write_excel_file(Main.archive_path, Main.filename)
 
-            time.sleep(0.2)
+        #time.sleep(0.2)
         #return Main.DataTime
 
 
-Main.live_schleif()
+#Main.live_schleif()
 
 
 
