@@ -276,6 +276,4 @@ def live_schleif():
     Main.get_speak_ratio()
     Main.write_excel_file(Main.archive_path, filename)
 
-    time.sleep(0.2)
-
 
