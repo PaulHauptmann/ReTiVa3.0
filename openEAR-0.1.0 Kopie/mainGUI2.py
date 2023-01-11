@@ -104,6 +104,8 @@ class App(customtkinter.CTk):
     def new_analysis_button_event(self):
         self.new_analysis_window = NewAnalysisWindow(self)
         self.new_analysis_window.grab_set()
+
+    
     
     
 
@@ -125,8 +127,9 @@ class App(customtkinter.CTk):
             self.textbox.delete("0.0", tk.END)
 
             #Neuen Text aus T3 einfügen
-            self.textbox.insert("0.0", T3.Main.update())
-            self.textbox.insert("0.0", "Test")
+            #self.textbox.insert("0.0", T3.Main.update())
+            #self.textbox.insert("0.0", "Test")
+            self.textbox.insert("0.0", Startupsettings.working_mode)
             time.sleep(0.5)
             
 
