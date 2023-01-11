@@ -122,7 +122,6 @@ class App(customtkinter.CTk):
         global stop
         stop = False
         while True and not stop:
-        
             #Textbox vollständig löschen
             self.textbox.delete("0.0", tk.END)
 

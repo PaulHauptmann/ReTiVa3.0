@@ -1,419 +1,131 @@
-[ 09.01.2023 - 18:17:44 ]
+[ 11.01.2023 - 14:54:18 ]
     (MSG) [2] in SMILExtract : openSMILE starting!
-[ 09.01.2023 - 18:17:44 ]
+[ 11.01.2023 - 14:54:18 ]
     (MSG) [2] in SMILExtract : config file is: /Users/paul/Desktop/openEAR-0.1.0/config/emobase_live4.conf
-[ 09.01.2023 - 18:17:44 ]
+[ 11.01.2023 - 14:54:18 ]
     (MSG) [2] in cComponentManager : successfully registered 73 component types.
-[ 09.01.2023 - 18:17:44 ]
+[ 11.01.2023 - 14:54:18 ]
     (MSG) [2] in configManager : reading config file '/Users/paul/Desktop/openEAR-0.1.0/config/emobase_live4.conf'
-[ 09.01.2023 - 18:17:45 ]
+[ 11.01.2023 - 14:54:18 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'arousal' ...
-[ 09.01.2023 - 18:17:46 ]
+[ 11.01.2023 - 14:54:19 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'valence' ...
-[ 09.01.2023 - 18:17:48 ]
+[ 11.01.2023 - 14:54:20 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'emodbEmotion' ...
-[ 09.01.2023 - 18:17:49 ]
+[ 11.01.2023 - 14:54:20 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'abcAffect' ...
-[ 09.01.2023 - 18:17:49 ]
+[ 11.01.2023 - 14:54:21 ]
     (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'avicInterest' ...
-[ 09.01.2023 - 18:17:51 ]
+[ 11.01.2023 - 14:54:22 ]
     (MSG) [2] in cComponentManager : successfully finished createInstances
                                  (31 component instances were finalised, 1 data memories were finalised)
-[ 09.01.2023 - 18:17:51 ]
+[ 11.01.2023 - 14:54:22 ]
     (MSG) [2] in cComponentManager : starting single thread processing loop
-[ 09.01.2023 - 18:17:51 ]
-    (MSG) [2] in cPortaudioSource : recording from portAudio device with index 0
-
- LibSVM  'arousal' result (@ time: 9.019739) :  ~~> 0.40 <~~
-
- LibSVM  'valence' result (@ time: 9.019739) :  ~~> 0.06 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 9.019739) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.003764
-     prob. class 'boredom': 	 0.491531
-     prob. class 'disgust': 	 0.002073
-     prob. class 'fear': 	 0.006463
-     prob. class 'happiness': 	 0.023399
-     prob. class 'neutral': 	 0.468357
-     prob. class 'sadness': 	 0.004413
-
- LibSVM  'abcAffect' result (@ time: 9.019739) :  ~~> tired <~~
-     prob. class 'agressiv': 	 0.054422
-     prob. class 'cheerful': 	 0.139143
-     prob. class 'intoxicated': 	 0.133533
-     prob. class 'nervous': 	 0.009539
-     prob. class 'neutral': 	 0.013304
-     prob. class 'tired': 	 0.650059
-
- LibSVM  'avicInterest' result (@ time: 9.019739) :  ~~> loi3 <~~
-     prob. class 'loi1': 	 0.003258
-     prob. class 'loi2': 	 0.060149
-     prob. class 'loi3': 	 0.936593
-
- LibSVM  'arousal' result (@ time: 46.140526) :  ~~> -0.02 <~~
-
- LibSVM  'valence' result (@ time: 46.140526) :  ~~> -0.02 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 46.140526) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.017407
-     prob. class 'boredom': 	 0.580078
-     prob. class 'disgust': 	 0.029067
-     prob. class 'fear': 	 0.022751
-     prob. class 'happiness': 	 0.017436
-     prob. class 'neutral': 	 0.227455
-     prob. class 'sadness': 	 0.105806
-
- LibSVM  'abcAffect' result (@ time: 46.140526) :  ~~> tired <~~
-     prob. class 'agressiv': 	 0.002050
-     prob. class 'cheerful': 	 0.027935
-     prob. class 'intoxicated': 	 0.042499
-     prob. class 'nervous': 	 0.006355
-     prob. class 'neutral': 	 0.019807
-     prob. class 'tired': 	 0.901355
-
- LibSVM  'avicInterest' result (@ time: 46.140526) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.248171
-     prob. class 'loi2': 	 0.387824
-     prob. class 'loi3': 	 0.364004
-
- LibSVM  'arousal' result (@ time: 134.621236) :  ~~> -0.04 <~~
-
- LibSVM  'valence' result (@ time: 134.621236) :  ~~> -0.39 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 134.621236) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.020921
-     prob. class 'boredom': 	 0.489387
-     prob. class 'disgust': 	 0.015084
-     prob. class 'fear': 	 0.144134
-     prob. class 'happiness': 	 0.062493
-     prob. class 'neutral': 	 0.250204
-     prob. class 'sadness': 	 0.017776
-
- LibSVM  'abcAffect' result (@ time: 134.621236) :  ~~> tired <~~
-     prob. class 'agressiv': 	 0.116824
-     prob. class 'cheerful': 	 0.061541
-     prob. class 'intoxicated': 	 0.213381
-     prob. class 'nervous': 	 0.023184
-     prob. class 'neutral': 	 0.028959
-     prob. class 'tired': 	 0.556111
-
- LibSVM  'avicInterest' result (@ time: 134.621236) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.007935
-     prob. class 'loi2': 	 0.939453
-     prob. class 'loi3': 	 0.052612
-
- LibSVM  'arousal' result (@ time: 263.263275) :  ~~> -0.15 <~~
-
- LibSVM  'valence' result (@ time: 263.263275) :  ~~> -0.19 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 263.263275) :  ~~> sadness <~~
-     prob. class 'anger': 	 0.003477
-     prob. class 'boredom': 	 0.111024
-     prob. class 'disgust': 	 0.028925
-     prob. class 'fear': 	 0.039445
-     prob. class 'happiness': 	 0.004260
-     prob. class 'neutral': 	 0.009538
-     prob. class 'sadness': 	 0.803331
-
- LibSVM  'abcAffect' result (@ time: 263.263275) :  ~~> tired <~~
-     prob. class 'agressiv': 	 0.030195
-     prob. class 'cheerful': 	 0.379181
-     prob. class 'intoxicated': 	 0.037431
-     prob. class 'nervous': 	 0.094324
-     prob. class 'neutral': 	 0.034688
-     prob. class 'tired': 	 0.424180
-
- LibSVM  'avicInterest' result (@ time: 263.263275) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.107223
-     prob. class 'loi2': 	 0.774750
-     prob. class 'loi3': 	 0.118027
-[ 09.01.2023 - 18:22:09 ]
-    (ERROR) [1] in instance 'turnDump' : no frames were written for turn #4
-
- LibSVM  'arousal' result (@ time: 264.063866) :  ~~> -0.14 <~~
-
- LibSVM  'valence' result (@ time: 264.063866) :  ~~> -0.23 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 264.063866) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.069702
-     prob. class 'boredom': 	 0.515307
-     prob. class 'disgust': 	 0.126854
-     prob. class 'fear': 	 0.061797
-     prob. class 'happiness': 	 0.028251
-     prob. class 'neutral': 	 0.070764
-     prob. class 'sadness': 	 0.127325
-
- LibSVM  'abcAffect' result (@ time: 264.063866) :  ~~> cheerful <~~
-     prob. class 'agressiv': 	 0.070200
-     prob. class 'cheerful': 	 0.560865
-     prob. class 'intoxicated': 	 0.070484
-     prob. class 'nervous': 	 0.084848
-     prob. class 'neutral': 	 0.123093
-     prob. class 'tired': 	 0.090511
-
- LibSVM  'avicInterest' result (@ time: 264.063866) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.052419
-     prob. class 'loi2': 	 0.803061
-     prob. class 'loi3': 	 0.144520
-
- LibSVM  'arousal' result (@ time: 303.264100) :  ~~> 0.22 <~~
-
- LibSVM  'valence' result (@ time: 303.264100) :  ~~> -0.01 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 303.264100) :  ~~> anger <~~
-     prob. class 'anger': 	 0.597500
-     prob. class 'boredom': 	 0.019962
-     prob. class 'disgust': 	 0.033842
-     prob. class 'fear': 	 0.114454
-     prob. class 'happiness': 	 0.128976
-     prob. class 'neutral': 	 0.098107
-     prob. class 'sadness': 	 0.007159
-
- LibSVM  'abcAffect' result (@ time: 303.264100) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.988081
-     prob. class 'cheerful': 	 0.007571
-     prob. class 'intoxicated': 	 0.000591
-     prob. class 'nervous': 	 0.000124
-     prob. class 'neutral': 	 0.003566
-     prob. class 'tired': 	 0.000068
-
- LibSVM  'avicInterest' result (@ time: 303.264100) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.000085
-     prob. class 'loi2': 	 0.989704
-     prob. class 'loi3': 	 0.010212
-
- LibSVM  'arousal' result (@ time: 309.187034) :  ~~> 0.07 <~~
-
- LibSVM  'valence' result (@ time: 309.187034) :  ~~> -0.03 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 309.187034) :  ~~> neutral <~~
-     prob. class 'anger': 	 0.123247
-     prob. class 'boredom': 	 0.121641
-     prob. class 'disgust': 	 0.042272
-     prob. class 'fear': 	 0.071264
-     prob. class 'happiness': 	 0.087010
-     prob. class 'neutral': 	 0.537183
-     prob. class 'sadness': 	 0.017384
-
- LibSVM  'abcAffect' result (@ time: 309.187034) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.851298
-     prob. class 'cheerful': 	 0.028902
-     prob. class 'intoxicated': 	 0.109952
-     prob. class 'nervous': 	 0.000397
-     prob. class 'neutral': 	 0.008583
-     prob. class 'tired': 	 0.000869
-
- LibSVM  'avicInterest' result (@ time: 309.187034) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.000553
-     prob. class 'loi2': 	 0.887125
-     prob. class 'loi3': 	 0.112322
-
- LibSVM  'arousal' result (@ time: 313.505304) :  ~~> 0.14 <~~
-
- LibSVM  'valence' result (@ time: 313.505304) :  ~~> 0.01 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 313.505304) :  ~~> neutral <~~
-     prob. class 'anger': 	 0.068674
-     prob. class 'boredom': 	 0.236680
-     prob. class 'disgust': 	 0.046917
-     prob. class 'fear': 	 0.086021
-     prob. class 'happiness': 	 0.062123
-     prob. class 'neutral': 	 0.488470
-     prob. class 'sadness': 	 0.011115
-
- LibSVM  'abcAffect' result (@ time: 313.505304) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.931303
-     prob. class 'cheerful': 	 0.029793
-     prob. class 'intoxicated': 	 0.014327
-     prob. class 'nervous': 	 0.000698
-     prob. class 'neutral': 	 0.023049
-     prob. class 'tired': 	 0.000830
-
- LibSVM  'avicInterest' result (@ time: 313.505304) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.000188
-     prob. class 'loi2': 	 0.791551
-     prob. class 'loi3': 	 0.208261
-
- LibSVM  'arousal' result (@ time: 316.866557) :  ~~> -0.30 <~~
-
- LibSVM  'valence' result (@ time: 316.866557) :  ~~> -0.10 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 316.866557) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.000097
-     prob. class 'boredom': 	 0.503941
-     prob. class 'disgust': 	 0.000009
-     prob. class 'fear': 	 0.000198
-     prob. class 'happiness': 	 0.000064
-     prob. class 'neutral': 	 0.495676
-     prob. class 'sadness': 	 0.000015
-
- LibSVM  'abcAffect' result (@ time: 316.866557) :  ~~> tired <~~
-     prob. class 'agressiv': 	 0.000455
-     prob. class 'cheerful': 	 0.000136
-     prob. class 'intoxicated': 	 0.004279
-     prob. class 'nervous': 	 0.000052
-     prob. class 'neutral': 	 0.000024
-     prob. class 'tired': 	 0.995053
-
- LibSVM  'avicInterest' result (@ time: 316.866557) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.139761
-     prob. class 'loi2': 	 0.789846
-     prob. class 'loi3': 	 0.070394
-
- LibSVM  'arousal' result (@ time: 319.267238) :  ~~> 0.56 <~~
-
- LibSVM  'valence' result (@ time: 319.267238) :  ~~> -0.09 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 319.267238) :  ~~> neutral <~~
-     prob. class 'anger': 	 0.011777
-     prob. class 'boredom': 	 0.466573
-     prob. class 'disgust': 	 0.003420
-     prob. class 'fear': 	 0.003443
-     prob. class 'happiness': 	 0.041540
-     prob. class 'neutral': 	 0.471831
-     prob. class 'sadness': 	 0.001416
-
- LibSVM  'abcAffect' result (@ time: 319.267238) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.817915
-     prob. class 'cheerful': 	 0.085179
-     prob. class 'intoxicated': 	 0.070434
-     prob. class 'nervous': 	 0.001828
-     prob. class 'neutral': 	 0.018500
-     prob. class 'tired': 	 0.006145
-
- LibSVM  'avicInterest' result (@ time: 319.267238) :  ~~> loi3 <~~
-     prob. class 'loi1': 	 0.000141
-     prob. class 'loi2': 	 0.070201
-     prob. class 'loi3': 	 0.929658
-
- LibSVM  'arousal' result (@ time: 326.305197) :  ~~> 0.53 <~~
-
- LibSVM  'valence' result (@ time: 326.305197) :  ~~> 0.12 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 326.305197) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.003720
-     prob. class 'boredom': 	 0.493073
-     prob. class 'disgust': 	 0.002242
-     prob. class 'fear': 	 0.000945
-     prob. class 'happiness': 	 0.011751
-     prob. class 'neutral': 	 0.487829
-     prob. class 'sadness': 	 0.000440
-
- LibSVM  'abcAffect' result (@ time: 326.305197) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.817918
-     prob. class 'cheerful': 	 0.103414
-     prob. class 'intoxicated': 	 0.049351
-     prob. class 'nervous': 	 0.001119
-     prob. class 'neutral': 	 0.025857
-     prob. class 'tired': 	 0.002341
-
- LibSVM  'avicInterest' result (@ time: 326.305197) :  ~~> loi3 <~~
-     prob. class 'loi1': 	 0.000427
-     prob. class 'loi2': 	 0.030162
-     prob. class 'loi3': 	 0.969411
-
- LibSVM  'arousal' result (@ time: 331.747012) :  ~~> 0.33 <~~
-
- LibSVM  'valence' result (@ time: 331.747012) :  ~~> 0.02 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 331.747012) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.002341
-     prob. class 'boredom': 	 0.498475
-     prob. class 'disgust': 	 0.001326
-     prob. class 'fear': 	 0.000979
-     prob. class 'happiness': 	 0.005181
-     prob. class 'neutral': 	 0.489066
-     prob. class 'sadness': 	 0.002631
-
- LibSVM  'abcAffect' result (@ time: 331.747012) :  ~~> cheerful <~~
-     prob. class 'agressiv': 	 0.176519
-     prob. class 'cheerful': 	 0.542492
-     prob. class 'intoxicated': 	 0.106706
-     prob. class 'nervous': 	 0.019312
-     prob. class 'neutral': 	 0.045741
-     prob. class 'tired': 	 0.109231
-
- LibSVM  'avicInterest' result (@ time: 331.747012) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.004309
-     prob. class 'loi2': 	 0.690039
-     prob. class 'loi3': 	 0.305652
-[ 09.01.2023 - 18:23:18 ]
-    (ERROR) [1] in instance 'turnDump' : no frames were written for turn #12
-
- LibSVM  'arousal' result (@ time: 333.025947) :  ~~> 0.07 <~~
-
- LibSVM  'valence' result (@ time: 333.025947) :  ~~> 0.14 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 333.025947) :  ~~> neutral <~~
-     prob. class 'anger': 	 0.018285
-     prob. class 'boredom': 	 0.388455
-     prob. class 'disgust': 	 0.116928
-     prob. class 'fear': 	 0.004732
-     prob. class 'happiness': 	 0.012932
-     prob. class 'neutral': 	 0.456161
-     prob. class 'sadness': 	 0.002506
-
- LibSVM  'abcAffect' result (@ time: 333.025947) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.691673
-     prob. class 'cheerful': 	 0.022860
-     prob. class 'intoxicated': 	 0.274666
-     prob. class 'nervous': 	 0.000468
-     prob. class 'neutral': 	 0.009659
-     prob. class 'tired': 	 0.000675
-
- LibSVM  'avicInterest' result (@ time: 333.025947) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.000359
-     prob. class 'loi2': 	 0.522615
-     prob. class 'loi3': 	 0.477027
-
- LibSVM  'arousal' result (@ time: 336.386931) :  ~~> 0.95 <~~
-
- LibSVM  'valence' result (@ time: 336.386931) :  ~~> 0.13 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 336.386931) :  ~~> boredom <~~
-     prob. class 'anger': 	 0.000046
-     prob. class 'boredom': 	 0.503912
-     prob. class 'disgust': 	 0.000002
-     prob. class 'fear': 	 0.000160
-     prob. class 'happiness': 	 0.000059
-     prob. class 'neutral': 	 0.495819
-     prob. class 'sadness': 	 0.000003
-
- LibSVM  'abcAffect' result (@ time: 336.386931) :  ~~> tired <~~
-     prob. class 'agressiv': 	 0.145906
-     prob. class 'cheerful': 	 0.055666
-     prob. class 'intoxicated': 	 0.057450
-     prob. class 'nervous': 	 0.006879
-     prob. class 'neutral': 	 0.030048
-     prob. class 'tired': 	 0.704051
-
- LibSVM  'avicInterest' result (@ time: 336.386931) :  ~~> loi3 <~~
-     prob. class 'loi1': 	 0.003024
-     prob. class 'loi2': 	 0.000322
-     prob. class 'loi3': 	 0.996654
-
- LibSVM  'arousal' result (@ time: 337.504512) :  ~~> 0.34 <~~
-
- LibSVM  'valence' result (@ time: 337.504512) :  ~~> 0.17 <~~
-
- LibSVM  'emodbEmotion' result (@ time: 337.504512) :  ~~> neutral <~~
-     prob. class 'anger': 	 0.031991
-     prob. class 'boredom': 	 0.432189
-     prob. class 'disgust': 	 0.004813
-     prob. class 'fear': 	 0.006623
-     prob. class 'happiness': 	 0.040650
-     prob. class 'neutral': 	 0.481349
-     prob. class 'sadness': 	 0.002384
-
- LibSVM  'abcAffect' result (@ time: 337.504512) :  ~~> agressiv <~~
-     prob. class 'agressiv': 	 0.982204
-     prob. class 'cheerful': 	 0.011701
-     prob. class 'intoxicated': 	 0.004052
-     prob. class 'nervous': 	 0.000038
-     prob. class 'neutral': 	 0.000376
-     prob. class 'tired': 	 0.001628
-
- LibSVM  'avicInterest' result (@ time: 337.504512) :  ~~> loi2 <~~
-     prob. class 'loi1': 	 0.000352
-     prob. class 'loi2': 	 0.860949
-     prob. class 'loi3': 	 0.138699
+[ 11.01.2023 - 14:54:22 ]
+    (MSG) [2] in cPortaudioSource : recording from portAudio device with index 8
+
+ LibSVM  'arousal' result (@ time: 7.861657) :  ~~> 0.37 <~~
+
+ LibSVM  'valence' result (@ time: 7.861657) :  ~~> 0.13 <~~
+
+ LibSVM  'emodbEmotion' result (@ time: 7.861657) :  ~~> fear <~~
+     prob. class 'anger': 	 0.030321
+     prob. class 'boredom': 	 0.100926
+     prob. class 'disgust': 	 0.085790
+     prob. class 'fear': 	 0.460502
+     prob. class 'happiness': 	 0.056023
+     prob. class 'neutral': 	 0.110433
+     prob. class 'sadness': 	 0.156006
+
+ LibSVM  'abcAffect' result (@ time: 7.861657) :  ~~> agressiv <~~
+     prob. class 'agressiv': 	 0.843425
+     prob. class 'cheerful': 	 0.050461
+     prob. class 'intoxicated': 	 0.008165
+     prob. class 'nervous': 	 0.020108
+     prob. class 'neutral': 	 0.071828
+     prob. class 'tired': 	 0.006014
+
+ LibSVM  'avicInterest' result (@ time: 7.861657) :  ~~> loi2 <~~
+     prob. class 'loi1': 	 0.022871
+     prob. class 'loi2': 	 0.594930
+     prob. class 'loi3': 	 0.382198
+
+ LibSVM  'arousal' result (@ time: 9.895077) :  ~~> 0.19 <~~
+
+ LibSVM  'valence' result (@ time: 9.895077) :  ~~> 0.16 <~~
+
+ LibSVM  'emodbEmotion' result (@ time: 9.895077) :  ~~> fear <~~
+     prob. class 'anger': 	 0.041162
+     prob. class 'boredom': 	 0.134277
+     prob. class 'disgust': 	 0.107151
+     prob. class 'fear': 	 0.445351
+     prob. class 'happiness': 	 0.049517
+     prob. class 'neutral': 	 0.126598
+     prob. class 'sadness': 	 0.095945
+
+ LibSVM  'abcAffect' result (@ time: 9.895077) :  ~~> agressiv <~~
+     prob. class 'agressiv': 	 0.887755
+     prob. class 'cheerful': 	 0.028528
+     prob. class 'intoxicated': 	 0.005668
+     prob. class 'nervous': 	 0.016897
+     prob. class 'neutral': 	 0.057516
+     prob. class 'tired': 	 0.003636
+
+ LibSVM  'avicInterest' result (@ time: 9.895077) :  ~~> loi2 <~~
+     prob. class 'loi1': 	 0.020797
+     prob. class 'loi2': 	 0.555512
+     prob. class 'loi3': 	 0.423691
+
+ LibSVM  'arousal' result (@ time: 11.519561) :  ~~> 0.09 <~~
+
+ LibSVM  'valence' result (@ time: 11.519561) :  ~~> 0.05 <~~
+
+ LibSVM  'emodbEmotion' result (@ time: 11.519561) :  ~~> boredom <~~
+     prob. class 'anger': 	 0.008039
+     prob. class 'boredom': 	 0.475323
+     prob. class 'disgust': 	 0.036560
+     prob. class 'fear': 	 0.010174
+     prob. class 'happiness': 	 0.007006
+     prob. class 'neutral': 	 0.365433
+     prob. class 'sadness': 	 0.097465
+
+ LibSVM  'abcAffect' result (@ time: 11.519561) :  ~~> intoxicated <~~
+     prob. class 'agressiv': 	 0.289633
+     prob. class 'cheerful': 	 0.257999
+     prob. class 'intoxicated': 	 0.295653
+     prob. class 'nervous': 	 0.014625
+     prob. class 'neutral': 	 0.087027
+     prob. class 'tired': 	 0.055064
+
+ LibSVM  'avicInterest' result (@ time: 11.519561) :  ~~> loi2 <~~
+     prob. class 'loi1': 	 0.003452
+     prob. class 'loi2': 	 0.758845
+     prob. class 'loi3': 	 0.237703
+
+ LibSVM  'arousal' result (@ time: 15.348503) :  ~~> 0.10 <~~
+
+ LibSVM  'valence' result (@ time: 15.348503) :  ~~> 0.19 <~~
+
+ LibSVM  'emodbEmotion' result (@ time: 15.348503) :  ~~> boredom <~~
+     prob. class 'anger': 	 0.014958
+     prob. class 'boredom': 	 0.490780
+     prob. class 'disgust': 	 0.058306
+     prob. class 'fear': 	 0.015292
+     prob. class 'happiness': 	 0.013005
+     prob. class 'neutral': 	 0.238399
+     prob. class 'sadness': 	 0.169260
+
+ LibSVM  'abcAffect' result (@ time: 15.348503) :  ~~> cheerful <~~
+     prob. class 'agressiv': 	 0.251394
+     prob. class 'cheerful': 	 0.324190
+     prob. class 'intoxicated': 	 0.235662
+     prob. class 'nervous': 	 0.027765
+     prob. class 'neutral': 	 0.070215
+     prob. class 'tired': 	 0.090773
+
+ LibSVM  'avicInterest' result (@ time: 15.348503) :  ~~> loi2 <~~
+     prob. class 'loi1': 	 0.003735
+     prob. class 'loi2': 	 0.780203
+     prob. class 'loi3': 	 0.216063
+[ 11.01.2023 - 14:54:41 ]
+    (MSG) [2] in cComponentManager : Processing finished! System ran for 1812 ticks.
