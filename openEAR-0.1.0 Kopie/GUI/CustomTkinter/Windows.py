@@ -1,5 +1,6 @@
 import tkinter
 import customtkinter
+from Frames.Mini_App_Frames import *
 from Frames.New_Analysis_Frames import *
 from CustomObjects import *
 
@@ -10,12 +11,12 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         self.title("Neue Analyse")
 
         #Start-Button
-        start_button = customtkinter.CTkButton(self, text="Start", command=self.on_ok)
-        start_button.grid(row = 2, column = 2, padx = 20, pady = 20)
+        self.start_button = customtkinter.CTkButton(self, text="Start", command=self.on_ok)
+        self.start_button.grid(row = 2, column = 2, padx = 20, pady = 20)
 
         #Abbrechen-Button
-        cancel_button = customtkinter.CTkButton(self, text="Abbrechen", command=self.on_cancel)
-        cancel_button.grid(row = 2, column = 1, padx = 20, pady = 20)
+        self.cancel_button = customtkinter.CTkButton(self, text="Abbrechen", command=self.on_cancel)
+        self.cancel_button.grid(row = 2, column = 1, padx = 20, pady = 20)
 
         #Audio Device List Frame
         self.audio_device_list_selector = AudioDeviceListFrame(self)
@@ -45,3 +46,62 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     def on_cancel(self):
         self.destroy()
 
+
+class MiniAppWindow(customtkinter.CTkToplevel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        #Fenster Einstellungen
+        self.geometry("200x150")
+        self.resizable(0,0)
+
+        
+        # Toolbar ausblenden, Konflikt mit Anweisung, das Fenster immer oben ist --> auskommentiert
+        #self.overrideredirect(True)
+
+        # Fenster bleibt immer oben
+        self.attributes("-topmost", True)
+
+        #Expand-Button
+        self.button_expand = customtkinter.CTkButton(self,)
+
+        #Toolbar-Frame
+        self.toolbar_frame = BottomToolbarFrame(self)
+        self.toolbar_frame.grid(row = 2, column = 0, columnspan = 3, sticky = "s")
+        
+        '''
+        #Drag-Handle zum verschieben des Fensters
+        self.grip = customtkinter.CTkLabel(self, fg_color="gray25")
+        self.grip.grid(row = 0, column = 0, columnspan = True)
+    
+        self.grip.bind("<ButtonPress-1>", self.start_move)
+        self.grip.bind("<ButtonRelease-1>", self.stop_move)
+        self.grip.bind("<B1-Motion>", self.do_move)
+        
+        '''
+
+    
+    '''
+    
+    ## Drag-Bedienung zum verschieben des Fensters via Drag-Bar ##
+    def start_move(self, event):
+        self.x = event.x
+        self.y = event.y
+
+    def stop_move(self, event):
+        self.x = None
+        self.y = None
+
+    def do_move(self, event):
+        deltax = event.x - self.x
+        deltay = event.y - self.y
+        x = self.winfo_x() + deltax
+        y = self.winfo_y() + deltay
+        self.geometry(f"+{x}+{y}")
+    
+    '''
+
+
+    ## Buttons ##
+    def close_window(self):
+        self.destroy()
