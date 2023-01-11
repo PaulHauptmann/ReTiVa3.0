@@ -240,8 +240,7 @@ class Main:
 
 
 
-    #delete_old_wav_files(directory_path)
-    filename = get_new_filename(archive_path)
+    
 
 
     def update():
@@ -260,7 +259,22 @@ class Main:
         #return Main.DataTime
 
 
-#Main.live_schleif()
+
+    def live_schleif():
+        Main.read_log_file(Main.file_path) 
+        Main.get_length_of_last_added_wav(Main.directory_path)
+        time.sleep(0.5)
+        Main.get_speak_ratio()
+        Main.write_excel_file(Main.archive_path, Main.filename)
+
+        time.sleep(0.2)
+
+
+
+
+Main.delete_old_wav_files(Main.directory_path)
+filename = Main.get_new_filename(Main.archive_path)
+Main.live_schleif()
 
 
 
