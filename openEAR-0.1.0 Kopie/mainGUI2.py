@@ -1,7 +1,7 @@
 import tkinter as tk
 import customtkinter
 from time import *
-import TestDataExtractor2 as T3
+#import TestDataExtractor2 as T3
 import time
 import threading
 
@@ -73,7 +73,7 @@ class App(customtkinter.CTk):
         
         
         # set default values
-        #self.sidebar_button_1.configure(state = "disabled")
+        self.sidebar_button_1.configure(state = "disabled")
         self.appearance_mode_optionemenu.set("System")
         self.scaling_optionemenu.set("100%")
         
@@ -107,12 +107,11 @@ class App(customtkinter.CTk):
         while True and not stop:
         
             #Textbox vollständig löschen
-            #self.textbox.delete("0.0", tk.END)
+            self.textbox.delete("0.0", tk.END)
 
             #Neuen Text aus T3 einfügen
             #self.textbox.insert("0.0", T3.update())
-            self.textbox.insert("0.0", "Test")
-
+            
             time.sleep(0.5)
             
 
