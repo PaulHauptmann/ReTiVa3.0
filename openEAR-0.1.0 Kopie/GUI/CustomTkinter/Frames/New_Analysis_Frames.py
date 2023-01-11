@@ -39,7 +39,7 @@ class SessionNameFrame(customtkinter.CTkFrame):
         super().__init__(*args,  **kwargs)
         
 
-        self.header = customtkinter.CTkLabel(self, text="Session-Name vergeben: ")
+        self.header = customtkinter.CTkLabel(self, text="Optionalen Session-Name vergeben: ")
         self.header.pack(padx=10, pady = 5, anchor = "n")
 
 
