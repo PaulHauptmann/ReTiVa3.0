@@ -30,12 +30,15 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         self.working_mode_selector.grid(row = 1, column = 1, padx = 20, pady = 20)
 
     def on_ok(self):
-        selected_device = self.audio_device_list_selector.v.get()
-        Startupsettings.selected_audio_device = selected_device
+        
+        Startupsettings.selected_audio_device = self.audio_device_list_selector.v.get()
         print("Selected Device: ", Startupsettings.selected_audio_device)
         
         Startupsettings.session_name = self.session_name_selector.entry_var.get()
         print(Startupsettings.session_name)
+
+        Startupsettings.working_mode = self.working_mode_selector.v.get()
+        print(Startupsettings.working_mode)
         
         self.destroy()
 

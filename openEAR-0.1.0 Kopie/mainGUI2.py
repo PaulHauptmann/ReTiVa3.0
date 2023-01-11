@@ -6,12 +6,14 @@ import TestDataExtractor2 as T3
 import time
 import threading
 
-sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter/Frames')
 
-#GUI - Imports
-from GUI.CustomTkinter.Windows import *
-from GUI.CustomTkinter.Frames.New_Analysis_Frames import *
+## GUI - Imports ##
 
+# Path added, so kann direkt auf Ordner "CustomTkinter" referenziert werden
+sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter')
+
+from Windows import *
+from Frames.New_Analysis_Frames import *
 
 
 
@@ -81,7 +83,7 @@ class App(customtkinter.CTk):
         
         
         # set default values
-        self.sidebar_button_1.configure(state = "disabled")
+        #self.sidebar_button_1.configure(state = "disabled")
         self.appearance_mode_optionemenu.set("System")
         self.scaling_optionemenu.set("100%")
         
@@ -102,6 +104,8 @@ class App(customtkinter.CTk):
     def new_analysis_button_event(self):
         self.new_analysis_window = NewAnalysisWindow(self)
         self.new_analysis_window.grab_set()
+
+    
     
     
 
@@ -123,8 +127,9 @@ class App(customtkinter.CTk):
             self.textbox.delete("0.0", tk.END)
 
             #Neuen Text aus T3 einfügen
-            self.textbox.insert("0.0", T3.Main.update())
-            
+            #self.textbox.insert("0.0", T3.Main.update())
+            #self.textbox.insert("0.0", "Test")
+            self.textbox.insert("0.0", Startupsettings.working_mode)
             time.sleep(0.5)
             
 

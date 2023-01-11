@@ -6,3 +6,4 @@
 class Startupsettings(object):
     selected_audio_device = ""
     session_name = ""
+    working_mode= ""
