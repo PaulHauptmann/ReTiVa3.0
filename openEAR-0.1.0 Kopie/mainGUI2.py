@@ -29,9 +29,9 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-
+        
         # configure window
-        self.title("ReTiVA")
+        self.title("ReTiVA – Real-Time Voice Analytics")
         self.geometry(f"{1100}x{580}")
         
         # configure grid layout (4x4)
@@ -43,7 +43,7 @@ class App(customtkinter.CTk):
         self.sidebar_frame = customtkinter.CTkFrame(self, width=140, corner_radius=0)
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
-        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="ReTiVA", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="ReTiVA", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
         
         #Neue-Analyse-Button
@@ -132,6 +132,7 @@ class App(customtkinter.CTk):
             #self.textbox.insert("0.0", "Test")
             self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
+
             
 
 

@@ -134,9 +134,9 @@
     },
     "CTkFont": {
       "macOS": {
-        "family": "SF Display",
-        "size": 13,
-        "weight": "normal"
+        "family": "Avenir Light",
+        "size": 14,
+        "weight": "bold"
       },
       "Windows": {
         "family": "Roboto",

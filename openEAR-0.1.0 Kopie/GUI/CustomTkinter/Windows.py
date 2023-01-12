@@ -40,6 +40,9 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
         Startupsettings.working_mode = self.working_mode_selector.v.get()
         print(Startupsettings.working_mode)
+
+        self.mini_app_window = MiniAppWindow(self.master)
+
         
         self.destroy()
 
@@ -51,16 +54,27 @@ class MiniAppWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        #Fenster Einstellungen
-        self.geometry("200x150")
-        self.geometry("+{}+{}".format(self.winfo_screenwidth()-self.winfo_reqwidth(),
-                                 self.winfo_screenheight()-self.winfo_reqheight()))
+        #Fenstergröße festlegen
+        window_size_x = 150
+        window_size_y = 200
+
+        #Legt Fenster in untere Rechte Bildschirmecke und verhindert das manuelle Größe verändern
+        self.geometry("{}x{}+{}+{}".format(window_size_x, window_size_y, self.winfo_screenwidth() - window_size_x, self.winfo_screenheight() - window_size_y))
         self.resizable(0,0)
+
         self.title("Live-Analyse")
+      
+        #Hintergrund transparent machen, falls gewünscht (aktuell nur volle Transparenz implementiert)
+              
+        #self.wm_attributes("-transparent", True)
+        #self.config(bg='systemTransparent')
+
 
         #Grid-Konfiguration
         self.rowconfigure(0, weight=1)
+        #self.rowconfigure(1, weight=1)
         self.columnconfigure(1, weight=1)
+        
 
         
         # Toolbar ausblenden, Konflikt mit Anweisung, das Fenster immer oben ist --> auskommentiert
@@ -69,7 +83,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         # Fenster bleibt immer oben
         self.attributes("-topmost", True)
 
-        #Expand-Button
+        #Größe-Ändern-Button
         self.button_change_width = customtkinter.CTkButton(self, text = "<", command=self.change_width)
         self.button_change_width.grid(row = 0, rowspan = 3, column = 0)
         self.button_change_width.configure(width = 20, height = 200)
@@ -77,14 +91,31 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.var = tk.BooleanVar()
         self.var.set(True)
 
+        #Additional Info Frame
+        self.additional_info_frame = AdditionalInfoFrame(self)
+        self.additional_info_frame.grid(row = 0, column = 1, rowspan = 3, padx = 10, sticky = "nsew")
+
+
         
         #Toolbar-Frame
-        self.toolbar_frame = BottomToolbarFrame(self)
-        self.toolbar_frame.grid(row = 2, column = 1, sticky = "s")
+
+        self.toolbar_frame = customtkinter.CTkFrame(self)
+        self.toolbar_frame.grid(row = 2, column = 2, padx = 5, pady = 5, sticky = "sew")
+
+        self.toolbar_frame.columnconfigure((0,1), weight=1)
+
+        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="X", width= 10, command=self.quit_analysis_button_event)
+        self.quit_button.grid(row =0, column = 1, padx = 5, sticky = "ew")
+
+        self.pause_button = customtkinter.CTkButton(self.toolbar_frame, text= "II", width=10, command=self.pause_button_event)
+        self.pause_button.grid(row = 0, column = 0, padx = 5, sticky = "ew")
+
+        self.pause_var = tk.BooleanVar()
+        self.pause_var.set(False)
 
         #Score-Frame
         self.score_frame = ScoreFrame(self)
-        self.score_frame.grid(row = 0, column = 1, sticky = "n")
+        self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
         
         '''
         #Drag-Handle zum verschieben des Fensters
@@ -130,3 +161,18 @@ class MiniAppWindow(customtkinter.CTkToplevel):
             self.after(10)
         self.var.set(not self.var.get())
         self.button_change_width.configure(text="<" if self.var.get() else ">")
+
+    def quit_analysis_button_event(self):
+        self.destroy()
+    
+    def pause_button_event(self):
+        if self.pause_var.get():
+            self.pause_button.configure(text="II")
+            self.pause_var.set(False)
+        else:
+            self.pause_analysis()
+            self.pause_button.configure(text=">")
+            self.pause_var.set(True)
+
+    def pause_analysis(self):
+        print("pause")
