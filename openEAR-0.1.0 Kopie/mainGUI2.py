@@ -17,20 +17,15 @@ from Frames.New_Analysis_Frames import *
 
 
 
-
+#Standard-Modus festlegen
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 #Color-Theme Einstellungen aus eigener Datei übernehmen (Custom CI, muss nur in der .json Datei verändert werden)
-#customtkinter.set_default_color_theme('/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/retiva_dark-blue.json')
+customtkinter.set_default_color_theme('.vscode/retiva_dark-blue.json')
 
 
 #Die eigentliche App
 class App(customtkinter.CTk):
-
-    
-
-
     def __init__(self):
         super().__init__()
 
@@ -38,11 +33,6 @@ class App(customtkinter.CTk):
         # configure window
         self.title("ReTiVA")
         self.geometry(f"{1100}x{580}")
-
-        
-
-        #new_window = customtkinter.CTkToplevel(self)
-        #new_window.title = "Start 2"
         
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
@@ -55,24 +45,33 @@ class App(customtkinter.CTk):
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="ReTiVA", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
+        
+        #Neue-Analyse-Button
         self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, text="Neue Analyse", command=self.new_analysis_button_event)
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
+        
+        #Start-Button
         self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Start", command=self.button_starter)
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
         
-        #stop-Button
+        #Stop-Button
         self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Stop", command=self.button_stop_command)
-
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
+
+        #Mini-App-Button
+        self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text = "Mini-App", command = self.mini_app_button_event)
+        self.sidebar_button_4.grid(row=4, column=0, padx=20, pady=10)
+
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
-        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],
-                                                                       command=self.change_appearance_mode_event)
+        
+        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"], command=self.change_appearance_mode_event)
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 10))
+        
         self.scaling_label = customtkinter.CTkLabel(self.sidebar_frame, text="UI Scaling:", anchor="w")
         self.scaling_label.grid(row=7, column=0, padx=20, pady=(10, 0))
-        self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["80%", "90%", "100%", "110%", "120%"],
-                                                               command=self.change_scaling_event)
+        
+        self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["80%", "90%", "100%", "110%", "120%"], command=self.change_scaling_event)
         self.scaling_optionemenu.grid(row=8, column=0, padx=20, pady=(10, 20))
 
         
@@ -105,6 +104,9 @@ class App(customtkinter.CTk):
         self.new_analysis_window = NewAnalysisWindow(self)
         self.new_analysis_window.grab_set()
 
+    def mini_app_button_event(self):
+        self.mini_app_window = MiniAppWindow(self)
+
     
     
     
@@ -126,7 +128,7 @@ class App(customtkinter.CTk):
             self.textbox.delete("0.0", tk.END)
 
             #Neuen Text aus T3 einfügen
-            #self.textbox.insert("0.0", T3.Main.update())
+            self.textbox.insert("0.0", T3.Main.update())
             #self.textbox.insert("0.0", "Test")
             self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
@@ -138,6 +140,8 @@ class App(customtkinter.CTk):
 
         t = threading.Thread(target=self.start_command)
         t.start()
+        
+        
 
 
 
