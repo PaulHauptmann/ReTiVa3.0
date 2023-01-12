@@ -6,7 +6,7 @@ customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark
 #customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 #Color-Theme Einstellungen aus eigener Datei übernehmen (Custom CI, muss nur in der .json Datei verändert werden)
-customtkinter.set_default_color_theme("openEAR-0.1.0 Kopie/GUI/CustomTkinter/retiva_dark-blue.json")
+#customtkinter.set_default_color_theme("openEAR-0.1.0 Kopie/GUI/CustomTkinter/retiva_dark-blue.json")
 
 class App(customtkinter.CTk):
     def __init__(self):

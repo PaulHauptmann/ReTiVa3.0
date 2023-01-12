@@ -104,11 +104,14 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
         self.toolbar_frame.columnconfigure((0,1), weight=1)
 
-        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="X", width= 10)
+        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="X", width= 10, command=self.quit_analysis_button_event)
         self.quit_button.grid(row =0, column = 1, padx = 5, sticky = "ew")
 
-        self.pause_button = customtkinter.CTkButton(self.toolbar_frame, text= "II", width=10)
+        self.pause_button = customtkinter.CTkButton(self.toolbar_frame, text= "II", width=10, command=self.pause_button_event)
         self.pause_button.grid(row = 0, column = 0, padx = 5, sticky = "ew")
+
+        self.pause_var = tk.BooleanVar()
+        self.pause_var.set(False)
 
         #Score-Frame
         self.score_frame = ScoreFrame(self)
@@ -159,5 +162,17 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.var.set(not self.var.get())
         self.button_change_width.configure(text="<" if self.var.get() else ">")
 
-    def quit_analysis_button_event():
-        MiniAppWindow.destroy()
+    def quit_analysis_button_event(self):
+        self.destroy()
+    
+    def pause_button_event(self):
+        if self.pause_var.get():
+            self.pause_button.configure(text="II")
+            self.pause_var.set(False)
+        else:
+            self.pause_analysis()
+            self.pause_button.configure(text=">")
+            self.pause_var.set(True)
+
+    def pause_analysis(self):
+        print("pause")

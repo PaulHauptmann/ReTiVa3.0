@@ -29,7 +29,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-
+        
         # configure window
         self.title("ReTiVA – Real-Time Voice Analytics")
         self.geometry(f"{1100}x{580}")
