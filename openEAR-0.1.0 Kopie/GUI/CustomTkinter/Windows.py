@@ -1,4 +1,4 @@
-import tkinter
+import tkinter as tk
 import customtkinter
 from Frames.Mini_App_Frames import *
 from Frames.New_Analysis_Frames import *
@@ -53,7 +53,14 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
         #Fenster Einstellungen
         self.geometry("200x150")
+        self.geometry("+{}+{}".format(self.winfo_screenwidth()-self.winfo_reqwidth(),
+                                 self.winfo_screenheight()-self.winfo_reqheight()))
         self.resizable(0,0)
+        self.title("Live-Analyse")
+
+        #Grid-Konfiguration
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
 
         
         # Toolbar ausblenden, Konflikt mit Anweisung, das Fenster immer oben ist --> auskommentiert
@@ -63,11 +70,21 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.attributes("-topmost", True)
 
         #Expand-Button
-        self.button_expand = customtkinter.CTkButton(self,)
+        self.button_change_width = customtkinter.CTkButton(self, text = "<", command=self.change_width)
+        self.button_change_width.grid(row = 0, rowspan = 3, column = 0)
+        self.button_change_width.configure(width = 20, height = 200)
 
+        self.var = tk.BooleanVar()
+        self.var.set(True)
+
+        
         #Toolbar-Frame
         self.toolbar_frame = BottomToolbarFrame(self)
-        self.toolbar_frame.grid(row = 2, column = 0, columnspan = 3, sticky = "s")
+        self.toolbar_frame.grid(row = 2, column = 1, sticky = "s")
+
+        #Score-Frame
+        self.score_frame = ScoreFrame(self)
+        self.score_frame.grid(row = 0, column = 1, sticky = "n")
         
         '''
         #Drag-Handle zum verschieben des Fensters
@@ -103,5 +120,13 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
 
     ## Buttons ##
-    def close_window(self):
-        self.destroy()
+    def change_width(self):
+        self.current_width = self.winfo_width()
+        new_width = self.current_width + 200 if self.var.get() else self.current_width - 200
+        current_x = self.winfo_x()
+        for i in range(self.current_width, new_width, 10 if self.var.get() else -10):
+            self.geometry("{}x{}+{}+{}".format(i, self.winfo_height(),current_x + self.current_width - i,self.winfo_y()))
+            self.update()
+            self.after(10)
+        self.var.set(not self.var.get())
+        self.button_change_width.configure(text="<" if self.var.get() else ">")
