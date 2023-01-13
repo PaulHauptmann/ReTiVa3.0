@@ -6,7 +6,7 @@ I = 1
 def random_log():
     
     # Set up logging to a file
-    log_file = os.path.join('/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/', 'Smile1.log')
+    log_file = os.path.join('openEAR-0.1.0 Kopie/test_log_files', 'Smile1.log')
     logging.basicConfig(filename=log_file, level=logging.DEBUG)
 
     # List of 25 lines

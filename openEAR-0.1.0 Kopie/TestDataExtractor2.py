@@ -60,9 +60,10 @@ class EMO:
 class Main:
 
     #path definitionen
-    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
-    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
-    archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/'
+    file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    #file_path = 'openEAR-0.1.0 Kopie/test_log_files/Smile1.log'
+    directory_path = 'openEAR-0.1.0 Kopie/'
+    archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
 
     timestemp1 = 1
@@ -399,9 +400,9 @@ class Main:
 
 Main.delete_old_wav_files(Main.directory_path)
 Main.Excel_Filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
-print(Main.Excel_Filename)
+#print(Main.Excel_Filename)
 
 
 
-while True:
-    Main.update()
+#while True:
+#    Main.update()

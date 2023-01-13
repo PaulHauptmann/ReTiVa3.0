@@ -4,7 +4,7 @@ from tkinter import ttk
 import time
 
 class ScoreFrame(customtkinter.CTkFrame):
-    def __init__(self, master = None, is_blinking = False):
+    def __init__(self, master = None):
         super().__init__(master)
 
         
