@@ -60,19 +60,22 @@ class EMO:
 class Main:
 
     #path definitionen
-    file_path = 'openEAR-0.1.0 Kopie/smile.log'
-    directory_path = 'openEAR-0.1.0 Kopie/'
-    archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv'
+    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
+    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
+    archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/'
 
 
     timestemp1 = 1
     timestemp2 = 1
+    timestemp3 = 1
     Session_Name = None
     now = datetime.now()
     dt_string = now.strftime("_%H:%M_%d_%m_%Y")
     Excel_Filename = None
 
     #listen Initialisierung
+    DataDateTime = []
+    DataSessionName = []
     DataSpeakRatio = [0]
     DataSpeakTime = [0]
     DataLength = [0]
@@ -134,6 +137,8 @@ class Main:
 
 
     def read_log_file(file_path):
+
+        
         # Open the file in read mode
         with open(file_path, 'r') as file:
             # Read the contents of the file
@@ -155,12 +160,13 @@ class Main:
             emo = EMO(*result)
 
             Main.timestemp1 = emo.time
-
+            
+            
 
 
     
             #schreibt pro tick in die jeweilige Liste hinten dran neuesten wert, wenn der wert sich ändert
-            if float(Main.DataTime[-1]) != float(Main.timestemp1):
+            if float(Main.DataTime[-1]) != float(emo.time):
                 Main.DataTime.append(float(emo.time))
                 Main.DataArousal.append(float(emo.Arousal))
                 Main.DataValence.append(float(emo.Valence))
@@ -181,8 +187,8 @@ class Main:
                 Main.DataLoi2.append(float(emo.Loi2))
                 Main.DataLoi3.append(float(emo.Loi3))
 
-                """#Ausgabe der Listen
-                print('Time:                  ', Main.DataTime)
+                #Ausgabe der Listen
+                """print('Time:                  ', Main.DataTime)
                 print('Arousal:               ', Main.DataArousal)
                 print('Valence:               ', Main.DataValence)
                 print('EmodbEmotionAnger:     ', Main.DataEmodbEmotionAnger)
@@ -231,17 +237,18 @@ class Main:
             return 0
 
 
-    def write_excel_file(directory, filename):
+    def write_excel_file(directoryExcel, filename):
         # Create the Excel file
                 #now = datetime.now()
                 #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
-                file_name = filename
+                file_name = str(directoryExcel)+str(filename)
+                
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
 
                 # Write the 19 lists to the file
-                worksheet.append(Main.dt_string)
-                worksheet.append(Main.Session_Name)
+                worksheet.append(Main.DataDateTime)
+                worksheet.append(Main.DataSessionName)
                 worksheet.append(Main.DataTime)
                 worksheet.append(Main.DataArousal)
                 worksheet.append(Main.DataValence)
@@ -263,21 +270,11 @@ class Main:
                 worksheet.append(Main.DataLoi3)
 
                 # Save the file
-                workbook.save(directory+file_name)
+                workbook.save(file_name)
     
 
     def get_new_filename(directory, Session_Name):
-        """# Find all files in the specified directory that start with "Archive_File_" and end with ".xlsx"
-        files = [f for f in os.listdir(directory) if f.startswith('Archive_File_') and f.endswith('.xlsx')]
-        # Extract the numbers from the end of the filenames
-        numbers = [int(f.split('_')[-1].split('.')[0]) for f in files]
-        # If there are no files, start with number 1
-        if not numbers:
-            return 'Archive_File_0001.xlsx'
-        # Otherwise, get the next highest number
-        else:
-            return 'Archive_File_{:04d}.xlsx'.format(max(numbers) + 1)"""
-
+        
         if Session_Name != None:
             return Session_Name+Main.dt_string
 
@@ -300,13 +297,13 @@ class Main:
 
     def update():
 
-
         Main.read_log_file(Main.file_path) 
         Main.get_length_of_last_added_wav(Main.directory_path)
         time.sleep(0.5)
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
-        Main.write_excel_file(Main.archive_path, Main.get_new_filename)
+        Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
+        Main.Printer()
            
 
     def Anzahl_Files_Gleitender_Mittelwert():
@@ -326,33 +323,34 @@ class Main:
     def Gleitender_Mittelwert():
         K = int(Main.Anzahl_Files_Gleitender_Mittelwert())
 
+        if float(Main.DataTime[-1]) != float(Main.timestemp2):
 
         
-        Main.MWDataSpeakRatio =                    ((sum(Main.DataSpeakRatio[-K:]))                  /      (K))
-        Main.MWDataSpeakTime =                     ((sum(Main.DataSpeakTime[-K:]))                   /      (K))
-        Main.MWDataLength =                        ((sum(Main.DataLength[-K:]))                      /      (K))
-        Main.MWDataTime =                          ((sum(Main.DataTime[-K:]))                        /      (K))
-        Main.MWDataArousal =                       ((sum(Main.DataArousal[-K:]))                     /      (K))
-        Main.MWDataValence =                       ((sum(Main.DataValence[-K:]))                     /      (K))
-        Main.MWDataEmodbEmotionAnger =             ((sum(Main.DataEmodbEmotionAnger[-K:]))           /      (K))
-        Main.MWDataEmodbEmotionBoredom =           ((sum(Main.DataEmodbEmotionBoredom[-K:]))         /      (K))
-        Main.MWDataEmodbEmotionDisgust =           ((sum(Main.DataEmodbEmotionDisgust[-K:]))         /      (K))
-        Main.MWDataEmodbEmotionFear =              ((sum(Main.DataEmodbEmotionFear[-K:]))            /      (K))
-        Main.MWDataEmodbEmotionHappiness =         ((sum(Main.DataEmodbEmotionHappiness[-K:]))       /      (K))
-        Main.MWDataEmodbEmotionNeutral =           ((sum(Main.DataEmodbEmotionNeutral[-K:]))         /      (K))
-        Main.MWDataEmodbEmotionSadness =           ((sum(Main.DataEmodbEmotionSadness[-K:]))         /      (K))
-        Main.MWDataAbcAffectAgressiv =             ((sum(Main.DataAbcAffectAgressiv[-K:]))           /      (K))
-        Main.MWDataAbcAffectCheerfull =            ((sum(Main.DataAbcAffectCheerfull[-K:]))          /      (K))
-        Main.MWDataAbcAffectIntoxicated =          ((sum(Main.DataAbcAffectIntoxicated[-K:]))        /      (K))
-        Main.MWDataAbcAffectNervous =              ((sum(Main.DataAbcAffectNervous[-K:]))            /      (K))
-        Main.MWDataAbcAffectNeutral =              ((sum(Main.DataAbcAffectNeutral[-K:]))            /      (K))
-        Main.MWDataAbcAffectTired =                ((sum(Main.DataAbcAffectTired[-K:]))              /      (K))
-        Main.MWDataLoi1 =                          ((sum(Main.DataLoi1[-K:]))                        /      (K))
-        Main.MWDataLoi2 =                          ((sum(Main.DataLoi2[-K:]))                        /      (K))
-        Main.MWDataLoi3 =                          ((sum(Main.DataLoi3[-K:]))                        /      (K))
+            Main.MWDataSpeakRatio =                    ((sum(Main.DataSpeakRatio[-K:]))                  /      (K))
+            Main.MWDataSpeakTime =                     ((sum(Main.DataSpeakTime[-K:]))                   /      (K))
+            Main.MWDataLength =                        ((sum(Main.DataLength[-K:]))                      /      (K))
+            Main.MWDataTime =                          ((sum(Main.DataTime[-K:]))                        /      (K))
+            Main.MWDataArousal =                       ((sum(Main.DataArousal[-K:]))                     /      (K))
+            Main.MWDataValence =                       ((sum(Main.DataValence[-K:]))                     /      (K))
+            Main.MWDataEmodbEmotionAnger =             ((sum(Main.DataEmodbEmotionAnger[-K:]))           /      (K))
+            Main.MWDataEmodbEmotionBoredom =           ((sum(Main.DataEmodbEmotionBoredom[-K:]))         /      (K))
+            Main.MWDataEmodbEmotionDisgust =           ((sum(Main.DataEmodbEmotionDisgust[-K:]))         /      (K))
+            Main.MWDataEmodbEmotionFear =              ((sum(Main.DataEmodbEmotionFear[-K:]))            /      (K))
+            Main.MWDataEmodbEmotionHappiness =         ((sum(Main.DataEmodbEmotionHappiness[-K:]))       /      (K))
+            Main.MWDataEmodbEmotionNeutral =           ((sum(Main.DataEmodbEmotionNeutral[-K:]))         /      (K))
+            Main.MWDataEmodbEmotionSadness =           ((sum(Main.DataEmodbEmotionSadness[-K:]))         /      (K))
+            Main.MWDataAbcAffectAgressiv =             ((sum(Main.DataAbcAffectAgressiv[-K:]))           /      (K))
+            Main.MWDataAbcAffectCheerfull =            ((sum(Main.DataAbcAffectCheerfull[-K:]))          /      (K))
+            Main.MWDataAbcAffectIntoxicated =          ((sum(Main.DataAbcAffectIntoxicated[-K:]))        /      (K))
+            Main.MWDataAbcAffectNervous =              ((sum(Main.DataAbcAffectNervous[-K:]))            /      (K))
+            Main.MWDataAbcAffectNeutral =              ((sum(Main.DataAbcAffectNeutral[-K:]))            /      (K))
+            Main.MWDataAbcAffectTired =                ((sum(Main.DataAbcAffectTired[-K:]))              /      (K))
+            Main.MWDataLoi1 =                          ((sum(Main.DataLoi1[-K:]))                        /      (K))
+            Main.MWDataLoi2 =                          ((sum(Main.DataLoi2[-K:]))                        /      (K))
+            Main.MWDataLoi3 =                          ((sum(Main.DataLoi3[-K:]))                        /      (K))
 
-    
-        Main.timestemp2 = Main.timestemp1
+        
+            Main.timestemp2 = Main.timestemp1
 
     
     def Set_Session_Name (Sessionname):
@@ -360,7 +358,38 @@ class Main:
         Main.Session_Name = Sessionname
         
 
+    def Printer():
+        
+        if float(Main.DataTime[-1]) != float(Main.timestemp3):
+        
+            print("DataSpeakRatio:                ",         Main.DataSpeakRatio)
+            print("DataSpeakTime:                 ",         Main.DataSpeakTime)
+            print("DataLength:                    ",         Main.DataLength)
+            print("DataTime:                      ",         Main.DataTime)
+            print("DataArousal:                   ",         Main.DataArousal)
+            print("DataValence:                   ",         Main.DataValence)
+            print("DataEmodbEmotionAnger:         ",         Main.DataEmodbEmotionAnger)
+            print("DataEmodbEmotionBoredom:       ",         Main.DataEmodbEmotionBoredom)
+            print("DataEmodbEmotionDisgust:       ",         Main.DataEmodbEmotionDisgust)
+            print("DataEmodbEmotionFear:          ",         Main.DataEmodbEmotionFear)
+            print("DataEmodbEmotionHappiness:     ",         Main.DataEmodbEmotionHappiness)
+            print("DataEmodbEmotionNeutral:       ",         Main.DataEmodbEmotionNeutral)
+            print("DataEmodbEmotionSadness:       ",         Main.DataEmodbEmotionSadness)
+            print("DataAbcAffectAgressiv:         ",         Main.DataAbcAffectAgressiv)
+            print("DataAbcAffectCheerfull:        ",         Main.DataAbcAffectCheerfull)
+            print("DataAbcAffectIntoxicated:      ",         Main.DataAbcAffectIntoxicated)
+            print("DataAbcAffectNervous:          ",         Main.DataAbcAffectNervous)
+            print("DataAbcAffectNeutral:          ",         Main.DataAbcAffectNeutral)
+            print("DataAbcAffectTired:            ",         Main.DataAbcAffectTired)
+            print("DataLoi1:                      ",         Main.DataLoi1)
+            print("DataLoi2:                      ",         Main.DataLoi2)
+            print("DataLoi3:                      ",         Main.DataLoi3)
 
+            Main.timestemp3 = Main.timestemp1
+
+
+
+        
 
         
 
@@ -368,11 +397,11 @@ class Main:
 
 
 
-
 Main.delete_old_wav_files(Main.directory_path)
 Main.Excel_Filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
+print(Main.Excel_Filename)
 
 
 
-
-
+while True:
+    Main.update()
