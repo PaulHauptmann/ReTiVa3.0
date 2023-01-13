@@ -1,24 +1,6 @@
-from dataclasses import dataclass
+from datetime import datetime
 
+now = datetime.now()
+dt_string = now.strftime("_%H:%M_%d_%m_%Y")
 
-@dataclass
-class emo:
-    a: float
-    b: float
-    c: float
-    d: float
-
-
-def füllen():
-    
-    res = emo(1, 2, 3, 4 )
-
-    return res
-
-
-
-
-
-print (füllen().a)
-
-print(emo.a)
+print(dt_string)
