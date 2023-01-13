@@ -60,7 +60,7 @@ class EMO:
 class Main:
 
     #path definitionen
-    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
+    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
     directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
     archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/'
 
@@ -241,7 +241,7 @@ class Main:
         # Create the Excel file
                 #now = datetime.now()
                 #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
-                file_name = str(directoryExcel)+str(filename)
+                file_name = str(directoryExcel)+str(filename)+".xlsx"
                 
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
