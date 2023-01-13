@@ -31,7 +31,7 @@ def random_log():
             "     prob. class 'neutral': 	 "+ str(random.uniform(0,1)),
             "     prob. class 'tired': 	 "+ str(random.uniform(0,1)),
             "",
-            " LibSVM  'avicInterest' result (@ time: "+ str(random.uniform(0,1)) +") :  ~~> loi2 <~~",
+            " LibSVM  'avicInterest' result (@ time: "+ str(random.uniform(0,1)) +") :  ~~> "+ str(random.uniform(0,1)) +" <~~",
             "     prob. class 'loi1': 	 "+ str(random.uniform(0,1)) ,
             "     prob. class 'loi2': 	 "+ str(random.uniform(0,1)),
             "     prob. class 'loi3': 	 "+ str(random.uniform(0,1))]
