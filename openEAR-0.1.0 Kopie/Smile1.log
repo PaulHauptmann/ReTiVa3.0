@@ -698,6 +698,7 @@ DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.5671374267913991) :  ~~> lo
 DEBUG:root:     prob. class 'loi1': 	 0.4115116429073641
 DEBUG:root:     prob. class 'loi2': 	 0.40735674464048655
 DEBUG:root:     prob. class 'loi3': 	 0.92262873609359
+
 DEBUG:root:LibSVM  'arousal' result (@ time: 15) :  ~~> 0.09451733370942983 <~~
 DEBUG:root:
 DEBUG:root:LibSVM  'valence' result (@ time: 0.06770659209241703) :  ~~> 0.08405692882491367 <~~
@@ -718,8 +719,8 @@ DEBUG:root:     prob. class 'intoxicated': 	 0.9505065400834222
 DEBUG:root:     prob. class 'nervous': 	 0.9720724048806195
 DEBUG:root:     prob. class 'neutral': 	 0.42136595110119757
 DEBUG:root:     prob. class 'tired': 	 0.4688806371710391
-DEBUG:root:
+DEBUG:root:     0.4335354363456356
 DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.6277080179870148) :  ~~> loi2 <~~
 DEBUG:root:     prob. class 'loi1': 	 0.9271965719203994
 DEBUG:root:     prob. class 'loi2': 	 0.17971943221425235
-DEBUG:root:     prob. class 'loi3': 	 0.5515965205289858
+DEBUG:root:     prob. class 'loi3': 	 0.551596520528985
