@@ -3,6 +3,7 @@ import customtkinter
 from Frames.Mini_App_Frames import *
 from Frames.New_Analysis_Frames import *
 from CustomObjects import *
+from TestDataExtractor2 import *
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
@@ -32,11 +33,15 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
     def on_ok(self):
         
+        #Audio-Gerät speichern
         Startupsettings.selected_audio_device = self.audio_device_list_selector.v.get()
         print("Selected Device: ", Startupsettings.selected_audio_device)
         
+        #Session-Name speichern und an TestDataExtractor2 weitergeben
         Startupsettings.session_name = self.session_name_selector.entry_var.get()
         print(Startupsettings.session_name)
+        Main.Set_Session_Name(Startupsettings.session_name)
+
 
         Startupsettings.working_mode = self.working_mode_selector.v.get()
         print(Startupsettings.working_mode)

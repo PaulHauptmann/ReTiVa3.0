@@ -60,9 +60,9 @@ class EMO:
 class Main:
 
     #path definitionen
-    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
-    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
-    archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv'
+    file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    directory_path = 'openEAR-0.1.0 Kopie/'
+    archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv'
 
 
     timestemp1 = 1
@@ -306,7 +306,7 @@ class Main:
         time.sleep(0.5)
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
-        Main.write_excel_file(Main.archive_path, Main.filename)
+        Main.write_excel_file(Main.archive_path, Main.get_new_filename)
            
 
     def Anzahl_Files_Gleitender_Mittelwert():
