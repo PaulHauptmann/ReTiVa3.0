@@ -241,7 +241,7 @@ class Main:
         # Create the Excel file
                 #now = datetime.now()
                 #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
-                file_name = str(directoryExcel)+str(filename)+".xlsx"
+                file_name = str(directoryExcel)+str(filename)+"xlsx"
                 
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
@@ -294,17 +294,6 @@ class Main:
             Main.DataSpeakRatio.append(SpeakRatio)
             print('SpeakRatio:            ', SpeakRatio)
 
-
-    def update():
-
-        Main.read_log_file(Main.file_path) 
-        Main.get_length_of_last_added_wav(Main.directory_path)
-        time.sleep(0.5)
-        Main.get_speak_ratio()
-        Main.Gleitender_Mittelwert()
-        Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
-        Main.Printer()
-           
 
     def Anzahl_Files_Gleitender_Mittelwert():
 
@@ -388,6 +377,15 @@ class Main:
             Main.timestemp3 = Main.timestemp1
 
 
+    def Updater():
+
+        Main.read_log_file(Main.file_path) 
+        Main.get_length_of_last_added_wav(Main.directory_path)
+        time.sleep(0.5)
+        Main.get_speak_ratio()
+        Main.Gleitender_Mittelwert()
+        Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
+        Main.Printer()
 
         
 
@@ -404,4 +402,4 @@ print(Main.Excel_Filename)
 
 
 while True:
-    Main.update()
+    Main.Updater()
