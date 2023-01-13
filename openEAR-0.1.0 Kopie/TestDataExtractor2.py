@@ -8,6 +8,30 @@ import wave
 
 
 
+@dataclass
+class MWEmo:
+    MWDataSpeakRatio: float
+    MWDataSpeakTime: float
+    MWDataLength: float
+    MWDataTime: float
+    MWDataArousal: float
+    MWDataValence: float
+    MWDataEmodbEmotionAnger: float
+    MWDataEmodbEmotionBoredom: float
+    MWDataEmodbEmotionDisgust: float
+    MWDataEmodbEmotionFear: float
+    MWDataEmodbEmotionHappiness: float
+    MWDataEmodbEmotionNeutral: float
+    MWDataEmodbEmotionSadness: float
+    MWDataAbcAffectAgressiv: float
+    MWDataAbcAffectCheerfull: float
+    MWDataAbcAffectIntoxicated: float
+    MWDataAbcAffectNervous: float
+    MWDataAbcAffectNeutral: float
+    MWDataAbcAffectTired: float
+    MWDataLoi1: float
+    MWDataLoi2: float
+    MWDataLoi3: float
 
 
 @dataclass
@@ -36,9 +60,16 @@ class EMO:
 class Main:
 
     #path definitionen
-    file_path = 'openEAR-0.1.0 Kopie/smile.log'
-    directory_path = 'openEAR-0.1.0 Kopie/'
-    archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv'
+    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
+    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
+    archive_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv'
+
+
+    timestemp1 = 1
+    timestemp2 = 1
+    Session_Name = None
+    now = datetime.now()
+    dt_string = now.strftime("_%H:%M_%d_%m_%Y")
 
     #listen Initialisierung
     DataSpeakRatio = [0]
@@ -63,6 +94,30 @@ class Main:
     DataLoi1 = [0]
     DataLoi2 = [0]
     DataLoi3 = [0]
+
+    #Mittelwerte Initialisierung
+    MWDataSpeakRatio: float
+    MWDataSpeakTime: float
+    MWDataLength: float
+    MWDataTime: float
+    MWDataArousal: float
+    MWDataValence: float
+    MWDataEmodbEmotionAnger: float
+    MWDataEmodbEmotionBoredom: float
+    MWDataEmodbEmotionDisgust: float
+    MWDataEmodbEmotionFear: float
+    MWDataEmodbEmotionHappiness: float
+    MWDataEmodbEmotionNeutral: float
+    MWDataEmodbEmotionSadness: float
+    MWDataAbcAffectAgressiv: float
+    MWDataAbcAffectCheerfull: float
+    MWDataAbcAffectIntoxicated: float
+    MWDataAbcAffectNervous: float
+    MWDataAbcAffectNeutral: float
+    MWDataAbcAffectTired: float
+    MWDataLoi1: float
+    MWDataLoi2: float
+    MWDataLoi3: float
 
 
 
@@ -104,31 +159,34 @@ class Main:
 
             emo = EMO(*result)
 
+            Main.timestemp1 = emo.time
+
+
 
     
             #schreibt pro tick in die jeweilige Liste hinten dran neuesten wert, wenn der wert sich ändert
-            if Main.DataTime[-1] != emo.time:
-                Main.DataTime.append(emo.time)
-                Main.DataArousal.append(emo.Arousal)
-                Main.DataValence.append(emo.Valence)
-                Main.DataEmodbEmotionAnger.append(emo.emodbEmotionAnger)
-                Main.DataEmodbEmotionBoredom.append(emo.emodbEmotionBoredom)
-                Main.DataEmodbEmotionDisgust.append(emo.emodbEmotionDisgust)
-                Main.DataEmodbEmotionFear.append(emo.emodbEmotionFear)
-                Main.DataEmodbEmotionHappiness.append(emo.emodbEmotionHappiness)
-                Main.DataEmodbEmotionNeutral.append(emo.emodbEmotionNeutral)
-                Main.DataEmodbEmotionSadness.append(emo.emodbEmotionSadness)
-                Main.DataAbcAffectAgressiv.append(emo.abcAffectAgressiv)
-                Main.DataAbcAffectCheerfull.append(emo.abcAffectCheerfull)
-                Main.DataAbcAffectIntoxicated.append(emo.abcAffectIntoxicated)
-                Main.DataAbcAffectNervous.append(emo.abcAffectNervous)
-                Main.DataAbcAffectNeutral.append(emo.abcAffectNeutral)
-                Main.DataAbcAffectTired.append(emo.abcAffectTired)
-                Main.DataLoi1.append(emo.Loi1)
-                Main.DataLoi2.append(emo.Loi2)
-                Main.DataLoi3.append(emo.Loi3)
+            if float(Main.DataTime[-1]) != float(Main.timestemp1):
+                Main.DataTime.append(float(emo.time))
+                Main.DataArousal.append(float(emo.Arousal))
+                Main.DataValence.append(float(emo.Valence))
+                Main.DataEmodbEmotionAnger.append(float(emo.emodbEmotionAnger))
+                Main.DataEmodbEmotionBoredom.append(float(emo.emodbEmotionBoredom))
+                Main.DataEmodbEmotionDisgust.append(float(emo.emodbEmotionDisgust))
+                Main.DataEmodbEmotionFear.append(float(emo.emodbEmotionFear))
+                Main.DataEmodbEmotionHappiness.append(float(emo.emodbEmotionHappiness))
+                Main.DataEmodbEmotionNeutral.append(float(emo.emodbEmotionNeutral))
+                Main.DataEmodbEmotionSadness.append(float(emo.emodbEmotionSadness))
+                Main.DataAbcAffectAgressiv.append(float(emo.abcAffectAgressiv))
+                Main.DataAbcAffectCheerfull.append(float(emo.abcAffectCheerfull))
+                Main.DataAbcAffectIntoxicated.append(float(emo.abcAffectIntoxicated))
+                Main.DataAbcAffectNervous.append(float(emo.abcAffectNervous))
+                Main.DataAbcAffectNeutral.append(float(emo.abcAffectNeutral))
+                Main.DataAbcAffectTired.append(float(emo.abcAffectTired))
+                Main.DataLoi1.append(float(emo.Loi1))
+                Main.DataLoi2.append(float(emo.Loi2))
+                Main.DataLoi3.append(float(emo.Loi3))
 
-                #Ausgabe der Listen
+                """#Ausgabe der Listen
                 print('Time:                  ', Main.DataTime)
                 print('Arousal:               ', Main.DataArousal)
                 print('Valence:               ', Main.DataValence)
@@ -147,7 +205,7 @@ class Main:
                 print('AbcAffectTired:        ', Main.DataAbcAffectTired)
                 print('Loi1:                  ', Main.DataLoi1)
                 print('Loi2:                  ', Main.DataLoi2)
-                print('Loi3:                  ', Main.DataLoi3)
+                print('Loi3:                  ', Main.DataLoi3)"""
 
 
     def get_length_of_last_added_wav(directory):
@@ -211,8 +269,8 @@ class Main:
                 workbook.save(directory+file_name)
     
 
-    def get_new_filename(directory):
-        # Find all files in the specified directory that start with "Archive_File_" and end with ".xlsx"
+    def get_new_filename(directory, Session_Name):
+        """# Find all files in the specified directory that start with "Archive_File_" and end with ".xlsx"
         files = [f for f in os.listdir(directory) if f.startswith('Archive_File_') and f.endswith('.xlsx')]
         # Extract the numbers from the end of the filenames
         numbers = [int(f.split('_')[-1].split('.')[0]) for f in files]
@@ -221,9 +279,15 @@ class Main:
             return 'Archive_File_0001.xlsx'
         # Otherwise, get the next highest number
         else:
-            return 'Archive_File_{:04d}.xlsx'.format(max(numbers) + 1)
-        
+            return 'Archive_File_{:04d}.xlsx'.format(max(numbers) + 1)"""
 
+        if Session_Name != None:
+            return Session_Name+Main.dt_string
+
+        else:
+            return "Neue_Session"+Main.dt_string
+
+        
     def get_speak_ratio():
 
         SpeakDuration = sum(Main.DataLength)
@@ -237,27 +301,71 @@ class Main:
             print('SpeakRatio:            ', SpeakRatio)
 
 
-
-
-
-    
-
-
     def update():
 
-        
 
         Main.read_log_file(Main.file_path) 
+        Main.get_length_of_last_added_wav(Main.directory_path)
+        time.sleep(0.5)
+        Main.get_speak_ratio()
+        Main.Gleitender_Mittelwert()
+        Main.write_excel_file(Main.archive_path, Main.filename)
+           
 
-        return(Main.DataTime)   
-        #Main.get_length_of_last_added_wav(Main.directory_path)
-        #time.sleep(0.5)
-        #Main.get_speak_ratio()
-        #Main.write_excel_file(Main.archive_path, Main.filename)
+    def Anzahl_Files_Gleitender_Mittelwert():
 
-        #time.sleep(0.2)
-        #return Main.DataTime
+        if sum(Main.DataLength) >= 20:
+            K=1
+            while sum(Main.DataLength[-K:]) <= 20:
+                K = K+1
+            #print (K)
+            return K
 
+        else:
+            #print(len(Main.DataLength))
+            return len(Main.DataLength)
+
+
+    def Gleitender_Mittelwert():
+        K = int(Main.Anzahl_Files_Gleitender_Mittelwert())
+
+
+        
+        Main.MWDataSpeakRatio =                    ((sum(Main.DataSpeakRatio[-K:]))                  /      (K))
+        Main.MWDataSpeakTime =                     ((sum(Main.DataSpeakTime[-K:]))                   /      (K))
+        Main.MWDataLength =                        ((sum(Main.DataLength[-K:]))                      /      (K))
+        Main.MWDataTime =                          ((sum(Main.DataTime[-K:]))                        /      (K))
+        Main.MWDataArousal =                       ((sum(Main.DataArousal[-K:]))                     /      (K))
+        Main.MWDataValence =                       ((sum(Main.DataValence[-K:]))                     /      (K))
+        Main.MWDataEmodbEmotionAnger =             ((sum(Main.DataEmodbEmotionAnger[-K:]))           /      (K))
+        Main.MWDataEmodbEmotionBoredom =           ((sum(Main.DataEmodbEmotionBoredom[-K:]))         /      (K))
+        Main.MWDataEmodbEmotionDisgust =           ((sum(Main.DataEmodbEmotionDisgust[-K:]))         /      (K))
+        Main.MWDataEmodbEmotionFear =              ((sum(Main.DataEmodbEmotionFear[-K:]))            /      (K))
+        Main.MWDataEmodbEmotionHappiness =         ((sum(Main.DataEmodbEmotionHappiness[-K:]))       /      (K))
+        Main.MWDataEmodbEmotionNeutral =           ((sum(Main.DataEmodbEmotionNeutral[-K:]))         /      (K))
+        Main.MWDataEmodbEmotionSadness =           ((sum(Main.DataEmodbEmotionSadness[-K:]))         /      (K))
+        Main.MWDataAbcAffectAgressiv =             ((sum(Main.DataAbcAffectAgressiv[-K:]))           /      (K))
+        Main.MWDataAbcAffectCheerfull =            ((sum(Main.DataAbcAffectCheerfull[-K:]))          /      (K))
+        Main.MWDataAbcAffectIntoxicated =          ((sum(Main.DataAbcAffectIntoxicated[-K:]))        /      (K))
+        Main.MWDataAbcAffectNervous =              ((sum(Main.DataAbcAffectNervous[-K:]))            /      (K))
+        Main.MWDataAbcAffectNeutral =              ((sum(Main.DataAbcAffectNeutral[-K:]))            /      (K))
+        Main.MWDataAbcAffectTired =                ((sum(Main.DataAbcAffectTired[-K:]))              /      (K))
+        Main.MWDataLoi1 =                          ((sum(Main.DataLoi1[-K:]))                        /      (K))
+        Main.MWDataLoi2 =                          ((sum(Main.DataLoi2[-K:]))                        /      (K))
+        Main.MWDataLoi3 =                          ((sum(Main.DataLoi3[-K:]))                        /      (K))
+
+    
+        Main.timestemp2 = Main.timestemp1
+
+    
+    def Set_Session_Name (Sessionname):
+
+        Main.Session_Name = Sessionname
+        
+
+
+
+        
 
 
 
@@ -265,8 +373,8 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-filename = Main.get_new_filename(Main.archive_path)
-#Main.live_schleif()
+filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
+
 
 
 def live_schleif():
@@ -276,6 +384,6 @@ def live_schleif():
     Main.get_speak_ratio()
     Main.write_excel_file(Main.archive_path, filename)
 
-    time.sleep(0.2)
+
 
 
