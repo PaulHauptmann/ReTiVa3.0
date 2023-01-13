@@ -3,7 +3,7 @@ import customtkinter
 from Frames.Mini_App_Frames import *
 from Frames.New_Analysis_Frames import *
 from CustomObjects import *
-#from TestDataExtractor2 import *
+from TestDataExtractor2 import *
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
@@ -39,8 +39,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         
         #Session-Name speichern und an TestDataExtractor2 weitergeben
         Startupsettings.session_name = self.session_name_selector.entry_var.get()
+        Main.Set_Session_Name(Startupsettings.session_name)
         print(Startupsettings.session_name)
-        #Main.Set_Session_Name(Startupsettings.session_name)
 
 
         Startupsettings.working_mode = self.working_mode_selector.v.get()
@@ -119,8 +119,8 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.pause_var.set(False)
 
         #Score-Frame
-        self.is_blinking = False
-        self.score_frame = ScoreFrame(self, self.is_blinking)
+        
+        self.score_frame = ScoreFrame(self)
         self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
         
         '''
