@@ -1,9 +1,25 @@
-import Test1 as T1
-
-data = T1.Get_Data("/Users/paul/Desktop/SmileArchiv/2023-01-10 13:11:33.xlsx")
-archive_dt_string = data.get("Archive_dt_string", "Key not found")
-
-print (archive_dt_string)
-
-
-
+print(" LibSVM  'arousal' result (@ time: 7.758323) :  ~~> 0.19 <~~")
+print("")
+print(" LibSVM  'valence' result (@ time: 7.758323) :  ~~> 0.08 <~~")
+print("")
+print(" LibSVM  'emodbEmotion' result (@ time: 7.758323) :  ~~> disgust <~~")
+print("     prob. class 'anger': 	 0.013417")
+print("     prob. class 'boredom': 	 0.026184")
+print("     prob. class 'disgust': 	 0.513231")
+print("     prob. class 'fear': 	 0.326776")
+print("     prob. class 'happiness': 	 0.031667")
+print("     prob. class 'neutral': 	 0.018464")
+print("     prob. class 'sadness': 	 0.070262")
+print("")
+print(" LibSVM  'abcAffect' result (@ time: 7.758323) :  ~~> agressiv <~~")
+print("     prob. class 'agressiv': 	 0.784096")
+print("     prob. class 'cheerful': 	 0.062420")
+print("     prob. class 'intoxicated': 	 0.032906")
+print("     prob. class 'nervous': 	 0.028809")
+print("     prob. class 'neutral': 	 0.083950")
+print("     prob. class 'tired': 	 0.007820")
+print("")
+print(" LibSVM  'avicInterest' result (@ time: 7.758323) :  ~~> loi2 <~~")
+print("     prob. class 'loi1': 	 0.026182")
+print("     prob. class 'loi2': 	 0.799731")
+print("     prob. class 'loi3': 	 0.174087")
