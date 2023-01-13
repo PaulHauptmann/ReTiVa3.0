@@ -14,6 +14,7 @@ sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter')
 
 from Windows import *
 from Frames.New_Analysis_Frames import *
+from Frames.Archive_Frames import *
 
 
 
@@ -76,9 +77,9 @@ class App(customtkinter.CTk):
 
         
         # create textbox
-        self.textbox = customtkinter.CTkTextbox(self, width=250)
-        self.textbox.grid(row=0, column=1, padx=(20, 0), pady=(20, 0), sticky="nsew")
-
+        #self.textbox = customtkinter.CTkTextbox(self, width=250)
+        self.textbox = ArchiveListFrame(self)
+        self.textbox.grid(row=0, column=1, padx=20, pady=20,rowspan = 3, sticky="nsew")
         
         
         # set default values
