@@ -2,14 +2,15 @@ import logging
 import random
 import time
 import os
-
+I = 1
 def random_log():
+    
     # Set up logging to a file
     log_file = os.path.join('/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/', 'Smile1.log')
     logging.basicConfig(filename=log_file, level=logging.DEBUG)
 
     # List of 25 lines
-    lines = ["LibSVM  'arousal' result (@ time: "+ str(random.uniform(0,1)) +") :  ~~> "+ str(random.uniform(0,1)) +" <~~",
+    lines = ["LibSVM  'arousal' result (@ time: "+ str(I) +") :  ~~> "+ str(random.uniform(0,1)) +" <~~",
             "", 
             "LibSVM  'valence' result (@ time: "+ str(random.uniform(0,1)) +") :  ~~> "+ str(random.uniform(0,1)) +" <~~",
             "", 
@@ -38,8 +39,11 @@ def random_log():
     # Iterate through the list and write each line to the log file
     for line in lines:
         logging.debug(line)
+    
+    
 
 
 while True:
     random_log()
-    time.sleep(2)
+    I = I+1
+    time.sleep(5)

@@ -348,3 +348,378 @@ DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.07882685674772061) :  ~~> l
 DEBUG:root:     prob. class 'loi1': 	 0.35871709402854046
 DEBUG:root:     prob. class 'loi2': 	 0.6066591577378051
 DEBUG:root:     prob. class 'loi3': 	 0.7923588981956324
+DEBUG:root:LibSVM  'arousal' result (@ time: 1) :  ~~> 0.39197396134682816 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.24922838042940176) :  ~~> 0.3120347141842079 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.6053387639772387) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.19353990179741243
+DEBUG:root:     prob. class 'boredom': 	 0.12124458935092874
+DEBUG:root:     prob. class 'disgust': 	 0.7538972745453073
+DEBUG:root:     prob. class 'fear': 	 0.018166794161199373
+DEBUG:root:     prob. class 'happiness': 	 0.9500718147524324
+DEBUG:root:     prob. class 'neutral': 	 0.9884623433186178
+DEBUG:root:     prob. class 'sadness': 	 0.10602247924630404
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.9123341778636463) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.9577313190750488
+DEBUG:root:     prob. class 'cheerful': 	 0.3384100280314344
+DEBUG:root:     prob. class 'intoxicated': 	 0.07487199936836508
+DEBUG:root:     prob. class 'nervous': 	 0.5069080825107852
+DEBUG:root:     prob. class 'neutral': 	 0.02036187033710335
+DEBUG:root:     prob. class 'tired': 	 0.5985681025422821
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.3633771928539068) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.8014121265288943
+DEBUG:root:     prob. class 'loi2': 	 0.5155472639179194
+DEBUG:root:     prob. class 'loi3': 	 0.2406685717892203
+DEBUG:root:LibSVM  'arousal' result (@ time: 2) :  ~~> 0.6364317711364927 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.6927599148251629) :  ~~> 0.8494649547178742 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.22254540021812008) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.06242158604826131
+DEBUG:root:     prob. class 'boredom': 	 0.23011268830920528
+DEBUG:root:     prob. class 'disgust': 	 0.47396734127751794
+DEBUG:root:     prob. class 'fear': 	 0.5648525861414255
+DEBUG:root:     prob. class 'happiness': 	 0.8928769761313065
+DEBUG:root:     prob. class 'neutral': 	 0.1431247465658686
+DEBUG:root:     prob. class 'sadness': 	 0.6075056226605399
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.6847009739486953) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.938390646757222
+DEBUG:root:     prob. class 'cheerful': 	 0.6673194301195058
+DEBUG:root:     prob. class 'intoxicated': 	 0.4331758955307643
+DEBUG:root:     prob. class 'nervous': 	 0.18292129973268378
+DEBUG:root:     prob. class 'neutral': 	 0.17985632875648383
+DEBUG:root:     prob. class 'tired': 	 0.4165436851426406
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.7752392017584089) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.16314713567363515
+DEBUG:root:     prob. class 'loi2': 	 0.40098600344406865
+DEBUG:root:     prob. class 'loi3': 	 0.9648738868364234
+DEBUG:root:LibSVM  'arousal' result (@ time: 3) :  ~~> 0.9033595831689204 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.4958613429172467) :  ~~> 0.17114059126254666 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.9016089460968398) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.5177931502826152
+DEBUG:root:     prob. class 'boredom': 	 0.9432816658500555
+DEBUG:root:     prob. class 'disgust': 	 0.3792251840943939
+DEBUG:root:     prob. class 'fear': 	 0.9056607514778143
+DEBUG:root:     prob. class 'happiness': 	 0.9074071553389702
+DEBUG:root:     prob. class 'neutral': 	 0.5950546599829475
+DEBUG:root:     prob. class 'sadness': 	 0.6377953951681026
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.05736077980657883) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.7261187418634586
+DEBUG:root:     prob. class 'cheerful': 	 0.3998955762271793
+DEBUG:root:     prob. class 'intoxicated': 	 0.1661227175940605
+DEBUG:root:     prob. class 'nervous': 	 0.15732474486716308
+DEBUG:root:     prob. class 'neutral': 	 0.5128295112107193
+DEBUG:root:     prob. class 'tired': 	 0.551271561352389
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.9277864328773854) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.26408819760180546
+DEBUG:root:     prob. class 'loi2': 	 0.6536493625573025
+DEBUG:root:     prob. class 'loi3': 	 0.05345530921659436
+DEBUG:root:LibSVM  'arousal' result (@ time: 4) :  ~~> 0.08841199063899641 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.021429282889923962) :  ~~> 0.17963427120800113 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.390047430666869) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.15859898566913577
+DEBUG:root:     prob. class 'boredom': 	 0.7053962417703744
+DEBUG:root:     prob. class 'disgust': 	 0.33286808675091695
+DEBUG:root:     prob. class 'fear': 	 0.16606658694420262
+DEBUG:root:     prob. class 'happiness': 	 0.28349957096260014
+DEBUG:root:     prob. class 'neutral': 	 0.8289423295373053
+DEBUG:root:     prob. class 'sadness': 	 0.7402543536404935
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.16366665096921784) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.23303934441445084
+DEBUG:root:     prob. class 'cheerful': 	 0.4101941991486313
+DEBUG:root:     prob. class 'intoxicated': 	 0.7930093240135014
+DEBUG:root:     prob. class 'nervous': 	 0.18048033282996134
+DEBUG:root:     prob. class 'neutral': 	 0.4091082888045183
+DEBUG:root:     prob. class 'tired': 	 0.6989814044475825
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.2661104001829828) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.8982406773169533
+DEBUG:root:     prob. class 'loi2': 	 0.14655325458463608
+DEBUG:root:     prob. class 'loi3': 	 0.0032549580121264965
+DEBUG:root:LibSVM  'arousal' result (@ time: 5) :  ~~> 0.691590106977913 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.9449100653944333) :  ~~> 0.4284069454797489 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.9914429164697515) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.12510513416082447
+DEBUG:root:     prob. class 'boredom': 	 0.5604057499392905
+DEBUG:root:     prob. class 'disgust': 	 0.10184858975846012
+DEBUG:root:     prob. class 'fear': 	 0.38863304160825474
+DEBUG:root:     prob. class 'happiness': 	 0.34035901106155864
+DEBUG:root:     prob. class 'neutral': 	 0.16367832471419663
+DEBUG:root:     prob. class 'sadness': 	 0.3178011886937153
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.2668107037354964) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.5911573631587611
+DEBUG:root:     prob. class 'cheerful': 	 0.018776922540421626
+DEBUG:root:     prob. class 'intoxicated': 	 0.9361555811830617
+DEBUG:root:     prob. class 'nervous': 	 0.716985847865861
+DEBUG:root:     prob. class 'neutral': 	 0.5468769942146359
+DEBUG:root:     prob. class 'tired': 	 0.833174863275025
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.3053542604237296) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.5332309367680604
+DEBUG:root:     prob. class 'loi2': 	 0.832040349040304
+DEBUG:root:     prob. class 'loi3': 	 0.015300163678612755
+DEBUG:root:LibSVM  'arousal' result (@ time: 6) :  ~~> 0.6423994729570349 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.8645302067448947) :  ~~> 0.5721309636511355 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.7245901873148312) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.24778508501741736
+DEBUG:root:     prob. class 'boredom': 	 0.8469686496661434
+DEBUG:root:     prob. class 'disgust': 	 0.26848422283775664
+DEBUG:root:     prob. class 'fear': 	 0.6406921118928669
+DEBUG:root:     prob. class 'happiness': 	 0.7788256090589245
+DEBUG:root:     prob. class 'neutral': 	 0.7777498263610885
+DEBUG:root:     prob. class 'sadness': 	 0.8433090812377734
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.7064236127465631) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.18793203280948423
+DEBUG:root:     prob. class 'cheerful': 	 0.8271145422100119
+DEBUG:root:     prob. class 'intoxicated': 	 0.8608925834942969
+DEBUG:root:     prob. class 'nervous': 	 0.40811135795896614
+DEBUG:root:     prob. class 'neutral': 	 0.0031179640757363902
+DEBUG:root:     prob. class 'tired': 	 0.22288897105894878
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.06033229617048563) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.803850638584907
+DEBUG:root:     prob. class 'loi2': 	 0.5094234660373558
+DEBUG:root:     prob. class 'loi3': 	 0.0840292241217444
+DEBUG:root:LibSVM  'arousal' result (@ time: 7) :  ~~> 0.20594032793752914 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.6947372976409514) :  ~~> 0.7497574424247064 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.4596257353465253) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.8240894026321716
+DEBUG:root:     prob. class 'boredom': 	 0.32217015747402467
+DEBUG:root:     prob. class 'disgust': 	 0.634378226835611
+DEBUG:root:     prob. class 'fear': 	 0.038114530851537265
+DEBUG:root:     prob. class 'happiness': 	 0.33725004314000984
+DEBUG:root:     prob. class 'neutral': 	 0.5208021160699741
+DEBUG:root:     prob. class 'sadness': 	 0.7862626775418745
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.6270359025954876) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.9300818848031936
+DEBUG:root:     prob. class 'cheerful': 	 0.19694857884433503
+DEBUG:root:     prob. class 'intoxicated': 	 0.5862044246916562
+DEBUG:root:     prob. class 'nervous': 	 0.17044004645197464
+DEBUG:root:     prob. class 'neutral': 	 0.6148668564377708
+DEBUG:root:     prob. class 'tired': 	 0.683990741247104
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.406592908310763) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.3405025460895753
+DEBUG:root:     prob. class 'loi2': 	 0.13147675645809354
+DEBUG:root:     prob. class 'loi3': 	 0.9663047764443783
+DEBUG:root:LibSVM  'arousal' result (@ time: 8) :  ~~> 0.703957689017255 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.37613227365992696) :  ~~> 0.9302250571669833 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.6229731607290926) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.7124077585045578
+DEBUG:root:     prob. class 'boredom': 	 0.9422026312135131
+DEBUG:root:     prob. class 'disgust': 	 0.35295300897046555
+DEBUG:root:     prob. class 'fear': 	 0.7489662485058539
+DEBUG:root:     prob. class 'happiness': 	 0.038792993840825685
+DEBUG:root:     prob. class 'neutral': 	 0.7304481123831555
+DEBUG:root:     prob. class 'sadness': 	 0.25474608886075434
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.867232529429953) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.8511639859393104
+DEBUG:root:     prob. class 'cheerful': 	 0.6056866234823457
+DEBUG:root:     prob. class 'intoxicated': 	 0.5401098802267219
+DEBUG:root:     prob. class 'nervous': 	 0.9356934728864641
+DEBUG:root:     prob. class 'neutral': 	 0.26161351202602745
+DEBUG:root:     prob. class 'tired': 	 0.287624345076646
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.6528407755381579) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.6235385363177255
+DEBUG:root:     prob. class 'loi2': 	 0.8558908749395574
+DEBUG:root:     prob. class 'loi3': 	 0.8842493777922459
+DEBUG:root:LibSVM  'arousal' result (@ time: 9) :  ~~> 0.2877799237580364 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.7328231256584944) :  ~~> 0.6899931649295037 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.12236099922075205) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.023219343052125696
+DEBUG:root:     prob. class 'boredom': 	 0.16149367209937515
+DEBUG:root:     prob. class 'disgust': 	 0.928073222736024
+DEBUG:root:     prob. class 'fear': 	 0.726923719804996
+DEBUG:root:     prob. class 'happiness': 	 0.5175899050502261
+DEBUG:root:     prob. class 'neutral': 	 0.8860603282215405
+DEBUG:root:     prob. class 'sadness': 	 0.6871524657775243
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.34546672201229756) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.43133032846116937
+DEBUG:root:     prob. class 'cheerful': 	 0.8968181003321173
+DEBUG:root:     prob. class 'intoxicated': 	 0.3408388861173688
+DEBUG:root:     prob. class 'nervous': 	 0.3677182136933025
+DEBUG:root:     prob. class 'neutral': 	 0.5788308556335173
+DEBUG:root:     prob. class 'tired': 	 0.45787241577219384
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.6443736141039659) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.5953308702810911
+DEBUG:root:     prob. class 'loi2': 	 0.14899031457203527
+DEBUG:root:     prob. class 'loi3': 	 0.9351758425445506
+DEBUG:root:LibSVM  'arousal' result (@ time: 10) :  ~~> 0.8064197118068162 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.1192438266768876) :  ~~> 0.18101501591163982 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.6870188553663439) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.6147390397694229
+DEBUG:root:     prob. class 'boredom': 	 0.6778681154497803
+DEBUG:root:     prob. class 'disgust': 	 0.25826479621674814
+DEBUG:root:     prob. class 'fear': 	 0.1813059678872485
+DEBUG:root:     prob. class 'happiness': 	 0.7943932235738049
+DEBUG:root:     prob. class 'neutral': 	 0.8855897394366239
+DEBUG:root:     prob. class 'sadness': 	 0.610268826547224
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.0512212274512559) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.7423781628287363
+DEBUG:root:     prob. class 'cheerful': 	 0.9770781819520832
+DEBUG:root:     prob. class 'intoxicated': 	 0.8632424360000205
+DEBUG:root:     prob. class 'nervous': 	 0.4131046731979594
+DEBUG:root:     prob. class 'neutral': 	 0.6766800432414285
+DEBUG:root:     prob. class 'tired': 	 0.5425889327878615
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.8924889024935696) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.24685941850561255
+DEBUG:root:     prob. class 'loi2': 	 0.0025439320321382075
+DEBUG:root:     prob. class 'loi3': 	 0.14570999736111911
+DEBUG:root:LibSVM  'arousal' result (@ time: 11) :  ~~> 0.871622830113494 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.5117080595449166) :  ~~> 0.4126847362674082 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.9716553703020869) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.06866118532976262
+DEBUG:root:     prob. class 'boredom': 	 0.5405947967451297
+DEBUG:root:     prob. class 'disgust': 	 0.914232959062166
+DEBUG:root:     prob. class 'fear': 	 0.8260647351859817
+DEBUG:root:     prob. class 'happiness': 	 0.1560641987473831
+DEBUG:root:     prob. class 'neutral': 	 0.5173806449221674
+DEBUG:root:     prob. class 'sadness': 	 0.5148049459015618
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.7501263955341239) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.6620137626925053
+DEBUG:root:     prob. class 'cheerful': 	 0.7419839359304456
+DEBUG:root:     prob. class 'intoxicated': 	 0.7811817628708185
+DEBUG:root:     prob. class 'nervous': 	 0.7282581239501954
+DEBUG:root:     prob. class 'neutral': 	 0.3220031542074757
+DEBUG:root:     prob. class 'tired': 	 0.11692126717777251
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.18047816606301903) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.9917478823922253
+DEBUG:root:     prob. class 'loi2': 	 0.27643619890768634
+DEBUG:root:     prob. class 'loi3': 	 0.8798034532482372
+DEBUG:root:LibSVM  'arousal' result (@ time: 12) :  ~~> 0.1904735368815047 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.9790019368381072) :  ~~> 0.5437153751938163 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.2968156284876968) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.43962375502255446
+DEBUG:root:     prob. class 'boredom': 	 0.6087748345002573
+DEBUG:root:     prob. class 'disgust': 	 0.38889752111743003
+DEBUG:root:     prob. class 'fear': 	 0.45464043377509844
+DEBUG:root:     prob. class 'happiness': 	 0.4515359633669108
+DEBUG:root:     prob. class 'neutral': 	 0.35441051731659645
+DEBUG:root:     prob. class 'sadness': 	 0.6609794762251133
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.6339654365790156) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.5564984315589631
+DEBUG:root:     prob. class 'cheerful': 	 0.5417570316332586
+DEBUG:root:     prob. class 'intoxicated': 	 0.269517429057216
+DEBUG:root:     prob. class 'nervous': 	 0.9225533908138979
+DEBUG:root:     prob. class 'neutral': 	 0.6957580669516894
+DEBUG:root:     prob. class 'tired': 	 0.6834775882109971
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.7017704969291366) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.8986619667147872
+DEBUG:root:     prob. class 'loi2': 	 0.2807669010608036
+DEBUG:root:     prob. class 'loi3': 	 0.022085241502470487
+DEBUG:root:LibSVM  'arousal' result (@ time: 13) :  ~~> 0.03052842073319595 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.39822040432078676) :  ~~> 0.6798249366435591 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.5392282203030526) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.19475052928225978
+DEBUG:root:     prob. class 'boredom': 	 0.061252426303065044
+DEBUG:root:     prob. class 'disgust': 	 0.08226734235880007
+DEBUG:root:     prob. class 'fear': 	 0.2470811952644294
+DEBUG:root:     prob. class 'happiness': 	 0.688426220872636
+DEBUG:root:     prob. class 'neutral': 	 0.7833710811109798
+DEBUG:root:     prob. class 'sadness': 	 0.10925369902295723
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.42830162132912963) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.39828854910354783
+DEBUG:root:     prob. class 'cheerful': 	 0.1364704722084651
+DEBUG:root:     prob. class 'intoxicated': 	 0.4591440244905849
+DEBUG:root:     prob. class 'nervous': 	 0.8127357776892247
+DEBUG:root:     prob. class 'neutral': 	 0.439176972697644
+DEBUG:root:     prob. class 'tired': 	 0.9051229265426818
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.7018680100800063) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.11758937324863161
+DEBUG:root:     prob. class 'loi2': 	 0.8808511516343603
+DEBUG:root:     prob. class 'loi3': 	 0.0848402435104878
+DEBUG:root:LibSVM  'arousal' result (@ time: 14) :  ~~> 0.9583988035503579 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.7307315903698555) :  ~~> 0.8291626218840181 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.5105240469617337) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.848647548222375
+DEBUG:root:     prob. class 'boredom': 	 0.780619862355365
+DEBUG:root:     prob. class 'disgust': 	 0.9402300770988753
+DEBUG:root:     prob. class 'fear': 	 0.6893232019356283
+DEBUG:root:     prob. class 'happiness': 	 0.018882486773048712
+DEBUG:root:     prob. class 'neutral': 	 0.6947374869194872
+DEBUG:root:     prob. class 'sadness': 	 0.024244529930008807
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.705931389077372) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.1739863708845536
+DEBUG:root:     prob. class 'cheerful': 	 0.2602812587970539
+DEBUG:root:     prob. class 'intoxicated': 	 0.621223935477265
+DEBUG:root:     prob. class 'nervous': 	 0.3285108785082489
+DEBUG:root:     prob. class 'neutral': 	 0.9571047392318677
+DEBUG:root:     prob. class 'tired': 	 0.23320503538086979
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.5671374267913991) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.4115116429073641
+DEBUG:root:     prob. class 'loi2': 	 0.40735674464048655
+DEBUG:root:     prob. class 'loi3': 	 0.92262873609359
+DEBUG:root:LibSVM  'arousal' result (@ time: 15) :  ~~> 0.09451733370942983 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'valence' result (@ time: 0.06770659209241703) :  ~~> 0.08405692882491367 <~~
+DEBUG:root:
+DEBUG:root:LibSVM  'emodbEmotion' result (@ time: 0.433525929887022) :  ~~> disgust <~~
+DEBUG:root:     prob. class 'anger': 	 0.17948413098247162
+DEBUG:root:     prob. class 'boredom': 	 0.8689539852008688
+DEBUG:root:     prob. class 'disgust': 	 0.9518880987864655
+DEBUG:root:     prob. class 'fear': 	 0.49111635021332434
+DEBUG:root:     prob. class 'happiness': 	 0.7196850223477215
+DEBUG:root:     prob. class 'neutral': 	 0.20308813678973014
+DEBUG:root:     prob. class 'sadness': 	 0.7736015751020378
+DEBUG:root:
+DEBUG:root:LibSVM  'abcAffect' result (@ time: 0.007704265192805537) :  ~~> agressiv <~~
+DEBUG:root:     prob. class 'agressiv': 	 0.5826878560055334
+DEBUG:root:     prob. class 'cheerful': 	 0.975714149849374
+DEBUG:root:     prob. class 'intoxicated': 	 0.9505065400834222
+DEBUG:root:     prob. class 'nervous': 	 0.9720724048806195
+DEBUG:root:     prob. class 'neutral': 	 0.42136595110119757
+DEBUG:root:     prob. class 'tired': 	 0.4688806371710391
+DEBUG:root:
+DEBUG:root: LibSVM  'avicInterest' result (@ time: 0.6277080179870148) :  ~~> loi2 <~~
+DEBUG:root:     prob. class 'loi1': 	 0.9271965719203994
+DEBUG:root:     prob. class 'loi2': 	 0.17971943221425235
+DEBUG:root:     prob. class 'loi3': 	 0.5515965205289858
