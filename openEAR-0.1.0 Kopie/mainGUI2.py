@@ -31,6 +31,7 @@ class App(customtkinter.CTk):
         super().__init__()
 
         
+        
         # configure window
         self.title("ReTiVA – Real-Time Voice Analytics")
         self.geometry(f"{1100}x{580}")
@@ -129,7 +130,7 @@ class App(customtkinter.CTk):
             self.textbox.textbox.delete("0.0", tk.END)
 
             #Neuen Text aus T3 einfügen
-            #self.textbox.insert("0.0", T3.Main.update())
+            #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
             self.textbox.textbox.insert("0.0", "Test")
             #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)

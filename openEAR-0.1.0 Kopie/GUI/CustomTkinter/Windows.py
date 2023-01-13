@@ -3,7 +3,7 @@ import customtkinter
 from Frames.Mini_App_Frames import *
 from Frames.New_Analysis_Frames import *
 from CustomObjects import *
-from TestDataExtractor2 import *
+#from TestDataExtractor2 import *
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
@@ -40,7 +40,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         #Session-Name speichern und an TestDataExtractor2 weitergeben
         Startupsettings.session_name = self.session_name_selector.entry_var.get()
         print(Startupsettings.session_name)
-        Main.Set_Session_Name(Startupsettings.session_name)
+        #Main.Set_Session_Name(Startupsettings.session_name)
 
 
         Startupsettings.working_mode = self.working_mode_selector.v.get()
@@ -56,8 +56,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
 
 class MiniAppWindow(customtkinter.CTkToplevel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, master = None):
+        super().__init__(master)
 
         #Fenstergröße festlegen
         window_size_x = 150
@@ -119,7 +119,8 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.pause_var.set(False)
 
         #Score-Frame
-        self.score_frame = ScoreFrame(self)
+        self.is_blinking = False
+        self.score_frame = ScoreFrame(self, self.is_blinking)
         self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
         
         '''
@@ -174,10 +175,14 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         if self.pause_var.get():
             self.pause_button.configure(text="II")
             self.pause_var.set(False)
+            
+            #ScoreFrame.set_pause_event(self, is_pause=self.pause_var)
         else:
             self.pause_analysis()
             self.pause_button.configure(text=">")
             self.pause_var.set(True)
+            
+            #ScoreFrame.set_pause_event(self, is_pause=self.pause_var)
 
     def pause_analysis(self):
         print("pause")
