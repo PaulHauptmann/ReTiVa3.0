@@ -133,7 +133,7 @@ class App(customtkinter.CTk):
             #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
             #self.textbox.textbox.insert("0.0", "Test")
             T3.Main.Set_Session_Name("test")
-            T3.Main.update()
+            T3.Main.Updater()
             self.textbox.textbox.insert("0.0", T3.Main.DataTime)
             #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)

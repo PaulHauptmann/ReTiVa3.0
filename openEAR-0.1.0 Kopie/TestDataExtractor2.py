@@ -244,7 +244,7 @@ class Main:
         # Create the Excel file
                 #now = datetime.now()
                 #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
-                file_name = str(directoryExcel)+str(filename)+"xlsx"
+                file_name = str(directoryExcel)+str(filename)+".xlsx"
                 
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
