@@ -131,7 +131,7 @@ class App(customtkinter.CTk):
             #Neuen Text aus T3 einfügen
             self.textbox.insert("0.0", T3.Main.update())
             #self.textbox.insert("0.0", "Test")
-            self.textbox.insert("0.0", Startupsettings.selected_audio_device)
+            #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
 
             
