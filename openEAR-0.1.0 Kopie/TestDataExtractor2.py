@@ -70,6 +70,7 @@ class Main:
     Session_Name = None
     now = datetime.now()
     dt_string = now.strftime("_%H:%M_%d_%m_%Y")
+    Excel_Filename = None
 
     #listen Initialisierung
     DataSpeakRatio = [0]
@@ -118,12 +119,6 @@ class Main:
     MWDataLoi1: float
     MWDataLoi2: float
     MWDataLoi3: float
-
-
-
-
-
-
 
 
     def delete_old_wav_files(directory):
@@ -245,6 +240,8 @@ class Main:
                 worksheet = workbook.active
 
                 # Write the 19 lists to the file
+                worksheet.append(Main.dt_string)
+                worksheet.append(Main.Session_Name)
                 worksheet.append(Main.DataTime)
                 worksheet.append(Main.DataArousal)
                 worksheet.append(Main.DataValence)
@@ -373,16 +370,8 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
+Main.Excel_Filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
 
-
-
-def live_schleif():
-    Main.read_log_file(Main.file_path) 
-    Main.get_length_of_last_added_wav(Main.directory_path)
-    time.sleep(0.5)
-    Main.get_speak_ratio()
-    Main.write_excel_file(Main.archive_path, filename)
 
 
 
