@@ -67,6 +67,9 @@ class Main:
 
     timestemp1 = 1
     timestemp2 = 1
+    Session_Name = None
+    now = datetime.now()
+    dt_string = now.strftime("_%H:%M_%d_%m_%Y")
 
     #listen Initialisierung
     DataSpeakRatio = [0]
@@ -266,8 +269,8 @@ class Main:
                 workbook.save(directory+file_name)
     
 
-    def get_new_filename(directory):
-        # Find all files in the specified directory that start with "Archive_File_" and end with ".xlsx"
+    def get_new_filename(directory, Session_Name):
+        """# Find all files in the specified directory that start with "Archive_File_" and end with ".xlsx"
         files = [f for f in os.listdir(directory) if f.startswith('Archive_File_') and f.endswith('.xlsx')]
         # Extract the numbers from the end of the filenames
         numbers = [int(f.split('_')[-1].split('.')[0]) for f in files]
@@ -276,9 +279,15 @@ class Main:
             return 'Archive_File_0001.xlsx'
         # Otherwise, get the next highest number
         else:
-            return 'Archive_File_{:04d}.xlsx'.format(max(numbers) + 1)
-        
+            return 'Archive_File_{:04d}.xlsx'.format(max(numbers) + 1)"""
 
+        if Session_Name != None:
+            return Session_Name+Main.dt_string
+
+        else:
+            return "Neue_Session"+Main.dt_string
+
+        
     def get_speak_ratio():
 
         SpeakDuration = sum(Main.DataLength)
@@ -322,33 +331,40 @@ class Main:
 
 
         
-        Main.MWDataSpeakRatio =                    ((sum(Main.DataSpeakRatio[-K:]))                        /                                (K))
-        Main.MWDataSpeakTime =                     ((sum(Main.DataSpeakTime[-K:]))                        /                                (K))
-        Main.MWDataLength =                        ((sum(Main.DataLength[-K:]))                        /                                (K))
-        Main.MWDataTime =                          ((sum(Main.DataTime[-K:]))                        /                                (K))
-        Main.MWDataArousal =                       ((sum(Main.DataArousal[-K:]))                        /                                (K))
-        Main.MWDataValence =                       ((sum(Main.DataValence[-K:]))                        /                                (K))
-        Main.MWDataEmodbEmotionAnger =             ((sum(Main.DataEmodbEmotionAnger[-K:]))                        /                                (K))
-        Main.MWDataEmodbEmotionBoredom =           ((sum(Main.DataEmodbEmotionBoredom[-K:]))                        /                                (K))
-        Main.MWDataEmodbEmotionDisgust =           ((sum(Main.DataEmodbEmotionDisgust[-K:]))                        /                                (K))
-        Main.MWDataEmodbEmotionFear =              ((sum(Main.DataEmodbEmotionFear[-K:]))                        /                                (K))
-        Main.MWDataEmodbEmotionHappiness =         ((sum(Main.DataEmodbEmotionHappiness[-K:]))                        /                                (K))
-        Main.MWDataEmodbEmotionNeutral =           ((sum(Main.DataEmodbEmotionNeutral[-K:]))                        /                                (K))
-        Main.MWDataEmodbEmotionSadness =           ((sum(Main.DataEmodbEmotionSadness[-K:]))                        /                                (K))
-        Main.MWDataAbcAffectAgressiv =             ((sum(Main.DataAbcAffectAgressiv[-K:]))                        /                                (K))
-        Main.MWDataAbcAffectCheerfull =            ((sum(Main.DataAbcAffectCheerfull[-K:]))                        /                                (K))
-        Main.MWDataAbcAffectIntoxicated =          ((sum(Main.DataAbcAffectIntoxicated[-K:]))                        /                                (K))
-        Main.MWDataAbcAffectNervous =              ((sum(Main.DataAbcAffectNervous[-K:]))                        /                                (K))
-        Main.MWDataAbcAffectNeutral =              ((sum(Main.DataAbcAffectNeutral[-K:]))                        /                                (K))
-        Main.MWDataAbcAffectTired =                ((sum(Main.DataAbcAffectTired[-K:]))                        /                                (K))
-        Main.MWDataLoi1 =                          ((sum(Main.DataLoi1[-K:]))                        /                                (K))
-        Main.MWDataLoi2 =                          ((sum(Main.DataLoi2[-K:]))                        /                                (K))
-        Main.MWDataLoi3 =                          ((sum(Main.DataLoi3[-K:]))                        /                                (K))
+        Main.MWDataSpeakRatio =                    ((sum(Main.DataSpeakRatio[-K:]))                  /      (K))
+        Main.MWDataSpeakTime =                     ((sum(Main.DataSpeakTime[-K:]))                   /      (K))
+        Main.MWDataLength =                        ((sum(Main.DataLength[-K:]))                      /      (K))
+        Main.MWDataTime =                          ((sum(Main.DataTime[-K:]))                        /      (K))
+        Main.MWDataArousal =                       ((sum(Main.DataArousal[-K:]))                     /      (K))
+        Main.MWDataValence =                       ((sum(Main.DataValence[-K:]))                     /      (K))
+        Main.MWDataEmodbEmotionAnger =             ((sum(Main.DataEmodbEmotionAnger[-K:]))           /      (K))
+        Main.MWDataEmodbEmotionBoredom =           ((sum(Main.DataEmodbEmotionBoredom[-K:]))         /      (K))
+        Main.MWDataEmodbEmotionDisgust =           ((sum(Main.DataEmodbEmotionDisgust[-K:]))         /      (K))
+        Main.MWDataEmodbEmotionFear =              ((sum(Main.DataEmodbEmotionFear[-K:]))            /      (K))
+        Main.MWDataEmodbEmotionHappiness =         ((sum(Main.DataEmodbEmotionHappiness[-K:]))       /      (K))
+        Main.MWDataEmodbEmotionNeutral =           ((sum(Main.DataEmodbEmotionNeutral[-K:]))         /      (K))
+        Main.MWDataEmodbEmotionSadness =           ((sum(Main.DataEmodbEmotionSadness[-K:]))         /      (K))
+        Main.MWDataAbcAffectAgressiv =             ((sum(Main.DataAbcAffectAgressiv[-K:]))           /      (K))
+        Main.MWDataAbcAffectCheerfull =            ((sum(Main.DataAbcAffectCheerfull[-K:]))          /      (K))
+        Main.MWDataAbcAffectIntoxicated =          ((sum(Main.DataAbcAffectIntoxicated[-K:]))        /      (K))
+        Main.MWDataAbcAffectNervous =              ((sum(Main.DataAbcAffectNervous[-K:]))            /      (K))
+        Main.MWDataAbcAffectNeutral =              ((sum(Main.DataAbcAffectNeutral[-K:]))            /      (K))
+        Main.MWDataAbcAffectTired =                ((sum(Main.DataAbcAffectTired[-K:]))              /      (K))
+        Main.MWDataLoi1 =                          ((sum(Main.DataLoi1[-K:]))                        /      (K))
+        Main.MWDataLoi2 =                          ((sum(Main.DataLoi2[-K:]))                        /      (K))
+        Main.MWDataLoi3 =                          ((sum(Main.DataLoi3[-K:]))                        /      (K))
 
     
         Main.timestemp2 = Main.timestemp1
 
+    
+    def Set_Session_Name (Sessionname):
+
+        Main.Session_Name = Sessionname
         
+
+
+
         
 
 
@@ -357,7 +373,7 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-#filename = Main.get_new_filename(Main.archive_path)
+filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
 
 
 
