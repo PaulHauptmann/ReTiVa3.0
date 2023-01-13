@@ -5,6 +5,12 @@ def Read_Excel_File(Directory):
     wb = load_workbook(Directory)
     ws = wb.get_sheet_by_name("Sheet")
 
+
+class Main:
+
+    Filename = None
+    Archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv'
+
     
     list_names = ["Archive_dt_string", 
         "Archive_Session_Name", 
@@ -27,6 +33,7 @@ def Read_Excel_File(Directory):
         "Archive_Data_Loi1", 
         "Archive_Data_Loi2", 
         "Archive_Data_Loi3"]
+
 
     # Create an empty dictionary to store the rows
     data = {}

@@ -126,12 +126,12 @@ class App(customtkinter.CTk):
         stop = False
         while True and not stop:
             #Textbox vollständig löschen
-            self.textbox.delete("0.0", tk.END)
+            self.textbox.textbox.delete("0.0", tk.END)
 
             #Neuen Text aus T3 einfügen
-            self.textbox.insert("0.0", T3.Main.update())
-            #self.textbox.insert("0.0", "Test")
-            self.textbox.insert("0.0", Startupsettings.selected_audio_device)
+            #self.textbox.insert("0.0", T3.Main.update())
+            self.textbox.textbox.insert("0.0", "Test")
+            #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
 
             
