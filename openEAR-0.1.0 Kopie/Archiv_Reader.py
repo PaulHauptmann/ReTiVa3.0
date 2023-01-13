@@ -50,6 +50,22 @@ def Get_Data(Directory):
 
 
 
+
+"""
+
+Beispiel Aufruf:
+
+data = T1.Get_Data("Weg zu File")
+archive_dt_string = data.get("Archive_dt_string", "Key not found")
+
+print (archive_dt_string)
+
+
+"""
+
+
+
+
     
 
 
