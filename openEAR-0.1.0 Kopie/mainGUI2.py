@@ -131,14 +131,17 @@ class App(customtkinter.CTk):
 
             #Neuen Text aus T3 einfügen
             #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
-            self.textbox.textbox.insert("0.0", "Test")
+            #self.textbox.textbox.insert("0.0", "Test")
+            T3.Main.Set_Session_Name("test")
+            T3.Main.update()
+            self.textbox.textbox.insert("0.0", T3.Main.DataTime)
             #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
 
             
 
 
-
+    #Thread der Main While True Schleife ausführt
     def button_starter(self):
 
         t = threading.Thread(target=self.start_command)
