@@ -348,6 +348,7 @@ class Main:
     def Set_Session_Name (Sessionname):
 
         Main.Session_Name = Sessionname
+        Main.Excel_Filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
         
 
     def Printer():
@@ -399,8 +400,8 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-Main.Excel_Filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
-#print(Main.Excel_Filename)
+
+
 
 
 
