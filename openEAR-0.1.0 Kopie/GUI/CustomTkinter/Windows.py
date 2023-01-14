@@ -28,9 +28,10 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         self.session_name_selector.grid(row = 0, column = 1, padx = 20, pady = 20)
 
         #Working-Mode Frame
-        self.working_mode_selector = WorkingModeFrame(self)
+        self.working_mode_selector = WeightsFrame(self)
         self.working_mode_selector.grid(row = 1, column = 1, padx = 20, pady = 20)
-
+    
+    
     def on_ok(self):
         
         #Audio-Gerät speichern
@@ -44,10 +45,16 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
 
         Startupsettings.working_mode = self.working_mode_selector.v.get()
+        Weights.set_working_mode(self.working_mode_selector.v.get())
         print(Startupsettings.working_mode)
+        print(Weights.working_mode)
+
+        print(Weights.w_emodb_anger)
+        print(Weights.w_emodb_boredom)
 
         self.mini_app_window = MiniAppWindow(self.master)
 
+        Main.Updater()
         
         self.destroy()
 
@@ -112,9 +119,6 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="X", width= 10, command=self.quit_analysis_button_event)
         self.quit_button.grid(row =0, column = 1, padx = 5, sticky = "ew")
 
-        self.pause_button = customtkinter.CTkButton(self.toolbar_frame, text= "II", width=10, command=self.pause_button_event)
-        self.pause_button.grid(row = 0, column = 0, padx = 5, sticky = "ew")
-
         self.pause_var = tk.BooleanVar()
         self.pause_var.set(False)
 
@@ -171,18 +175,3 @@ class MiniAppWindow(customtkinter.CTkToplevel):
     def quit_analysis_button_event(self):
         self.destroy()
     
-    def pause_button_event(self):
-        if self.pause_var.get():
-            self.pause_button.configure(text="II")
-            self.pause_var.set(False)
-            
-            #ScoreFrame.set_pause_event(self, is_pause=self.pause_var)
-        else:
-            self.pause_analysis()
-            self.pause_button.configure(text=">")
-            self.pause_var.set(True)
-            
-            #ScoreFrame.set_pause_event(self, is_pause=self.pause_var)
-
-    def pause_analysis(self):
-        print("pause")
