@@ -125,6 +125,7 @@ class App(customtkinter.CTk):
     def start_command(self):
         global stop
         stop = False
+        #T3.Main.Set_Session_Name("test")
         while True and not stop:
             #Textbox vollständig löschen
             self.textbox.textbox.delete("0.0", tk.END)
@@ -132,7 +133,6 @@ class App(customtkinter.CTk):
             #Neuen Text aus T3 einfügen
             #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
             #self.textbox.textbox.insert("0.0", "Test")
-            T3.Main.Set_Session_Name("test")
             T3.Main.Updater()
             self.textbox.textbox.insert("0.0", T3.Main.DataTime)
             #self.textbox.insert("0.0", Startupsettings.selected_audio_device)

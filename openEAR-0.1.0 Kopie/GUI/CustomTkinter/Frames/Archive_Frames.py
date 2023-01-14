@@ -49,23 +49,3 @@ class ArchiveListFrame(customtkinter.CTkFrame):
                 self.textbox.insert(tk.END, cell.value)
                 self.textbox.insert(tk.END, " ")
             self.textbox.insert(tk.END, "\n")
-
-
-
-
-
-
-
-class ArchiveViewFrame(customtkinter.CTkFrame):
-    def __init__(self, master = None):
-        super().__init__(master)
-
-        self.columnconfigure(0, weight= 1)
-        self.rowconfigure(0, weight=1)
-
-
-        # create textbox
-        self.textbox = tk.Text(self, width=50, height=30)
-        self.textbox.grid(row = 0, column= 0, sticky="nsew")
-
-    

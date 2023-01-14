@@ -16,9 +16,6 @@ class ScoreFrame(customtkinter.CTkFrame):
         self.score_label.grid(row = 1, column = 0)
         
 
-    def set_pause_event(self, is_pause):
-        self.pause = is_pause
-
         
 
 
