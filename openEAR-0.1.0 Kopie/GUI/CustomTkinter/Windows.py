@@ -30,6 +30,15 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         #Working-Mode Frame
         self.working_mode_selector = WeightsFrame(self)
         self.working_mode_selector.grid(row = 1, column = 1, padx = 20, pady = 20)
+
+        self.working_mode_selector.v.trace("w", lambda *args: self.on_radio_select)
+    
+    def on_radio_select(self):
+        return 0
+    
+    
+    
+    
     
     
     def on_ok(self):
@@ -45,7 +54,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
 
         Startupsettings.working_mode = self.working_mode_selector.v.get()
-        Weights.set_working_mode(self.working_mode_selector.v.get())
+        #Weights.set_working_mode(self.working_mode_selector.v.get())
         print(Startupsettings.working_mode)
         print(Weights.working_mode)
 
@@ -57,6 +66,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         Main.Updater()
         
         self.destroy()
+    
+
 
     def on_cancel(self):
         self.destroy()
