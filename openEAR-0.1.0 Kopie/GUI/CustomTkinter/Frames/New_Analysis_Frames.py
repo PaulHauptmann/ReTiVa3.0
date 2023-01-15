@@ -53,10 +53,10 @@ class SessionNameFrame(customtkinter.CTkFrame):
 ## Frame, in dem der gewünschte Modus der Analyse festgelegt werden kann
 
 class WeightsFrame(customtkinter.CTkFrame):
-    def __init__(self, master = None, parent = None, *args, **kwargs):
-        super().__init__(master, *args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-        self.parent = parent
+        
 
         self.header = customtkinter.CTkLabel(self, text="Konfiguration der Analyse")
         self.header.grid(row = 0, column = 1, padx=10, pady = 5)
@@ -66,31 +66,43 @@ class WeightsFrame(customtkinter.CTkFrame):
 
         self.v = customtkinter.StringVar()
         
-        self.workingmode_pitchsession = customtkinter.CTkRadioButton(self, text="Pitch - Session", variable=self.v, value= "Pitch - Session")
+        self.workingmode_pitchsession = customtkinter.CTkRadioButton(self, text="Pitch – Session", variable=self.v, value= "Pitch – Session")
         self.workingmode_pitchsession.grid(row = 1, column = 0, padx=10, pady = 5)
 
         self.workingmode_conversation = customtkinter.CTkRadioButton(self, text="Gespräch", variable=self.v, value= "Gespräch")
-        self.workingmode_conversation.grid(row = 1, column = 2, padx=10, pady = 5)
+        self.workingmode_conversation.grid(row = 1, column = 1, padx=10, pady = 5)
 
-        self.v.trace("w", lambda *args: parent.on_ok())
+        self.workingmode_custom = customtkinter.CTkRadioButton(self, text= "Benutzerdefiniert", variable=self.v, value="Benutzerdefiniert")
+        self.workingmode_custom.grid(row = 1, column = 2, padx=10, pady = 5)
+
+
+        self.v.trace("w", lambda *args: on_radio_select())
 
         def on_radio_select():
-            #Audio-Gerät speichern
-            Startupsettings.selected_audio_device = self.parent.masteraudio_device_list_selector.v.get()
-            print("Selected Device: ", Startupsettings.selected_audio_device)
-
-            #Session-Name speichern und an TestDataExtractor2 weitergeben
-            Startupsettings.session_name = self.session_name_selector.entry_var.get()
-            Main.Set_Session_Name(Startupsettings.session_name)
-            print(Startupsettings.session_name)
-
-            Startupsettings.working_mode = self.working_mode_selector.v.get()
-            Weights.set_working_mode(self.working_mode_selector.v.get())
-            print(Startupsettings.working_mode)
+            Weights.Read_Weights_from_Excel(Weights, self.v.get())
+            #self.spinbox_anger.set(Weights.w_emodb_anger)
+            adjust_weights()
             print(Weights.working_mode)
-
-
         ## Manuelle Gewichte-Anpassung, falls gewünscht
+
+        def adjust_weights():
+
+            #emodb
+            self.spinbox_anger.set(Weights.w_emodb_anger)
+            self.spinbox_boredom.set(Weights.w_emodb_boredom)
+            self.spinbox_disgust.set(Weights.w_emodb_disgust)
+            self.spinbox_fear.set(Weights.w_emodb_fear)
+            self.spinbox_happiness.set(Weights.w_emodb_happiness)
+            self.spinbox_neutral.set(Weights.w_emodb_neutral)
+            self.spinbox_sadness.set(Weights.w_emodb_sadness)
+
+            #loi
+            self.spinbox_loi1.set(Weights.w_avic_loi1)
+            self.spinbox_loi2.set(Weights.w_avic_loi2)
+            self.spinbox_loi3.set(Weights.w_avic_loi3)
+
+            
+
 
         self.spinbox_anger = CustomSpinBox(self, title="Anger")
         self.spinbox_anger.grid(row = 2, column = 0, padx = 5, pady = 5)
@@ -113,6 +125,17 @@ class WeightsFrame(customtkinter.CTkFrame):
         self.spinbox_neutral.grid(row = 3, column = 2, padx = 5, pady = 5)
 
 
+
         self.spinbox_sadness = CustomSpinBox(self, title="Sadness")
         self.spinbox_sadness.grid(row = 4, column = 0, padx = 5, pady = 5)
 
+        self.spinbox_loi1 = CustomSpinBox(self, title = "Level of Interest 1")
+        self.spinbox_loi1.grid(row = 4, column = 1, padx = 5, pady = 5)
+
+        self.spinbox_loi2 = CustomSpinBox(self, title = "Level of Interest 2")
+        self.spinbox_loi2.grid(row = 4, column = 2, padx = 5, pady = 5)
+
+
+
+        self.spinbox_loi3 = CustomSpinBox(self, title = "Level of Interest 3")
+        self.spinbox_loi3.grid(row = 5, column = 0, padx = 5, pady = 5)
