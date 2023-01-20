@@ -101,6 +101,34 @@ class Main:
     DataLoi1 = [0]
     DataLoi2 = [0]
     DataLoi3 = [0]
+    
+    
+    #Nach Zeit genormte Liste
+    Data_Difference_Score_EmodbEmotion = []
+    Data_Difference_Score_AbcAffect = []
+    Data_Difference_Score_Loi = []
+    Data_Difference_Length = []
+    Data_Difference_Time = []
+    Data_Difference_Arousal = []
+    Data_Difference_Valence = []
+    Data_Difference_EmodbEmotionAnger = []
+    Data_Difference_EmodbEmotionBoredom = []
+    Data_Difference_EmodbEmotionDisgust = []
+    Data_Difference_EmodbEmotionFear = []
+    Data_Difference_EmodbEmotionHappiness = []
+    Data_Difference_EmodbEmotionNeutral = []
+    Data_Difference_EmodbEmotionSadness = []
+    Data_Difference_AbcAffectAgressiv = []
+    Data_Difference_AbcAffectCheerfull = []
+    Data_Difference_AbcAffectIntoxicated = []
+    Data_Difference_AbcAffectNervous = []
+    Data_Difference_AbcAffectNeutral = []
+    Data_Difference_AbcAffectTired = []
+    Data_Difference_Loi1 = []
+    Data_Difference_Loi2 = []
+    Data_Difference_Loi3 = []
+    
+    
 
     #Mittelwerte Initialisierung
     MWDataSpeakRatio: float
@@ -392,15 +420,156 @@ class Main:
         Main.Printer()
 
         
-
+    def Set_Absolut_Difference(
+        Soll_DataArousal,
+        Soll_DataValence,
+        Soll_DataEmodbEmotionAnger,
+        Soll_DataEmodbEmotionBoredom,
+        Soll_DataEmodbEmotionDisgust,
+        Soll_DataEmodbEmotionFear,
+        Soll_DataEmodbEmotionHappiness,
+        Soll_DataEmodbEmotionNeutral,
+        Soll_DataEmodbEmotionSadness,
+        Soll_DataAbcAffectAgressiv,
+        Soll_DataAbcAffectCheerfull,
+        Soll_DataAbcAffectIntoxicated,
+        Soll_DataAbcAffectNervous,
+        Soll_DataAbcAffectNeutral,
+        Soll_DataAbcAffectTired,
+        Soll_DataLoi1,
+        Soll_DataLoi2,
+        Soll_DataLoi3
+    ):
+        
+        
+        
+        Main.Data_Difference_Score_EmodbEmotion.clear()
+        Main.Data_Difference_Score_AbcAffect.clear()
+        Main.Data_Difference_Score_Loi.clear()
+        Main.Data_Difference_Length.clear()
+        Main.Data_Difference_Time.clear()
+        Main.Data_Difference_Arousal.clear()
+        Main.Data_Difference_Valence.clear()
+        Main.Data_Difference_EmodbEmotionAnger.clear()
+        Main.Data_Difference_EmodbEmotionBoredom.clear()
+        Main.Data_Difference_EmodbEmotionDisgust.clear()
+        Main.Data_Difference_EmodbEmotionFear.clear()
+        Main.Data_Difference_EmodbEmotionHappiness.clear()
+        Main.Data_Difference_EmodbEmotionNeutral.clear()
+        Main.Data_Difference_EmodbEmotionSadness.clear()
+        Main.Data_Difference_AbcAffectAgressiv.clear()
+        Main.Data_Difference_AbcAffectCheerfull.clear()
+        Main.Data_Difference_AbcAffectIntoxicated.clear()
+        Main.Data_Difference_AbcAffectNervous.clear()
+        Main.Data_Difference_AbcAffectNeutral.clear()
+        Main.Data_Difference_AbcAffectTired.clear()
+        Main.Data_Difference_Loi1.clear()
+        Main.Data_Difference_Loi2.clear()
+        Main.Data_Difference_Loi3.clear()
+        
+        
+        
+        for i in range(len(Main.DataArousal)):
+            
+        
+        
+            
+           
+            Main.Data_Difference_Arousal.append(                      (abs(        Main.DataArousal[i]                  -         Soll_DataArousal))/2)
+            Main.Data_Difference_Valence.append(                      (abs(        Main.DataValence[i]                  -         Soll_DataValence))/2)
+            Main.Data_Difference_EmodbEmotionAnger.append(            (abs(        Main.DataEmodbEmotionAnger[i]        -         Soll_DataEmodbEmotionAnger))/2)
+            Main.Data_Difference_EmodbEmotionBoredom.append(          (abs(        Main.DataEmodbEmotionBoredom[i]      -         Soll_DataEmodbEmotionBoredom))/2)
+            Main.Data_Difference_EmodbEmotionDisgust.append(          (abs(        Main.DataEmodbEmotionDisgust[i]      -         Soll_DataEmodbEmotionDisgust))/2)
+            Main.Data_Difference_EmodbEmotionFear.append(             (abs(        Main.DataEmodbEmotionFear[i]         -         Soll_DataEmodbEmotionFear))/2)
+            Main.Data_Difference_EmodbEmotionHappiness.append(        (abs(        Main.DataEmodbEmotionHappiness[i]    -         Soll_DataEmodbEmotionHappiness))/2)
+            Main.Data_Difference_EmodbEmotionNeutral.append(          (abs(        Main.DataEmodbEmotionNeutral[i]      -         Soll_DataEmodbEmotionNeutral))/2)
+            Main.Data_Difference_EmodbEmotionSadness.append(          (abs(        Main.DataEmodbEmotionSadness[i]      -         Soll_DataEmodbEmotionSadness))/2)
+            Main.Data_Difference_AbcAffectAgressiv.append(            (abs(        Main.DataAbcAffectAgressiv[i]        -         Soll_DataAbcAffectAgressiv))/2)
+            Main.Data_Difference_AbcAffectCheerfull.append(           (abs(        Main.DataAbcAffectCheerfull[i]       -         Soll_DataAbcAffectCheerfull))/2)
+            Main.Data_Difference_AbcAffectIntoxicated.append(         (abs(        Main.DataAbcAffectIntoxicated[i]     -         Soll_DataAbcAffectIntoxicated))/2)
+            Main.Data_Difference_AbcAffectNervous.append(             (abs(        Main.DataAbcAffectNervous[i]         -         Soll_DataAbcAffectNervous))/2)
+            Main.Data_Difference_AbcAffectNeutral.append(             (abs(        Main.DataAbcAffectNeutral[i]         -         Soll_DataAbcAffectNeutral))/2)
+            Main.Data_Difference_AbcAffectTired.append(               (abs(        Main.DataAbcAffectTired[i]           -         Soll_DataAbcAffectTired))/2)
+            Main.Data_Difference_Loi1.append(                         (abs(        Main.DataLoi1[i]                     -         Soll_DataLoi1))/2)
+            Main.Data_Difference_Loi2.append(                         (abs(        Main.DataLoi2[i]                     -         Soll_DataLoi2))/2)
+            Main.Data_Difference_Loi3.append(                         (abs(        Main.DataLoi3[i]                     -         Soll_DataLoi3))/2)
+            
+            
+            Main.Data_Difference_Score_EmodbEmotion.append(
+                
+                (1-
+                ((Main.Data_Difference_EmodbEmotionAnger[i]+
+                Main.Data_Difference_EmodbEmotionBoredom[i]+
+                Main.Data_Difference_EmodbEmotionDisgust[i]+
+                Main.Data_Difference_EmodbEmotionFear[i]+
+                Main.Data_Difference_EmodbEmotionHappiness[i]+
+                Main.Data_Difference_EmodbEmotionNeutral[i]+
+                Main.Data_Difference_EmodbEmotionSadness[i])
+                /2)) * Main.DataLength[i]
+            )
+            
+            Main.Data_Difference_Score_AbcAffect.append(
+                
+                (1-
+                ((Main.Data_Difference_AbcAffectAgressiv[i]+
+                Main.Data_Difference_AbcAffectCheerfull[i]+
+                Main.Data_Difference_AbcAffectIntoxicated[i]+
+                Main.Data_Difference_AbcAffectNervous[i]+
+                Main.Data_Difference_AbcAffectNeutral[i]+
+                Main.Data_Difference_AbcAffectTired[i])
+                /2)) * Main.DataLength[i]
+            )
+            
+            
+            Main.Data_Difference_Score_Loi.append(
+                
+                (1-
+                ((Main.Data_Difference_Loi1[i]+
+                Main.Data_Difference_Loi2[i]+
+                Main.Data_Difference_Loi3[i]) 
+                /2)) * Main.DataLength[i]
+            
+            )
+            
+        
+        
+    
         
 
 
-
-
+    def Get_Score(
+        Soll_DataArousal,
+        Soll_DataValence,
+        Soll_DataEmodbEmotionAnger,
+        Soll_DataEmodbEmotionBoredom,
+        Soll_DataEmodbEmotionDisgust,
+        Soll_DataEmodbEmotionFear,
+        Soll_DataEmodbEmotionHappiness,
+        Soll_DataEmodbEmotionNeutral,
+        Soll_DataEmodbEmotionSadness,
+        Soll_DataAbcAffectAgressiv,
+        Soll_DataAbcAffectCheerfull,
+        Soll_DataAbcAffectIntoxicated,
+        Soll_DataAbcAffectNervous,
+        Soll_DataAbcAffectNeutral,
+        Soll_DataAbcAffectTired,
+        Soll_DataLoi1,
+        Soll_DataLoi2,
+        Soll_DataLoi3
+    ):
+        
+        Main.Set_Absolut_Difference( Soll_DataArousal, Soll_DataValence, Soll_DataEmodbEmotionAnger, Soll_DataEmodbEmotionBoredom, Soll_DataEmodbEmotionDisgust, Soll_DataEmodbEmotionFear, Soll_DataEmodbEmotionHappiness, Soll_DataEmodbEmotionNeutral, Soll_DataEmodbEmotionSadness, Soll_DataAbcAffectAgressiv, Soll_DataAbcAffectCheerfull, Soll_DataAbcAffectIntoxicated, Soll_DataAbcAffectNervous, Soll_DataAbcAffectNeutral, Soll_DataAbcAffectTired, Soll_DataLoi1, Soll_DataLoi2, Soll_DataLoi3
+        )
+        
+        
+        
+        Score_EmodbEmotions = (sum(Main.Data_Difference_Score_EmodbEmotion)) / (sum(Main.DataLength))
+        Score_AbcAffect = (sum(Main.Data_Difference_Score_AbcAffect)) / (sum(Main.DataLength))
+        Score_Loi = (sum(Main.Data_Difference_Score_Loi)) / (sum(Main.DataLength))
+        
+        return (Score_EmodbEmotions, Score_AbcAffect, Score_Loi)
 
 Main.delete_old_wav_files(Main.directory_path)
-
 
 
 
