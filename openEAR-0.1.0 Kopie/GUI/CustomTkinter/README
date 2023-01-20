@@ -1,0 +1,12 @@
+
+
+
+Übersicht: 
+
+mainGUI: Enthält das main Fenster von customtkinter, hier läuft auch der mainloop. 
+
+Windows: Alle Fenster, die über dem normalen Hauptfenster angezeigt werden sollen
+
+Frames: "Rahmen", die vordefinierten Inhalt enthalten. Z.B. die Buttons zum Auswählen des Audioeingangs
+sowie das darüber liegende Label und evtl. noch ein Knopf können alle in ein Frame gepackt werden und dann als Paket
+an jeder beliebigen Stelle im main window instanziert werden. 
