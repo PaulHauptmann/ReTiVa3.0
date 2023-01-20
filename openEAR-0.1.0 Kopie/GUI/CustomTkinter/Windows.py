@@ -4,12 +4,17 @@ from Frames.Mini_App_Frames import *
 from Frames.New_Analysis_Frames import *
 from CustomObjects import *
 from TestDataExtractor2 import *
+from Frames.SettingsFrames import *
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.title("Neue Analyse")
+
+        #Erweiterte Einstellungen-Button
+        self.advanced_setting_button = customtkinter.CTkButton(self, text= "Erweiterte Einstellungen...", command=self.open_advanced_button_command)
+        self.advanced_setting_button.grid(row = 2, column = 0, padx = 10, pady = 10, sticky = "se")
 
         #Start-Button
         self.start_button = customtkinter.CTkButton(self, text="Start", command=self.on_ok)
@@ -18,6 +23,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         #Abbrechen-Button
         self.cancel_button = customtkinter.CTkButton(self, text="Abbrechen", command=self.on_cancel)
         self.cancel_button.grid(row = 2, column = 1, padx = 20, pady = 20)
+
 
         #Audio Device List Frame
         self.audio_device_list_selector = AudioDeviceListFrame(self)
@@ -32,10 +38,25 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         self.working_mode_selector.grid(row = 1, column = 1, padx = 20, pady = 20)
 
         self.working_mode_selector.v.trace("w", lambda *args: self.on_radio_select)
+
+        '''#emodb Frame
+        self.emodb_frame = emodbSettingsFrame(self)
+        self.emodb_frame.grid(row = 2, column = 1)
+
+        #abcAffect Frame
+        self.abc_frame = abcAffectSettingsFrame(self)
+        self.abc_frame.grid(row = 3, column = 1)'''
+
+
     
     def on_radio_select(self):
         return 0
     
+    def open_advanced_button_command(self):
+        self.grab_release()
+        self.advanced_setting_window = AdvancedSettingsWindow(self.master)
+        self.advanced_setting_window.grab_set()
+        
     
     
     
@@ -58,8 +79,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         print(Startupsettings.working_mode)
         print(Weights.working_mode)
 
-        print(Weights.w_emodb_anger)
-        print(Weights.w_emodb_boredom)
+        #print(Weights.)
 
         self.mini_app_window = MiniAppWindow(self.master)
 
@@ -71,6 +91,33 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
     def on_cancel(self):
         self.destroy()
+
+
+class AdvancedSettingsWindow(customtkinter.CTkToplevel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.title = "Erweiterte Einstellungen"
+
+        self.rowconfigure(0, weight=1)
+
+        self.close_button = customtkinter.CTkButton(self, text= "Schließen", command=self.on_button_close)
+        self.close_button.grid(row = 1, column = 1, padx = 5, pady = 5)
+
+        #self.frame = AdvancedSettingsFrame(self)
+        #self.frame.grid(row = 0, column = 0, columnspan = 2, padx = 10, pady = 10)
+
+        
+
+
+    def on_button_close(self):
+        self.destroy()
+
+
+
+
+
+
 
 
 class MiniAppWindow(customtkinter.CTkToplevel):
@@ -127,7 +174,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
         self.toolbar_frame.columnconfigure((0,1), weight=1)
 
-        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="X", width= 10, command=self.quit_analysis_button_event)
+        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="▢", width= 10, command=self.quit_analysis_button_event)
         self.quit_button.grid(row =0, column = 1, padx = 5, sticky = "ew")
 
         self.pause_var = tk.BooleanVar()
