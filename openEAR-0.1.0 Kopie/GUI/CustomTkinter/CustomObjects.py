@@ -83,10 +83,9 @@ class Weights(object):
             numbers.append(row[int(column_selected)])
 
         # Assign the first number to a variable
-        if column_selected != 3:
-            for name, value in zip(weights_variables, numbers):
-                setattr(cls, name, value)
-        
+        for name, value in zip(weights_variables, numbers):
+            setattr(cls, name, value)
+    
         
        
         #print(weights_variables)
