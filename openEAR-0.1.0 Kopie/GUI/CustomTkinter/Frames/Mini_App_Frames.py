@@ -2,6 +2,7 @@ import tkinter
 import customtkinter
 from tkinter import ttk
 import time
+from PIL import Image, ImageTk
 
 class ScoreFrame(customtkinter.CTkFrame):
     def __init__(self, master = None):
@@ -16,7 +17,15 @@ class ScoreFrame(customtkinter.CTkFrame):
         self.score_label.grid(row = 1, column = 0)
         
 
-        
+class SliderScoreFrame(customtkinter.CTkLabel):
+    def __init__(self, master = None):
+        super().__init__(master)
+
+        image = Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/Frames/Farbverlauf Score.png")
+        photo = customtkinter.CTkImage(image)
+
+        self.score_slider = customtkinter.CTkLabel(self, text="", image=photo, width = 100, height = 500)
+        self.score_slider.grid(row = 0, column = 0, rowspan = 3, sticky = "nsew")
 
 
 
