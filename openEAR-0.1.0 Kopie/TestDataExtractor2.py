@@ -399,9 +399,9 @@ class Main:
             Main.timestemp2 = Main.timestemp1
 
     
-    def Set_Session_Name (Sessionname):
+    def Set_Session_Name (V1):
 
-        Main.Session_Name = Sessionname
+        Main.Session_Name = V1
         Main.Excel_Filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
         
 
@@ -431,6 +431,35 @@ class Main:
             print("DataLoi1:                      ",         Main.DataLoi1)
             print("DataLoi2:                      ",         Main.DataLoi2)
             print("DataLoi3:                      ",         Main.DataLoi3)
+            print()
+            print("MWDataSpeakRatio:              ",         Main.MWDataSpeakRatio)
+            print("MWDataSpeakTime:               ",         Main.MWDataSpeakTime)
+            print("MWDataLength:                  ",         Main.MWDataLength)
+            print("MWDataTime:                    ",         Main.MWDataTime)
+            print("MWDataArousal:                 ",         Main.MWDataArousal)
+            print("MWDataValence:                 ",         Main.MWDataValence)
+            print("MWDataEmodbEmotionAnger:       ",         Main.MWDataEmodbEmotionAnger)
+            print("MWDataEmodbEmotionBoredom:     ",         Main.MWDataEmodbEmotionBoredom)
+            print("MWDataEmodbEmotionDisgust:     ",         Main.MWDataEmodbEmotionDisgust)
+            print("MWDataEmodbEmotionFear:        ",         Main.MWDataEmodbEmotionFear)
+            print("MWDataEmodbEmotionHappiness:   ",         Main.MWDataEmodbEmotionHappiness)
+            print("MWDataEmodbEmotionNeutral:     ",         Main.MWDataEmodbEmotionNeutral)
+            print("MWDataEmodbEmotionSadness:     ",         Main.MWDataEmodbEmotionSadness)
+            print("MWDataAbcAffectAgressiv:       ",         Main.MWDataAbcAffectAgressiv)
+            print("MWDataAbcAffectCheerfull:      ",         Main.MWDataAbcAffectCheerfull)
+            print("MWDataAbcAffectIntoxicated:    ",         Main.MWDataAbcAffectIntoxicated)
+            print("MWDataAbcAffectNervous:        ",         Main.MWDataAbcAffectNervous)
+            print("MWDataAbcAffectNeutral:        ",         Main.MWDataAbcAffectNeutral)
+            print("MWDataAbcAffectTired:          ",         Main.MWDataAbcAffectTired)
+            print("MWDataLoi1:                    ",         Main.MWDataLoi1)
+            print("MWDataLoi2:                    ",         Main.MWDataLoi2)
+            print("MWDataLoi3:                    ",         Main.MWDataLoi3)
+            print()
+            print("MWLoi_Score                    ",         Main.Loi_Score)
+            print("Loi_Score                      ",         Main.MWLoi_Score)
+            print("Score_EmodbEmotions            ",         Main.Score_EmodbEmotions)
+            print("Score_AbcAffect                ",         Main.Score_AbcAffect)
+            
 
             Main.timestemp3 = Main.timestemp1
 
@@ -621,8 +650,8 @@ class Main:
         else:
             Main.MWLoi_Score = (2 - (Main.MWDataLoi2 + (2*Main.MWDataLoi1)))/2
 
-
-Main.Set_Soll_Werte(0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175)
+floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
+Main.Set_Soll_Werte(*floats)
 
 
 while True:
