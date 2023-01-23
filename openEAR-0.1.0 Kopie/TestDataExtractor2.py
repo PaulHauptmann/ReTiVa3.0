@@ -156,8 +156,7 @@ class Main:
     MWDataLoi3: float
     
     
-    Soll_DataArousal: float
-    Soll_DataValence: float
+    
     Soll_DataEmodbEmotionAnger: float
     Soll_DataEmodbEmotionBoredom: float
     Soll_DataEmodbEmotionDisgust: float
@@ -171,12 +170,13 @@ class Main:
     Soll_DataAbcAffectNervous: float
     Soll_DataAbcAffectNeutral: float
     Soll_DataAbcAffectTired: float
-    Soll_DataLoi1: float
-    Soll_DataLoi2: float
-    Soll_DataLoi3: float
+    
     
     Loi_Score: float
     MWLoi_Score: float
+
+    Score_EmodbEmotions: float
+    Score_AbcAffect: float
     
    
 
@@ -543,35 +543,35 @@ class Main:
             
 
     def Set_Soll_Werte(
-        Soll_DataEmodbEmotionAnger,
-        Soll_DataEmodbEmotionBoredom,
-        Soll_DataEmodbEmotionDisgust,
-        Soll_DataEmodbEmotionFear,
-        Soll_DataEmodbEmotionHappiness,
-        Soll_DataEmodbEmotionNeutral,
-        Soll_DataEmodbEmotionSadness,
-        Soll_DataAbcAffectAgressiv,
-        Soll_DataAbcAffectCheerfull,
-        Soll_DataAbcAffectIntoxicated,
-        Soll_DataAbcAffectNervous,
-        Soll_DataAbcAffectNeutral,
-        Soll_DataAbcAffectTired,
+        Übergabe_Soll_DataEmodbEmotionAnger,
+        Übergabe_Soll_DataEmodbEmotionBoredom,
+        Übergabe_Soll_DataEmodbEmotionDisgust,
+        Übergabe_Soll_DataEmodbEmotionFear,
+        Übergabe_Soll_DataEmodbEmotionHappiness,
+        Übergabe_Soll_DataEmodbEmotionNeutral,
+        Übergabe_Soll_DataEmodbEmotionSadness,
+        Übergabe_Soll_DataAbcAffectAgressiv,
+        Übergabe_Soll_DataAbcAffectCheerfull,
+        Übergabe_Soll_DataAbcAffectIntoxicated,
+        Übergabe_Soll_DataAbcAffectNervous,
+        Übergabe_Soll_DataAbcAffectNeutral,
+        Übergabe_Soll_DataAbcAffectTired,
         
     ):
         
-        Main.Soll_DataEmodbEmotionAnger =         Soll_DataEmodbEmotionAnger
-        Main.Soll_DataEmodbEmotionBoredom =       Soll_DataEmodbEmotionBoredom
-        Main.Soll_DataEmodbEmotionDisgust =       Soll_DataEmodbEmotionDisgust
-        Main.Soll_DataEmodbEmotionFear =          Soll_DataEmodbEmotionFear
-        Main.Soll_DataEmodbEmotionHappiness =     Soll_DataEmodbEmotionHappiness
-        Main.Soll_DataEmodbEmotionNeutral =       Soll_DataEmodbEmotionNeutral
-        Main.Soll_DataEmodbEmotionSadness =       Soll_DataEmodbEmotionSadness
-        Main.Soll_DataAbcAffectAgressiv =         Soll_DataAbcAffectAgressiv
-        Main.Soll_DataAbcAffectCheerfull =        Soll_DataAbcAffectCheerfull
-        Main.Soll_DataAbcAffectIntoxicated =      Soll_DataAbcAffectIntoxicated
-        Main.Soll_DataAbcAffectNervous =          Soll_DataAbcAffectNervous
-        Main.Soll_DataAbcAffectNeutral =          Soll_DataAbcAffectNeutral
-        Main.Soll_DataAbcAffectTired =            Soll_DataAbcAffectTired
+        Main.Soll_DataEmodbEmotionAnger =         Übergabe_Soll_DataEmodbEmotionAnger
+        Main.Soll_DataEmodbEmotionBoredom =       Übergabe_Soll_DataEmodbEmotionBoredom
+        Main.Soll_DataEmodbEmotionDisgust =       Übergabe_Soll_DataEmodbEmotionDisgust
+        Main.Soll_DataEmodbEmotionFear =          Übergabe_Soll_DataEmodbEmotionFear
+        Main.Soll_DataEmodbEmotionHappiness =     Übergabe_Soll_DataEmodbEmotionHappiness
+        Main.Soll_DataEmodbEmotionNeutral =       Übergabe_Soll_DataEmodbEmotionNeutral
+        Main.Soll_DataEmodbEmotionSadness =       Übergabe_Soll_DataEmodbEmotionSadness
+        Main.Soll_DataAbcAffectAgressiv =         Übergabe_Soll_DataAbcAffectAgressiv
+        Main.Soll_DataAbcAffectCheerfull =        Übergabe_Soll_DataAbcAffectCheerfull
+        Main.Soll_DataAbcAffectIntoxicated =      Übergabe_Soll_DataAbcAffectIntoxicated
+        Main.Soll_DataAbcAffectNervous =          Übergabe_Soll_DataAbcAffectNervous
+        Main.Soll_DataAbcAffectNeutral =          Übergabe_Soll_DataAbcAffectNeutral
+        Main.Soll_DataAbcAffectTired =            Übergabe_Soll_DataAbcAffectTired
         
         
     def Get_Score():
@@ -580,12 +580,9 @@ class Main:
         
         
         
-        Score_EmodbEmotions = (sum(Main.Data_Difference_Score_EmodbEmotion)) / (sum(Main.DataLength))
-        Score_AbcAffect = (sum(Main.Data_Difference_Score_AbcAffect)) / (sum(Main.DataLength))
+        Main.Score_EmodbEmotions = (sum(Main.Data_Difference_Score_EmodbEmotion)) / (sum(Main.DataLength))
+        Main.Score_AbcAffect = (sum(Main.Data_Difference_Score_AbcAffect)) / (sum(Main.DataLength))
         
-        
-        return (Score_EmodbEmotions, Score_AbcAffect)
-    
     
     def Get_Live_Score():
         
@@ -625,4 +622,9 @@ class Main:
             Main.MWLoi_Score = (2 - (Main.MWDataLoi2 + (2*Main.MWDataLoi1)))/2
 
 
+Main.Set_Soll_Werte(0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175)
 
+
+while True:
+    Main.Updater
+    time.sleep(0.5)
