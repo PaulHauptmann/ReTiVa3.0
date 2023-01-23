@@ -3,6 +3,8 @@ from tkinter import PhotoImage, Image
 import sys
 from PIL import ImageTk, Image
 import customtkinter
+from CustomObjects import *
+import TestDataExtractor2 as T
 
 
 '''class LinearIndicator_old(tk.Frame):
@@ -32,13 +34,13 @@ class ScoreIndicator(customtkinter.CTkFrame):
         super().__init__(master)
 
         # Load the image file as a PhotoImage object
-        self.arrow_image = customtkinter.CTkImage(light_image=Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/arrow_dark_grey.png"))
-        self.image = customtkinter.CTkImage(light_image=Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Ampel.png"), size=(30, 150))
+        self.arrow_image = customtkinter.CTkImage(light_image=Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/arrow.png"))
+        self.image = customtkinter.CTkImage(light_image=Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Ampel.png"), size=(40, 180))
         #self.img = ImageTk.PhotoImage(Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Ampel.png"))
 
         
         self.label = customtkinter.CTkLabel(self, image=self.image, text="")
-        self.label.grid(row = 0, column = 0, columnspan = 2, sticky = "e")
+        self.label.grid(row = 0, column = 1, sticky = "e", padx = 10)
 
         self.arrow = customtkinter.CTkLabel(self, image=self.arrow_image, text="", fg_color='transparent')
         self.arrow.grid(row = 0, column = 0, sticky = "w")
@@ -78,8 +80,104 @@ class HorizontalIndicator(customtkinter.CTkFrame):
 
 
 
+## Bweertung der einzelnen Emotionen, -1 ist sad, 1 ist happy und 0 ist neutral
+
+
+emoji_dict = {
+
+    "Anger" : "-1" , 
+    "Boredom" : "0" , 
+    "Disgust" : "-1" , 
+    "Fear ="  : "-1" , 
+    "Happiness" : "1" , 
+    "Neutral" : "0" , 
+    "Sadness" : "-1" , 
+}
+
+
+
 class EmotionwithEmoji(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.columnconfigure(1, weight=1)
+        
+        
+        self.emotion_text = ""
+        self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/happy.png"
+
+        self.emotion_label = customtkinter.CTkLabel(self, text=self.emotion_text, font=customtkinter.CTkFont(size = 20))
+        self.emotion_label.grid(row = 0, column = 1, columnspan = 3, padx = 10, sticky = "e")
+
+        self.image = customtkinter.CTkImage(light_image=Image.open(self.image_path), size=(50,50))
+        
+        self.emoji = customtkinter.CTkLabel(self, image=self.image, text = "", fg_color="transparent")
+        self.emoji.grid(row = 0, column = 0, sticky = "w")
+                
+        
+
+# TODO: Implementation mit TestDataExtractor, von da wird aktuell stärkste Emo als String gezogen
+# Dazu diese Methode in Main mit Daten aus Extractor aufrufen
+
+    def set(self, emotion:str):
+        
+        self.emotion_text = emotion
+        
+        match emoji_dict.get(self.emotion_text, "Word not found"):
+            case "1":
+                self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/happy.png"
+                
+                print(self.emotion_text)
+            case "0": 
+                self.image_path =  "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/neutral.png"
+                print(self.emotion_text)
+
+            case "-1": 
+                self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/sad.png"
+                print(self.emotion_text)
+            
+            case _: 
+                print("Fehler bei der Emoji-Zuordnung")
+
+        self.image.configure(light_image =Image.open(self.image_path))
+        
+        self.emoji.configure(image=self.image)
+        self.emotion_label.configure(text = self.emotion_text)
+
+        
+
+
+class DualEmotions(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.configure(fg_color = "transparent")
+        self.columnconfigure(1, weight=1)
+
+        self.left_frame = customtkinter.CTkFrame(self, fg_color= "#343434")
+        self.left_frame.grid(row = 0, column = 0)
+
+        self.right_frame = customtkinter.CTkFrame(self, fg_color= "#343434")
+        self.right_frame.grid(row = 0, column = 2)
+
+    
+        self.emo_label = customtkinter.CTkLabel(self.left_frame, text="", corner_radius=5, fg_color="#343434", font=customtkinter.CTkFont(size = 20))
+        self.emo_label.grid(row = 0, column = 0, padx = 30, pady = 5)
+
+        self.abc_label = customtkinter.CTkLabel(self.right_frame, text="", corner_radius=5, fg_color="#343434", font=customtkinter.CTkFont(size = 20))
+        self.abc_label.grid(row = 0, column = 0, padx = 30, pady = 5)
+
+
+    def set(self, emo_emotion:str, abc_emotion:str):
+
+        self.emo_emotion = emo_emotion
+        self.abc_emotion = abc_emotion
+
+        self.emo_label.configure(text = self.emo_emotion)
+        self.abc_label.configure(text = self.abc_emotion)
+
+
+        
+
 
     

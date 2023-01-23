@@ -13,7 +13,16 @@ class Startupsettings(object):
 
 
 class Emotions(object):
-    test =""
+    
+    ##emodb
+    Anger = -1
+    Boredom = 0
+    Disgust = -1
+    Fear = -1
+    Happiness = 1
+    Neutral = 0
+    Sadness = -1
+
 
 
 
