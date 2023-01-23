@@ -83,15 +83,16 @@ class App(customtkinter.CTk):
         #self.textbox.grid(row=0, column=1, padx=20, pady=20,rowspan = 3, sticky="nsew")
         #self.settings_frame = SettingsFrame(self)
         #self.settings_frame.grid(row = 0, column = 1, padx = 20, pady = 20, rowspan = 3, sticky = "nsew")
-        
+        #self.score_frame = SliderScoreFrame(self)
+        #self.score_frame.grid(row = 0, column = 1, rowspan = 4, sticky = "nsew")
         
         # set default values
         #self.sidebar_button_1.configure(state = "disabled")
         self.appearance_mode_optionemenu.set("System")
         self.scaling_optionemenu.set("100%")
         
-        
-        
+
+
 
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")

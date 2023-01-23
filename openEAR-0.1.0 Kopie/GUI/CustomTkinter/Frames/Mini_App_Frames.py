@@ -3,6 +3,7 @@ import customtkinter
 from tkinter import ttk
 import time
 from MiniAppObjects import *
+from PIL import Image, ImageTk
 
 class ScoreFrame(customtkinter.CTkFrame):
     def __init__(self, master = None):
@@ -24,7 +25,6 @@ class ScoreIndicatorFrame(customtkinter.CTkFrame):
         self.indicator = ScoreIndicator(self)
         self.indicator.grid(row = 0, column=2, padx = 5)
         #self.indicator.set_position(0.5)
-
 
 
 class AdditionalInfoFrame(customtkinter.CTkFrame):
