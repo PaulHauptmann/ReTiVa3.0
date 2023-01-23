@@ -2,7 +2,7 @@ import sys
 import tkinter as tk
 import customtkinter
 from time import *
-import TestDataExtractor2 as T3
+import TestDataExtractor2 as T
 import time
 import threading
 
@@ -20,7 +20,7 @@ from Frames.SettingsFrames import *
 
 
 #Standard-Modus festlegen
-customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
+customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 
 #Color-Theme Einstellungen aus eigener Datei übernehmen (Custom CI, muss nur in der .json Datei verändert werden)
 customtkinter.set_default_color_theme('.vscode/retiva_dark-blue.json')
@@ -32,10 +32,13 @@ class App(customtkinter.CTk):
         super().__init__()
 
         
+
+        # Fenster Bildschirmfüllend starten
+        self.geometry("%dx%d+0+0" % (self.winfo_screenwidth(), self.winfo_screenheight()))
+        #self.geometry(f"{1100}x{580}")
         
         # configure window
         self.title("ReTiVA – Real-Time Voice Analytics")
-        self.geometry(f"{1100}x{580}")
         
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
@@ -136,8 +139,8 @@ class App(customtkinter.CTk):
             #Neuen Text aus T3 einfügen
             #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
             #self.textbox.textbox.insert("0.0", "Test")
-            T3.Main.Updater()
-            self.textbox.textbox.insert("0.0", T3.Main.DataTime)
+            T.Main.Updater()
+            self.textbox.textbox.insert("0.0", T.Main.DataTime)
             #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
 
