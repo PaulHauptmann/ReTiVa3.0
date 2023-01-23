@@ -1,10 +1,12 @@
-[ 20.01.2023 - 17:13:27 ]
+[ 09.01.2023 - 18:13:37 ]
     (MSG) [2] in SMILExtract : openSMILE starting!
-[ 20.01.2023 - 17:13:27 ]
-    (MSG) [2] in SMILExtract : config file is: config/emobase
-[ 20.01.2023 - 17:13:27 ]
-    (MSG) [2] in cComponentManager : successfully registered 68 component types.
-[ 20.01.2023 - 17:13:27 ]
-    (MSG) [2] in configManager : reading config file 'config/emobase'
-[ 20.01.2023 - 17:13:27 ]
-    (ERROR) [1] in configManager : cFileConfigReader::openInput : cannot open input file 'config/emobase'!
+[ 09.01.2023 - 18:13:37 ]
+    (MSG) [2] in SMILExtract : config file is: /Users/paul/Desktop/openEAR-0.1.0/config/emobase_live4.conf
+[ 09.01.2023 - 18:13:37 ]
+    (MSG) [2] in cComponentManager : successfully registered 73 component types.
+[ 09.01.2023 - 18:13:37 ]
+    (MSG) [2] in configManager : reading config file '/Users/paul/Desktop/openEAR-0.1.0/config/emobase_live4.conf'
+[ 09.01.2023 - 18:13:37 ]
+    (MSG) [2] in cLibsvmLiveSink : loading LibSVM model for instance 'arousal' ...
+[ 09.01.2023 - 18:13:37 ]
+    (ERROR) [1] in cLibsvmLiveSink : can't open libSVM model file 'models/emo/sal_aro.emobase.model'
