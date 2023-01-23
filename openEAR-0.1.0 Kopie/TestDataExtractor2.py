@@ -175,6 +175,9 @@ class Main:
     Soll_DataLoi2: float
     Soll_DataLoi3: float
     
+    Loi_Score: float
+    MWLoi_Score: float
+    
    
 
 
@@ -441,7 +444,9 @@ class Main:
         Main.Gleitender_Mittelwert()
         Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
         Main.Printer()
-        Main.Get_Live_Score()
+        Main.Get_Score()
+        Main.Get_Loi_Score
+        Main.Get_MWLoi_Score()
         
 
     def Set_Absolut_Difference():
@@ -601,9 +606,23 @@ class Main:
         
         subprocess.run(cmd, shell=True, capture_output=True)
         
+    
+    def Get_Loi_Score():
+        if EMO.Loi1 > EMO.Loi2 and EMO.Loi1 > EMO.Loi3:
+            Main.Loi_Score = (EMO.Loi2 + (2*EMO.Loi3))/2
+        elif EMO.Loi2 > EMO.Loi1 and EMO.Loi2 > EMO.Loi3:
+            Main.Loi_Score = (1 + (EMO.Loi3 - EMO.Loi1))/2
+        else:
+            Main.Loi_Score = (2 - (EMO.Loi2 + (2*EMO.Loi1)))/2
         
 
-
+    def Get_MWLoi_Score():
+        if Main.MWDataLoi1 > Main.MWDataLoi2 and Main.MWDataLoi1 > Main.MWDataLoi3:
+            Main.MWLoi_Score = (Main.MWDataLoi2 + (2*Main.MWDataLoi3))/2
+        elif Main.MWDataLoi2 > Main.MWDataLoi1 and Main.MWDataLoi2 > Main.MWDataLoi3:
+            Main.MWLoi_Score = (1 + (Main.MWDataLoi3 - Main.MWDataLoi1))/2
+        else:
+            Main.MWLoi_Score = (2 - (Main.MWDataLoi2 + (2*Main.MWDataLoi1)))/2
 
 
 

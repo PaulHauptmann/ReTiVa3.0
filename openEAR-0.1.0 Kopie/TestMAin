@@ -1,0 +1,11 @@
+import tkinter as tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import matplotlib.pyplot as plt
+from GUI.CustomTkinter.Frames.Graphs import *
+
+
+root = tk.Tk()
+root.geometry(f"{1100}x{580}")
+graph = Graph(root)
+graph.create_graph()
+root.mainloop()
