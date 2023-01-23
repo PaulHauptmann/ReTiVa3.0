@@ -102,6 +102,6 @@ for i in range(11):
                             
                             # Print the current combination of values for the variables
                             
-                            if Score >=5:
+                            if Score >=4:
                                 print("Score:   ", Score, "   ",F1/FG, F2/FG, F3/FG, F4/FG, F5/FG, F6/FG, F7/FG)
                             Score = 0
