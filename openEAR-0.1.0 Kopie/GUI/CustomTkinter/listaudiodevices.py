@@ -1,6 +1,10 @@
 import pyaudio
 
 #Liest alle verfügbaren Audio-Geräte aus und schreibt diese in eine Liste
+
+## Update: Teams wird nun nicht mehr als Audioquelle angezeigt
+
+
 def get_input_devices():
     p = pyaudio.PyAudio()
     info = p.get_host_api_info_by_index(0)
