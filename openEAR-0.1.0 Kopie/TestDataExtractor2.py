@@ -5,6 +5,8 @@ import time
 import os
 import openpyxl
 import wave
+import subprocess
+
 
 
 
@@ -498,14 +500,14 @@ class Main:
             Main.Data_Difference_Score_EmodbEmotion.append(
                 
                 (1-
-                ((Main.Data_Difference_EmodbEmotionAnger[i]+
+                (Main.Data_Difference_EmodbEmotionAnger[i]+
                 Main.Data_Difference_EmodbEmotionBoredom[i]+
                 Main.Data_Difference_EmodbEmotionDisgust[i]+
                 Main.Data_Difference_EmodbEmotionFear[i]+
                 Main.Data_Difference_EmodbEmotionHappiness[i]+
                 Main.Data_Difference_EmodbEmotionNeutral[i]+
                 Main.Data_Difference_EmodbEmotionSadness[i])
-                /2)) * Main.DataLength[i]
+                ) * Main.DataLength[i]
             )
             
             Main.Data_Difference_Score_AbcAffect.append(
@@ -531,11 +533,6 @@ class Main:
             
             )
             
-        
-        
-    
-        
-
 
     def Get_Score(
         Soll_DataArousal,
@@ -568,7 +565,47 @@ class Main:
         Score_Loi = (sum(Main.Data_Difference_Score_Loi)) / (sum(Main.DataLength))
         
         return (Score_EmodbEmotions, Score_AbcAffect, Score_Loi)
+    
+    
+    def Get_Live_Score(
+        Soll_DataArousal,
+        Soll_DataValence,
+        Soll_DataEmodbEmotionAnger,
+        Soll_DataEmodbEmotionBoredom,
+        Soll_DataEmodbEmotionDisgust,
+        Soll_DataEmodbEmotionFear,
+        Soll_DataEmodbEmotionHappiness,
+        Soll_DataEmodbEmotionNeutral,
+        Soll_DataEmodbEmotionSadness,
+        Soll_DataAbcAffectAgressiv,
+        Soll_DataAbcAffectCheerfull,
+        Soll_DataAbcAffectIntoxicated,
+        Soll_DataAbcAffectNervous,
+        Soll_DataAbcAffectNeutral,
+        Soll_DataAbcAffectTired,
+        Soll_DataLoi1,
+        Soll_DataLoi2,
+        Soll_DataLoi3
+    ):
+        
+        Main.Set_Absolut_Difference( Soll_DataArousal, Soll_DataValence, Soll_DataEmodbEmotionAnger, Soll_DataEmodbEmotionBoredom, Soll_DataEmodbEmotionDisgust, Soll_DataEmodbEmotionFear, Soll_DataEmodbEmotionHappiness, Soll_DataEmodbEmotionNeutral, Soll_DataEmodbEmotionSadness, Soll_DataAbcAffectAgressiv, Soll_DataAbcAffectCheerfull, Soll_DataAbcAffectIntoxicated, Soll_DataAbcAffectNervous, Soll_DataAbcAffectNeutral, Soll_DataAbcAffectTired, Soll_DataLoi1, Soll_DataLoi2, Soll_DataLoi3
+        )
+        
+        
+        
+        Score_EmodbEmotions = ((Main.Data_Difference_Score_EmodbEmotion)) / ((Main.DataLength))
+        Score_AbcAffect = ((Main.Data_Difference_Score_AbcAffect)) / ((Main.DataLength))
+        Score_Loi = ((Main.Data_Difference_Score_Loi)) / ((Main.DataLength))
+        
+        return (Score_EmodbEmotions, Score_AbcAffect, Score_Loi)
 
+
+    def Start_Programm():
+        cmd = "echo 'hello world'"
+        
+        subprocess.run(cmd, shell=True, capture_output=True)
+        
+        
 Main.delete_old_wav_files(Main.directory_path)
 
 
