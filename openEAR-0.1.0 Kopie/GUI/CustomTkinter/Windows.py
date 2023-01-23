@@ -128,8 +128,8 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         super().__init__(master)
 
         #Fenstergröße festlegen
-        window_size_x = 75
-        window_size_y = 200
+        window_size_x = 130
+        window_size_y = 240
 
         #Legt Fenster in untere Rechte Bildschirmecke und verhindert das manuelle Größe verändern
         self.geometry("{}x{}+{}+{}".format(window_size_x, window_size_y, self.winfo_screenwidth() - window_size_x, self.winfo_screenheight() - window_size_y))
@@ -159,7 +159,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         #Größe-Ändern-Button
         self.button_change_width = customtkinter.CTkButton(self, text = "<", command=self.change_width)
         self.button_change_width.grid(row = 0, rowspan = 3, column = 0)
-        self.button_change_width.configure(width = 20, height = 200)
+        self.button_change_width.configure(width = 20, height = 220)
 
         self.var = tk.BooleanVar()
         self.var.set(True)
@@ -172,13 +172,13 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         
         #Toolbar-Frame
 
-        self.toolbar_frame = customtkinter.CTkFrame(self)
+        self.toolbar_frame = customtkinter.CTkFrame(self, fg_color="transparent")
         self.toolbar_frame.grid(row = 2, column = 2, padx = 5, pady = 5, sticky = "sew")
 
         self.toolbar_frame.columnconfigure((0,1), weight=1)
 
-        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="▢", width= 10, command=self.quit_analysis_button_event)
-        self.quit_button.grid(row =0, column = 1, padx = 5, sticky = "ew")
+        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="STOP  ▢", width= 10, command=self.quit_analysis_button_event, font=customtkinter.CTkFont(size=18, weight="bold"))
+        self.quit_button.grid(row =0, column = 1, padx = 5)
 
         self.pause_var = tk.BooleanVar()
         self.pause_var.set(False)
