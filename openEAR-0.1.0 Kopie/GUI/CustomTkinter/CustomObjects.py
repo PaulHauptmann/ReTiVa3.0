@@ -12,6 +12,13 @@ class Startupsettings(object):
     working_mode= ""
 
 
+class Emotions(object):
+    test =""
+
+
+
+
+
 ## Globale Gewichte, müssen nicht instanziert werden. Alle Klassen sollten sich hier die Gewichte rausziehen können
 ## TODO: Schnittstelle zu TestDataExtractor2
 

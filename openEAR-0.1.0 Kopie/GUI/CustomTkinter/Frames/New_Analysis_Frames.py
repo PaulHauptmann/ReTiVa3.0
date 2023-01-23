@@ -58,7 +58,7 @@ class WeightsFrame(customtkinter.CTkFrame):
         
 
         self.header = customtkinter.CTkLabel(self, text="Konfiguration der Analyse")
-        self.header.grid(row = 0, column = 1, padx=10, pady = 5)
+        self.header.grid(row = 0, column = 0, padx=10, pady = 5)
 
         self.emo_frame = emodbSettingsFrame(self)
         self.emo_frame.grid(row = 2, column = 0, padx = 20, pady = 20)

@@ -5,6 +5,9 @@ from Frames.New_Analysis_Frames import *
 from CustomObjects import *
 from TestDataExtractor2 import *
 from Frames.SettingsFrames import *
+from MiniAppObjects import *
+
+#TODO: Knöpfe wieder sichtbar machen
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
@@ -18,11 +21,11 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
         #Start-Button
         self.start_button = customtkinter.CTkButton(self, text="Start", command=self.on_ok)
-        self.start_button.grid(row = 2, column = 2, padx = 20, pady = 20)
+        self.start_button.grid(row = 3, column = 3, padx = 20, pady = 20)
 
         #Abbrechen-Button
         self.cancel_button = customtkinter.CTkButton(self, text="Abbrechen", command=self.on_cancel)
-        self.cancel_button.grid(row = 2, column = 1, padx = 20, pady = 20)
+        self.cancel_button.grid(row = 3, column = 2, padx = 20, pady = 20)
 
 
         #Audio Device List Frame
@@ -125,7 +128,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         super().__init__(master)
 
         #Fenstergröße festlegen
-        window_size_x = 150
+        window_size_x = 75
         window_size_y = 200
 
         #Legt Fenster in untere Rechte Bildschirmecke und verhindert das manuelle Größe verändern
@@ -182,8 +185,11 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
         #Score-Frame
         
-        self.score_frame = ScoreFrame(self)
-        self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
+        #self.score_frame = ScoreFrame(self)
+        #self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
+
+        self.linear_score_frame = ScoreIndicatorFrame(self)
+        self.linear_score_frame.grid(row = 0, column = 2, padx = 10, pady = 10, sticky = "n")
         
         '''
         #Drag-Handle zum verschieben des Fensters
@@ -221,7 +227,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
     ## Buttons ##
     def change_width(self):
         self.current_width = self.winfo_width()
-        new_width = self.current_width + 200 if self.var.get() else self.current_width - 200
+        new_width = self.current_width + 350 if self.var.get() else self.current_width - 350
         current_x = self.winfo_x()
         for i in range(self.current_width, new_width, 10 if self.var.get() else -10):
             self.geometry("{}x{}+{}+{}".format(i, self.winfo_height(),current_x + self.current_width - i,self.winfo_y()))
