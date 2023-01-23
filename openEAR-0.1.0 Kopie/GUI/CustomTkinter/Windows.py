@@ -232,7 +232,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         for i in range(self.current_width, new_width, 10 if self.var.get() else -10):
             self.geometry("{}x{}+{}+{}".format(i, self.winfo_height(),current_x + self.current_width - i,self.winfo_y()))
             self.update()
-            self.after(10)
+            self.after(2)
         self.var.set(not self.var.get())
         self.button_change_width.configure(text="<" if self.var.get() else ">")
 

@@ -30,10 +30,14 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
         #self.emotion_label = customtkinter.CTkLabel(self, text="Boredom", fg_color="gray50", corner_radius=10)
         #self.emotion_label.grid(row = 0, column = 0)
 
-        self.emotion_label = EmotionwithEmoji(self)
+        '''self.emotion_label = EmotionwithEmoji(self)
         self.emotion_label.grid(row = 0, column = 0, sticky = "ew", padx = 60, pady = (5,0))
+        self.emotion_label.set("Sadness")'''
 
-        self.emotion_label.set_emotion("Sadness")
+        self.double_label = DualEmotions(self)
+        self.double_label.grid(row = 0, column = 0,sticky = "ew", padx = 30, pady = (5,0))
+        self.double_label.set("Anger", "Tired")
+
 
 
 

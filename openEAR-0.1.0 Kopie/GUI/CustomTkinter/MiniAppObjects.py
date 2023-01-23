@@ -40,7 +40,7 @@ class ScoreIndicator(customtkinter.CTkFrame):
 
         
         self.label = customtkinter.CTkLabel(self, image=self.image, text="")
-        self.label.grid(row = 0, column = 1, sticky = "e")
+        self.label.grid(row = 0, column = 1, sticky = "e", padx = 10)
 
         self.arrow = customtkinter.CTkLabel(self, image=self.arrow_image, text="", fg_color='transparent')
         self.arrow.grid(row = 0, column = 0, sticky = "w")
@@ -80,6 +80,9 @@ class HorizontalIndicator(customtkinter.CTkFrame):
 
 
 
+## Bweertung der einzelnen Emotionen, -1 ist sad, 1 ist happy und 0 ist neutral
+
+
 emoji_dict = {
 
     "Anger" : "-1" , 
@@ -89,12 +92,7 @@ emoji_dict = {
     "Happiness" : "1" , 
     "Neutral" : "0" , 
     "Sadness" : "-1" , 
- 
-
-
 }
-
-
 
 
 
@@ -121,7 +119,7 @@ class EmotionwithEmoji(customtkinter.CTkFrame):
 # TODO: Implementation mit TestDataExtractor, von da wird aktuell stärkste Emo als String gezogen
 # Dazu diese Methode in Main mit Daten aus Extractor aufrufen
 
-    def set_emotion(self, emotion:str):
+    def set(self, emotion:str):
         
         self.emotion_text = emotion
         
@@ -152,6 +150,31 @@ class EmotionwithEmoji(customtkinter.CTkFrame):
 class DualEmotions(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.configure(fg_color = "transparent")
+        self.columnconfigure(1, weight=1)
+
+        self.left_frame = customtkinter.CTkFrame(self, fg_color= "#343434")
+        self.left_frame.grid(row = 0, column = 0)
+
+        self.right_frame = customtkinter.CTkFrame(self, fg_color= "#343434")
+        self.right_frame.grid(row = 0, column = 2)
+
+    
+        self.emo_label = customtkinter.CTkLabel(self.left_frame, text="", corner_radius=5, fg_color="#343434", font=customtkinter.CTkFont(size = 20))
+        self.emo_label.grid(row = 0, column = 0, padx = 30, pady = 5)
+
+        self.abc_label = customtkinter.CTkLabel(self.right_frame, text="", corner_radius=5, fg_color="#343434", font=customtkinter.CTkFont(size = 20))
+        self.abc_label.grid(row = 0, column = 0, padx = 30, pady = 5)
+
+
+    def set(self, emo_emotion:str, abc_emotion:str):
+
+        self.emo_emotion = emo_emotion
+        self.abc_emotion = abc_emotion
+
+        self.emo_label.configure(text = self.emo_emotion)
+        self.abc_label.configure(text = self.abc_emotion)
 
 
         
