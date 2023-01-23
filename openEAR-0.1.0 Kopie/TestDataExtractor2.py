@@ -156,8 +156,7 @@ class Main:
     MWDataLoi3: float
     
     
-    Soll_DataArousal: float
-    Soll_DataValence: float
+    
     Soll_DataEmodbEmotionAnger: float
     Soll_DataEmodbEmotionBoredom: float
     Soll_DataEmodbEmotionDisgust: float
@@ -171,9 +170,13 @@ class Main:
     Soll_DataAbcAffectNervous: float
     Soll_DataAbcAffectNeutral: float
     Soll_DataAbcAffectTired: float
-    Soll_DataLoi1: float
-    Soll_DataLoi2: float
-    Soll_DataLoi3: float
+    
+    
+    Loi_Score: float
+    MWLoi_Score: float
+
+    Score_EmodbEmotions: float
+    Score_AbcAffect: float
     
    
 
@@ -192,6 +195,7 @@ class Main:
 
     def read_log_file(file_path):
 
+        
         
         # Open the file in read mode
         with open(file_path, 'r') as file:
@@ -264,6 +268,8 @@ class Main:
 
 
     def get_length_of_last_added_wav(directory):
+
+        
         # Find the last wav file in the given directory
         wav_file = None
         last_modified_time = 0
@@ -282,7 +288,6 @@ class Main:
                 length = w.getnframes() / w.getframerate()
                 if Main.DataLength[-1] != length and length != 0:
                     Main.DataLength.append(length)
-                    print('Length:                ', Main.DataLength)
                 return w.getnframes() / w.getframerate()
 
         
@@ -292,39 +297,40 @@ class Main:
 
 
     def write_excel_file(directoryExcel, filename):
+        
         # Create the Excel file
-                #now = datetime.now()
-                #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
-                file_name = str(directoryExcel)+str(filename)+".xlsx"
-                
-                workbook = openpyxl.Workbook()
-                worksheet = workbook.active
+        #now = datetime.now()
+        #file_name = now.strftime("%Y-%m-%d %H:%M:%S")
+        file_name = str(directoryExcel)+str(filename)+".xlsx"
+        
+        workbook = openpyxl.Workbook()
+        worksheet = workbook.active
 
-                # Write the 19 lists to the file
-                worksheet.append(Main.DataDateTime)
-                worksheet.append(Main.DataSessionName)
-                worksheet.append(Main.DataTime)
-                worksheet.append(Main.DataArousal)
-                worksheet.append(Main.DataValence)
-                worksheet.append(Main.DataEmodbEmotionAnger)
-                worksheet.append(Main.DataEmodbEmotionBoredom)
-                worksheet.append(Main.DataEmodbEmotionDisgust)
-                worksheet.append(Main.DataEmodbEmotionFear)
-                worksheet.append(Main.DataEmodbEmotionHappiness)
-                worksheet.append(Main.DataEmodbEmotionNeutral)
-                worksheet.append(Main.DataEmodbEmotionSadness)
-                worksheet.append(Main.DataAbcAffectAgressiv)
-                worksheet.append(Main.DataAbcAffectCheerfull)
-                worksheet.append(Main.DataAbcAffectIntoxicated)
-                worksheet.append(Main.DataAbcAffectNervous)
-                worksheet.append(Main.DataAbcAffectNeutral)
-                worksheet.append(Main.DataAbcAffectTired)
-                worksheet.append(Main.DataLoi1)
-                worksheet.append(Main.DataLoi2)
-                worksheet.append(Main.DataLoi3)
+        # Write the 19 lists to the file
+        worksheet.append(Main.DataDateTime)
+        worksheet.append(Main.DataSessionName)
+        worksheet.append(Main.DataTime)
+        worksheet.append(Main.DataArousal)
+        worksheet.append(Main.DataValence)
+        worksheet.append(Main.DataEmodbEmotionAnger)
+        worksheet.append(Main.DataEmodbEmotionBoredom)
+        worksheet.append(Main.DataEmodbEmotionDisgust)
+        worksheet.append(Main.DataEmodbEmotionFear)
+        worksheet.append(Main.DataEmodbEmotionHappiness)
+        worksheet.append(Main.DataEmodbEmotionNeutral)
+        worksheet.append(Main.DataEmodbEmotionSadness)
+        worksheet.append(Main.DataAbcAffectAgressiv)
+        worksheet.append(Main.DataAbcAffectCheerfull)
+        worksheet.append(Main.DataAbcAffectIntoxicated)
+        worksheet.append(Main.DataAbcAffectNervous)
+        worksheet.append(Main.DataAbcAffectNeutral)
+        worksheet.append(Main.DataAbcAffectTired)
+        worksheet.append(Main.DataLoi1)
+        worksheet.append(Main.DataLoi2)
+        worksheet.append(Main.DataLoi3)
 
-                # Save the file
-                workbook.save(file_name)
+        # Save the file
+        workbook.save(file_name)
     
 
     def get_new_filename(directory, Session_Name):
@@ -337,7 +343,7 @@ class Main:
 
         
     def get_speak_ratio():
-
+        
         SpeakDuration = sum(Main.DataLength)
         SpeakTime = float(Main.DataTime[-1])
 
@@ -346,8 +352,7 @@ class Main:
             SpeakRatio = SpeakDuration/SpeakTime
             Main.DataSpeakTime.append(SpeakTime)
             Main.DataSpeakRatio.append(SpeakRatio)
-            print('SpeakRatio:            ', SpeakRatio)
-
+        
 
     def Anzahl_Files_Gleitender_Mittelwert():
         # Hier kann man einstellen über wieviel sekunden der Mittelwert gehen soll
@@ -396,9 +401,9 @@ class Main:
             Main.timestemp2 = Main.timestemp1
 
     
-    def Set_Session_Name (Sessionname):
+    def Set_Session_Name (V1):
 
-        Main.Session_Name = Sessionname
+        Main.Session_Name = V1
         Main.Excel_Filename = Main.get_new_filename(Main.archive_path, Main.Session_Name)
         
 
@@ -428,20 +433,56 @@ class Main:
             print("DataLoi1:                      ",         Main.DataLoi1)
             print("DataLoi2:                      ",         Main.DataLoi2)
             print("DataLoi3:                      ",         Main.DataLoi3)
+            print()
+            print("MWDataSpeakRatio:              ",         Main.MWDataSpeakRatio)
+            print("MWDataSpeakTime:               ",         Main.MWDataSpeakTime)
+            print("MWDataLength:                  ",         Main.MWDataLength)
+            print("MWDataTime:                    ",         Main.MWDataTime)
+            print("MWDataArousal:                 ",         Main.MWDataArousal)
+            print("MWDataValence:                 ",         Main.MWDataValence)
+            print("MWDataEmodbEmotionAnger:       ",         Main.MWDataEmodbEmotionAnger)
+            print("MWDataEmodbEmotionBoredom:     ",         Main.MWDataEmodbEmotionBoredom)
+            print("MWDataEmodbEmotionDisgust:     ",         Main.MWDataEmodbEmotionDisgust)
+            print("MWDataEmodbEmotionFear:        ",         Main.MWDataEmodbEmotionFear)
+            print("MWDataEmodbEmotionHappiness:   ",         Main.MWDataEmodbEmotionHappiness)
+            print("MWDataEmodbEmotionNeutral:     ",         Main.MWDataEmodbEmotionNeutral)
+            print("MWDataEmodbEmotionSadness:     ",         Main.MWDataEmodbEmotionSadness)
+            print("MWDataAbcAffectAgressiv:       ",         Main.MWDataAbcAffectAgressiv)
+            print("MWDataAbcAffectCheerfull:      ",         Main.MWDataAbcAffectCheerfull)
+            print("MWDataAbcAffectIntoxicated:    ",         Main.MWDataAbcAffectIntoxicated)
+            print("MWDataAbcAffectNervous:        ",         Main.MWDataAbcAffectNervous)
+            print("MWDataAbcAffectNeutral:        ",         Main.MWDataAbcAffectNeutral)
+            print("MWDataAbcAffectTired:          ",         Main.MWDataAbcAffectTired)
+            print("MWDataLoi1:                    ",         Main.MWDataLoi1)
+            print("MWDataLoi2:                    ",         Main.MWDataLoi2)
+            print("MWDataLoi3:                    ",         Main.MWDataLoi3)
+            print()
+            print("MWLoi_Score                    ",         Main.MWLoi_Score)
+            print("Loi_Score                      ",         Main.Loi_Score)
+            print("Score_EmodbEmotions            ",         Main.Score_EmodbEmotions)
+            print("Score_AbcAffect                ",         Main.Score_AbcAffect)
+            print()
+            print()
+            print()
+            print()
+            
 
-            Main.timestemp3 = Main.timestemp1
+        Main.timestemp3 = Main.timestemp1
 
 
     def Updater():
 
-        Main.read_log_file(Main.file_path) 
+        time.sleep(0.5)
         Main.get_length_of_last_added_wav(Main.directory_path)
+        Main.read_log_file(Main.file_path) 
         time.sleep(0.5)
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
         Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
+        Main.Get_Score()
+        Main.Get_Loi_Score()
+        Main.Get_MWLoi_Score()
         Main.Printer()
-        Main.Get_Live_Score()
         
 
     def Set_Absolut_Difference():
@@ -480,8 +521,6 @@ class Main:
         
             
            
-            Main.Data_Difference_Arousal.append(                      (abs(        Main.DataArousal[i]                  -         Main.Soll_DataArousal))/2)
-            Main.Data_Difference_Valence.append(                      (abs(        Main.DataValence[i]                  -         Main.Soll_DataValence))/2)
             Main.Data_Difference_EmodbEmotionAnger.append(            (abs(        Main.DataEmodbEmotionAnger[i]        -         Main.Soll_DataEmodbEmotionAnger))/2)
             Main.Data_Difference_EmodbEmotionBoredom.append(          (abs(        Main.DataEmodbEmotionBoredom[i]      -         Main.Soll_DataEmodbEmotionBoredom))/2)
             Main.Data_Difference_EmodbEmotionDisgust.append(          (abs(        Main.DataEmodbEmotionDisgust[i]      -         Main.Soll_DataEmodbEmotionDisgust))/2)
@@ -495,78 +534,66 @@ class Main:
             Main.Data_Difference_AbcAffectNervous.append(             (abs(        Main.DataAbcAffectNervous[i]         -         Main.Soll_DataAbcAffectNervous))/2)
             Main.Data_Difference_AbcAffectNeutral.append(             (abs(        Main.DataAbcAffectNeutral[i]         -         Main.Soll_DataAbcAffectNeutral))/2)
             Main.Data_Difference_AbcAffectTired.append(               (abs(        Main.DataAbcAffectTired[i]           -         Main.Soll_DataAbcAffectTired))/2)
-            Main.Data_Difference_Loi1.append(                         (abs(        Main.DataLoi1[i]                     -         Main.Soll_DataLoi1))/2)
-            Main.Data_Difference_Loi2.append(                         (abs(        Main.DataLoi2[i]                     -         Main.Soll_DataLoi2))/2)
-            Main.Data_Difference_Loi3.append(                         (abs(        Main.DataLoi3[i]                     -         Main.Soll_DataLoi3))/2)
-            
-            
-            Main.Data_Difference_Score_EmodbEmotion.append(
+        
+            try: 
+                Main.Data_Difference_Score_EmodbEmotion.append(
+                    
+                    (1-
+                    (Main.Data_Difference_EmodbEmotionAnger[i]+
+                    Main.Data_Difference_EmodbEmotionBoredom[i]+
+                    Main.Data_Difference_EmodbEmotionDisgust[i]+
+                    Main.Data_Difference_EmodbEmotionFear[i]+
+                    Main.Data_Difference_EmodbEmotionHappiness[i]+
+                    Main.Data_Difference_EmodbEmotionNeutral[i]+
+                    Main.Data_Difference_EmodbEmotionSadness[i])
+                    ) * Main.DataLength[i]
+                )
                 
-                (1-
-                (Main.Data_Difference_EmodbEmotionAnger[i]+
-                Main.Data_Difference_EmodbEmotionBoredom[i]+
-                Main.Data_Difference_EmodbEmotionDisgust[i]+
-                Main.Data_Difference_EmodbEmotionFear[i]+
-                Main.Data_Difference_EmodbEmotionHappiness[i]+
-                Main.Data_Difference_EmodbEmotionNeutral[i]+
-                Main.Data_Difference_EmodbEmotionSadness[i])
-                ) * Main.DataLength[i]
-            )
-            
-            Main.Data_Difference_Score_AbcAffect.append(
+                Main.Data_Difference_Score_AbcAffect.append(
+                    
+                    (1-
+                    ((Main.Data_Difference_AbcAffectAgressiv[i]+
+                    Main.Data_Difference_AbcAffectCheerfull[i]+
+                    Main.Data_Difference_AbcAffectIntoxicated[i]+
+                    Main.Data_Difference_AbcAffectNervous[i]+
+                    Main.Data_Difference_AbcAffectNeutral[i]+
+                    Main.Data_Difference_AbcAffectTired[i])
+                    /2)) * Main.DataLength[i]
+                )
+            except IndexError:
+                time.sleep(0.5)
                 
-                (1-
-                ((Main.Data_Difference_AbcAffectAgressiv[i]+
-                Main.Data_Difference_AbcAffectCheerfull[i]+
-                Main.Data_Difference_AbcAffectIntoxicated[i]+
-                Main.Data_Difference_AbcAffectNervous[i]+
-                Main.Data_Difference_AbcAffectNeutral[i]+
-                Main.Data_Difference_AbcAffectTired[i])
-                /2)) * Main.DataLength[i]
-            )
-            
-            
-            Main.Data_Difference_Score_Loi.append(
-                
-                (1-
-                ((Main.Data_Difference_Loi1[i]+
-                Main.Data_Difference_Loi2[i]+
-                Main.Data_Difference_Loi3[i]) 
-                /2)) * Main.DataLength[i]
-            
-            )
-            
-
+        
     def Set_Soll_Werte(
-        Soll_DataEmodbEmotionAnger,
-        Soll_DataEmodbEmotionBoredom,
-        Soll_DataEmodbEmotionDisgust,
-        Soll_DataEmodbEmotionFear,
-        Soll_DataEmodbEmotionHappiness,
-        Soll_DataEmodbEmotionNeutral,
-        Soll_DataEmodbEmotionSadness,
-        Soll_DataAbcAffectAgressiv,
-        Soll_DataAbcAffectCheerfull,
-        Soll_DataAbcAffectIntoxicated,
-        Soll_DataAbcAffectNervous,
-        Soll_DataAbcAffectNeutral,
-        Soll_DataAbcAffectTired,
+        Übergabe_Soll_DataEmodbEmotionAnger,
+        Übergabe_Soll_DataEmodbEmotionBoredom,
+        Übergabe_Soll_DataEmodbEmotionDisgust,
+        Übergabe_Soll_DataEmodbEmotionFear,
+        Übergabe_Soll_DataEmodbEmotionHappiness,
+        Übergabe_Soll_DataEmodbEmotionNeutral,
+        Übergabe_Soll_DataEmodbEmotionSadness,
+        Übergabe_Soll_DataAbcAffectAgressiv,
+        Übergabe_Soll_DataAbcAffectCheerfull,
+        Übergabe_Soll_DataAbcAffectIntoxicated,
+        Übergabe_Soll_DataAbcAffectNervous,
+        Übergabe_Soll_DataAbcAffectNeutral,
+        Übergabe_Soll_DataAbcAffectTired,
         
     ):
         
-        Main.Soll_DataEmodbEmotionAnger =         Soll_DataEmodbEmotionAnger
-        Main.Soll_DataEmodbEmotionBoredom =       Soll_DataEmodbEmotionBoredom
-        Main.Soll_DataEmodbEmotionDisgust =       Soll_DataEmodbEmotionDisgust
-        Main.Soll_DataEmodbEmotionFear =          Soll_DataEmodbEmotionFear
-        Main.Soll_DataEmodbEmotionHappiness =     Soll_DataEmodbEmotionHappiness
-        Main.Soll_DataEmodbEmotionNeutral =       Soll_DataEmodbEmotionNeutral
-        Main.Soll_DataEmodbEmotionSadness =       Soll_DataEmodbEmotionSadness
-        Main.Soll_DataAbcAffectAgressiv =         Soll_DataAbcAffectAgressiv
-        Main.Soll_DataAbcAffectCheerfull =        Soll_DataAbcAffectCheerfull
-        Main.Soll_DataAbcAffectIntoxicated =      Soll_DataAbcAffectIntoxicated
-        Main.Soll_DataAbcAffectNervous =          Soll_DataAbcAffectNervous
-        Main.Soll_DataAbcAffectNeutral =          Soll_DataAbcAffectNeutral
-        Main.Soll_DataAbcAffectTired =            Soll_DataAbcAffectTired
+        Main.Soll_DataEmodbEmotionAnger =         Übergabe_Soll_DataEmodbEmotionAnger
+        Main.Soll_DataEmodbEmotionBoredom =       Übergabe_Soll_DataEmodbEmotionBoredom
+        Main.Soll_DataEmodbEmotionDisgust =       Übergabe_Soll_DataEmodbEmotionDisgust
+        Main.Soll_DataEmodbEmotionFear =          Übergabe_Soll_DataEmodbEmotionFear
+        Main.Soll_DataEmodbEmotionHappiness =     Übergabe_Soll_DataEmodbEmotionHappiness
+        Main.Soll_DataEmodbEmotionNeutral =       Übergabe_Soll_DataEmodbEmotionNeutral
+        Main.Soll_DataEmodbEmotionSadness =       Übergabe_Soll_DataEmodbEmotionSadness
+        Main.Soll_DataAbcAffectAgressiv =         Übergabe_Soll_DataAbcAffectAgressiv
+        Main.Soll_DataAbcAffectCheerfull =        Übergabe_Soll_DataAbcAffectCheerfull
+        Main.Soll_DataAbcAffectIntoxicated =      Übergabe_Soll_DataAbcAffectIntoxicated
+        Main.Soll_DataAbcAffectNervous =          Übergabe_Soll_DataAbcAffectNervous
+        Main.Soll_DataAbcAffectNeutral =          Übergabe_Soll_DataAbcAffectNeutral
+        Main.Soll_DataAbcAffectTired =            Übergabe_Soll_DataAbcAffectTired
         
         
     def Get_Score():
@@ -575,12 +602,9 @@ class Main:
         
         
         
-        Score_EmodbEmotions = (sum(Main.Data_Difference_Score_EmodbEmotion)) / (sum(Main.DataLength))
-        Score_AbcAffect = (sum(Main.Data_Difference_Score_AbcAffect)) / (sum(Main.DataLength))
+        Main.Score_EmodbEmotions = (sum(Main.Data_Difference_Score_EmodbEmotion)) / (sum(Main.DataLength)+0.0000001)
+        Main.Score_AbcAffect = (sum(Main.Data_Difference_Score_AbcAffect)) / (sum(Main.DataLength)+0.0000001)
         
-        
-        return (Score_EmodbEmotions, Score_AbcAffect)
-    
     
     def Get_Live_Score():
         
@@ -601,9 +625,36 @@ class Main:
         
         subprocess.run(cmd, shell=True, capture_output=True)
         
+    
+    def Get_Loi_Score():
+        if Main.DataLoi1[-1] > Main.DataLoi2[-1] and Main.DataLoi1[-1] > Main.DataLoi3[-1]:
+            Main.Loi_Score = (Main.DataLoi2[-1] + (2*Main.DataLoi3[-1]))/2
+            
+        elif Main.DataLoi2[-1] > Main.DataLoi1[-1] and Main.DataLoi2[-1] > Main.DataLoi3[-1]:
+            Main.Loi_Score = (1 + (Main.DataLoi3[-1] - Main.DataLoi1[-1]))/2
+            
+        else:
+            Main.Loi_Score = (2 - (Main.DataLoi2[-1] + (2*Main.DataLoi1[-1])))/2
+            
         
+    def Get_MWLoi_Score():
+        if Main.MWDataLoi1 > Main.MWDataLoi2 and Main.MWDataLoi1 > Main.MWDataLoi3:
+            Main.MWLoi_Score = (Main.MWDataLoi2 + (2*Main.MWDataLoi3))/2
+        elif Main.MWDataLoi2 > Main.MWDataLoi1 and Main.MWDataLoi2 > Main.MWDataLoi3:
+            Main.MWLoi_Score = (1 + (Main.MWDataLoi3 - Main.MWDataLoi1))/2
+        else:
+            Main.MWLoi_Score = (2 - (Main.MWDataLoi2 + (2*Main.MWDataLoi1)))/2
 
 
 
 
 
+Main.delete_old_wav_files(Main.directory_path)
+floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
+Main.Set_Soll_Werte(*floats)
+
+
+while True:
+    
+    Main.Updater()
+    time.sleep(0.5)
