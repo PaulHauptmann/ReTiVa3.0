@@ -266,8 +266,6 @@ class Main:
                 print('Loi2:                  ', Main.DataLoi2)
                 print('Loi3:                  ', Main.DataLoi3)"""
 
-                
-
 
     def get_length_of_last_added_wav(directory):
 
@@ -563,32 +561,9 @@ class Main:
                     /2)) * Main.DataLength[i]
                 )
             except IndexError:
-                Main.Data_Difference_Score_EmodbEmotion.append(
-                    
-                    (1-
-                    (Main.Data_Difference_EmodbEmotionAnger[i]+
-                    Main.Data_Difference_EmodbEmotionBoredom[i]+
-                    Main.Data_Difference_EmodbEmotionDisgust[i]+
-                    Main.Data_Difference_EmodbEmotionFear[i]+
-                    Main.Data_Difference_EmodbEmotionHappiness[i]+
-                    Main.Data_Difference_EmodbEmotionNeutral[i]+
-                    Main.Data_Difference_EmodbEmotionSadness[i])
-                    )
-                )
+                time.sleep(0.5)
                 
-                Main.Data_Difference_Score_AbcAffect.append(
-                    
-                    (1-
-                    ((Main.Data_Difference_AbcAffectAgressiv[i]+
-                    Main.Data_Difference_AbcAffectCheerfull[i]+
-                    Main.Data_Difference_AbcAffectIntoxicated[i]+
-                    Main.Data_Difference_AbcAffectNervous[i]+
-                    Main.Data_Difference_AbcAffectNeutral[i]+
-                    Main.Data_Difference_AbcAffectTired[i])
-                    /2))
-                )
-
-            
+        
     def Set_Soll_Werte(
         Übergabe_Soll_DataEmodbEmotionAnger,
         Übergabe_Soll_DataEmodbEmotionBoredom,
