@@ -15,6 +15,7 @@ sys.path.append('openEAR-0.1.0 Kopie/GUI/CustomTkinter')
 from Windows import *
 from Frames.New_Analysis_Frames import *
 from Frames.Archive_Frames import *
+from Frames.SettingsFrames import *
 
 
 
@@ -78,18 +79,20 @@ class App(customtkinter.CTk):
 
         
         # create textbox
-        #self.textbox = customtkinter.CTkTextbox(self, width=250)
-        self.textbox = ArchiveListFrame(self)
-        self.textbox.grid(row=0, column=1, padx=20, pady=20,rowspan = 3, sticky="nsew")
-        
+        #self.textbox = ArchiveListFrame(self)
+        #self.textbox.grid(row=0, column=1, padx=20, pady=20,rowspan = 3, sticky="nsew")
+        #self.settings_frame = SettingsFrame(self)
+        #self.settings_frame.grid(row = 0, column = 1, padx = 20, pady = 20, rowspan = 3, sticky = "nsew")
+        #self.score_frame = SliderScoreFrame(self)
+        #self.score_frame.grid(row = 0, column = 1, rowspan = 4, sticky = "nsew")
         
         # set default values
         #self.sidebar_button_1.configure(state = "disabled")
         self.appearance_mode_optionemenu.set("System")
         self.scaling_optionemenu.set("100%")
         
-        
-        
+
+
 
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
@@ -149,9 +152,12 @@ class App(customtkinter.CTk):
         
         
 
+    '''def button_starter(self):
+
+        window = AdvancedSettingsWindow(self)
 
 
-
+'''
 
 if __name__ == "__main__":
     app = App()

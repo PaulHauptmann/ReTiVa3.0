@@ -1,6 +1,7 @@
 from typing import Union, Callable
 import customtkinter
 from openpyxl import *
+from Frames.Observer import *
 
 
 ## Objekt, das die Start-Einstellungen speichert, die im New_Analysis_Window festgelegt werden ##
@@ -11,29 +12,45 @@ class Startupsettings(object):
     working_mode= ""
 
 
+class Emotions(object):
+    test =""
+
+
+
+
+
 ## Globale Gewichte, müssen nicht instanziert werden. Alle Klassen sollten sich hier die Gewichte rausziehen können
 ## TODO: Schnittstelle zu TestDataExtractor2
 
-class Weights(object):
-    
+class Weights(Subject):
     #EmoDB Gewichte
-    w_emodb_anger = 0
-    w_emodb_boredom = 0
-    w_emodb_disgust = 0
-    w_emodb_fear = 0
-    w_emodb_happiness = 0
-    w_emodb_neutral = 0
-    w_emodb_sadness = 0
+    w_emodb_anger = VariableMonitor()
+    w_emodb_boredom = VariableMonitor()
+    w_emodb_disgust = VariableMonitor()
+    w_emodb_fear = VariableMonitor()
+    w_emodb_happiness = VariableMonitor()
+    w_emodb_neutral = VariableMonitor()
+    w_emodb_sadness = VariableMonitor()
 
+    #observer = Observer()
+
+    '''w_emodb_anger.attach(observer)
+    w_emodb_boredom.attach(observer)
+    w_emodb_disgust.attach(observer)
+    w_emodb_fear.attach(observer)
+    w_emodb_happiness.attach(observer)
+    w_emodb_neutral.attach(observer)
+    w_emodb_sadness.attach(observer)
+'''
     #abcAffect Gewichte
-    w_abc_agressiv = 0
-    w_abc_cheerful = 0
-    w_abc_intoxicated = 0
-    w_abc_nervous = 0
-    w_abc_neutral = 0
-    w_abc_tired = 0
+    w_abc_agressiv = VariableMonitor()
+    w_abc_cheerful = VariableMonitor()
+    w_abc_intoxicated = VariableMonitor()
+    w_abc_nervous = VariableMonitor()
+    w_abc_neutral = VariableMonitor()
+    w_abc_tired = VariableMonitor()
 
-    #avic Interest Gewichte
+    '''#avic Interest Gewichte
     w_avic_loi1 = 0
     w_avic_loi2 = 0
     w_avic_loi3 = 0
@@ -42,7 +59,7 @@ class Weights(object):
     w_arousal = 0
 
     #Valence Gewicht
-    w_valence = 0
+    w_valence = 0'''
 
     #Working Mode
     working_mode = ""
@@ -82,26 +99,24 @@ class Weights(object):
             # Append the number in the selected column to the list
             numbers.append(row[int(column_selected)])
 
-        # Assign the first number to a variable
-        if column_selected != 3:
-            for name, value in zip(weights_variables, numbers):
-                setattr(cls, name, value)
-        
+
+        # Zahlen den zugehörigen Variablen zuordnen
+        #if column_selected != 3:
+        for name, value in zip(weights_variables, numbers):
+            setattr(cls, name, value)
+    
         
        
         #print(weights_variables)
         print(numbers)
-        print("Anger:    " + str(Weights.w_emodb_anger))
+        #print("Anger:    " + str(Weights.w_emodb_anger.value))
 
     def set_working_mode(working_mode = str):
         Weights.working_mode = working_mode
         #Weights.Read_Weights_from_Excel()
 
+    
 #Weights.Read_Weights_from_Excel(Weights, "Gespräch")
-
-
-
-
 
 class CustomSpinBox(customtkinter.CTkFrame):
     def __init__(self, *args,
@@ -178,7 +193,7 @@ class CustomSpinBox(customtkinter.CTkFrame):
         except ValueError:
             return None
 
-    def set(self, value: int):
+    def set(self, value: VariableMonitor):
         self.entry.delete(0, "end")
         self.entry.insert(0, str(int(value)))
     
@@ -191,44 +206,44 @@ class CustomSpinBox(customtkinter.CTkFrame):
             
             ## emoDB Emotionen
             case "Anger" : 
-                Weights.w_emodb_anger = self.new_value
+                Weights.w_emodb_anger.value = self.new_value
                 return Weights.w_emodb_anger
             case "Boredom" : 
-                Weights.w_emodb_boredom = self.new_value
-                return Weights.w_emodb_boredom
+                Weights.w_emodb_boredom.value = self.new_value
+                return Weights.w_emodb_boredom.value
             case "Disgust" : 
-                Weights.w_emodb_disgust = self.new_value
+                Weights.w_emodb_disgust.value = self.new_value
                 return Weights.w_emodb_disgust
             case "Fear" : 
-                Weights.w_emodb_fear = self.new_value
+                Weights.w_emodb_fear.value = self.new_value
                 return Weights.w_emodb_fear
             case "Happiness" : 
-                Weights.w_emodb_happiness = self.new_value
+                Weights.w_emodb_happiness.value = self.new_value
                 return Weights.w_emodb_happiness
             case "Neutral" : 
-                Weights.w_emodb_neutral = self.new_value
+                Weights.w_emodb_neutral.value = self.new_value
                 return Weights.w_emodb_neutral
             case "Sadness" : 
-                Weights.w_emodb_sadness = self.new_value
+                Weights.w_emodb_sadness.value = self.new_value
                 return Weights.w_emodb_sadness
 
             ## abcAffect Emotionen
-            case "agressiv" : 
+            case "Agressiv" : 
                 Weights.w_abc_agressiv = self.new_value
                 return Weights.w_abc_agressiv
-            case "cheerful" : 
+            case "Cheerful" : 
                 Weights.w_abc_cheerful = self.new_value
                 return Weights.w_abc_cheerful
-            case "intoxicated" : 
+            case "Intoxicated" : 
                 Weights.w_abc_intoxicated = self.new_value
                 return Weights.w_abc_intoxicated
-            case "nervous" : 
+            case "Nervous" : 
                 Weights.w_abc_nervous = self.new_value
                 return Weights.w_abc_nervous
-            case "neutral" : 
+            case "Neutral_abc_Affect" : 
                 Weights.w_abc_neutral = self.new_value
                 return Weights.w_abc_neutral
-            case "tired" : 
+            case "Tired" : 
                 Weights.w_abc_tired = self.new_value
                 return Weights.w_abc_tired
             
@@ -248,17 +263,17 @@ class CustomSpinBox(customtkinter.CTkFrame):
             ##Arousal & Valence
             case "Arousal":
                 Weights.w_arousal = self.new_value
+                return Weights.w_arousal
             case "Valence":
                 Weights.w_valence = self.new_value
+                return Weights.w_valence
+                
 
 
 
             ## Default-Case
             case _:
                 print("Ich konnte kein passendes Gewicht zu dem Titel dieses Widgets finden:   " + self.title)
-            
-            
 
 
 
-    

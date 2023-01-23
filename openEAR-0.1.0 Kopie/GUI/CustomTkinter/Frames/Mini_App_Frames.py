@@ -2,6 +2,8 @@ import tkinter
 import customtkinter
 from tkinter import ttk
 import time
+from MiniAppObjects import *
+from PIL import Image, ImageTk
 
 class ScoreFrame(customtkinter.CTkFrame):
     def __init__(self, master = None):
@@ -16,8 +18,13 @@ class ScoreFrame(customtkinter.CTkFrame):
         self.score_label.grid(row = 1, column = 0)
         
 
-        
+class ScoreIndicatorFrame(customtkinter.CTkFrame):
+    def __init__(self, master = None):
+        super().__init__(master)
 
+        self.indicator = ScoreIndicator(self)
+        self.indicator.grid(row = 0, column=2, padx = 5)
+        #self.indicator.set_position(0.5)
 
 
 class AdditionalInfoFrame(customtkinter.CTkFrame):
@@ -31,4 +38,10 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
 
         self.speak_ratio_label = customtkinter.CTkLabel(self, text="Redeanteil: {}".format(""))
         self.speak_ratio_label.grid(row = 1, column = 0)
+
+        self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
+        self.loi_indicator.grid(row = 2, column = 0)
+
+        self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
+        self.valence_indicator.grid(row = 3, column = 0)
         
