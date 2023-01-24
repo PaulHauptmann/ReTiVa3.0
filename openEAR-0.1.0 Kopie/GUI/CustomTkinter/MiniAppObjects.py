@@ -108,6 +108,10 @@ class HorizontalIndicator(customtkinter.CTkFrame):
         self.right_title = customtkinter.CTkLabel(self, text=self.right_title)
         self.right_title.grid(row = 1, column = 2, padx = 5, sticky = "e")
 
+    def update_widget(self, value:float):
+        
+        self.progressbar.set(value)
+
 
 
 ## Bewertung der einzelnen Emotionen, -1 ist sad, 1 ist happy und 0 ist neutral

@@ -119,20 +119,33 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     def main_analysis_loop(self):
         while True and GlobalStartStop.analysis_loop == True:
 
-                    Main.Updater()
+            Main.Updater()
 
-                    #print(Main.DataLength)
+            #print(Main.DataLength)
 
-                    total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
-                    print("Score Insgesamt" + str(total_score))
-                    
-                    # Haupt-Score Update Funktion
-                    self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
+            total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
+            print("Score Insgesamt" + str(total_score))
+            
+            # Haupt-Score Update Funktion
+            self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
+            
+            #Loi-Score Update Funktion
+            self.mini_app_window.additional_info_frame.loi_indicator.update_widget(Main.Loi_Score)
 
-                    #self.mini_app_window.additional_info_frame.loi_indicator.
-                    
+            #Arousal-Score Update Funktion
+            self.mini_app_window.additional_info_frame.arousal_indicator.update_widget(Main.DataArousal[-1])
 
-                    time.sleep(1)
+            #Valence-Score Update Funktion
+            self.mini_app_window.additional_info_frame.valence_indicator.update_widget(Main.DataValence[-1])
+
+            #Redeanteil-Update Funktion
+            self.mini_app_window.additional_info_frame.redeanteil.update_widget(Main.DataSpeakRatio[-1])
+
+
+
+            
+
+            time.sleep(1)
 
 
 
