@@ -125,7 +125,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
             print("Score Insgesamt" + str(total_score))
-            
+            '''
             # Haupt-Score Update Funktion
             self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
             
@@ -140,7 +140,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             #Redeanteil-Update Funktion
             self.mini_app_window.additional_info_frame.redeanteil.update_widget(Main.DataSpeakRatio[-1])
-
+'''
 
 
             
@@ -159,11 +159,12 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
         #Fenstergröße festlegen
         window_size_x = 140
-        window_size_y = 240
+        window_size_y = 300
+
 
         #Legt Fenster in untere Rechte Bildschirmecke und verhindert das manuelle Größe verändern
         self.geometry("{}x{}+{}+{}".format(window_size_x, window_size_y, self.winfo_screenwidth() - window_size_x, self.winfo_screenheight() - window_size_y))
-        self.resizable(0,0)
+        #self.resizable(0,0)
 
         self.title("Live-Analyse")
       
@@ -217,7 +218,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         #self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
 
         self.linear_score_frame = ScoreIndicatorFrame(self)
-        self.linear_score_frame.grid(row = 0, column = 2, padx = 10, pady = 10, sticky = "n")
+        self.linear_score_frame.grid(row = 0, column = 2, padx = 10, pady = 10, rowspan = 2, sticky = "ns")
         
         '''
         #Drag-Handle zum verschieben des Fensters

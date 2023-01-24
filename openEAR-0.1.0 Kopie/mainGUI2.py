@@ -184,13 +184,13 @@ class App(customtkinter.CTk):
     def button_starter(self):
 
         '''t = threading.Thread(target=self.start_command)
-        t.start()'''
+        t.start()
         GlobalStartStop.analysis_loop = True
 
         t = threading.Thread(target=self.main_analysis_loop)
         t.start()
         print("started thread")
-        print(GlobalStartStop.analysis_loop)
+        print(GlobalStartStop.analysis_loop)'''
 
         
         
@@ -202,7 +202,7 @@ class App(customtkinter.CTk):
 
     '''
 
-
+'''
     def main_analysis_loop(self):
         while True and GlobalStartStop.analysis_loop == True:
 
@@ -212,7 +212,7 @@ class App(customtkinter.CTk):
                     
 
                     time.sleep(0.5)
-
+'''
 
 '''t = threading.Thread(target=main_analysis_loop)
 t.start()

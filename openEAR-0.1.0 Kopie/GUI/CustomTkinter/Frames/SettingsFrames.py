@@ -74,7 +74,7 @@ class emodbSettingsFrame(customtkinter.CTkFrame):
 
     def update_chart(self):
         # Daten an Tortendiagramm übergeben und aktualisieren
-        self.pie.data = [Weights.w_emodb_anger,
+        '''self.pie.data = [Weights.w_emodb_anger,
                          Weights.w_emodb_boredom,
                          Weights.w_emodb_disgust,
                          Weights.w_emodb_fear,
@@ -83,7 +83,7 @@ class emodbSettingsFrame(customtkinter.CTkFrame):
                          Weights.w_emodb_sadness]
 
         self.pie.update_chart()
-
+'''
 class abcAffectSettingsFrame(customtkinter.CTkFrame):
     def __init__(self, *args, create_pie:bool, **kwargs):
         super().__init__(*args, **kwargs)
@@ -132,7 +132,7 @@ class abcAffectSettingsFrame(customtkinter.CTkFrame):
         
     def update_chart(self):
         # Daten an Tortendiagramm übergeben und aktualisieren
-        self.pie.data = [Weights.w_abc_agressiv,
+        '''self.pie.data = [Weights.w_abc_agressiv,
                         Weights.w_abc_cheerful,
                         Weights.w_abc_intoxicated,
                         Weights.w_abc_nervous,
@@ -140,7 +140,7 @@ class abcAffectSettingsFrame(customtkinter.CTkFrame):
                         Weights.w_abc_tired,
                         ]
 
-        self.pie.update_chart()
+        self.pie.update_chart()'''
     
 
 class ScalesSettingsFrame(customtkinter.CTkFrame):
