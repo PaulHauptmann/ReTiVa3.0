@@ -125,6 +125,9 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
             print("Score Insgesamt" + str(total_score))
+
+            #Hauptemotion EmoDB + Smiley Update Funktion
+            self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
             
             # Haupt-Score Update Funktion
             self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
