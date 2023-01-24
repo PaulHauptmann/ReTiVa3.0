@@ -13,31 +13,6 @@ import random
 
 
 @dataclass
-class MWEmo:
-    MWDataSpeakRatio: float
-    MWDataSpeakTime: float
-    MWDataLength: float
-    MWDataTime: float
-    MWDataArousal: float
-    MWDataValence: float
-    MWDataEmodbEmotionAnger: float
-    MWDataEmodbEmotionBoredom: float
-    MWDataEmodbEmotionDisgust: float
-    MWDataEmodbEmotionFear: float
-    MWDataEmodbEmotionHappiness: float
-    MWDataEmodbEmotionNeutral: float
-    MWDataEmodbEmotionSadness: float
-    MWDataAbcAffectAgressiv: float
-    MWDataAbcAffectCheerfull: float
-    MWDataAbcAffectIntoxicated: float
-    MWDataAbcAffectNervous: float
-    MWDataAbcAffectNeutral: float
-    MWDataAbcAffectTired: float
-    MWDataLoi1: float
-    MWDataLoi2: float
-    MWDataLoi3: float
-
-@dataclass
 class EMO:
     time: float
     Arousal: float
@@ -344,7 +319,6 @@ class Main:
 
             return 0
         
-
 
     def zusammenführer():
         if len(Main.DataTime) != len(Main.DataLength):
@@ -787,6 +761,30 @@ class Main:
             Übergabe_Soll_DataAbcAffectNeutral,
             Übergabe_Soll_DataAbcAffectTired
         )
+
+
+def get_highest_EmoDb(a, b, c, d, e, f, g):
+    # Create a dictionary to store the variable names and their values
+    variables = {'Anger': a, 'Boredom': b, 'Disgust': c, 'Fear': d, 'Happiness': e, 'Neutral': f, 'Sadness': g}
+    
+    # Find the highest value and the corresponding variable name
+    highest_value = max(variables.values())
+    highest_name = [name for name, value in variables.items() if value == highest_value][0]
+    
+    # Return the variable name as a string
+    return highest_name
+
+
+def get_highest_AbcAffect(a, b, c, d, e, f):
+    # Create a dictionary to store the variable names and their values
+    variables = {'Aggressiv': a, 'Cheerful': b, 'Intoxicated': c, 'Nervous': d, 'Neutral': e, 'Tired': f}
+    
+    # Find the highest value and the corresponding variable name
+    highest_value = max(variables.values())
+    highest_name = [name for name, value in variables.items() if value == highest_value][0]
+    
+    # Return the variable name as a string
+    return highest_name
 
 
     def Updater():
