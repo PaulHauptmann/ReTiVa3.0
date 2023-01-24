@@ -62,8 +62,30 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         
         #Session-Name speichern und an TestDataExtractor2 weitergeben
         Startupsettings.session_name = self.session_name_selector.entry_var.get()
-        Main.Set_Session_Name(Startupsettings.session_name)
+        if Startupsettings.session_name != "":
+            Main.Set_Session_Name(Startupsettings.session_name)
+        else :
+            Main.Set_Session_Name(None)
+
         print(Startupsettings.session_name)
+
+
+        # Gewichte an Backend übergeben, erst dort werden sie normiert
+        Main.Get_Soll_Werte( Weights.w_emodb_anger, 
+                             Weights.w_emodb_boredom, 
+                             Weights.w_emodb_disgust,
+                             Weights.w_emodb_fear, 
+                             Weights.w_emodb_happiness, 
+                             Weights.w_emodb_neutral, 
+                             Weights.w_emodb_sadness,
+                             Weights.w_abc_agressiv,
+                             Weights.w_abc_cheerful,
+                             Weights.w_abc_intoxicated,
+                             Weights.w_abc_nervous,
+                             Weights.w_abc_neutral,
+                             Weights.w_abc_tired)
+
+
 
 
         Startupsettings.working_mode = self.working_mode_selector.v.get()
@@ -104,7 +126,10 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
                     total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
                     print("Score Insgesamt" + str(total_score))
                     
+                    # Haupt-Score Update Funktion
                     self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
+
+                    #self.mini_app_window.additional_info_frame.loi_indicator.
                     
 
                     time.sleep(1)
