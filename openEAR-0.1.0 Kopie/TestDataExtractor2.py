@@ -103,6 +103,8 @@ class Main:
     DataLoi2 = [0]
     DataLoi3 = [0]
     
+
+    
     
     #Nach Zeit genormte Liste
     Data_Difference_Score_EmodbEmotion = []
@@ -154,6 +156,45 @@ class Main:
     MWDataLoi1: float
     MWDataLoi2: float
     MWDataLoi3: float
+    
+    Time_Norm_Data_Arousal = []
+    Time_Norm_Data_Valence = []
+    Time_Norm_Data_EmodbEmotionAnger = []
+    Time_Norm_Data_EmodbEmotionBoredom = []
+    Time_Norm_Data_EmodbEmotionDisgust = []
+    Time_Norm_Data_EmodbEmotionFear = []
+    Time_Norm_Data_EmodbEmotionHappiness = []
+    Time_Norm_Data_EmodbEmotionNeutral = []
+    Time_Norm_Data_EmodbEmotionSadness = []
+    Time_Norm_Data_AbcAffectAgressiv = []
+    Time_Norm_Data_AbcAffectCheerfull = []
+    Time_Norm_Data_AbcAffectIntoxicated = []
+    Time_Norm_Data_AbcAffectNervous = []
+    Time_Norm_Data_AbcAffectNeutral = []
+    Time_Norm_Data_AbcAffectTired = []
+    Time_Norm_Data_Loi1 = []
+    Time_Norm_Data_Loi2 = []
+    Time_Norm_Data_Loi3 = []
+    
+    
+    Abs_MW_Data_Arousal: float
+    Abs_MW_Data_Valence: float
+    Abs_MW_Data_EmodbEmotionAnger: float
+    Abs_MW_Data_EmodbEmotionBoredom: float
+    Abs_MW_Data_EmodbEmotionDisgust: float
+    Abs_MW_Data_EmodbEmotionFear: float
+    Abs_MW_Data_EmodbEmotionHappiness: float
+    Abs_MW_Data_EmodbEmotionNeutral: float
+    Abs_MW_Data_EmodbEmotionSadness: float
+    Abs_MW_Data_AbcAffectAgressiv: float
+    Abs_MW_Data_AbcAffectCheerfull: float
+    Abs_MW_Data_AbcAffectIntoxicated: float
+    Abs_MW_Data_AbcAffectNervous: float
+    Abs_MW_Data_AbcAffectNeutral: float
+    Abs_MW_Data_AbcAffectTired: float
+    Abs_MW_Data_Loi1: float
+    Abs_MW_Data_Loi2: float
+    Abs_MW_Data_Loi3: float
     
     
     
@@ -294,6 +335,13 @@ class Main:
         except (OSError, EOFError):
 
             return 0
+
+
+    def zusammenführer():
+        if len(Main.DataTime) != len(Main.DataLength):
+            time.sleep(0.5)
+            Main.get_length_of_last_added_wav(Main.directory_path)
+            Main.zusammenführer()
 
 
     def write_excel_file(directoryExcel, filename):
@@ -468,21 +516,6 @@ class Main:
             
 
         Main.timestemp3 = Main.timestemp1
-
-
-    def Updater():
-
-        time.sleep(0.5)
-        Main.get_length_of_last_added_wav(Main.directory_path)
-        Main.read_log_file(Main.file_path) 
-        time.sleep(0.5)
-        Main.get_speak_ratio()
-        Main.Gleitender_Mittelwert()
-        Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
-        Main.Get_Score()
-        Main.Get_Loi_Score()
-        Main.Get_MWLoi_Score()
-        Main.Printer()
         
 
     def Set_Absolut_Difference():
@@ -646,10 +679,68 @@ class Main:
             Main.MWLoi_Score = (2 - (Main.MWDataLoi2 + (2*Main.MWDataLoi1)))/2
 
 
+    def Set_Time_Norm_Values():
+        
+        
+        Main.Time_Norm_Data_Arousal                 =       [x * y for x, y in zip(Main.DataArousal,Main.DataLength)]
+        Main.Time_Norm_Data_Valence                 =       [x * y for x, y in zip(Main.DataValence,Main.DataLength)]
+        Main.Time_Norm_Data_EmodbEmotionAnger       =       [x * y for x, y in zip(Main.DataEmodbEmotionAnger,Main.DataLength)]
+        Main.Time_Norm_Data_EmodbEmotionBoredom     =       [x * y for x, y in zip(Main.DataEmodbEmotionBoredom,Main.DataLength)]
+        Main.Time_Norm_Data_EmodbEmotionDisgust     =       [x * y for x, y in zip(Main.DataEmodbEmotionDisgust,Main.DataLength)]
+        Main.Time_Norm_Data_EmodbEmotionFear        =       [x * y for x, y in zip(Main.DataEmodbEmotionFear,Main.DataLength)]
+        Main.Time_Norm_Data_EmodbEmotionHappiness   =       [x * y for x, y in zip(Main.DataEmodbEmotionHappiness,Main.DataLength)]
+        Main.Time_Norm_Data_EmodbEmotionNeutral     =       [x * y for x, y in zip(Main.DataEmodbEmotionNeutral,Main.DataLength)]
+        Main.Time_Norm_Data_EmodbEmotionSadness     =       [x * y for x, y in zip(Main.DataEmodbEmotionSadness,Main.DataLength)]
+        Main.Time_Norm_Data_AbcAffectAgressiv       =       [x * y for x, y in zip(Main.DataAbcAffectAgressiv,Main.DataLength)]
+        Main.Time_Norm_Data_AbcAffectCheerfull      =       [x * y for x, y in zip(Main.DataAbcAffectCheerfull,Main.DataLength)]
+        Main.Time_Norm_Data_AbcAffectIntoxicated    =       [x * y for x, y in zip(Main.DataAbcAffectIntoxicated,Main.DataLength)]
+        Main.Time_Norm_Data_AbcAffectNervous        =       [x * y for x, y in zip(Main.DataAbcAffectNervous,Main.DataLength)]
+        Main.Time_Norm_Data_AbcAffectNeutral        =       [x * y for x, y in zip(Main.DataAbcAffectNeutral,Main.DataLength)]
+        Main.Time_Norm_Data_AbcAffectTired          =       [x * y for x, y in zip(Main.DataAbcAffectTired,Main.DataLength)]
+        Main.Time_Norm_Data_Loi1                    =       [x * y for x, y in zip(Main.DataLoi1,Main.DataLength)]
+        Main.Time_Norm_Data_Loi2                    =       [x * y for x, y in zip(Main.DataLoi2,Main.DataLength)]
+        Main.Time_Norm_Data_Loi3                    =       [x * y for x, y in zip(Main.DataLoi3,Main.DataLength)]
 
 
+    def Set_Abolute_Verteilung():
+        Main.Abs_MW_Data_Arousal               = sum(Main.Time_Norm_Data_Arousal)                       /          sum(Main.DataLength)
+        Main.Abs_MW_Data_Valence               = sum(Main.Time_Norm_Data_Valence)                       /          sum(Main.DataLength)
+        Main.Abs_MW_Data_EmodbEmotionAnger     = sum(Main.Time_Norm_Data_EmodbEmotionAnger)             /          sum(Main.DataLength)
+        Main.Abs_MW_Data_EmodbEmotionBoredom   = sum(Main.Time_Norm_Data_EmodbEmotionBoredom)           /          sum(Main.DataLength)
+        Main.Abs_MW_Data_EmodbEmotionDisgust   = sum(Main.Time_Norm_Data_EmodbEmotionDisgust)           /          sum(Main.DataLength)
+        Main.Abs_MW_Data_EmodbEmotionFear      = sum(Main.Time_Norm_Data_EmodbEmotionFear)              /          sum(Main.DataLength)
+        Main.Abs_MW_Data_EmodbEmotionHappiness = sum(Main.Time_Norm_Data_EmodbEmotionHappiness)         /          sum(Main.DataLength)
+        Main.Abs_MW_Data_EmodbEmotionNeutral   = sum(Main.Time_Norm_Data_EmodbEmotionNeutral)           /          sum(Main.DataLength)
+        Main.Abs_MW_Data_EmodbEmotionSadness   = sum(Main.Time_Norm_Data_EmodbEmotionSadness)           /          sum(Main.DataLength)
+        Main.Abs_MW_Data_AbcAffectAgressiv     = sum(Main.Time_Norm_Data_AbcAffectAgressiv)             /          sum(Main.DataLength)
+        Main.Abs_MW_Data_AbcAffectCheerfull    = sum(Main.Time_Norm_Data_AbcAffectCheerfull)            /          sum(Main.DataLength)
+        Main.Abs_MW_Data_AbcAffectIntoxicated  = sum(Main.Time_Norm_Data_AbcAffectIntoxicated)          /          sum(Main.DataLength)
+        Main.Abs_MW_Data_AbcAffectNervous      = sum(Main.Time_Norm_Data_AbcAffectNervous)              /          sum(Main.DataLength)
+        Main.Abs_MW_Data_AbcAffectNeutral      = sum(Main.Time_Norm_Data_AbcAffectNeutral)              /          sum(Main.DataLength)
+        Main.Abs_MW_Data_AbcAffectTired        = sum(Main.Time_Norm_Data_AbcAffectTired)                /          sum(Main.DataLength)
+        Main.Abs_MW_Data_Loi1                  = sum(Main.Time_Norm_Data_Loi1)                          /          sum(Main.DataLength)
+        Main.Abs_MW_Data_Loi2                  = sum(Main.Time_Norm_Data_Loi2)                          /          sum(Main.DataLength)
+        Main.Abs_MW_Data_Loi3                  = sum(Main.Time_Norm_Data_Loi3)                          /          sum(Main.DataLength)
+  
 
-Main.delete_old_wav_files(Main.directory_path)
+    def Updater():
+
+
+        Main.read_log_file(Main.file_path)
+        Main.get_length_of_last_added_wav(Main.directory_path)
+        Main.zusammenführer()
+        Main.get_speak_ratio()
+        Main.Gleitender_Mittelwert()
+        Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
+        Main.Get_Score()
+        Main.Get_Loi_Score()
+        Main.Get_MWLoi_Score()
+        Main.Set_Time_Norm_Values()
+        Main.Set_Abolute_Verteilung()
+        Main.Printer()
+
+
+"""Main.delete_old_wav_files(Main.directory_path)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
 
@@ -657,4 +748,4 @@ Main.Set_Soll_Werte(*floats)
 while True:
     
     Main.Updater()
-    time.sleep(0.5)
+    time.sleep(0.5)"""
