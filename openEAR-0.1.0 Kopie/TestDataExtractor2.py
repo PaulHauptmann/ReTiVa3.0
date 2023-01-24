@@ -64,8 +64,8 @@ class Main:
 
     #path definitionen
 
-    #file_path = 'openEAR-0.1.0 Kopie/smile.log'
-    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
+    file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    #file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
     directory_path = 'openEAR-0.1.0 Kopie/'
     archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
@@ -712,7 +712,7 @@ class Main:
 
 
     def Set_Abolute_Verteilung():
-        if Main.DataLength != 0:
+        if sum(Main.DataLength) != 0.0:
             Main.Abs_MW_Data_Arousal               = sum(Main.Time_Norm_Data_Arousal)                       /          sum(Main.DataLength)
             Main.Abs_MW_Data_Valence               = sum(Main.Time_Norm_Data_Valence)                       /          sum(Main.DataLength)
             Main.Abs_MW_Data_EmodbEmotionAnger     = sum(Main.Time_Norm_Data_EmodbEmotionAnger)             /          sum(Main.DataLength)
@@ -754,7 +754,8 @@ class Main:
         Main.Printer()
 
 
-"""Main.delete_old_wav_files(Main.directory_path)"""
+
+Main.delete_old_wav_files(Main.directory_path)
 Main.Set_Session_Name(None)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
