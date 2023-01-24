@@ -1,11 +1,13 @@
 import re
-from dataclasses import dataclass#
+from dataclasses import dataclass
 from datetime import datetime
 import time
 import os
 import openpyxl
 import wave
 import subprocess
+import random
+#import Test1 as T
 
 
 
@@ -62,8 +64,8 @@ class Main:
 
     #path definitionen
 
-    file_path = 'openEAR-0.1.0 Kopie/smile.log'
-    #file_path = 'openEAR-0.1.0 Kopie/test_log_files/Smile1.log'
+    #file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
     directory_path = 'openEAR-0.1.0 Kopie/'
     archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
@@ -315,32 +317,34 @@ class Main:
 
     def get_length_of_last_added_wav(directory):
 
-        
-        # Find the last wav file in the given directory
-        wav_file = None
-        last_modified_time = 0
-        for file in os.listdir(directory):
-            if file.startswith("output_segment_") and file.endswith(".wav"):
-                modified_time = os.path.getmtime(os.path.join(directory, file))
-                if modified_time > last_modified_time:
-                    wav_file = file
-                    last_modified_time = modified_time
-        if wav_file is None:
-            return 0
+        if Main.file_path != '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log':
+            # Find the last wav file in the given directory
+            wav_file = None
+            last_modified_time = 0
+            for file in os.listdir(directory):
+                if file.startswith("output_segment_") and file.endswith(".wav"):
+                    modified_time = os.path.getmtime(os.path.join(directory, file))
+                    if modified_time > last_modified_time:
+                        wav_file = file
+                        last_modified_time = modified_time
+            if wav_file is None:
+                return 0
 
-        # Open the wav file and get its length
-        try:
-            with wave.open(os.path.join(directory, wav_file), 'rb') as w:
-                length = w.getnframes() / w.getframerate()
-                if Main.DataLength[-1] != length and length != 0:
-                    Main.DataLength.append(length)
-                return w.getnframes() / w.getframerate()
+            # Open the wav file and get its length
+            try:
+                with wave.open(os.path.join(directory, wav_file), 'rb') as w:
+                    length = w.getnframes() / w.getframerate()
+                    #if Main.DataLength[-1] != length and length != 0:
+                    if Main.DataLength[-1] != length:
+                        Main.DataLength.append(length)
+                    return w.getnframes() / w.getframerate()
 
-        
-        except (OSError, EOFError):
+            
+            except (OSError, EOFError):
 
-            return 0
-
+                return 0
+        else:
+            Main.DataLength.append(random.uniform(1,2))
 
     def zusammenführer():
         if len(Main.DataTime) != len(Main.DataLength):
@@ -750,12 +754,11 @@ class Main:
 
 
 """Main.delete_old_wav_files(Main.directory_path)"""
-Main.DataLength = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
-Main.Updater()
-"""
+
 while True:
     
     Main.Updater()
-    time.sleep(0.5)"""
+    time.sleep(0.1)
+    
