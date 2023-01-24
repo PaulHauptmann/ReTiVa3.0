@@ -47,6 +47,9 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
         self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
         self.valence_indicator.grid(row = 3, column = 0)
 
+        self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
+        self.arousal_indicator.grid(row = 4, column = 0)
+
         self.redeanteil = HorizontalIndicator(self, left="Redeanteil: ", middle="50%", right="100%")
-        self.redeanteil.grid(row = 4, column = 0)
+        self.redeanteil.grid(row = 5, column = 0)
         
