@@ -5,7 +5,7 @@ from PIL import ImageTk, Image
 import customtkinter
 from CustomObjects import *
 import TestDataExtractor2 as T
-
+import json as j
 
 '''class LinearIndicator_old(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -66,7 +66,14 @@ class HorizontalIndicator(customtkinter.CTkFrame):
         self.middle_title = middle
         self.right_title = right
 
-        self.progressbar = customtkinter.CTkProgressBar(self, width=250, height=20, corner_radius=10, orientation="horizontal")
+        #
+
+        # Farbe = Alles Grau
+        ## fg_color="#343434", progress_color="#BFBFBF"
+        
+        #
+
+        self.progressbar = customtkinter.CTkProgressBar(self, width=250, height=20, corner_radius=10, orientation="horizontal", )
         self.progressbar.grid(row = 0, column = 0, columnspan = 3, padx = 20, pady=(10,0))
 
         self.left_title = customtkinter.CTkLabel(self, text=self.left_title)
@@ -80,7 +87,7 @@ class HorizontalIndicator(customtkinter.CTkFrame):
 
 
 
-## Bweertung der einzelnen Emotionen, -1 ist sad, 1 ist happy und 0 ist neutral
+## Bewertung der einzelnen Emotionen, -1 ist sad, 1 ist happy und 0 ist neutral
 
 
 emoji_dict = {
