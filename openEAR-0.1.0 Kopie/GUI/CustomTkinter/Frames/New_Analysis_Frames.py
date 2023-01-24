@@ -60,11 +60,13 @@ class WeightsFrame(customtkinter.CTkFrame):
         self.header = customtkinter.CTkLabel(self, text="Konfiguration der Analyse")
         self.header.grid(row = 0, column = 0, padx=10, pady = 5)
 
-        self.emo_frame = emodbSettingsFrame(self)
+        self.emo_frame = emodbSettingsFrame(self, create_pie=False)
         self.emo_frame.grid(row = 2, column = 0, padx = 20, pady = 20)
+        self.emo_frame.grid_remove()
 
-        self.abc_frame = abcAffectSettingsFrame(self)
+        self.abc_frame = abcAffectSettingsFrame(self, create_pie=False)
         self.abc_frame.grid(row = 3, column = 0, padx = 20, pady = 20)
+        self.abc_frame.grid_remove()
 
         
 
@@ -93,7 +95,16 @@ class WeightsFrame(customtkinter.CTkFrame):
         
         ## Ändert die Werte der Variablen und der SpinBox felder bei Auswahl einer Voreinstellung
         
+        ##TODO: Smootherer Übergang von Ein zu Ausblenden der zusätzlichen Einstellungen
+
         def on_radio_select():
+            if self.v.get() == "Benutzerdefiniert":
+                self.emo_frame.grid()
+                self.abc_frame.grid()
+            else :
+                self.emo_frame.grid_remove()
+                self.abc_frame.grid_remove()
+                
             print(Weights.working_mode)
             Weights.Read_Weights_from_Excel(Weights, self.v.get())
             #self.spinbox_anger.set(Weights.w_emodb_anger)
@@ -108,7 +119,8 @@ class WeightsFrame(customtkinter.CTkFrame):
             self.emo_frame.adjust_weights()
             self.emo_frame.update_chart()
 
-            #self.abc_frame.adjust_weights()
+            self.abc_frame.adjust_weights()
+            self.abc_frame.update_chart()
             
 
             

@@ -32,11 +32,12 @@ class PieChartFrame(customtkinter.CTkFrame):
         # Calculate the starting angle for each segment
         start_angle = 0
         for i, value in enumerate(self.data):
-            # Calculate the extent angle for this segment
-            extent_angle = (value/total) * 360
-            
-            # Draw the segment on the canvas
-            self.canvas.create_arc(10, 10, 90, 90, start=start_angle, extent=extent_angle, fill=self.colors[i], tags="pie")
-            
-            # Update the starting angle for the next segment
-            start_angle += extent_angle
+            if total != 0:
+                # Calculate the extent angle for this segment
+                extent_angle = (value/total) * 360
+                
+                # Draw the segment on the canvas
+                self.canvas.create_arc(10, 10, 90, 90, start=start_angle, extent=extent_angle, fill=self.colors[i], tags="pie")
+                
+                # Update the starting angle for the next segment
+                start_angle += extent_angle

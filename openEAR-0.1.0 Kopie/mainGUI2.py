@@ -24,7 +24,9 @@ from Frames.MainWindowFrames import *
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 
 #Color-Theme Einstellungen aus eigener Datei übernehmen (Custom CI, muss nur in der .json Datei verändert werden)
+#customtkinter.set_default_color_theme('.vscode/retiva_dark-blue.json')
 customtkinter.set_default_color_theme('.vscode/retiva_dark-blue.json')
+
 
 
 #Die eigentliche App
@@ -161,7 +163,7 @@ class App(customtkinter.CTk):
             #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
             #self.textbox.textbox.insert("0.0", "Test")
             T.Main.Updater()
-            self.textbox.textbox.insert("0.0", T.Main.DataTime)
+            self.textbox.textbox.insert("0.0", T.Main.Loi_Score)
             #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
 
