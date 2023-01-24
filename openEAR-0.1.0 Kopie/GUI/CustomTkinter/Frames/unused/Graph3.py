@@ -4,22 +4,26 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from matplotlib.figure import Figure
 from TestDataExtractor2 import *
+import customtkinter
 
 
 
-######################################################################
-#### Balkendiagramm zum vergleich von soll und ist bei AbcAffect #####
-######################################################################
+##################################################################
+#### Balkendiagramm zum vergleich von soll und ist bei EmoDb #####
+###################################################################
 
 
-class BarChart:
+class BarChartEmo(customtkinter.CTkFrame):
     def __init__(self, root):
         self.root = root
-        self.list1 = Main.Abs_MW_Data_AbcAffect_List
-        self.list2 = Main.Soll_Data_AbcAffect_List
+        self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
+        self.list2 = Main.Soll_Data_EmodbEmotion_List
+
+
+    
 
     def create_chart(self):
-        x = [i for i in range(1,7)]
+        x = [i for i in range(1,8)]
         
         # Create a new figure
         fig = Figure(figsize=(5,5))
@@ -31,7 +35,7 @@ class BarChart:
         
         # Set the y-axis range and hide the x-axis
         ax.set_ylim(0, max(max(self.list1), max(self.list2))+1)
-        ax.set_xlim(0,7)
+        ax.set_xlim(-1,8)
         ax.set_xticks([])
         
         # Create a canvas to display the chart
