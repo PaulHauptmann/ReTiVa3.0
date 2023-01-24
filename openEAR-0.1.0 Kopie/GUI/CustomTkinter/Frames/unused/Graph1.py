@@ -11,7 +11,7 @@ import customtkinter
 #########################################################################
 
 
-class Graph(customtkinter.CTkFrame):
+class GraphEmoOverTime(customtkinter.CTkFrame):
     def __init__(self, master):
         self.master = master
         self.lists = [Main.DataEmodbEmotionAnger, Main.DataEmodbEmotionBoredom, Main.DataEmodbEmotionDisgust, Main.DataEmodbEmotionFear, Main.DataEmodbEmotionHappiness, Main.DataEmodbEmotionNeutral, Main.DataEmodbEmotionSadness]

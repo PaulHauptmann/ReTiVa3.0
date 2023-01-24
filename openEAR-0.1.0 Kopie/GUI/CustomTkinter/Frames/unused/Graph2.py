@@ -11,7 +11,7 @@ import customtkinter
 #############################################################################
 
 
-class Graph(customtkinter.CTkFrame):
+class GraphAbcOverTime(customtkinter.CTkFrame):
     def __init__(self, master):
         self.master = master
         self.lists = [Main.DataAbcAffectAgressiv, Main.DataAbcAffectCheerfull,  Main.DataAbcAffectIntoxicated, Main.DataAbcAffectNervous, Main.DataAbcAffectNeutral, Main.DataAbcAffectTired]

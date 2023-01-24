@@ -24,7 +24,9 @@ from Frames.MainWindowFrames import *
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 
 #Color-Theme Einstellungen aus eigener Datei übernehmen (Custom CI, muss nur in der .json Datei verändert werden)
-customtkinter.set_default_color_theme('.vscode/retiva_dark-blue.json')
+#customtkinter.set_default_color_theme('.vscode/retiva_dark-blue.json')
+customtkinter.set_default_color_theme('.vscode/retiva_all-grey.json')
+
 
 
 #Die eigentliche App
@@ -32,7 +34,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        
+        global stop
 
         # Fenster Bildschirmfüllend starten
         self.geometry("%dx%d+0+0" % (self.winfo_screenwidth(), self.winfo_screenheight()))
@@ -68,7 +70,10 @@ class App(customtkinter.CTk):
         #Einstellungen-Button
         self.sidebar_button_settings = customtkinter.CTkButton(self.sidebar_frame, text="Einstellungen", command=self.show_settings_button_command)
         self.sidebar_button_settings.grid(row=4, column=0, padx=20, pady=10)
-        
+
+        #Archiv-Button
+        self.sidebar_button_archive = customtkinter.CTkButton(self.sidebar_frame, text= "Archiv", command=self.show_archive_button_command)
+        self.sidebar_button_archive.grid(row = 5, column = 0, padx = 20, pady = 10)
         
         #Mini-App-Button
         self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text = "Mini-App", command = self.mini_app_button_event)
@@ -90,8 +95,8 @@ class App(customtkinter.CTk):
 
         
         # create textbox
-        self.textbox = ArchiveListFrame(self)
-        self.textbox.grid(row=0, column=1, padx=20, pady=20,rowspan = 3, sticky="nsew")
+        #self.textbox = ArchiveListFrame(self)
+        #self.textbox.grid(row=0, column=1, padx=20, pady=20,rowspan = 3, sticky="nsew")
         #self.settings_frame = SettingsFrame(self)
         #self.settings_frame.grid(row = 0, column = 1, padx = 20, pady = 20, rowspan = 3, sticky = "nsew")
         #self.score_frame = SliderScoreFrame(self)
@@ -101,11 +106,13 @@ class App(customtkinter.CTk):
 
 
         ## Haupt - Frame für Anzeige diverser Funktionen
-        '''
-            self.main_frame = MainContainerFrame(self)
-            self.main_frame.columnconfigure(0, weight=1)
-            self.main_frame.grid(row = 0, column = 1, rowspan = 10, padx = 20, pady = 20, sticky = "nsew")
-        '''
+        
+        self.main_frame = MainContainerFrame(self)
+        self.main_frame.configure(fg_color = "transparent")
+        self.main_frame.rowconfigure(0, weight=1)
+        self.main_frame.columnconfigure(0, weight=1)
+        self.main_frame.grid(row = 0, column = 1, rowspan = 4, padx = 20, pady = 20, sticky = "nsew")
+    
         
         # set default values
         #self.sidebar_button_1.configure(state = "disabled")
@@ -136,6 +143,11 @@ class App(customtkinter.CTk):
     def show_settings_button_command(self):
         self.main_frame.show_settings()
 
+    def show_archive_button_command(self):
+        self.main_frame.show_archive()
+
+    
+
     
     
     
@@ -146,9 +158,9 @@ class App(customtkinter.CTk):
 
     def button_stop_command(self):
         # If the STOP button is pressed then terminate the loop
-        global stop
-        stop = True
+        GlobalStartStop.analysis_loop = False
 
+    '''
     def start_command(self):
         global stop
         stop = False
@@ -161,18 +173,25 @@ class App(customtkinter.CTk):
             #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
             #self.textbox.textbox.insert("0.0", "Test")
             T.Main.Updater()
-            self.textbox.textbox.insert("0.0", T.Main.DataTime)
+            self.textbox.textbox.insert("0.0", T.Main.Loi_Score)
             #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
             time.sleep(0.5)
-
+    '''
             
 
 
     #Thread der Main While True Schleife ausführt
     def button_starter(self):
 
-        t = threading.Thread(target=self.start_command)
+        '''t = threading.Thread(target=self.start_command)
+        t.start()'''
+        GlobalStartStop.analysis_loop = True
+
+        t = threading.Thread(target=self.main_analysis_loop)
         t.start()
+        print("started thread")
+        print(GlobalStartStop.analysis_loop)
+
         
         
 
@@ -181,7 +200,31 @@ class App(customtkinter.CTk):
         window = AdvancedSettingsWindow(self)
 
 
+    '''
+
+
+    def main_analysis_loop(self):
+        while True and GlobalStartStop.analysis_loop == True:
+
+                    #T.Main.Updater()
+
+                    print(Main.DataLength)
+                    
+
+                    time.sleep(0.5)
+
+
+'''t = threading.Thread(target=main_analysis_loop)
+t.start()
+print("started thread")
 '''
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     app = App()

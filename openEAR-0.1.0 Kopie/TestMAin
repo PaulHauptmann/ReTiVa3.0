@@ -6,6 +6,6 @@ from GUI.CustomTkinter.Frames.Graph1 import *
 
 root = tk.Tk()
 root.geometry(f"{1100}x{580}")
-graph = Graph(root)
+graph = GraphAbcOverTime(root)
 graph.create_graph()
 root.mainloop()

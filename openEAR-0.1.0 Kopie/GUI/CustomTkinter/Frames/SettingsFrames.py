@@ -9,25 +9,24 @@ from .Observer import *
 
 
 class emodbSettingsFrame(customtkinter.CTkFrame):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, create_pie:bool, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.title = customtkinter.CTkLabel(self, text= "EmoDB - Auswertung")
         self.title.grid(row = 0, column = 1)
 
 
+        if create_pie : 
+            ## Tortendiagramm erzeugen
+            self.pie = PieChartFrame(self)
 
-        ## Tortendiagramm erzeugen
-        self.pie = PieChartFrame(self)
+            #Farbe der Bereiche nach Reihenfolge unten anpassen
+            self.pie.colors = ["white", "green", "white", "yellow", "red", "green", "blue", "yellow"]
 
-        #Farbe der Bereiche nach Reihenfolge unten anpassen
-        self.pie.colors = ["white", "green", "white", "yellow", "red", "green", "blue", "yellow"]
-
-        self.pie.grid(row = 1, column = 3, padx = 30)
+            self.pie.grid(row = 1, column = 3, padx = 30)
 
 
-        observer = Observer()
-
+        '''observer = Observer()
         Weights.w_emodb_anger.attach(observer)
         Weights.w_emodb_boredom.attach(observer)
         Weights.w_emodb_disgust.attach(observer)
@@ -35,7 +34,7 @@ class emodbSettingsFrame(customtkinter.CTkFrame):
         Weights.w_emodb_happiness.attach(observer)
         Weights.w_emodb_neutral.attach(observer)
         Weights.w_emodb_sadness.attach(observer)
-        
+        '''
 
 
 
@@ -76,30 +75,30 @@ class emodbSettingsFrame(customtkinter.CTkFrame):
     def update_chart(self):
         # Daten an Tortendiagramm übergeben und aktualisieren
         self.pie.data = [Weights.w_emodb_anger,
-                        Weights.w_emodb_boredom,
-                        Weights.w_emodb_disgust,
-                        Weights.w_emodb_fear,
-                        Weights.w_emodb_happiness,
-                        Weights.w_emodb_neutral,
-                        Weights.w_emodb_sadness]
+                         Weights.w_emodb_boredom,
+                         Weights.w_emodb_disgust,
+                         Weights.w_emodb_fear,
+                         Weights.w_emodb_happiness,
+                         Weights.w_emodb_neutral,
+                         Weights.w_emodb_sadness]
 
         self.pie.update_chart()
 
 class abcAffectSettingsFrame(customtkinter.CTkFrame):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, create_pie:bool, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.title = customtkinter.CTkLabel(self, text= "abcAffect - Auswertung")
         self.title.grid(row = 0, column = 1)
 
+        if create_pie:
+            ## Tortendiagramm erzeugen
+            self.pie = PieChartFrame(self)
 
-        ## Tortendiagramm erzeugen
-        self.pie = PieChartFrame(self)
+            #Farbe der Bereiche nach Reihenfolge unten anpassen
+            self.pie.colors = ["white", "green", "white", "yellow", "red", "green", "blue", "yellow"]
 
-        #Farbe der Bereiche nach Reihenfolge unten anpassen
-        self.pie.colors = ["white", "green", "white", "yellow", "red", "green", "blue", "yellow"]
-
-        self.pie.grid(row = 1, column = 3, padx = 30)
+            self.pie.grid(row = 1, column = 3, padx = 30)
 
 
 
@@ -123,23 +122,50 @@ class abcAffectSettingsFrame(customtkinter.CTkFrame):
     
     def adjust_weights(self):
 
-            self.spinbox_abc_agressiv.set(Weights.w_abc_agressiv)
-            self.spinbox_abc_cheerful.set(Weights.w_abc_cheerful)
-            self.spinbox_abc_intoxicated.set(Weights.w_abc_intoxicated)
-            self.spinbox_abc_nervous.set(Weights.w_abc_nervous)
-            self.spinbox_abc_neutral.set(Weights.w_abc_neutral)
-            self.spinbox_abc_tired.set(Weights.w_abc_tired)
+        self.spinbox_abc_agressiv.set(Weights.w_abc_agressiv)
+        self.spinbox_abc_cheerful.set(Weights.w_abc_cheerful)
+        self.spinbox_abc_intoxicated.set(Weights.w_abc_intoxicated)
+        self.spinbox_abc_nervous.set(Weights.w_abc_nervous)
+        self.spinbox_abc_neutral.set(Weights.w_abc_neutral)
+        self.spinbox_abc_tired.set(Weights.w_abc_tired)
 
-            # Daten an Tortendiagramm übergeben und aktualisieren
-            self.pie.data = [Weights.w_abc_agressiv,
-                            Weights.w_abc_cheerful,
-                            Weights.w_abc_intoxicated,
-                            Weights.w_abc_nervous,
-                            Weights.w_abc_neutral,
-                            Weights.w_abc_tired,
-                            ]
+        
+    def update_chart(self):
+        # Daten an Tortendiagramm übergeben und aktualisieren
+        self.pie.data = [Weights.w_abc_agressiv,
+                        Weights.w_abc_cheerful,
+                        Weights.w_abc_intoxicated,
+                        Weights.w_abc_nervous,
+                        Weights.w_abc_neutral,
+                        Weights.w_abc_tired,
+                        ]
 
-            self.pie.update_chart()
+        self.pie.update_chart()
+    
+
+class ScalesSettingsFrame(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.title = customtkinter.CTkLabel(self, text="Auswahl der anzuzeigenden Balken:")
+        self.title.grid(row = 0, column = 0, padx = 10, pady = 10)
+
+        self.var1 = customtkinter.IntVar()
+        self.var2 = customtkinter.IntVar()
+        self.var3 = customtkinter.IntVar()
+        
+
+        self.switch_loi = customtkinter.CTkSwitch(self, text= "Level of Interest", variable=self.var1, command=self.check_state)
+
+        self.switch_arousal = customtkinter.CTkSwitch(self, text= "Arousal", variable=self.var2, command=self.check_state)
+
+        self.switch_valence = customtkinter.CTkSwitch(self, text= "Valence", variable=self.var3, command=self.check_state)
+
+    def check_state(self):
+        if self.var1.get() + self.var2.get() + self.var3.get() > 2:
+            self.var1.set(0)
+
+
 
 
 

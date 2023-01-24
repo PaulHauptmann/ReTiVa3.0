@@ -5,7 +5,7 @@ from PIL import ImageTk, Image
 import customtkinter
 from CustomObjects import *
 import TestDataExtractor2 as T
-
+import json as j
 
 '''class LinearIndicator_old(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -33,26 +33,49 @@ class ScoreIndicator(customtkinter.CTkFrame):
     def __init__(self, master = None):
         super().__init__(master)
 
+        self.columnconfigure(0, weight=1)
+
+        rows = 100
+        for i in range(rows):
+            self.rowconfigure(i, weight=1)
+
+
         # Load the image file as a PhotoImage object
         self.arrow_image = customtkinter.CTkImage(light_image=Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/arrow.png"))
         self.image = customtkinter.CTkImage(light_image=Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Ampel.png"), size=(40, 180))
         #self.img = ImageTk.PhotoImage(Image.open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Ampel.png"))
 
         
+        self.dummy_label = customtkinter.CTkLabel(self, text="", width=20, height=1, fg_color="transparent")
+        self.dummy_label.grid(row = 0, column = 0, sticky = "e")
+        self.dummy_label.lower()
+        
         self.label = customtkinter.CTkLabel(self, image=self.image, text="")
-        self.label.grid(row = 0, column = 1, sticky = "e", padx = 10)
+        self.label.grid(row = 0, column = 1,rowspan = 100, sticky = "e", padx = 10)
 
         self.arrow = customtkinter.CTkLabel(self, image=self.arrow_image, text="", fg_color='transparent')
-        self.arrow.grid(row = 0, column = 0, sticky = "w")
+        self.arrow.grid(row = 0, column = 0, sticky = "e")
         
         #self.arrow_char = customtkinter.CTkLabel(self, text= ">", fg_color="transparent", font=customtkinter.CTkFont(size=20, weight="bold"))
         #self.arrow_char.grid(row = 0, column = 0)
+        self.update_widget(rel_y = 0.8)
 
 
 
-    def set_position(self, pos):
+    def update_widget(self, rel_y):
+        # Get the number of rows in the grid
+        rows = self.grid_size()[1]
+
+        # Calculate the row number to place the label at
+        row_num = int((1-rel_y) * rows)
+
+        # Remove the label from its current position
+        self.arrow.grid_remove()
+
+        # Place the label at the new position
+        self.arrow.grid(row=row_num, column=0)
         
-        pass
+        
 
 
 class HorizontalIndicator(customtkinter.CTkFrame):
@@ -66,7 +89,14 @@ class HorizontalIndicator(customtkinter.CTkFrame):
         self.middle_title = middle
         self.right_title = right
 
-        self.progressbar = customtkinter.CTkProgressBar(self, width=250, height=20, corner_radius=10, orientation="horizontal")
+        #
+
+        # Farbe = Alles Grau
+        ## fg_color="#343434", progress_color="#BFBFBF"
+        
+        #
+
+        self.progressbar = customtkinter.CTkProgressBar(self, width=250, height=20, corner_radius=10, orientation="horizontal",fg_color="#343434", progress_color="#BFBFBF" )
         self.progressbar.grid(row = 0, column = 0, columnspan = 3, padx = 20, pady=(10,0))
 
         self.left_title = customtkinter.CTkLabel(self, text=self.left_title)
@@ -80,7 +110,7 @@ class HorizontalIndicator(customtkinter.CTkFrame):
 
 
 
-## Bweertung der einzelnen Emotionen, -1 ist sad, 1 ist happy und 0 ist neutral
+## Bewertung der einzelnen Emotionen, -1 ist sad, 1 ist happy und 0 ist neutral
 
 
 emoji_dict = {
