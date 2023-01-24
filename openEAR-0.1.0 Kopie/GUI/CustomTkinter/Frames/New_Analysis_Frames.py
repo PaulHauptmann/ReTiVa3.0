@@ -123,10 +123,22 @@ class WeightsFrame(customtkinter.CTkFrame):
             self.abc_frame.update_chart()
             
 
+
+
+
+
+
+
+
+
+
+
+
+
             
-class Observer:
+'''class Observer:
     def update(self, subject):
         print(f'{type(subject).__name__} has been changed')
-        
+     '''   
 
 

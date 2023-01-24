@@ -11,6 +11,8 @@ class Startupsettings(object):
     session_name = ""
     working_mode= ""
 
+class GlobalStartStop():
+    analysis_loop = False
 
 class Emotions(object):
     
@@ -156,12 +158,12 @@ class CustomSpinBox(customtkinter.CTkFrame):
         self.entry.grid(row=1, column=1, columnspan=1, padx=3, pady=3, sticky = "ew")
 
         self.subtract_button = customtkinter.CTkButton(self, text="-", width=height-6, height=height-6,
-                                                       command=lambda:self.subtract_button_callback(title=title))
+                                                       command=lambda:self.subtract_button_callback(title=title), fg_color="#1f538d")
         self.subtract_button.grid(row=1, column=0, padx=(10, 0), pady=3)
 
 
         self.add_button = customtkinter.CTkButton(self, text="+", width=height-6, height=height-6,
-                                                  command=lambda:self.add_button_callback(title=title))
+                                                  command=lambda:self.add_button_callback(title=title), fg_color="#1f538d")
         self.add_button.grid(row=1, column=2, padx=(0, 10), pady=3)
 
         # default value
