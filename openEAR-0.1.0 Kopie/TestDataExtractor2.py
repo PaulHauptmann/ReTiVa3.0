@@ -737,6 +737,58 @@ class Main:
             Main.Soll_Data_AbcAffect_List = [Main.Soll_DataAbcAffectAgressiv, Main.Soll_DataAbcAffectCheerfull, Main.Soll_DataAbcAffectIntoxicated, Main.Soll_DataAbcAffectNervous, Main.Soll_DataAbcAffectNeutral, Main.Soll_DataAbcAffectTired]
         
 
+    def Get_Soll_Werte(
+        Übergabe_Gewichte_DataEmodbEmotionAnger,
+        Übergabe_Gewichte_DataEmodbEmotionBoredom,
+        Übergabe_Gewichte_DataEmodbEmotionDisgust,
+        Übergabe_Gewichte_DataEmodbEmotionFear,
+        Übergabe_Gewichte_DataEmodbEmotionHappiness,
+        Übergabe_Gewichte_DataEmodbEmotionNeutral,
+        Übergabe_Gewichte_DataEmodbEmotionSadness,
+        Übergabe_Gewichte_DataAbcAffectAgressiv,
+        Übergabe_Gewichte_DataAbcAffectCheerfull,
+        Übergabe_Gewichte_DataAbcAffectIntoxicated,
+        Übergabe_Gewichte_DataAbcAffectNervous,
+        Übergabe_Gewichte_DataAbcAffectNeutral,
+        Übergabe_Gewichte_DataAbcAffectTired,
+    ):
+        
+        
+        Übergabe_Soll_DataEmodbEmotionAnger        =         Übergabe_Gewichte_DataEmodbEmotionAnger        /     (Übergabe_Gewichte_DataEmodbEmotionAnger+Übergabe_Gewichte_DataEmodbEmotionBoredom+Übergabe_Gewichte_DataEmodbEmotionDisgust+Übergabe_Gewichte_DataEmodbEmotionFear+Übergabe_Gewichte_DataEmodbEmotionHappiness+Übergabe_Gewichte_DataEmodbEmotionNeutral+Übergabe_Gewichte_DataEmodbEmotionSadness)
+        Übergabe_Soll_DataEmodbEmotionBoredom      =         Übergabe_Gewichte_DataEmodbEmotionBoredom      /     (Übergabe_Gewichte_DataEmodbEmotionAnger+Übergabe_Gewichte_DataEmodbEmotionBoredom+Übergabe_Gewichte_DataEmodbEmotionDisgust+Übergabe_Gewichte_DataEmodbEmotionFear+Übergabe_Gewichte_DataEmodbEmotionHappiness+Übergabe_Gewichte_DataEmodbEmotionNeutral+Übergabe_Gewichte_DataEmodbEmotionSadness)
+        Übergabe_Soll_DataEmodbEmotionDisgust      =         Übergabe_Gewichte_DataEmodbEmotionDisgust      /     (Übergabe_Gewichte_DataEmodbEmotionAnger+Übergabe_Gewichte_DataEmodbEmotionBoredom+Übergabe_Gewichte_DataEmodbEmotionDisgust+Übergabe_Gewichte_DataEmodbEmotionFear+Übergabe_Gewichte_DataEmodbEmotionHappiness+Übergabe_Gewichte_DataEmodbEmotionNeutral+Übergabe_Gewichte_DataEmodbEmotionSadness) 
+        Übergabe_Soll_DataEmodbEmotionFear         =         Übergabe_Gewichte_DataEmodbEmotionFear         /     (Übergabe_Gewichte_DataEmodbEmotionAnger+Übergabe_Gewichte_DataEmodbEmotionBoredom+Übergabe_Gewichte_DataEmodbEmotionDisgust+Übergabe_Gewichte_DataEmodbEmotionFear+Übergabe_Gewichte_DataEmodbEmotionHappiness+Übergabe_Gewichte_DataEmodbEmotionNeutral+Übergabe_Gewichte_DataEmodbEmotionSadness) 
+        Übergabe_Soll_DataEmodbEmotionHappiness    =         Übergabe_Gewichte_DataEmodbEmotionHappiness    /     (Übergabe_Gewichte_DataEmodbEmotionAnger+Übergabe_Gewichte_DataEmodbEmotionBoredom+Übergabe_Gewichte_DataEmodbEmotionDisgust+Übergabe_Gewichte_DataEmodbEmotionFear+Übergabe_Gewichte_DataEmodbEmotionHappiness+Übergabe_Gewichte_DataEmodbEmotionNeutral+Übergabe_Gewichte_DataEmodbEmotionSadness) 
+        Übergabe_Soll_DataEmodbEmotionNeutral      =         Übergabe_Gewichte_DataEmodbEmotionNeutral      /     (Übergabe_Gewichte_DataEmodbEmotionAnger+Übergabe_Gewichte_DataEmodbEmotionBoredom+Übergabe_Gewichte_DataEmodbEmotionDisgust+Übergabe_Gewichte_DataEmodbEmotionFear+Übergabe_Gewichte_DataEmodbEmotionHappiness+Übergabe_Gewichte_DataEmodbEmotionNeutral+Übergabe_Gewichte_DataEmodbEmotionSadness) 
+        Übergabe_Soll_DataEmodbEmotionSadness      =         Übergabe_Gewichte_DataEmodbEmotionSadness      /     (Übergabe_Gewichte_DataEmodbEmotionAnger+Übergabe_Gewichte_DataEmodbEmotionBoredom+Übergabe_Gewichte_DataEmodbEmotionDisgust+Übergabe_Gewichte_DataEmodbEmotionFear+Übergabe_Gewichte_DataEmodbEmotionHappiness+Übergabe_Gewichte_DataEmodbEmotionNeutral+Übergabe_Gewichte_DataEmodbEmotionSadness) 
+        
+        Übergabe_Soll_DataAbcAffectAgressiv        =         Übergabe_Gewichte_DataAbcAffectAgressiv        /     (Übergabe_Gewichte_DataAbcAffectAgressiv+Übergabe_Gewichte_DataAbcAffectCheerfull+Übergabe_Gewichte_DataAbcAffectIntoxicated+Übergabe_Gewichte_DataAbcAffectNervous+Übergabe_Gewichte_DataAbcAffectNeutral+Übergabe_Gewichte_DataAbcAffectTired)
+        Übergabe_Soll_DataAbcAffectCheerfull       =         Übergabe_Gewichte_DataAbcAffectCheerfull       /     (Übergabe_Gewichte_DataAbcAffectAgressiv+Übergabe_Gewichte_DataAbcAffectCheerfull+Übergabe_Gewichte_DataAbcAffectIntoxicated+Übergabe_Gewichte_DataAbcAffectNervous+Übergabe_Gewichte_DataAbcAffectNeutral+Übergabe_Gewichte_DataAbcAffectTired)
+        Übergabe_Soll_DataAbcAffectIntoxicated     =         Übergabe_Gewichte_DataAbcAffectIntoxicated     /     (Übergabe_Gewichte_DataAbcAffectAgressiv+Übergabe_Gewichte_DataAbcAffectCheerfull+Übergabe_Gewichte_DataAbcAffectIntoxicated+Übergabe_Gewichte_DataAbcAffectNervous+Übergabe_Gewichte_DataAbcAffectNeutral+Übergabe_Gewichte_DataAbcAffectTired)
+        Übergabe_Soll_DataAbcAffectNervous         =         Übergabe_Gewichte_DataAbcAffectNervous         /     (Übergabe_Gewichte_DataAbcAffectAgressiv+Übergabe_Gewichte_DataAbcAffectCheerfull+Übergabe_Gewichte_DataAbcAffectIntoxicated+Übergabe_Gewichte_DataAbcAffectNervous+Übergabe_Gewichte_DataAbcAffectNeutral+Übergabe_Gewichte_DataAbcAffectTired)
+        Übergabe_Soll_DataAbcAffectNeutral         =         Übergabe_Gewichte_DataAbcAffectNeutral         /     (Übergabe_Gewichte_DataAbcAffectAgressiv+Übergabe_Gewichte_DataAbcAffectCheerfull+Übergabe_Gewichte_DataAbcAffectIntoxicated+Übergabe_Gewichte_DataAbcAffectNervous+Übergabe_Gewichte_DataAbcAffectNeutral+Übergabe_Gewichte_DataAbcAffectTired)
+        Übergabe_Soll_DataAbcAffectTired           =         Übergabe_Gewichte_DataAbcAffectTired           /     (Übergabe_Gewichte_DataAbcAffectAgressiv+Übergabe_Gewichte_DataAbcAffectCheerfull+Übergabe_Gewichte_DataAbcAffectIntoxicated+Übergabe_Gewichte_DataAbcAffectNervous+Übergabe_Gewichte_DataAbcAffectNeutral+Übergabe_Gewichte_DataAbcAffectTired)
+        
+        
+        
+        
+        Main.Set_Soll_Werte(
+            Übergabe_Soll_DataEmodbEmotionAnger,
+            Übergabe_Soll_DataEmodbEmotionBoredom,
+            Übergabe_Soll_DataEmodbEmotionDisgust,
+            Übergabe_Soll_DataEmodbEmotionFear,
+            Übergabe_Soll_DataEmodbEmotionHappiness,
+            Übergabe_Soll_DataEmodbEmotionNeutral,
+            Übergabe_Soll_DataEmodbEmotionSadness,
+            Übergabe_Soll_DataAbcAffectAgressiv,
+            Übergabe_Soll_DataAbcAffectCheerfull,
+            Übergabe_Soll_DataAbcAffectIntoxicated,
+            Übergabe_Soll_DataAbcAffectNervous,
+            Übergabe_Soll_DataAbcAffectNeutral,
+            Übergabe_Soll_DataAbcAffectTired
+        )
+
+
     def Updater():
 
 
@@ -756,9 +808,9 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-Main.Set_Session_Name(None)
+"""Main.Set_Session_Name(None)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
-Main.Set_Soll_Werte(*floats)
+Main.Set_Soll_Werte(*floats)"""
 print(Main.Excel_Filename)
 
     
