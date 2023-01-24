@@ -346,6 +346,7 @@ class Main:
         else:
             Main.DataLength.append(random.uniform(1,2))
 
+
     def zusammenführer():
         if len(Main.DataTime) != len(Main.DataLength):
             time.sleep(0.5)
