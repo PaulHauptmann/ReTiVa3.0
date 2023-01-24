@@ -143,6 +143,27 @@ class abcAffectSettingsFrame(customtkinter.CTkFrame):
         self.pie.update_chart()
     
 
+class ScalesSettingsFrame(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.title = customtkinter.CTkLabel(self, text="Auswahl der anzuzeigenden Balken:")
+        self.title.grid(row = 0, column = 0, padx = 10, pady = 10)
+
+        self.var1 = customtkinter.IntVar()
+        self.var2 = customtkinter.IntVar()
+        self.var3 = customtkinter.IntVar()
+        
+
+        self.switch_loi = customtkinter.CTkSwitch(self, text= "Level of Interest", variable=self.var1, command=self.check_state)
+
+        self.switch_arousal = customtkinter.CTkSwitch(self, text= "Arousal", variable=self.var2, command=self.check_state)
+
+        self.switch_valence = customtkinter.CTkSwitch(self, text= "Valence", variable=self.var3, command=self.check_state)
+
+    def check_state(self):
+        if self.var1.get() + self.var2.get() + self.var3.get() > 2:
+            self.var1.set(0)
 
 
 
