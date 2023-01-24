@@ -119,20 +119,33 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     def main_analysis_loop(self):
         while True and GlobalStartStop.analysis_loop == True:
 
-                    Main.Updater()
+            Main.Updater()
 
-                    #print(Main.DataLength)
+            #print(Main.DataLength)
 
-                    total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
-                    print("Score Insgesamt" + str(total_score))
-                    
-                    # Haupt-Score Update Funktion
-                    self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
+            total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
+            print("Score Insgesamt" + str(total_score))
+            
+            # Haupt-Score Update Funktion
+            self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
+            
+            #Loi-Score Update Funktion
+            self.mini_app_window.additional_info_frame.loi_indicator.update_widget(Main.Loi_Score)
 
-                    #self.mini_app_window.additional_info_frame.loi_indicator.
-                    
+            #Arousal-Score Update Funktion
+            self.mini_app_window.additional_info_frame.arousal_indicator.update_widget(Main.DataArousal[-1])
 
-                    time.sleep(1)
+            #Valence-Score Update Funktion
+            self.mini_app_window.additional_info_frame.valence_indicator.update_widget(Main.DataValence[-1])
+
+            #Redeanteil-Update Funktion
+            self.mini_app_window.additional_info_frame.redeanteil.update_widget(Main.DataSpeakRatio[-1])
+
+
+
+            
+
+            time.sleep(1)
 
 
 
@@ -146,11 +159,12 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
         #Fenstergröße festlegen
         window_size_x = 140
-        window_size_y = 240
+        window_size_y = 300
+
 
         #Legt Fenster in untere Rechte Bildschirmecke und verhindert das manuelle Größe verändern
         self.geometry("{}x{}+{}+{}".format(window_size_x, window_size_y, self.winfo_screenwidth() - window_size_x, self.winfo_screenheight() - window_size_y))
-        self.resizable(0,0)
+        #self.resizable(0,0)
 
         self.title("Live-Analyse")
       
@@ -204,7 +218,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         #self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
 
         self.linear_score_frame = ScoreIndicatorFrame(self)
-        self.linear_score_frame.grid(row = 0, column = 2, padx = 10, pady = 10, sticky = "n")
+        self.linear_score_frame.grid(row = 0, column = 2, padx = 10, pady = 10, rowspan = 2, sticky = "ns")
         
         '''
         #Drag-Handle zum verschieben des Fensters
