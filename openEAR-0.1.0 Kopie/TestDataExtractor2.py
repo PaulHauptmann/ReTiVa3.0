@@ -763,9 +763,10 @@ class Main:
         )
 
 
-    def get_highest_EmoDb(a, b, c, d, e, f, g):
+    def get_highest_EmoDb():
+        
         # Create a dictionary to store the variable names and their values
-        variables = {'Anger': a, 'Boredom': b, 'Disgust': c, 'Fear': d, 'Happiness': e, 'Neutral': f, 'Sadness': g}
+        variables = {'Anger': Main.DataEmodbEmotionAnger[-1], 'Boredom': Main.DataEmodbEmotionBoredom[-1], 'Disgust': Main.DataEmodbEmotionDisgust[-1], 'Fear': Main.DataEmodbEmotionFear[-1], 'Happiness': Main.DataEmodbEmotionHappiness[-1], 'Neutral': Main.DataEmodbEmotionNeutral[-1], 'Sadness': Main.DataEmodbEmotionSadness[-1]}
         
         # Find the highest value and the corresponding variable name
         highest_value = max(variables.values())
@@ -775,16 +776,16 @@ class Main:
         return highest_name
 
 
-    def get_highest_AbcAffect(a, b, c, d, e, f):
-    # Create a dictionary to store the variable names and their values
-    variables = {'Aggressiv': a, 'Cheerful': b, 'Intoxicated': c, 'Nervous': d, 'Neutral': e, 'Tired': f}
-    
-    # Find the highest value and the corresponding variable name
-    highest_value = max(variables.values())
-    highest_name = [name for name, value in variables.items() if value == highest_value][0]
-    
-    # Return the variable name as a string
-    return highest_name
+    def get_highest_AbcAffect():
+        # Create a dictionary to store the variable names and their values
+        variables = {'Aggressiv': Main.DataAbcAffectAgressiv[-1], 'Cheerful': Main.DataAbcAffectCheerfull[-1], 'Intoxicated': Main.DataAbcAffectIntoxicated[-1], 'Nervous': Main.DataAbcAffectNervous[-1], 'Neutral': Main.DataAbcAffectNervous[-1], 'Tired': Main.DataAbcAffectTired[-1]}
+        
+        # Find the highest value and the corresponding variable name
+        highest_value = max(variables.values())
+        highest_name = [name for name, value in variables.items() if value == highest_value][0]
+        
+        # Return the variable name as a string
+        return highest_name
 
 
     def Updater():
