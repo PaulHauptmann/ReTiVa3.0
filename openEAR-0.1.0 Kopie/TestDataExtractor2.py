@@ -80,28 +80,28 @@ class Main:
     #listen Initialisierung
     DataDateTime = []
     DataSessionName = []
-    DataSpeakRatio = [0]
-    DataSpeakTime = [0]
-    DataLength = [0]
-    DataTime = [0]
-    DataArousal = [0]
-    DataValence = [0]
-    DataEmodbEmotionAnger = [0]
-    DataEmodbEmotionBoredom = [0]
-    DataEmodbEmotionDisgust = [0]
-    DataEmodbEmotionFear = [0]
-    DataEmodbEmotionHappiness = [0]
-    DataEmodbEmotionNeutral = [0]
-    DataEmodbEmotionSadness = [0]
-    DataAbcAffectAgressiv = [0]
-    DataAbcAffectCheerfull = [0]
-    DataAbcAffectIntoxicated = [0]
-    DataAbcAffectNervous = [0]
-    DataAbcAffectNeutral = [0]
-    DataAbcAffectTired = [0]
-    DataLoi1 = [0]
-    DataLoi2 = [0]
-    DataLoi3 = [0]
+    DataSpeakRatio = [0.0]
+    DataSpeakTime = [0.0]
+    DataLength = [0.0]
+    DataTime = [0.0]
+    DataArousal = [0.0]
+    DataValence = [0.0]
+    DataEmodbEmotionAnger = [0.0]
+    DataEmodbEmotionBoredom = [0.0]
+    DataEmodbEmotionDisgust = [0.0]
+    DataEmodbEmotionFear = [0.0]
+    DataEmodbEmotionHappiness = [0.0]
+    DataEmodbEmotionNeutral = [0.0]
+    DataEmodbEmotionSadness = [0.0]
+    DataAbcAffectAgressiv = [0.0]
+    DataAbcAffectCheerfull = [0.0]
+    DataAbcAffectIntoxicated = [0.0]
+    DataAbcAffectNervous = [0.0]
+    DataAbcAffectNeutral = [0.0]
+    DataAbcAffectTired = [0.0]
+    DataLoi1 = [0.0]
+    DataLoi2 = [0.0]
+    DataLoi3 = [0.0]
     
 
     
@@ -195,7 +195,8 @@ class Main:
     Abs_MW_Data_Loi1: float
     Abs_MW_Data_Loi2: float
     Abs_MW_Data_Loi3: float
-    
+    Abs_MW_Data_EmodbEmotion_List = []
+    Abs_MW_Data_AbcAffect_List = []
     
     
     Soll_DataEmodbEmotionAnger: float
@@ -211,6 +212,10 @@ class Main:
     Soll_DataAbcAffectNervous: float
     Soll_DataAbcAffectNeutral: float
     Soll_DataAbcAffectTired: float
+    Soll_Data_EmodbEmotion_List = []
+    Soll_Data_AbcAffect_List = []
+    
+    
     
     
     Loi_Score: float
@@ -721,14 +726,18 @@ class Main:
         Main.Abs_MW_Data_Loi1                  = sum(Main.Time_Norm_Data_Loi1)                          /          sum(Main.DataLength)
         Main.Abs_MW_Data_Loi2                  = sum(Main.Time_Norm_Data_Loi2)                          /          sum(Main.DataLength)
         Main.Abs_MW_Data_Loi3                  = sum(Main.Time_Norm_Data_Loi3)                          /          sum(Main.DataLength)
-  
+        Main.Abs_MW_Data_EmodbEmotion_List = [Main.Abs_MW_Data_EmodbEmotionAnger, Main.Abs_MW_Data_EmodbEmotionBoredom, Main.Abs_MW_Data_EmodbEmotionDisgust, Main.Abs_MW_Data_EmodbEmotionFear, Main.Abs_MW_Data_EmodbEmotionHappiness, Main.Abs_MW_Data_EmodbEmotionNeutral, Main.Abs_MW_Data_EmodbEmotionSadness]
+        Main.Abs_MW_Data_AbcAffect_List = [Main.Abs_MW_Data_AbcAffectAgressiv, Main.Abs_MW_Data_AbcAffectCheerfull, Main.Abs_MW_Data_AbcAffectIntoxicated, Main.Abs_MW_Data_AbcAffectNervous, Main.Abs_MW_Data_AbcAffectNeutral, Main.Abs_MW_Data_AbcAffectTired]
+        Main.Soll_Data_EmodbEmotion_List = [Main.Soll_DataEmodbEmotionAnger, Main.Soll_DataEmodbEmotionBoredom, Main.Soll_DataEmodbEmotionDisgust, Main.Soll_DataEmodbEmotionFear, Main.Soll_DataEmodbEmotionHappiness, Main.Soll_DataEmodbEmotionNeutral, Main.Soll_DataEmodbEmotionSadness]
+        Main.Soll_Data_AbcAffect_List = [Main.Soll_DataAbcAffectAgressiv, Main.Soll_DataAbcAffectCheerfull, Main.Soll_DataAbcAffectIntoxicated, Main.Soll_DataAbcAffectNervous, Main.Soll_DataAbcAffectNeutral, Main.Soll_DataAbcAffectTired]
+        
 
     def Updater():
 
 
         Main.read_log_file(Main.file_path)
         Main.get_length_of_last_added_wav(Main.directory_path)
-        Main.zusammenführer()
+        #Main.zusammenführer()
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
         Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
@@ -740,11 +749,12 @@ class Main:
         Main.Printer()
 
 
-"""Main.delete_old_wav_files(Main.directory_path)
+"""Main.delete_old_wav_files(Main.directory_path)"""
+Main.DataLength = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
-
-
+Main.Updater()
+"""
 while True:
     
     Main.Updater()
