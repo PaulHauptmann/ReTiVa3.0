@@ -43,11 +43,6 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 
-
-
-
-
-
 #############################################################################
 #### Graph mit zeitlichem Verlauf der einzelnen Emotionen von AbcAffect #####
 #############################################################################
@@ -82,13 +77,9 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
 
 
 
-
-
 ##################################################################
 #### Balkendiagramm zum vergleich von soll und ist bei EmoDb #####
 ###################################################################
-
-
 
 
 class BarChartEmo(customtkinter.CTkFrame):
@@ -125,9 +116,6 @@ class BarChartEmo(customtkinter.CTkFrame):
         canvas = FigureCanvasTkAgg(fig, master=self.root)
         canvas.draw()
         canvas.get_tk_widget().pack()
-
-
-
 
 
 
