@@ -168,7 +168,7 @@ class DonutEmo(customtkinter.CTkFrame):
         if len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
             self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
         else:
-            self.list1 = [1,1,1,1,1,1,1,1,1]
+            self.list1 = [1,1,1,1,1,1,1]
         
         self.labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
 
