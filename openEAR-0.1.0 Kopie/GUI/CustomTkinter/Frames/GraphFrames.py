@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from TestDataExtractor2 import *
 import customtkinter
+import numpy as np
 
 
 
@@ -42,11 +43,6 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 
-
-
-
-
-
 #############################################################################
 #### Graph mit zeitlichem Verlauf der einzelnen Emotionen von AbcAffect #####
 #############################################################################
@@ -81,8 +77,6 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
 
 
 
-
-
 ##################################################################
 #### Balkendiagramm zum vergleich von soll und ist bei EmoDb #####
 ###################################################################
@@ -91,8 +85,13 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
 class BarChartEmo(customtkinter.CTkFrame):
     def __init__(self, root):
         self.root = root
-        self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
-        self.list2 = Main.Soll_Data_EmodbEmotion_List
+        if len(Main.Soll_Data_EmodbEmotion_List) == 7 and len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
+            self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
+            self.list2 = Main.Soll_Data_EmodbEmotion_List
+        else:
+            self.list1 = [0.14,0.28,0.42,0.56,0.70,0.85,1]
+            self.list2 = [0.14,0.28,0.42,0.56,0.70,0.85,1]
+
 
 
     
@@ -109,17 +108,14 @@ class BarChartEmo(customtkinter.CTkFrame):
         ax.bar([i+0.4 for i in x], self.list2, width=0.4)
         
         # Set the y-axis range and hide the x-axis
-        ax.set_ylim(0, max(max(self.list1), max(self.list2))+1)
-        ax.set_xlim(-1,8)
+        ax.set_ylim(0, max(max(self.list1), max(self.list2)))
+        ax.set_xlim(0,8)
         ax.set_xticks([])
         
         # Create a canvas to display the chart
         canvas = FigureCanvasTkAgg(fig, master=self.root)
         canvas.draw()
         canvas.get_tk_widget().pack()
-
-
-
 
 
 
@@ -131,8 +127,12 @@ class BarChartEmo(customtkinter.CTkFrame):
 class BarChartAbc(customtkinter.CTkFrame):
     def __init__(self, root):
         self.root = root
-        self.list1 = Main.Abs_MW_Data_AbcAffect_List
-        self.list2 = Main.Soll_Data_AbcAffect_List
+        if len(Main.Soll_Data_AbcAffect_List) == 6 and len(Main.Abs_MW_Data_AbcAffect_List) == 6:
+            self.list1 = Main.Abs_MW_Data_AbcAffect_List
+            self.list2 = Main.Soll_Data_AbcAffect_List
+        else:
+            self.list1 = [0.17,0.34,0.51,0.68,0.85,1]
+            self.list2 = [0.17,0.34,0.51,0.68,0.85,1]
 
     def create_chart(self):
         x = [i for i in range(1,7)]
@@ -146,7 +146,7 @@ class BarChartAbc(customtkinter.CTkFrame):
         ax.bar([i+0.4 for i in x], self.list2, width=0.4)
         
         # Set the y-axis range and hide the x-axis
-        ax.set_ylim(0, max(max(self.list1), max(self.list2))+1)
+        ax.set_ylim(0, max(max(self.list1), max(self.list2)))
         ax.set_xlim(0,7)
         ax.set_xticks([])
         
@@ -154,3 +154,55 @@ class BarChartAbc(customtkinter.CTkFrame):
         canvas = FigureCanvasTkAgg(fig, master=self.root)
         canvas.draw()
         canvas.get_tk_widget().pack()
+        
+        
+        
+######################################################################
+####               DonutDiagramm mit EmoDbEmotion                #####
+######################################################################
+        
+        
+class DonutEmo(customtkinter.CTkFrame):
+    def __init__(self, root):
+        self.root = root
+        if len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
+            self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
+        else:
+            self.list1 = [1,1,1,1,1,1,1,1,1]
+        
+        self.labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
+
+    def create_chart(self):
+        # Create a new figure
+        fig = Figure(figsize=(6,5))
+        ax = fig.add_subplot(111)
+
+        # Add the donut chart to the figure
+        wedges, texts = ax.pie(self.list1, radius=1.0, wedgeprops=dict(width=0.5, edgecolor='w'))
+        ax.pie([1], radius=0.5, wedgeprops=dict(width=0.5, edgecolor='w', facecolor='white'))
+
+        # Add labels and lines to the segments
+        bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
+        kw = dict(arrowprops=dict(arrowstyle="-"), bbox=bbox_props, zorder=0, va="center")
+
+        for i, p in enumerate(wedges):
+            ang = (p.theta2 - p.theta1)/2. + p.theta1
+            y = np.sin(np.deg2rad(ang))
+            x = np.cos(np.deg2rad(ang))
+            horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+            connectionstyle = "angle,angleA=0,angleB={}".format(ang)
+            kw["arrowprops"].update({"connectionstyle": connectionstyle})
+            ax.annotate(self.labels[i], xy=(x, y), xytext=(1.2*np.sign(x), 1.3*y),
+                        horizontalalignment=horizontalalignment, **kw)
+
+        # Create a canvas to display the chart
+        canvas = FigureCanvasTkAgg(fig, master=self.root)
+        canvas.draw()
+        canvas.get_tk_widget().pack()
+
+
+
+
+
+
+    

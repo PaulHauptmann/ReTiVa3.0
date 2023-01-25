@@ -811,5 +811,13 @@ Main.delete_old_wav_files(Main.directory_path)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)"""
 print(Main.Excel_Filename)
-
+"""Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
+Main.Abs_MW_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
+Main.Abs_MW_Data_EmodbEmotionAnger=0.06743775
+Main.Abs_MW_Data_EmodbEmotionBoredom=0.29886375
+Main.Abs_MW_Data_EmodbEmotionDisgust=0.06159575
+Main.Abs_MW_Data_EmodbEmotionFear=0.30633225
+Main.Abs_MW_Data_EmodbEmotionHappiness=0.09225925
+Main.Abs_MW_Data_EmodbEmotionNeutral=0.1257095
+Main.Abs_MW_Data_EmodbEmotionSadness=0.04780175"""
     
