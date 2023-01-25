@@ -99,8 +99,8 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
         
 
         self.graph_emo_over_time = GraphEmoOverTime(self)
+        self.graph_emo_over_time.grid(row = 1, column = 0, padx = 20, pady = 20)
         self.graph_emo_over_time.create_graph()
-        self.graph_emo_over_time.grid(row = 1, column = 0)
 
         #Works
         self.donut = DonutEmo(self)
