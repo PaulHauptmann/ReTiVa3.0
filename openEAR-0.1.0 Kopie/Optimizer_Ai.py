@@ -36,7 +36,7 @@ classifier = tf.estimator.DNNClassifier(
 def train_function(inputs, outputs, batch_size):
     dataset = tf.data.Dataset.from_tensor_slices((dict(inputs), outputs))
     dataset = dataset.shuffle(1000).repeat().batch(batch_size)
-    return dataset.make_one_shot_iterator().get_next()
+    return dataset.tf.compat.v1.data.make_one_shot_iterator().get_next()
 
 # Train the Model.
 classifier.train(
