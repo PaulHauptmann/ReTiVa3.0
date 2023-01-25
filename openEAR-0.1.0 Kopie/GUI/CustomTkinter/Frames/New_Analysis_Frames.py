@@ -87,6 +87,7 @@ class WeightsFrame(customtkinter.CTkFrame):
         self.workingmode_custom = customtkinter.CTkRadioButton(self.radio_frame, text= "Benutzerdefiniert", variable=self.v, value="Benutzerdefiniert")
         self.workingmode_custom.grid(row = 0, column = 2, padx=10, pady = 5)
 
+        
 
         self.v.trace("w", lambda *args: on_radio_select())
 

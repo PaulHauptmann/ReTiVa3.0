@@ -2,6 +2,7 @@ import tkinter as tk
 import customtkinter
 from Frames.Mini_App_Frames import *
 from Frames.New_Analysis_Frames import *
+from Frames.MainWindowFrames import *
 from CustomObjects import *
 from TestDataExtractor2 import *
 from Frames.SettingsFrames import *
@@ -9,13 +10,15 @@ from MiniAppObjects import *
 import threading
 import random
 
-#TODO: Knöpfe wieder sichtbar machen
+
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.title("Neue Analyse")
+
+        
 
         '''
         #Erweiterte Einstellungen-Button
@@ -43,8 +46,10 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         #Working-Mode Frame
         self.working_mode_selector = WeightsFrame(self)
         self.working_mode_selector.grid(row = 1, column = 1, padx = 20, pady = 10)
-
+        
         self.working_mode_selector.v.trace("w", lambda *args: self.on_radio_select)
+
+        
 
 
     
@@ -95,10 +100,20 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
         #print(Weights.)
 
+        #Big Analysis Frame starten
+        self.big_analysis_frame = BigLiveAnalysisFrame(self.master)
+        self.big_analysis_frame.grid(row = 0, column = 1, rowspan = 4,padx = 20, pady = 20, sticky = "nsew")
+        
+        
+
+        
+
+
+        # Mini App Window starten und Main Analysis Loop fahren
+        
         self.mini_app_window = MiniAppWindow(self.master)
-
+        
         GlobalStartStop.analysis_loop = True
-
         t = threading.Thread(target=self.main_analysis_loop)
         t.start()
         print("started thread")
@@ -116,21 +131,36 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         self.destroy()
 
 
+    ##################################################
+    ##################################################
+
+    ## Where the Magic Happens! Main Schleife       ##
+
+    ##################################################
+    ##################################################
+
+
+
     def main_analysis_loop(self):
         while True and GlobalStartStop.analysis_loop == True:
 
+
+
+            #Startet die Datenextraktion und alle zugehörigen Funktionen
             Main.Updater()
 
-            #print(Main.DataLength)
 
+            ## Mini App Window ##
+
+            #Haupt-Score Update Funktion
             total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
             print("Score Insgesamt" + str(total_score))
-
-            #Hauptemotion EmoDB + Smiley Update Funktion
-            self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
-            
-            # Haupt-Score Update Funktion
             self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
+            
+            #Hauptemotion EmoDB + Smiley Update Funktion
+            #self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
+            self.mini_app_window.additional_info_frame.emotion_label.set("Happiness")
+            #EmotionwithEmoji.set(self, "Happiness")
             
             #Loi-Score Update Funktion
             self.mini_app_window.additional_info_frame.loi_indicator.update_widget(Main.Loi_Score)
@@ -144,6 +174,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             #Redeanteil-Update Funktion
             self.mini_app_window.additional_info_frame.redeanteil.update_widget(Main.DataSpeakRatio[-1])
 
+            
 
 
             
@@ -207,11 +238,11 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         #Toolbar-Frame
 
         self.toolbar_frame = customtkinter.CTkFrame(self, fg_color="transparent")
-        self.toolbar_frame.grid(row = 2, column = 2, padx = 5, pady = 5, sticky = "sew")
+        self.toolbar_frame.grid(row = 2, column = 2, padx = 5, pady = (0,5), sticky = "sew")
 
         self.toolbar_frame.columnconfigure((0,1), weight=1)
 
-        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="STOP  ▢", width= 10, command=self.quit_analysis_button_event, font=customtkinter.CTkFont(size=18, weight="bold"))
+        self.quit_button = customtkinter.CTkButton(self.toolbar_frame, text="STOP  ▢", width= 10, command=self.quit_analysis_button_event, font=customtkinter.CTkFont(size=18, weight="bold"), hover_color="red")
         self.quit_button.grid(row =0, column = 1, padx = 5)
 
         
@@ -221,7 +252,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         #self.score_frame.grid(row = 0, column = 2,padx = 5, sticky = "n")
 
         self.linear_score_frame = ScoreIndicatorFrame(self)
-        self.linear_score_frame.grid(row = 0, column = 2, padx = 10, pady = 10, rowspan = 2, sticky = "ns")
+        self.linear_score_frame.grid(row = 0, column = 2, padx = 10, pady = (10,0), sticky = "ns")
         
         '''
         #Drag-Handle zum verschieben des Fensters
