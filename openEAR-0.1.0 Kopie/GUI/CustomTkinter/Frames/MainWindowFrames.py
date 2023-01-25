@@ -2,7 +2,10 @@ import customtkinter
 import TestDataExtractor2 as T
 from Frames.Archive_Frames import *
 from Frames.New_Analysis_Frames import *
+from Frames.Mini_App_Frames import *
 from Frames.SettingsFrames import *
+from Frames.GraphFrames import *
+
 
 class MainContainerFrame(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
@@ -26,6 +29,10 @@ class MainContainerFrame(customtkinter.CTkFrame):
         self.settings = SettingsFrame(self)
         self.settings.grid(row = 0, column = 0, sticky = "nsew")
 
+        # Hier raus, wird in Windows.py --> NewAnalysisWindow gemacht
+        '''self.big_analysis = BigLiveAnalysisFrame(self)
+        self.big_analysis.grid(row = 0, column = 0, sticky = "nsew")
+'''
 
         self.hello.lift()
 
@@ -53,6 +60,10 @@ class HelloFrame(customtkinter.CTkFrame):
         self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
 
+        '''self.graph = GraphEmoOverTime(self)
+        self.graph.grid(row = 1, column = 0, pady = 20)
+'''
+
 
 class SettingsFrame(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
@@ -64,6 +75,30 @@ class SettingsFrame(customtkinter.CTkFrame):
         
         self.workingmode_selector = WeightsFrame(self)
         self.workingmode_selector.grid(row = 0, column = 0)
+
+
+
+
+class BigLiveAnalysisFrame(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.big_score = ScoreIndicatorFrame(self)
+        self.big_score.grid(row = 0, column = 1)
+
+        self.additonal_scores = AdditionalInfoFrame(self)
+        self.additonal_scores.grid(row = 1, column = 1)
+
+        #self.graph_soll_vs_ist = BarChartEmo(self)
+        #self.graph_soll_vs_ist.grid(row = 0, column = 0)
+        #self.graph_soll_vs_ist.create_chart()
+
+        #self.graph_emo_over_time = GraphEmoOverTime(self)
+        #self.graph_emo_over_time.create_graph()
+        #self.graph_emo_over_time.grid(row = 1, column = 0)
+
+
+
         
 
 
