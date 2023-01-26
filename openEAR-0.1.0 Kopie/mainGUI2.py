@@ -118,8 +118,13 @@ class App(customtkinter.CTk):
         #self.sidebar_button_1.configure(state = "disabled")
         self.appearance_mode_optionemenu.set("System")
         self.scaling_optionemenu.set("100%")
-        
-
+    
+    '''test = MainContainerFrame()
+    test.configure(fg_color = "transparent")
+    test.rowconfigure(0, weight=1)
+    test.columnconfigure(0, weight=1)
+    test.grid(row = 0, column = 1, rowspan = 4, padx = 20, pady = 20, sticky = "nsew")
+'''
 
 
     def open_input_dialog_event(self):
@@ -141,10 +146,10 @@ class App(customtkinter.CTk):
         self.mini_app_window = MiniAppWindow(self)
 
     def show_settings_button_command(self):
-        self.main_frame.show_settings()
+        MainContainerFrame.show_settings()
 
     def show_archive_button_command(self):
-        self.main_frame.show_archive()
+        MainContainerFrame.show_archive()
 
     
 
