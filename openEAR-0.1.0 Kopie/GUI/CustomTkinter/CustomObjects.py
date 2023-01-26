@@ -21,7 +21,7 @@ class Startupsettings(object):
     show_dual_emotions = False
 
     #Welches Analyse Modell soll für Graphen in Big Window genommen werden, 0 = EmoDB
-    show_abc_graphs = False
+    show_abc_graphs = "AbcAffect"
 
 
 class GlobalStartStop():

@@ -65,6 +65,14 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     
     def on_ok(self):
         
+        try:
+            subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+        except FileNotFoundError:
+            pass
+
+
+
+
         #Audio-Gerät speichern
         Startupsettings.selected_audio_device = self.audio_device_list_selector.v.get()
         print("Selected Device: ", Startupsettings.selected_audio_device)

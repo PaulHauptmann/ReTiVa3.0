@@ -88,8 +88,8 @@ class HelloFrame(customtkinter.CTkFrame):
         self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
 
-        self.test = BarChartAbc(self)
-        self.test.create_chart()
+        self.test = GraphAbcOverTime(self)
+        self.test.create_graph()
         self.test.grid(row = 1, column = 0)
 
         
@@ -154,7 +154,7 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
         self.additonal_scores = AdditionalInfoFrame(self)
         self.additonal_scores.grid(row = 1, column = 1, columnspan = 2, pady = 20)
 
-        if Startupsettings.show_abc_graphs:
+        if Startupsettings.show_abc_graphs == "AbcAffect":
             self.graph_abc= BarChartAbc(self)
             self.graph_abc.create_chart()
             self.graph_abc.grid(row = 0, column = 0)
@@ -165,7 +165,7 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
 
             print(Startupsettings.show_abc_graphs, "if")
 
-        else:
+        elif Startupsettings.show_abc_graphs == "EmoDB":
             self.graph_emo = BarChartEmo(self)
             self.graph_emo.create_chart()
             self.graph_emo.grid(row = 0, column = 0)
@@ -175,7 +175,7 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
             self.graph_emo_over_time.create_graph()
 
             print(Startupsettings.show_abc_graphs,  "else")
-    
+
     
 
 

@@ -164,6 +164,9 @@ class ScalesSettingsFrame(customtkinter.CTkFrame):
         self.switch_valence = customtkinter.CTkSwitch(self, text= "Valence", variable=self.var3, command=self.check_state)
         self.switch_valence.grid(row = 3, column = 0, pady = 10,padx = 10, sticky = "w")
 
+        self.switch_loi.select()
+        self.switch_valence.select()
+
         self.var1.trace("w", lambda *args: self.loi_select())
         self.var2.trace("w", lambda *args: self.arousal_select())
         self.var3.trace("w", lambda *args: self.loi_select())
@@ -214,12 +217,12 @@ class BigAnalysisChooseModel(customtkinter.CTkFrame):
         self.title = customtkinter.CTkLabel(self, text="Choose the displayed Analysis Model in the Detailed View")
         self.title.grid(row = 0, column = 0, padx = 10, pady = 10, sticky = "nw")
 
-        self.v = customtkinter.BooleanVar()
+        self.v = customtkinter.StringVar()
 
-        self.emodb = customtkinter.CTkRadioButton(self, text="EmoDB", variable=self.v, value=False)
+        self.emodb = customtkinter.CTkRadioButton(self, text="EmoDB", variable=self.v, value="EmoDB")
         self.emodb.grid(row = 1, column = 0, padx=10, pady = 10, sticky = "w")
 
-        self.abc = customtkinter.CTkRadioButton(self, text="AbcAffect", variable=self.v, value=True)
+        self.abc = customtkinter.CTkRadioButton(self, text="AbcAffect", variable=self.v, value="AbcAffect")
         self.abc.grid(row = 2, column = 0, padx=10, pady = 10, sticky = "w")
 
         self.v.trace("w", lambda *args: on_radio_select())
