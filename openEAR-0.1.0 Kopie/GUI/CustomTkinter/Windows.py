@@ -6,10 +6,11 @@ from Frames.MainWindowFrames import *
 from CustomObjects import *
 from TestDataExtractor2 import *
 from Frames.SettingsFrames import *
+from Frames.MainWindowFrames import *
 from MiniAppObjects import *
 import threading
 import random
-
+import subprocess
 
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
@@ -17,6 +18,9 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         super().__init__(*args, **kwargs)
 
         self.title("Neue Analyse")
+        #self.parent = parent
+
+        
 
         
 
@@ -44,7 +48,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         self.session_name_selector.grid(row = 0, column = 1, padx = 20, pady = 10)
 
         #Working-Mode Frame
-        self.working_mode_selector = WeightsFrame(self)
+        self.working_mode_selector = WeightsFrame(self, expand_all=False)
         self.working_mode_selector.grid(row = 1, column = 1, padx = 20, pady = 10)
         
         self.working_mode_selector.v.trace("w", lambda *args: self.on_radio_select)
@@ -61,6 +65,14 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     
     def on_ok(self):
         
+        try:
+            subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+        except FileNotFoundError:
+            pass
+
+
+
+
         #Audio-Gerät speichern
         Startupsettings.selected_audio_device = self.audio_device_list_selector.v.get()
         print("Selected Device: ", Startupsettings.selected_audio_device)
@@ -73,6 +85,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             Main.Set_Session_Name(None)
 
         print(Startupsettings.session_name)
+        print("ABC Graphen?    " , Startupsettings.show_abc_graphs)
 
 
         # Gewichte an Backend übergeben, erst dort werden sie normiert
@@ -101,9 +114,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         #print(Weights.)
 
         #Big Analysis Frame starten
-        self.big_analysis_frame = BigLiveAnalysisFrame(self.master)
-        self.big_analysis_frame.grid(row = 0, column = 1, rowspan = 4,padx = 20, pady = 20, sticky = "nsew")
-        
+        MainContainerFrame.show_big_analysis()
         
 
         
@@ -154,7 +165,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             #Haupt-Score Update Funktion
             total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
-            print("Score Insgesamt" + str(total_score))
+            #print("Score Insgesamt" + str(total_score))
             self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
             
             #Hauptemotion EmoDB + Smiley Update Funktion
@@ -193,7 +204,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
         #Fenstergröße festlegen
         window_size_x = 140
-        window_size_y = 300
+        window_size_y = 260
 
 
         #Legt Fenster in untere Rechte Bildschirmecke und verhindert das manuelle Größe verändern
@@ -301,6 +312,8 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
     def quit_analysis_button_event(self):
         GlobalStartStop.analysis_loop = False
+        MainContainerFrame.show_archive()
+        
         print("Analyse beendet")
         self.destroy()
     

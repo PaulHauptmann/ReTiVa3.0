@@ -147,7 +147,7 @@ class ScalesSettingsFrame(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.title = customtkinter.CTkLabel(self, text="Auswahl der anzuzeigenden Balken:")
+        self.title = customtkinter.CTkLabel(self, text="Select the Scales that should be displayed:")
         self.title.grid(row = 0, column = 0, padx = 10, pady = 10)
 
         self.var1 = customtkinter.IntVar()
@@ -156,16 +156,77 @@ class ScalesSettingsFrame(customtkinter.CTkFrame):
         
 
         self.switch_loi = customtkinter.CTkSwitch(self, text= "Level of Interest", variable=self.var1, command=self.check_state)
+        self.switch_loi.grid(row = 1, column = 0, pady = 10, padx = 10, sticky = "w")
 
         self.switch_arousal = customtkinter.CTkSwitch(self, text= "Arousal", variable=self.var2, command=self.check_state)
+        self.switch_arousal.grid(row = 2, column = 0, pady = 10,padx = 10, sticky = "w")
 
         self.switch_valence = customtkinter.CTkSwitch(self, text= "Valence", variable=self.var3, command=self.check_state)
+        self.switch_valence.grid(row = 3, column = 0, pady = 10,padx = 10, sticky = "w")
+
+        self.switch_loi.select()
+        self.switch_valence.select()
+
+        self.var1.trace("w", lambda *args: self.loi_select())
+        self.var2.trace("w", lambda *args: self.arousal_select())
+        self.var3.trace("w", lambda *args: self.loi_select())
 
     def check_state(self):
         if self.var1.get() + self.var2.get() + self.var3.get() > 2:
             self.var1.set(0)
 
 
+    def loi_select(self):
+        Startupsettings.loi_scale = self.var1.get()
+        #print(Startupsettings.loi_scale)
+
+    def arousal_select(self):
+        Startupsettings.arousal_scale = self.var2.get()
+
+    def valence_select(self):
+        Startupsettings.valence_scale = self.var3.get()
 
 
+class EmotionSettingsFrame(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
+        self.title = customtkinter.CTkLabel(self, text="Change Output of the strongest Emotion(s)")
+        self.title.grid(row = 0, column = 0, padx = 10, pady = 10, sticky = "nw")
+
+        self.v = customtkinter.BooleanVar()
+
+        self.emotion_with_emoji = customtkinter.CTkRadioButton(self, text="One Emotion with Emoji", variable=self.v, value=False)
+        self.emotion_with_emoji.grid(row = 1, column = 0, padx=10, pady = 10, sticky = "w")
+
+        self.dual_emotions = customtkinter.CTkRadioButton(self, text="Two Emotions", variable=self.v, value=True)
+        self.dual_emotions.grid(row = 2, column = 0, padx=10, pady = 10, sticky = "w")
+
+        self.v.trace("w", lambda *args: on_radio_select())
+
+    
+        def on_radio_select():
+            Startupsettings.show_dual_emotions = self.v.get()
+            print(Startupsettings.show_dual_emotions)
+
+
+class BigAnalysisChooseModel(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.title = customtkinter.CTkLabel(self, text="Choose the displayed Analysis Model in the Detailed View")
+        self.title.grid(row = 0, column = 0, padx = 10, pady = 10, sticky = "nw")
+
+        self.v = customtkinter.StringVar()
+
+        self.emodb = customtkinter.CTkRadioButton(self, text="EmoDB", variable=self.v, value="EmoDB")
+        self.emodb.grid(row = 1, column = 0, padx=10, pady = 10, sticky = "w")
+
+        self.abc = customtkinter.CTkRadioButton(self, text="AbcAffect", variable=self.v, value="AbcAffect")
+        self.abc.grid(row = 2, column = 0, padx=10, pady = 10, sticky = "w")
+
+        self.v.trace("w", lambda *args: on_radio_select())
+
+        def on_radio_select():
+                Startupsettings.show_abc_graphs = self.v.get()
+                print(Startupsettings.show_abc_graphs)

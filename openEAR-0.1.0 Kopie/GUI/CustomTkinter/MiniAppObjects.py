@@ -161,14 +161,14 @@ class EmotionwithEmoji(customtkinter.CTkFrame):
             case "1":
                 self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/happy.png"
                 
-                print(self.emotion_text)
+                #print(self.emotion_text)
             case "0": 
                 self.image_path =  "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/neutral.png"
-                print(self.emotion_text)
+                #print(self.emotion_text)
 
             case "-1": 
                 self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/sad.png"
-                print(self.emotion_text)
+                #print(self.emotion_text)
             
             case _: 
                 print("Fehler bei der Emoji-Zuordnung")

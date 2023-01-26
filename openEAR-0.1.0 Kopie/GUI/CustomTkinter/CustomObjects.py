@@ -11,8 +11,27 @@ class Startupsettings(object):
     session_name = ""
     working_mode= ""
 
+
+    # Welche Skala angezeigt werden soll, 1 = Anzeigen
+    loi_scale = 1
+    valence_scale = 1
+    arousal_scale = 0
+
+    #Ob Emo+Emoji oder Dual Emotions, 1 = Dual
+    show_dual_emotions = False
+
+    #Welches Analyse Modell soll für Graphen in Big Window genommen werden, 0 = EmoDB
+    show_abc_graphs = "AbcAffect"
+
+
 class GlobalStartStop():
     analysis_loop = False
+
+class WindowDisplayed():
+    hello = False
+    big_analysis = False
+    settings = False
+    archive = False
 
 class Emotions(object):
     
