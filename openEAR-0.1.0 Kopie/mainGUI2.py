@@ -154,7 +154,11 @@ class App(customtkinter.CTk):
     
     def run_smilextract(self):
         global process
-        process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+        try:
+            process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+        except FileNotFoundError: 
+            print("SMILExtract ist auf diesem PC leider nicht verfügbar.")
+
 
     def stop_smilextract(self):
         process.kill()

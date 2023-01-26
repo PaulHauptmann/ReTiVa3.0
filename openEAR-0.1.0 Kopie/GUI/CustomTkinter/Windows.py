@@ -190,10 +190,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             ## Mini App Window ##
 
-            #Haupt-Score Update Funktion
-            total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
-            #print("Score Insgesamt" + str(total_score))
-            self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
+            
+            self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=Main.Score_Retiva)
             
             #Hauptemotion EmoDB + Smiley Update Funktion
             #self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
@@ -211,6 +209,9 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             #Redeanteil-Update Funktion
             self.mini_app_window.additional_info_frame.redeanteil.update_widget(Main.DataSpeakRatio[-1])
+
+            #Update die Widgets im Big Analysis Window
+            MainContainerFrame.update_analysis_window()
 
             
 
