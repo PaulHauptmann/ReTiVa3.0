@@ -80,9 +80,7 @@ class Main:
     DataLoi2 = [0.0]
     DataLoi3 = [0.0]
     
-
-    
-    
+  
     #Nach Zeit genormte Liste
     Data_Difference_Score_EmodbEmotion = []
     Data_Difference_Score_AbcAffect = []
@@ -108,8 +106,7 @@ class Main:
     Data_Difference_Loi2 = []
     Data_Difference_Loi3 = []
     
-    
-    
+
     #Mittelwerte Initialisierung
     MWDataSpeakRatio: float
     MWDataSpeakTime: float
@@ -133,6 +130,7 @@ class Main:
     MWDataLoi1: float
     MWDataLoi2: float
     MWDataLoi3: float
+    
     
     Time_Norm_Data_Arousal = []
     Time_Norm_Data_Valence = []
@@ -193,13 +191,13 @@ class Main:
     Soll_Data_AbcAffect_List = []
     
     
-    
-    
     Loi_Score: float
     MWLoi_Score: float
+    Abs_MW_Loi_Score: float
 
     Score_EmodbEmotions: float
     Score_AbcAffect: float
+    Score_Retiva: float
     
    
 
@@ -267,27 +265,6 @@ class Main:
                 Main.DataLoi1.append(float(emo.Loi1))
                 Main.DataLoi2.append(float(emo.Loi2))
                 Main.DataLoi3.append(float(emo.Loi3))
-
-                #Ausgabe der Listen
-                """print('Time:                  ', Main.DataTime)
-                print('Arousal:               ', Main.DataArousal)
-                print('Valence:               ', Main.DataValence)
-                print('EmodbEmotionAnger:     ', Main.DataEmodbEmotionAnger)
-                print('EmodbEmotionBoredom:   ', Main.DataEmodbEmotionBoredom)
-                print('EmodbEmotionDisgust:   ', Main.DataEmodbEmotionDisgust)
-                print('EmodbEmotionFear:      ', Main.DataEmodbEmotionFear)
-                print('EmodbEmotionHappiness: ', Main.DataEmodbEmotionHappiness)
-                print('EmodbEmotionNeutral:   ', Main.DataEmodbEmotionNeutral)
-                print('EmodbEmotionSadness:   ', Main.DataEmodbEmotionSadness)
-                print('AbcAffectAgressiv:     ', Main.DataAbcAffectAgressiv)
-                print('AbcAffectCheerfull:    ', Main.DataAbcAffectCheerfull)
-                print('AbcAffectIntoxicated:  ', Main.DataAbcAffectIntoxicated)
-                print('AbcAffectNervous:      ', Main.DataAbcAffectNervous)
-                print('AbcAffectNeutral:      ', Main.DataAbcAffectNeutral)
-                print('AbcAffectTired:        ', Main.DataAbcAffectTired)
-                print('Loi1:                  ', Main.DataLoi1)
-                print('Loi2:                  ', Main.DataLoi2)
-                print('Loi3:                  ', Main.DataLoi3)"""
 
 
     def get_length_of_last_added_wav(directory):
@@ -359,6 +336,44 @@ class Main:
         worksheet.append(Main.DataLoi1)
         worksheet.append(Main.DataLoi2)
         worksheet.append(Main.DataLoi3)
+        worksheet.append([Main.Soll_DataEmodbEmotionAnger])
+        worksheet.append([Main.Soll_DataEmodbEmotionBoredom])
+        worksheet.append([Main.Soll_DataEmodbEmotionDisgust])
+        worksheet.append([Main.Soll_DataEmodbEmotionFear])
+        worksheet.append([Main.Soll_DataEmodbEmotionHappiness])
+        worksheet.append([Main.Soll_DataEmodbEmotionNeutral])
+        worksheet.append([Main.Soll_DataEmodbEmotionSadness])
+        worksheet.append([Main.Soll_DataAbcAffectAgressiv])
+        worksheet.append([Main.Soll_DataAbcAffectCheerfull])
+        worksheet.append([Main.Soll_DataAbcAffectIntoxicated])
+        worksheet.append([Main.Soll_DataAbcAffectNervous])
+        worksheet.append([Main.Soll_DataAbcAffectNeutral])
+        worksheet.append([Main.Soll_DataAbcAffectTired])
+        worksheet.append([Main.Abs_MW_Data_Arousal])
+        worksheet.append([Main.Abs_MW_Data_Valence])
+        worksheet.append([Main.Abs_MW_Data_EmodbEmotionAnger])
+        worksheet.append([Main.Abs_MW_Data_EmodbEmotionBoredom])
+        worksheet.append([Main.Abs_MW_Data_EmodbEmotionDisgust])
+        worksheet.append([Main.Abs_MW_Data_EmodbEmotionFear])
+        worksheet.append([Main.Abs_MW_Data_EmodbEmotionHappiness])
+        worksheet.append([Main.Abs_MW_Data_EmodbEmotionNeutral])
+        worksheet.append([Main.Abs_MW_Data_EmodbEmotionSadness])
+        worksheet.append([Main.Abs_MW_Data_AbcAffectAgressiv])
+        worksheet.append([Main.Abs_MW_Data_AbcAffectCheerfull])
+        worksheet.append([Main.Abs_MW_Data_AbcAffectIntoxicated])
+        worksheet.append([Main.Abs_MW_Data_AbcAffectNervous])
+        worksheet.append([Main.Abs_MW_Data_AbcAffectNeutral])
+        worksheet.append([Main.Abs_MW_Data_AbcAffectTired])
+        worksheet.append([Main.Abs_MW_Data_Loi1])
+        worksheet.append([Main.Abs_MW_Data_Loi2])
+        worksheet.append([Main.Abs_MW_Data_Loi3])
+        worksheet.append([Main.Score_EmodbEmotions])
+        worksheet.append([Main.Score_AbcAffect])
+        worksheet.append([Main.Score_Retiva])
+        worksheet.append([Main.Abs_MW_Loi_Score])
+
+
+
 
         # Save the file
         workbook.save(file_name)
@@ -620,6 +635,7 @@ class Main:
         
         Main.Score_EmodbEmotions = (sum(Main.Data_Difference_Score_EmodbEmotion)) / (sum(Main.DataLength)+0.0000001)
         Main.Score_AbcAffect = (sum(Main.Data_Difference_Score_AbcAffect)) / (sum(Main.DataLength)+0.0000001)
+        Main.Score_Retiva = (Main.Score_EmodbEmotions+Main.Score_AbcAffect)/2
         
     
     def Get_Live_Score():
@@ -651,6 +667,17 @@ class Main:
             
         else:
             Main.Loi_Score = (2 - (Main.DataLoi2[-1] + (2*Main.DataLoi1[-1])))/2
+       
+            
+    def Get_Abs_Loi_Score():
+        if Main.Abs_MW_Data_Loi1 > Main.Abs_MW_Data_Loi2 and Main.Abs_MW_Data_Loi1 > Main.Abs_MW_Data_Loi3:
+            Main.Abs_MW_Loi_Score = (Main.Abs_MW_Data_Loi2 + (2*Main.Abs_MW_Data_Loi3))/2
+            
+        elif Main.Abs_MW_Data_Loi2 > Main.Abs_MW_Data_Loi1 and Main.Abs_MW_Data_Loi2 > Main.Abs_MW_Data_Loi3:
+            Main.Abs_MW_Loi_Score = (1 + (Main.Abs_MW_Data_Loi3 - Main.Abs_MW_Data_Loi1))/2
+            
+        else:
+            Main.Abs_MW_Loi_Score = (2 - (Main.Abs_MW_Data_Loi2 + (2*Main.Abs_MW_Data_Loi1)))/2
             
         
     def Get_MWLoi_Score():
@@ -780,6 +807,7 @@ class Main:
         # Create a dictionary to store the variable names and their values
         variables = {'Aggressiv': Main.DataAbcAffectAgressiv[-1], 'Cheerful': Main.DataAbcAffectCheerfull[-1], 'Intoxicated': Main.DataAbcAffectIntoxicated[-1], 'Nervous': Main.DataAbcAffectNervous[-1], 'Neutral': Main.DataAbcAffectNervous[-1], 'Tired': Main.DataAbcAffectTired[-1]}
         
+        
         # Find the highest value and the corresponding variable name
         highest_value = max(variables.values())
         highest_name = [name for name, value in variables.items() if value == highest_value][0]
@@ -796,22 +824,24 @@ class Main:
         #Main.zusammenführer()
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
-        Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
         Main.Get_Score()
         Main.Get_Loi_Score()
+        Main.Get_Abs_Loi_Score()
         Main.Get_MWLoi_Score()
         Main.Set_Time_Norm_Values()
-        Main.Set_Abolute_Verteilung()
+        #Main.Set_Abolute_Verteilung()
         Main.Printer()
+        Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
 
 
 
 Main.delete_old_wav_files(Main.directory_path)
 """Main.Set_Session_Name(None)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
-Main.Set_Soll_Werte(*floats)"""
+Main.Set_Soll_Werte(*floats)
 print(Main.Excel_Filename)
-"""Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
+print(Main.Soll_DataEmodbEmotionAnger)
+Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_EmodbEmotionAnger=0.06743775
 Main.Abs_MW_Data_EmodbEmotionBoredom=0.29886375
@@ -819,5 +849,16 @@ Main.Abs_MW_Data_EmodbEmotionDisgust=0.06159575
 Main.Abs_MW_Data_EmodbEmotionFear=0.30633225
 Main.Abs_MW_Data_EmodbEmotionHappiness=0.09225925
 Main.Abs_MW_Data_EmodbEmotionNeutral=0.1257095
-Main.Abs_MW_Data_EmodbEmotionSadness=0.04780175"""
-    
+Main.Abs_MW_Data_EmodbEmotionSadness=0.04780175
+Main.Abs_MW_Data_Arousal= 0.432
+Main.Abs_MW_Data_Valence= 0.432
+Main.Abs_MW_Data_AbcAffectAgressiv= 0.34276
+Main.Abs_MW_Data_AbcAffectCheerfull= 0.34276
+Main.Abs_MW_Data_AbcAffectIntoxicated= 0.34276
+Main.Abs_MW_Data_AbcAffectNervous= 0.34276
+Main.Abs_MW_Data_AbcAffectNeutral= 0.34276
+Main.Abs_MW_Data_AbcAffectTired= 0.34276
+Main.Abs_MW_Data_Loi1= 0.34276
+Main.Abs_MW_Data_Loi2= 0.34276
+Main.Abs_MW_Data_Loi3= 0.34276"""
+
