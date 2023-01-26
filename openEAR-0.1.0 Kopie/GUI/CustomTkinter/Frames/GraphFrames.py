@@ -254,17 +254,17 @@ class BarChartAbc(customtkinter.CTkFrame):
         
         
 class DonutEmo(customtkinter.CTkFrame):
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        if len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
-            self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
-        else:
-            self.list1 = [1,1,1,1,1,1,1]
         
         self.labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
+        self.list1 = [1,1,1,1,1,1,1]
         self.explode_list = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
         print(len(self.explode_list))
+
+    
 
     def create_chart(self):
         # Create a new figure
@@ -297,6 +297,20 @@ class DonutEmo(customtkinter.CTkFrame):
         canvas = FigureCanvasTkAgg(fig, master=self)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+
+        
+
+
+    def update_widget(self):
+        
+        if len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
+            #self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
+            self.list1 = [1,3,2,2,1,1,2]
+        else:
+            self.list1 = [1,3,2,2,1,1,2]
+        print("Updated jetztat richtig")
+
+        
 
 
 

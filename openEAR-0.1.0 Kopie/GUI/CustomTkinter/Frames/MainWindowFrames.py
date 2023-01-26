@@ -70,6 +70,11 @@ class MainContainerFrame(customtkinter.CTkFrame):
     @classmethod
     def show_big_analysis(cls):
         cls.big_analysis.lift()
+
+    @classmethod
+    def update_analysis_window(cls):
+        cls.big_analysis.updade_widgets()
+        
     
 
 
@@ -140,6 +145,14 @@ class SettingsFrame(customtkinter.CTkFrame):
 
 
 class BigLiveAnalysisFrame(customtkinter.CTkFrame):
+    '''big_score = None
+    additonal_scores = None
+    graph_abc = None
+    graph_abc_over_time = None
+    graph_emo = None
+    graph_emo_over_time = None
+    donut = None'''
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -184,6 +197,14 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
         self.donut.configure(width = 20, height = 20)
         self.donut.create_chart()
         self.donut.grid(row = 0, column = 1, padx = 20, pady = 20)
+        
+
+    
+    def updade_widgets(self):
+        self.donut.update_widget()
+        self.big_score.indicator.update_widget(Main.Score_Retiva)
+        print("Updated Donut")
+
 
         
 

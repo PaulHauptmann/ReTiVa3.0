@@ -39,9 +39,9 @@ class Main:
 
     #path definitionen
 
-    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
+    file_path = 'openEAR-0.1.0 Kopie/smile.log'
     #file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
-    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
+    directory_path = 'openEAR-0.1.0 Kopie/'
     archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
 
