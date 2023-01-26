@@ -30,13 +30,13 @@ classifier = tf.estimator.DNNClassifier(
     # Two hidden layers of 10 nodes each.
     hidden_units=[10, 10],
     # The model is classifying 7 classes
-    n_classes=7)
+    n_classes=8)
 
 # Define train function
 def train_function(inputs, outputs, batch_size):
     dataset = tf.data.Dataset.from_tensor_slices((dict(inputs), outputs))
     dataset = dataset.shuffle(1000).repeat().batch(batch_size)
-    return dataset.make_one_shot_iterator().get_next()
+    return tf.compat.v1.data.make_one_shot_iterator(dataset).get_next()
 
 # Train the Model.
 classifier.train(
@@ -52,7 +52,7 @@ def evaluation_function(attributes, classes, batch_size):
     dataset = tf.data.Dataset.from_tensor_slices(inputs)
     assert batch_size is not None, "batch_size must not be None"
     dataset = dataset.batch(batch_size)
-    return dataset.make_one_shot_iterator().get_next()
+    return tf.compat.v1.data.make_one_shot_iterator(dataset).get_next()
 
 # Evaluate the model.
 eval_result = classifier.evaluate(
