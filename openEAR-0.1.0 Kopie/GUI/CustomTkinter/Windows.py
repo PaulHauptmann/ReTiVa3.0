@@ -65,12 +65,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     
     def on_ok(self):
         
-        try:
-            subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
-        except FileNotFoundError:
-            pass
-
-
+        
 
 
         #Audio-Gerät speichern
@@ -119,16 +114,26 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
         
 
+        """t2 = threading.Thread(target=self.ai_loop)
+        t2.start()
+        print("AI_Thread")"""
 
         # Mini App Window starten und Main Analysis Loop fahren
         
         self.mini_app_window = MiniAppWindow(self.master)
         
         GlobalStartStop.analysis_loop = True
+
+        #time.sleep(5)
+        print("GUI Thread")
+
         t = threading.Thread(target=self.main_analysis_loop)
         t.start()
         print("started thread")
         print(GlobalStartStop.analysis_loop)
+        
+        
+
 
 
 
@@ -140,6 +145,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
     def on_cancel(self):
         self.destroy()
+        #process.kill()
+        
 
 
     ##################################################
@@ -149,6 +156,26 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
     ##################################################
     ##################################################
+
+    '''def run_smilextract():
+        global process
+        process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+
+    def stop_smilextract():
+        process.kill()
+'''
+
+
+    def ai_loop(self):
+        
+        try:
+            subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+        except FileNotFoundError:
+            pass
+
+
+
+
 
 
 

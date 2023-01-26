@@ -60,11 +60,11 @@ class App(customtkinter.CTk):
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
         
         #Start-Button
-        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Start", command=self.button_starter)
+        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Start", command=self.run_smilextract)
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
         
         #Stop-Button
-        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Stop", command=self.button_stop_command)
+        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Stop", command=self.stop_smilextract)
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
 
         #Einstellungen-Button
@@ -152,6 +152,12 @@ class App(customtkinter.CTk):
         MainContainerFrame.show_archive()
 
     
+    def run_smilextract(self):
+        global process
+        process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+
+    def stop_smilextract(self):
+        process.kill()
 
     
     
