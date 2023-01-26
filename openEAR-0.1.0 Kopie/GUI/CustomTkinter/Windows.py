@@ -65,12 +65,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     
     def on_ok(self):
         
-        try:
-            subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
-        except FileNotFoundError:
-            pass
-
-
+        
 
 
         #Audio-Gerät speichern
@@ -130,6 +125,9 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         print("started thread")
         print(GlobalStartStop.analysis_loop)
 
+        t2 = threading.Thread(target=self.ai_loop)
+        t2.start()
+
 
 
         #Main.Updater()
@@ -149,6 +147,18 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
     ##################################################
     ##################################################
+
+
+    def ai_loop(self):
+
+        try:
+            subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+        except FileNotFoundError:
+            pass
+
+
+
+
 
 
 
