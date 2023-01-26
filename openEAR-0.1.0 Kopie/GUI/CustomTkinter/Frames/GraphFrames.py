@@ -16,10 +16,12 @@ import numpy as np
 
 
 class GraphEmoOverTime(customtkinter.CTkFrame):
-    def __init__(self, master):
-        self.master = master
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
         self.lists = [Main.DataEmodbEmotionAnger, Main.DataEmodbEmotionBoredom, Main.DataEmodbEmotionDisgust, Main.DataEmodbEmotionFear, Main.DataEmodbEmotionHappiness, Main.DataEmodbEmotionNeutral, Main.DataEmodbEmotionSadness]
-        self.figure, self.ax = plt.subplots(facecolor='blue', figsize=(20, 2))
+        self.figure, self.ax = plt.subplots(facecolor='#212121', figsize=(20, 2))
         
 
     def create_graph(self):
@@ -40,8 +42,8 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
         self.ax.legend().set_visible(False)
         self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)
         self.canvas.draw()
-        self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-
+        #self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+        self.canvas.get_tk_widget().grid(row = 1, column = 0)
 
 #############################################################################
 #### Graph mit zeitlichem Verlauf der einzelnen Emotionen von AbcAffect #####
@@ -49,11 +51,13 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
 
 
 class GraphAbcOverTime(customtkinter.CTkFrame):
-    def __init__(self, master):
-        self.master = master
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
         self.lists = [Main.DataAbcAffectAgressiv, Main.DataAbcAffectCheerfull,  Main.DataAbcAffectIntoxicated, Main.DataAbcAffectNervous, Main.DataAbcAffectNeutral, Main.DataAbcAffectTired]
         
-        self.figure, self.ax = plt.subplots(facecolor='blue', figsize=(20, 2))
+        self.figure, self.ax = plt.subplots(facecolor='#212121', figsize=(20, 2))
         
 
     def create_graph(self):
@@ -83,8 +87,10 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
 
 
 class BarChartEmo(customtkinter.CTkFrame):
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
         if len(Main.Soll_Data_EmodbEmotion_List) == 7 and len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
             self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
             self.list2 = Main.Soll_Data_EmodbEmotion_List
@@ -100,8 +106,17 @@ class BarChartEmo(customtkinter.CTkFrame):
         x = [i for i in range(1,8)]
         
         # Create a new figure
-        fig = Figure(figsize=(5,5))
+        fig = Figure(figsize=(5,3))
+        fig.set_facecolor('#212121')
         ax = fig.add_subplot(111)
+        ax.set_facecolor("#212121")
+
+
+
+        ax.spines['bottom'].set_color('#F2F2F2')
+        ax.spines['left'].set_color('#F2F2F2')
+        ax.spines['top'].set_color('#212121')
+        ax.spines['right'].set_color('#212121')
         
         # Add the bar chart to the figure
         ax.bar(x, self.list1, width=0.4)
@@ -113,7 +128,7 @@ class BarChartEmo(customtkinter.CTkFrame):
         ax.set_xticks([])
         
         # Create a canvas to display the chart
-        canvas = FigureCanvasTkAgg(fig, master=self.root)
+        canvas = FigureCanvasTkAgg(fig, master=self)
         canvas.draw()
         canvas.get_tk_widget().pack()
 
@@ -125,8 +140,9 @@ class BarChartEmo(customtkinter.CTkFrame):
 
 
 class BarChartAbc(customtkinter.CTkFrame):
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
         if len(Main.Soll_Data_AbcAffect_List) == 6 and len(Main.Abs_MW_Data_AbcAffect_List) == 6:
             self.list1 = Main.Abs_MW_Data_AbcAffect_List
             self.list2 = Main.Soll_Data_AbcAffect_List
@@ -163,8 +179,9 @@ class BarChartAbc(customtkinter.CTkFrame):
         
         
 class DonutEmo(customtkinter.CTkFrame):
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
         if len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
             self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
         else:
@@ -174,12 +191,14 @@ class DonutEmo(customtkinter.CTkFrame):
 
     def create_chart(self):
         # Create a new figure
-        fig = Figure(figsize=(6,5))
+        fig = Figure(figsize=(4,4))
+        fig.set_layout_engine("constrained")
+        fig.set_facecolor('#212121')
         ax = fig.add_subplot(111)
 
         # Add the donut chart to the figure
         wedges, texts = ax.pie(self.list1, radius=1.0, wedgeprops=dict(width=0.5, edgecolor='w'))
-        ax.pie([1], radius=0.5, wedgeprops=dict(width=0.5, edgecolor='w', facecolor='white'))
+        ax.pie([1], radius=0.5, wedgeprops=dict(width=0.5, edgecolor='w', facecolor='#212121'))
 
         # Add labels and lines to the segments
         bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
@@ -196,9 +215,9 @@ class DonutEmo(customtkinter.CTkFrame):
                         horizontalalignment=horizontalalignment, **kw)
 
         # Create a canvas to display the chart
-        canvas = FigureCanvasTkAgg(fig, master=self.root)
+        canvas = FigureCanvasTkAgg(fig, master=self)
         canvas.draw()
-        canvas.get_tk_widget().pack()
+        canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
 
 

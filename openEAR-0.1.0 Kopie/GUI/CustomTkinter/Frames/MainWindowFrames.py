@@ -83,21 +83,30 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
+
         self.big_score = ScoreIndicatorFrame(self)
-        self.big_score.grid(row = 0, column = 1)
+        self.big_score.grid(row = 0, column = 2)
 
         self.additonal_scores = AdditionalInfoFrame(self)
-        self.additonal_scores.grid(row = 1, column = 1)
+        self.additonal_scores.grid(row = 1, column = 1, columnspan = 2, pady = 20)
 
-        #self.graph_soll_vs_ist = BarChartEmo(self)
-        #self.graph_soll_vs_ist.grid(row = 0, column = 0)
-        #self.graph_soll_vs_ist.create_chart()
+        #Works
+        self.graph_soll_vs_ist = BarChartEmo(self)
+        self.graph_soll_vs_ist.create_chart()
+        self.graph_soll_vs_ist.grid(row = 0, column = 0)
+        
 
-        #self.graph_emo_over_time = GraphEmoOverTime(self)
-        #self.graph_emo_over_time.create_graph()
-        #self.graph_emo_over_time.grid(row = 1, column = 0)
+        self.graph_emo_over_time = GraphEmoOverTime(self)
+        self.graph_emo_over_time.create_graph()
+        self.graph_emo_over_time.grid(row = 1, column = 0)
 
-
+        #Works
+        self.donut = DonutEmo(self)
+        self.donut.configure(width = 20, height = 20)
+        self.donut.create_chart()
+        self.donut.grid(row = 0, column = 1, padx = 20, pady = 20)
 
         
 
