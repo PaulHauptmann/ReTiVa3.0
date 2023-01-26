@@ -39,9 +39,9 @@ class Main:
 
     #path definitionen
 
-    file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
     #file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
-    directory_path = 'openEAR-0.1.0 Kopie/'
+    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
     archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
 
@@ -824,24 +824,24 @@ class Main:
         #Main.zusammenführer()
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
+        Main.Set_Time_Norm_Values()
+        Main.Set_Abolute_Verteilung()
         Main.Get_Score()
         Main.Get_Loi_Score()
         Main.Get_Abs_Loi_Score()
         Main.Get_MWLoi_Score()
-        Main.Set_Time_Norm_Values()
-        #Main.Set_Abolute_Verteilung()
         Main.Printer()
         Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
 
 
 
 Main.delete_old_wav_files(Main.directory_path)
-"""Main.Set_Session_Name(None)
+#Main.Set_Session_Name(None)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
 print(Main.Excel_Filename)
 print(Main.Soll_DataEmodbEmotionAnger)
-Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
+#Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_EmodbEmotionAnger=0.06743775
 Main.Abs_MW_Data_EmodbEmotionBoredom=0.29886375
@@ -860,5 +860,5 @@ Main.Abs_MW_Data_AbcAffectNeutral= 0.34276
 Main.Abs_MW_Data_AbcAffectTired= 0.34276
 Main.Abs_MW_Data_Loi1= 0.34276
 Main.Abs_MW_Data_Loi2= 0.34276
-Main.Abs_MW_Data_Loi3= 0.34276"""
+Main.Abs_MW_Data_Loi3= 0.34276
 
