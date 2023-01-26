@@ -26,29 +26,33 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
         super().__init__(master)
 
         self.columnconfigure(0, weight=1)
+        self.rowconfigure(0, weight=1)
 
         #self.emotion_label = customtkinter.CTkLabel(self, text="Boredom", fg_color="gray50", corner_radius=10)
         #self.emotion_label.grid(row = 0, column = 0)
 
-        self.emotion_label = EmotionwithEmoji(self)
-        self.emotion_label.grid(row = 0, column = 0, sticky = "ew", padx = 60, pady = (5,0))
-        self.emotion_label.set("Sadness")
+        if Startupsettings.show_dual_emotions:
+            self.double_label = DualEmotions(self)
+            self.double_label.grid(row = 0, column = 0,sticky = "ew", padx = 30, pady = (5,0))
+            self.double_label.set("Anger", "Tired")
+        else:
+            self.emotion_label = EmotionwithEmoji(self)
+            self.emotion_label.grid(row = 0, column = 0, sticky = "ew", padx = 60, pady = 5)
+            self.emotion_label.set("Sadness")
+        
 
-        '''self.double_label = DualEmotions(self)
-        self.double_label.grid(row = 0, column = 0,sticky = "ew", padx = 30, pady = (5,0))
-        self.double_label.set("Anger", "Tired")
+            self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
+            self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
+            self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
+        
+        if Startupsettings.loi_scale:
+            self.loi_indicator.grid(row = 2, column = 0)
 
-'''
+        if Startupsettings.valence_scale:
+            self.valence_indicator.grid(row = 3, column = 0)
 
-
-        self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
-        self.loi_indicator.grid(row = 2, column = 0)
-
-        self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
-        self.valence_indicator.grid(row = 3, column = 0)
-
-        self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
-        self.arousal_indicator.grid(row = 4, column = 0)
+        if Startupsettings.arousal_scale:
+            self.arousal_indicator.grid(row = 4, column = 0)
 
         self.redeanteil = HorizontalIndicator(self, left="Redeanteil: ", middle="50%", right="100%")
         self.redeanteil.grid(row = 5, column = 0)

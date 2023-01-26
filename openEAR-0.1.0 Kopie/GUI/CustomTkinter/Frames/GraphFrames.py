@@ -237,7 +237,7 @@ class BarChartAbc(customtkinter.CTkFrame):
         ax.bar([i+0.4 for i in x], self.list2_normed, width=0.4)
         
         # Set the y-axis range and hide the x-axis
-        ax.set_ylim(0, max(max(self.list1), max(self.list2)))
+        ax.set_ylim(0, 100)
         ax.set_xlim(0,7)
         ax.set_xticks([])
         

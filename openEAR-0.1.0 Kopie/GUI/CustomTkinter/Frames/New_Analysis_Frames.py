@@ -16,7 +16,7 @@ class AudioDeviceListFrame (customtkinter.CTkFrame):
 
         self.header_name = "Audio-Geräteauswahl"
 
-        self.header = customtkinter.CTkLabel(self, text=self.header_name)
+        self.header = customtkinter.CTkLabel(self, text=self.header_name, font=customtkinter.CTkFont(size= 18, weight="bold"))
         self.header.grid(row = 0, column = 0, padx=10, pady = 20)
 
         self.devices = listaudiodevices.get_input_devices()
@@ -42,7 +42,7 @@ class SessionNameFrame(customtkinter.CTkFrame):
         super().__init__(*args,  **kwargs)
         
 
-        self.header = customtkinter.CTkLabel(self, text="Optionalen Session-Name vergeben: ")
+        self.header = customtkinter.CTkLabel(self, text="Optionalen Session-Name vergeben: ", font=customtkinter.CTkFont(size= 18, weight="bold"))
         self.header.pack(padx=10, pady = 5, anchor = "n")
 
 
@@ -52,23 +52,24 @@ class SessionNameFrame(customtkinter.CTkFrame):
 
 
 class WeightsFrame(customtkinter.CTkFrame):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, expand_all:bool, **kwargs):
         super().__init__(*args, **kwargs)
 
         
 
-        self.header = customtkinter.CTkLabel(self, text="Konfiguration der Analyse")
+        self.header = customtkinter.CTkLabel(self, text="Konfiguration der Analyse", font=customtkinter.CTkFont(size= 18, weight="bold"))
         self.header.grid(row = 0, column = 0, padx=10, pady = 5)
 
         self.emo_frame = emodbSettingsFrame(self, create_pie=False)
         self.emo_frame.grid(row = 2, column = 0, padx = 20, pady = 20)
-        self.emo_frame.grid_remove()
 
         self.abc_frame = abcAffectSettingsFrame(self, create_pie=False)
         self.abc_frame.grid(row = 3, column = 0, padx = 20, pady = 20)
-        self.abc_frame.grid_remove()
 
-        
+        if not expand_all:
+            self.emo_frame.grid_remove()
+            self.abc_frame.grid_remove()
+            
 
 
         ## Voreinstellung für Gewichte auswählen 
@@ -99,16 +100,16 @@ class WeightsFrame(customtkinter.CTkFrame):
         ##TODO: Smootherer Übergang von Ein zu Ausblenden der zusätzlichen Einstellungen
 
         def on_radio_select():
-            if self.v.get() == "Benutzerdefiniert":
-                self.emo_frame.grid()
-                self.abc_frame.grid()
-            else :
-                self.emo_frame.grid_remove()
-                self.abc_frame.grid_remove()
-                
+            if not expand_all:
+                if self.v.get() == "Benutzerdefiniert":
+                    self.emo_frame.grid()
+                    self.abc_frame.grid()
+                else :
+                    self.emo_frame.grid_remove()
+                    self.abc_frame.grid_remove()
+                    
             print(Weights.working_mode)
             Weights.Read_Weights_from_Excel(Weights, self.v.get())
-            #self.spinbox_anger.set(Weights.w_emodb_anger)
             adjust_all_weights()
             #AdvancedSettingsFrame.adjust_weights()
 
