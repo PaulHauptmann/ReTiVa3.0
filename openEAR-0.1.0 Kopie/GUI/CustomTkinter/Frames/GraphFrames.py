@@ -110,11 +110,40 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
         #self.ax.set_xticklabels(["start"])
         self.ax.legend()
         self.ax.xaxis.set_visible(True)
-        self.ax.legend().set_visible(True)
+        self.ax.legend().set_visible(False)
         self.canvas = FigureCanvasTkAgg(self.figure, master=self)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
         #self.canvas.get_tk_widget().grid(row = 0, column = 0, padx = 10, pady = 10)
+
+    def update_chart(self):
+        
+        DataEmodbEmotionAnger_normed = [i * 100 for i in Main.DataEmodbEmotionAnger ]
+        DataEmodbEmotionBoredom_normed = [i * 100 for i in Main.DataEmodbEmotionBoredom ]
+        DataEmodbEmotionDisgust_normed = [i * 100 for i in Main.DataEmodbEmotionDisgust ]
+        DataEmodbEmotionFear_normed = [i * 100 for i in Main.DataEmodbEmotionFear ]
+        DataEmodbEmotionHappiness_normed = [i * 100 for i in Main.DataEmodbEmotionHappiness ]
+        DataEmodbEmotionNeutral_normed = [i * 100 for i in Main.DataEmodbEmotionNeutral ]
+        DataEmodbEmotionSadness_normed = [i * 100 for i in Main.DataEmodbEmotionSadness ]
+        
+        #self.lists = [Main.DataEmodbEmotionAnger, Main.DataEmodbEmotionBoredom, Main.DataEmodbEmotionDisgust, Main.DataEmodbEmotionFear, Main.DataEmodbEmotionHappiness, Main.DataEmodbEmotionNeutral, Main.DataEmodbEmotionSadness]
+
+        #Neue Listen-Liste mit normierten Daten
+        self.lists_normed = [DataEmodbEmotionAnger_normed,
+                             DataEmodbEmotionBoredom_normed,
+                             DataEmodbEmotionDisgust_normed,
+                             DataEmodbEmotionFear_normed,
+                             DataEmodbEmotionHappiness_normed,
+                             DataEmodbEmotionNeutral_normed,
+                             DataEmodbEmotionSadness_normed]
+        
+        lines = self.ax.get_lines()
+        for i in range(len(lines)):
+            lines[i].set_data(range(len(self.lists_normed[i])), self.lists_normed[i])
+        self.ax.relim()
+        self.ax.autoscale_view()
+        self.figure.canvas.draw()
+
 
 #############################################################################
 #### Graph mit zeitlichem Verlauf der einzelnen Emotionen von AbcAffect #####
@@ -187,10 +216,40 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
         #self.ax.set_xticklabels(["start"])
         self.ax.legend()
         self.ax.xaxis.set_visible(True)
-        self.ax.legend().set_visible(True)
+        self.ax.legend().set_visible(False)
         self.canvas = FigureCanvasTkAgg(self.figure, master=self)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+
+    
+    def update_chart(self):
+        
+        
+        DataAbcAffectAgressiv_normed = [i * 100 for i in Main.DataAbcAffectAgressiv]
+        DataAbcAffectCheerfull_normed = [i * 100 for i in Main.DataAbcAffectCheerfull]
+        DataAbcAffectIntoxicated_normed = [i * 100 for i in Main.DataAbcAffectIntoxicated]
+        DataAbcAffectNervous_normed = [i * 100 for i in Main.DataAbcAffectNervous]
+        DataAbcAffectNeutral_normed = [i * 100 for i in Main.DataAbcAffectNeutral]
+        DataAbcAffectTired_normed = [i * 100 for i in Main.DataAbcAffectTired]
+        
+        #self.lists = [Main.DataEmodbEmotionAnger, Main.DataEmodbEmotionBoredom, Main.DataEmodbEmotionDisgust, Main.DataEmodbEmotionFear, Main.DataEmodbEmotionHappiness, Main.DataEmodbEmotionNeutral, Main.DataEmodbEmotionSadness]
+
+        #Neue Listen-Liste mit normierten Daten
+        self.lists_normed = [
+                                DataAbcAffectAgressiv_normed,
+                                DataAbcAffectCheerfull_normed,
+                                DataAbcAffectIntoxicated_normed,
+                                DataAbcAffectNervous_normed,
+                                DataAbcAffectNeutral_normed,
+                                DataAbcAffectTired_normed
+                            ]
+        
+        lines = self.ax.get_lines()
+        for i in range(len(lines)):
+            lines[i].set_data(range(len(self.lists_normed[i])), self.lists_normed[i])
+        self.ax.relim()
+        self.ax.autoscale_view()
+        self.figure.canvas.draw()
 
 
 ##################################################################
