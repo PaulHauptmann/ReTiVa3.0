@@ -46,7 +46,7 @@ class Variablen():
     archive__Data_Time                               = []
     archive__Data_Aroual                             = []
     archive__Data_Valence                            = []
-    archive__Data_EmodbEmtionAnger                   = []
+    archive__Data_EmodbEmotionAnger                  = []
     archive__Data_EmodbEmotionBoredm                 = []
     archive__Data_EmodbEmotionDisgust                = []
     archive__Data_EmodbEmotionFear                   = []
@@ -239,7 +239,7 @@ class Variablen():
 #########################################################################
 
 
-class GraphEmoOverTime(customtkinter.CTkFrame):
+class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -313,7 +313,7 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
 #############################################################################
 
 
-class GraphAbcOverTime(customtkinter.CTkFrame):
+class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -392,7 +392,7 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
 ###################################################################
 
 
-class BarChartEmo(customtkinter.CTkFrame):
+class BarChartEmo_Archive(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -457,7 +457,7 @@ class BarChartEmo(customtkinter.CTkFrame):
 ######################################################################
 
 
-class BarChartAbc(customtkinter.CTkFrame):
+class BarChartAbc_Archive(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
                           
@@ -516,7 +516,7 @@ class BarChartAbc(customtkinter.CTkFrame):
 ######################################################################
         
         
-class DonutEmo(customtkinter.CTkFrame):
+class DonutEmo_Archive(customtkinter.CTkFrame):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

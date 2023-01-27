@@ -133,6 +133,8 @@ class HelloFrame(customtkinter.CTkFrame):
 
         self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
+        
+        
 
         
         
