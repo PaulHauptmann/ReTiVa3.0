@@ -220,7 +220,8 @@ class BarChartEmo(customtkinter.CTkFrame):
         x = [i for i in range(1,8)]
         
         # Create a new figure
-        fig = Figure(figsize=(25,4))
+        fig = Figure(figsize=(7,3))
+        fig.set_layout_engine("constrained")
         fig.set_facecolor(c_background)
         ax = fig.add_subplot(111)
         ax.set_facecolor(c_background)
@@ -279,7 +280,7 @@ class BarChartAbc(customtkinter.CTkFrame):
         x = [i for i in range(1,7)]
         
         # Create a new figure
-        fig = Figure(figsize=(25,4))
+        fig = Figure(figsize=(7,3))
         fig.set_facecolor(c_background)
         ax = fig.add_subplot(111)
         ax.set_facecolor(c_background)
