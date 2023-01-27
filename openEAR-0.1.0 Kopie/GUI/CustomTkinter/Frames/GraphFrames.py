@@ -82,7 +82,7 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
         self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(7, 3))
         self.figure.set_layout_engine("constrained")
 
-        self.ax.set_title('Zeitlicher Verlauf – EmoDB', color = c_white)
+        self.ax.set_title('Mix of Emotions over Time', color = c_white)
 
         self.ax.spines['bottom'].set_color(c_white)
         self.ax.spines['left'].set_color(c_white)
@@ -160,7 +160,7 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
         self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(7, 3))
         self.figure.set_layout_engine("constrained")
         
-        self.ax.set_title('Zeitlicher Verlauf – AbcAffect', color = c_white)
+        self.ax.set_title('Mix of Emotions over Time', color = c_white)
         
 
         self.ax.spines['bottom'].set_color(c_white)
@@ -227,7 +227,7 @@ class BarChartEmo(customtkinter.CTkFrame):
         ax.set_facecolor(c_background)
         ax.tick_params(colors = c_white, which = "both")
 
-        ax.set_title('Emotionsmix – EmoDB', color = c_white, pad=10)
+        ax.set_title('Mix of Emotions', color = c_white, pad=10)
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
@@ -287,7 +287,7 @@ class BarChartAbc(customtkinter.CTkFrame):
         ax.tick_params(colors = c_white, which = "both")
 
 
-        ax.set_title('Emotionsmix – AbcAffect', color = c_white)
+        ax.set_title('Mix of Emotions', color = c_white)
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ['Agressiv', 'Cheerful', 'Intoxicated', 'Nervous', 'Neutral', 'Tired']
@@ -342,11 +342,11 @@ class DonutEmo(customtkinter.CTkFrame):
         fig.set_facecolor(c_background)
         self.ax = fig.add_subplot(111)
 
-        self.ax.set_title('Mittlerer Emotionsmix der letzten 20 Sekunden', color = c_white, pad=20)
+        self.ax.set_title('Mix of Emotions over the last 20 seconds', color = c_white, pad=20)
 
         # Add the donut chart to the figure
-        self.wedges, self.texts = self.ax.pie(self.list1, radius=1.0, wedgeprops=dict(width=0.5, edgecolor=c_background), explode=self.explode_list, colors=c_colors)
-        self.ax.pie([1], radius=0.5, wedgeprops=dict(width=0.5, edgecolor=c_background, facecolor=c_background))
+        self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), explode=self.explode_list, colors=c_colors)
+        self.ax.pie([1], radius=0.4, wedgeprops=dict(width=0.4, edgecolor=c_background, facecolor=c_background))
         
 
         # Add labels and lines to the segments

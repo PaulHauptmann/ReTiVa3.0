@@ -16,8 +16,13 @@ class MainContainerFrame(customtkinter.CTkFrame):
     big_analysis_emo = None
     big_analysis_abc = None
     analysis_frame = None
+    current_time = None
+    current_session_name = None
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.rowconfigure(1, weight=1)
         
         self.hello = HelloFrame(self)
         self.hello.grid(row = 0, column = 0, sticky = "nsew")
@@ -33,14 +38,27 @@ class MainContainerFrame(customtkinter.CTkFrame):
         self.settings.grid(row = 0, column = 0, sticky = "nsew")
         self.__class__.settings = self.settings
 
-
+        #Frame für große Analyse mit Tabs für emo und abc
         self.analysis_frame = customtkinter.CTkFrame(self)
         self.analysis_frame.grid(row = 0, column = 0, sticky = "nsew")
         self.__class__.analysis_frame = self.analysis_frame
 
+        '''self.current_time = customtkinter.CTkLabel(self.analysis_frame, text="00:05:43", font=customtkinter.CTkFont(size=20))
+        self.current_time.grid(row = 0, column = 0, sticky = "ne", padx = 20, pady = (10,0))'''
+
+        self.current_time = Stopwatch(self.analysis_frame)
+        self.current_time.grid(row = 0, column = 0, sticky = "ne", padx = 20, pady = (15,0))
+        self.__class__.current_time= self.current_time
+
+
+        self.current_session_name = customtkinter.CTkLabel(self.analysis_frame, text=" ", font=customtkinter.CTkFont(size=20))
+        self.current_session_name.grid(row = 0, column = 0, sticky = "nw", padx = 20, pady = (10,0))
+        self.__class__.current_session_name = self.current_session_name
+
+
         #Tabs erstellen
         self.tabview = customtkinter.CTkTabview(self.analysis_frame)
-        self.tabview.grid(row = 0, column = 0, sticky = "nsew")
+        self.tabview.grid(row = 1, column = 0, sticky = "nsew")
 
         emo_tab = self.tabview.add('EmoDB')
         abc_tab = self.tabview.add('AbcAffect')
@@ -55,9 +73,8 @@ class MainContainerFrame(customtkinter.CTkFrame):
         self.__class__.big_analysis_abc = self.big_analysis_abc
         
 
-        self.hello.lift()
+        self.analysis_frame.lift()
         
-
         
 
         
@@ -85,6 +102,19 @@ class MainContainerFrame(customtkinter.CTkFrame):
     def update_analysis_window(cls):
         cls.big_analysis_emo.updade_widgets()
         cls.big_analysis_abc.updade_widgets()
+
+    @classmethod
+    def start_clock(cls):
+        cls.current_time.start()
+    
+    @classmethod
+    def set_window_session_name(cls):
+        cls.current_session_name.configure(text = Main.Excel_Filename)
+    
+    @classmethod
+    def stop_clock(cls):
+        cls.current_time.stop()
+
         
     
 
@@ -103,6 +133,8 @@ class HelloFrame(customtkinter.CTkFrame):
 
         self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
+
+        
         
 
 
@@ -242,16 +274,16 @@ class BigLiveAnalysisFrame_Emo(customtkinter.CTkFrame):
 
         self.graph_emo = BarChartEmo(self)
         self.graph_emo.create_chart()
-        self.graph_emo.grid(row = 0, column = 0, padx = 5, pady = 20)
+        self.graph_emo.grid(row = 0, column = 0, padx = 5)
 
         self.graph_emo_over_time = GraphEmoOverTime(self)
-        self.graph_emo_over_time.grid(row = 1, column = 0, padx = 20, pady = 20)
+        self.graph_emo_over_time.grid(row = 1, column = 0, padx = 20, sticky = "n")
         self.graph_emo_over_time.create_graph()
 
         self.donut = DonutEmo(self)
         self.donut.configure(width = 20, height = 20)
         self.donut.create_chart()
-        self.donut.grid(row = 0, column = 1, padx = 20, pady = 20)
+        self.donut.grid(row = 0, column = 1, padx = 20)
         
 
     
@@ -299,10 +331,10 @@ class BigLiveAnalysisFrame_Abc(customtkinter.CTkFrame):
        
         self.graph_abc= BarChartAbc(self)
         self.graph_abc.create_chart()
-        self.graph_abc.grid(row = 0, column = 0, pady = 20)
+        self.graph_abc.grid(row = 0, column = 0, padx = 5)
 
         self.graph_abc_over_time = GraphAbcOverTime(self)
-        self.graph_abc_over_time.grid(row = 1, column = 0, padx = 20, pady = 20)
+        self.graph_abc_over_time.grid(row = 1, column = 0, padx = 20, sticky = "n")
         self.graph_abc_over_time.create_graph()    
 
 
@@ -310,7 +342,7 @@ class BigLiveAnalysisFrame_Abc(customtkinter.CTkFrame):
         self.donut = DonutEmo(self)
         self.donut.configure(width = 20, height = 20)
         self.donut.create_chart()
-        self.donut.grid(row = 0, column = 1, padx = 20, pady = 20)
+        self.donut.grid(row = 0, column = 1, padx = 20)
         
 
     
