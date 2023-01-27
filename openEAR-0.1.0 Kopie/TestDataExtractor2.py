@@ -844,6 +844,7 @@ print(Main.Soll_DataEmodbEmotionAnger)
 #Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_AbcAffect_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095]
+#Main.Soll_Data_EmodbEmotion_List = []
 Main.Abs_MW_Data_EmodbEmotionAnger=0.06743775
 Main.Abs_MW_Data_EmodbEmotionBoredom=0.29886375
 Main.Abs_MW_Data_EmodbEmotionDisgust=0.06159575

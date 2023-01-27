@@ -202,6 +202,9 @@ class BarChartEmo(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        print("Länge ist:   ", len(Main.Abs_MW_Data_EmodbEmotion_List))
+        print("Länge soll:  ", len(Main.Soll_Data_EmodbEmotion_List))
+
 
         if len(Main.Soll_Data_EmodbEmotion_List) == 7 and len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
             self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
@@ -231,9 +234,6 @@ class BarChartEmo(customtkinter.CTkFrame):
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
-        
-
-
 
         ax.spines['bottom'].set_color(c_white)
         ax.spines['left'].set_color(c_white)
@@ -254,6 +254,46 @@ class BarChartEmo(customtkinter.CTkFrame):
         canvas = FigureCanvasTkAgg(fig, master=self)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+
+        self.canvas = canvas
+
+    def update_chart(self):
+
+        if len(Main.Soll_Data_EmodbEmotion_List) == 7 and len(Main.Abs_MW_Data_EmodbEmotion_List) == 7:
+            self.list1 = Main.Abs_MW_Data_EmodbEmotion_List
+            self.list2 = Main.Soll_Data_EmodbEmotion_List
+        else:
+            self.list1 = [0.14,0.28,0.42,0.56,0.70,0.85,1]
+            self.list2 = [1,0.2,0.5,0.1,0.8,0.2,1]
+        
+        self.list1_normed = [i * 100 for i in self.list1]
+        self.list2_normed = [i * 100 for i in self.list2]
+        
+        fig = self.canvas.figure
+        ax = fig.axes[0]
+        
+        ax.clear()
+        
+        ax.set_title('Mix of Emotions', color = c_white, pad=10)
+        ax.set_ylabel('Prozent', color = c_white)
+
+        labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
+        
+        ax.spines['bottom'].set_color(c_white)
+        ax.spines['left'].set_color(c_white)
+        ax.spines['top'].set_color(c_background)
+        ax.spines['right'].set_color(c_background)
+        
+        x = [i for i in range(1,8)]
+        
+        ax.bar(x, self.list1_normed, width=0.4, color = c_colors)
+        ax.bar([i+0.4 for i in x], self.list2_normed, width=0.4, color = c_dark_gray)
+        
+        ax.set_ylim(0,100)
+        ax.set_xlim(0,8)
+        ax.set_xticks(x, labels)
+        
+        self.canvas.draw()
 
 
 
@@ -310,6 +350,47 @@ class BarChartAbc(customtkinter.CTkFrame):
         canvas = FigureCanvasTkAgg(fig, master=self)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+
+        self.canvas = canvas
+
+    def update_chart(self):
+
+        if len(Main.Soll_Data_AbcAffect_List) == 7 and len(Main.Abs_MW_Data_AbcAffect_List) == 7:
+            self.list1 = Main.Abs_MW_Data_AbcAffect_List
+            self.list2 = Main.Soll_Data_AbcAffect_List
+        else:
+            self.list1 = [0.14,0.28,0.42,0.56,0.70,0.85,1]
+            self.list2 = [1,0.2,0.5,0.1,0.8,0.2,1]
+        
+        self.list1_normed = [i * 100 for i in self.list1]
+        self.list2_normed = [i * 100 for i in self.list2]
+        
+        fig = self.canvas.figure
+        ax = fig.axes[0]
+        
+        ax.clear()
+        
+        ax.set_title('Mix of Emotions', color = c_white, pad=10)
+        ax.set_ylabel('Prozent', color = c_white)
+
+        labels = ['Agressiv', 'Cheerful', 'Intoxicated', 'Nervous', 'Neutral', 'Tired']
+        
+        ax.spines['bottom'].set_color(c_white)
+        ax.spines['left'].set_color(c_white)
+        ax.spines['top'].set_color(c_background)
+        ax.spines['right'].set_color(c_background)
+        
+        x = [i for i in range(1,8)]
+        
+        ax.bar(x, self.list1_normed, width=0.4, color = c_colors)
+        ax.bar([i+0.4 for i in x], self.list2_normed, width=0.4, color = c_dark_gray)
+        
+        ax.set_ylim(0,100)
+        ax.set_xlim(0,8)
+        ax.set_xticks(x, labels)
+        
+        self.canvas.draw()
+
         
         
         
