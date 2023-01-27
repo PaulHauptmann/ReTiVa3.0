@@ -110,23 +110,34 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
         #Big Analysis Frame starten
         MainContainerFrame.show_big_analysis()
+
+        #Starte Uhr in BigAnalysis Window
+        MainContainerFrame.start_clock()
+        MainContainerFrame.set_window_session_name()
         
 
         
 
+        """t2 = threading.Thread(target=self.ai_loop)
+        t2.start()
+        print("AI_Thread")"""
 
         # Mini App Window starten und Main Analysis Loop fahren
         
         self.mini_app_window = MiniAppWindow(self.master)
         
         GlobalStartStop.analysis_loop = True
+
+        #time.sleep(5)
+        print("GUI Thread")
+
         t = threading.Thread(target=self.main_analysis_loop)
         t.start()
         print("started thread")
         print(GlobalStartStop.analysis_loop)
+        
+        
 
-        t2 = threading.Thread(target=self.ai_loop)
-        t2.start()
 
 
 
@@ -138,6 +149,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
     def on_cancel(self):
         self.destroy()
+        #process.kill()
+        
 
 
     ##################################################
@@ -148,9 +161,17 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     ##################################################
     ##################################################
 
+    '''def run_smilextract():
+        global process
+        process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+
+    def stop_smilextract():
+        process.kill()
+'''
+
 
     def ai_loop(self):
-
+        
         try:
             subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
         except FileNotFoundError:
@@ -173,14 +194,18 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             ## Mini App Window ##
 
-            #Haupt-Score Update Funktion
-            total_score = (Main.Score_EmodbEmotions + Main.Score_AbcAffect) / 2 
-            #print("Score Insgesamt" + str(total_score))
-            self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=total_score)
             
-            #Hauptemotion EmoDB + Smiley Update Funktion
-            #self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
-            self.mini_app_window.additional_info_frame.emotion_label.set("Happiness")
+            #Haupt-Score Update Funktion
+            self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=Main.Score_Retiva)
+            
+            #Emotionslabel Update Funktion
+            try:
+                self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
+                self.mini_app_window.additional_info_frame.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
+            except AttributeError:
+                pass
+            
+            
             #EmotionwithEmoji.set(self, "Happiness")
             
             #Loi-Score Update Funktion
@@ -195,8 +220,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             #Redeanteil-Update Funktion
             self.mini_app_window.additional_info_frame.redeanteil.update_widget(Main.DataSpeakRatio[-1])
 
-            
-
+            #Update die Widgets im Big Analysis Window
+            MainContainerFrame.update_analysis_window()
 
             
 
@@ -251,7 +276,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.var.set(True)
 
         #Additional Info Frame
-        self.additional_info_frame = AdditionalInfoFrame(self)
+        self.additional_info_frame = AdditionalInfoFrame(self, show_all_scales=False)
         self.additional_info_frame.grid(row = 0, column = 1, rowspan = 3, padx = 10, sticky = "nsew")
 
 
@@ -323,6 +348,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
     def quit_analysis_button_event(self):
         GlobalStartStop.analysis_loop = False
         MainContainerFrame.show_archive()
+        MainContainerFrame.stop_clock()
         
         print("Analyse beendet")
         self.destroy()

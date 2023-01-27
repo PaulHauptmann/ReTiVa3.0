@@ -22,8 +22,8 @@ class ScoreIndicatorFrame(customtkinter.CTkFrame):
 ## Zusätzliche Informationen
 
 class AdditionalInfoFrame(customtkinter.CTkFrame):
-    def __init__(self, master = None):
-        super().__init__(master)
+    def __init__(self, *args, show_all_scales:bool, **kwargs):
+        super().__init__(*args, **kwargs)
 
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
@@ -33,11 +33,11 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
 
         if Startupsettings.show_dual_emotions:
             self.double_label = DualEmotions(self)
-            self.double_label.grid(row = 0, column = 0,sticky = "ew", padx = 30, pady = (5,0))
+            self.double_label.grid(row = 0, column = 0,sticky = "new", padx = 30, pady = 10)
             self.double_label.set("Anger", "Tired")
         else:
             self.emotion_label = EmotionwithEmoji(self)
-            self.emotion_label.grid(row = 0, column = 0, sticky = "ew", padx = 60, pady = 5)
+            self.emotion_label.grid(row = 0, column = 0, sticky = "new", padx = 60, pady = 10)
             self.emotion_label.set("Sadness")
         
 
@@ -45,14 +45,21 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
             self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
             self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
         
-        if Startupsettings.loi_scale:
+
+        if show_all_scales:
             self.loi_indicator.grid(row = 2, column = 0)
-
-        if Startupsettings.valence_scale:
             self.valence_indicator.grid(row = 3, column = 0)
-
-        if Startupsettings.arousal_scale:
             self.arousal_indicator.grid(row = 4, column = 0)
+        else:
+            if Startupsettings.loi_scale == 1:
+                self.loi_indicator.grid(row = 2, column = 0)
+
+            if Startupsettings.valence_scale == 1:
+                self.valence_indicator.grid(row = 3, column = 0)
+                print("Valence:", Startupsettings.valence_scale)
+
+            if Startupsettings.arousal_scale == 1:
+                self.arousal_indicator.grid(row = 4, column = 0)
 
         self.redeanteil = HorizontalIndicator(self, left="Redeanteil: ", middle="50%", right="100%")
         self.redeanteil.grid(row = 5, column = 0)

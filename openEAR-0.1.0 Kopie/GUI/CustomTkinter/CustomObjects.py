@@ -2,6 +2,9 @@ from typing import Union, Callable
 import customtkinter
 from openpyxl import *
 from Frames.Observer import *
+import time
+from Frames.GraphFrames import *
+import threading
 
 
 ## Objekt, das die Start-Einstellungen speichert, die im New_Analysis_Window festgelegt werden ##
@@ -21,7 +24,7 @@ class Startupsettings(object):
     show_dual_emotions = False
 
     #Welches Analyse Modell soll für Graphen in Big Window genommen werden, 0 = EmoDB
-    show_abc_graphs = "EmoDB"
+    show_abc_graphs = "AbcAffect"
 
 
 class GlobalStartStop():
@@ -340,3 +343,56 @@ class CustomSpinBox(customtkinter.CTkFrame):
                 ## Default-Case
                 case _:
                     print("Ich konnte kein passendes Gewicht zu dem Titel dieses Widgets finden:   " + self.title)
+
+
+
+
+class Stopwatch(customtkinter.CTkFrame):
+    
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.configure(fg_color = '#282928')
+        
+        
+        self.time = 0.0
+        self.running = False
+        self.time_string = customtkinter.StringVar()
+        self.time_string.set("There is no active Analysis.")
+        self.current_time = customtkinter.CTkLabel(self, textvariable=self.time_string, font=customtkinter.CTkFont(size=20))
+        self.current_time.grid(row = 0, column = 0, sticky = "nsew")
+
+        #self.start()
+        
+    
+    def start(self):
+        self.running = True
+        self.start_time = time.time()
+        t3 = threading.Thread(target=self.update_time)
+        t3.start()
+        
+        #self.update_time()
+
+    
+    def stop(self):
+        self.running = False
+        self.time = time.time() - self.start_time
+        minutes, seconds = divmod(self.time, 60)
+        hours, minutes = divmod(minutes, 60)
+        self.time_string.set("Total Analysis Duration:  %d:%02d:%02d" % (hours, minutes, seconds))
+
+    def reset(self):
+        self.running = False
+        self.time = 0.0
+        self.time_string.set("There is no active Analysis.")
+
+   
+    def update_time(self):
+        while True and self.running:
+            self.time = time.time() - self.start_time
+            minutes, seconds = divmod(self.time, 60)
+            hours, minutes = divmod(minutes, 60)
+            self.time_string.set("Duration:  %d:%02d:%02d" % (hours, minutes, seconds))
+            #self.current_time.after(10, self.update_time)
+            time.sleep(0.1)

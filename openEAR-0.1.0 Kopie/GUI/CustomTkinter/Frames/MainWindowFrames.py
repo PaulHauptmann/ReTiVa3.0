@@ -13,17 +13,16 @@ class MainContainerFrame(customtkinter.CTkFrame):
     settings = None
     archive = None
     hello = None
-    big_analysis = None
+    big_analysis_emo = None
+    big_analysis_abc = None
+    analysis_frame = None
+    current_time = None
+    current_session_name = None
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        
-        
-        '''
-        self.dummy_frame = customtkinter.CTkFrame(self, fg_color="green")
-        self.dummy_frame.grid(row =0, column = 0, sticky = "nsew")
-        #self.dummy_frame.grid_remove()
-        '''
+        self.rowconfigure(1, weight=1)
         
         self.hello = HelloFrame(self)
         self.hello.grid(row = 0, column = 0, sticky = "nsew")
@@ -39,15 +38,43 @@ class MainContainerFrame(customtkinter.CTkFrame):
         self.settings.grid(row = 0, column = 0, sticky = "nsew")
         self.__class__.settings = self.settings
 
+        #Frame für große Analyse mit Tabs für emo und abc
+        self.analysis_frame = customtkinter.CTkFrame(self)
+        self.analysis_frame.grid(row = 0, column = 0, sticky = "nsew")
+        self.__class__.analysis_frame = self.analysis_frame
 
-        self.big_analysis = BigLiveAnalysisFrame(self)
-        self.big_analysis.grid(row = 0, column = 0, sticky = "nsew")
-        self.__class__.big_analysis = self.big_analysis
+        '''self.current_time = customtkinter.CTkLabel(self.analysis_frame, text="00:05:43", font=customtkinter.CTkFont(size=20))
+        self.current_time.grid(row = 0, column = 0, sticky = "ne", padx = 20, pady = (10,0))'''
+
+        self.current_time = Stopwatch(self.analysis_frame)
+        self.current_time.grid(row = 0, column = 0, sticky = "ne", padx = 20, pady = (15,0))
+        self.__class__.current_time= self.current_time
+
+
+        self.current_session_name = customtkinter.CTkLabel(self.analysis_frame, text=" ", font=customtkinter.CTkFont(size=20))
+        self.current_session_name.grid(row = 0, column = 0, sticky = "nw", padx = 20, pady = (10,0))
+        self.__class__.current_session_name = self.current_session_name
+
+
+        #Tabs erstellen
+        self.tabview = customtkinter.CTkTabview(self.analysis_frame)
+        self.tabview.grid(row = 1, column = 0, sticky = "nsew")
+
+        emo_tab = self.tabview.add('EmoDB')
+        abc_tab = self.tabview.add('AbcAffect')
+
+
+        self.big_analysis_emo = BigLiveAnalysisFrame_Emo(emo_tab)
+        self.big_analysis_emo.grid(row = 0, column = 0, sticky = "nsew")
+        self.__class__.big_analysis_emo = self.big_analysis_emo
+
+        self.big_analysis_abc = BigLiveAnalysisFrame_Abc(abc_tab)
+        self.big_analysis_abc.grid(row = 0, column = 0, sticky = "nsew")
+        self.__class__.big_analysis_abc = self.big_analysis_abc
         
 
-        self.hello.lift()
+        self.analysis_frame.lift()
         
-
         
 
         
@@ -69,7 +96,26 @@ class MainContainerFrame(customtkinter.CTkFrame):
         
     @classmethod
     def show_big_analysis(cls):
-        cls.big_analysis.lift()
+        cls.analysis_frame.lift()
+
+    @classmethod
+    def update_analysis_window(cls):
+        cls.big_analysis_emo.updade_widgets()
+        cls.big_analysis_abc.updade_widgets()
+
+    @classmethod
+    def start_clock(cls):
+        cls.current_time.start()
+    
+    @classmethod
+    def set_window_session_name(cls):
+        cls.current_session_name.configure(text = Main.Excel_Filename)
+    
+    @classmethod
+    def stop_clock(cls):
+        cls.current_time.stop()
+
+        
     
 
 
@@ -88,10 +134,7 @@ class HelloFrame(customtkinter.CTkFrame):
         self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
 
-        self.test = GraphAbcOverTime(self)
-        self.test.create_graph()
-        self.test.grid(row = 1, column = 0)
-
+        
         
 
 
@@ -138,8 +181,8 @@ class SettingsFrame(customtkinter.CTkFrame):
 
 
 
-
-class BigLiveAnalysisFrame(customtkinter.CTkFrame):
+#Alt
+class BigLiveAnalysisFrame_old(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -151,7 +194,7 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
         self.big_score = ScoreIndicatorFrame(self)
         self.big_score.grid(row = 0, column = 2)
 
-        self.additonal_scores = AdditionalInfoFrame(self)
+        self.additonal_scores = AdditionalInfoFrame(self, show_all_scales=True)
         self.additonal_scores.grid(row = 1, column = 1, columnspan = 2, pady = 20)
 
         if Startupsettings.show_abc_graphs == "AbcAffect":
@@ -184,11 +227,143 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
         self.donut.configure(width = 20, height = 20)
         self.donut.create_chart()
         self.donut.grid(row = 0, column = 1, padx = 20, pady = 20)
+        
 
+    
+    def updade_widgets(self):
+        
+        self.donut.update_widget()
+        self.big_score.indicator.update_widget(Main.Score_Retiva)
+        print("Updated Donut")
         
 
 
+        #Mini Fenster Update der Emotions-Labels
+        try:
+            self.additonal_scores.emotion_label.set(Main.get_highest_EmoDb())
+            self.additonal_scores.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
+        except AttributeError:
+            pass
+        
+        #Mini Fenster Update der Scores
+        self.additonal_scores.loi_indicator.update_widget(Main.Abs_MW_Loi_Score)
+        self.additonal_scores.arousal_indicator.update_widget(Main.Abs_MW_Data_Arousal)
+        self.additonal_scores.valence_indicator.update_widget(Main.Abs_MW_Data_Valence)
+        self.additonal_scores.redeanteil.update_widget(Main.DataSpeakRatio[-1])
 
+
+#EmoDB Analyse Übersicht
+class BigLiveAnalysisFrame_Emo(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.configure(fg_color = "#212121")
+
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
+        
+        self.scores_frame = customtkinter.CTkFrame(self)
+        self.scores_frame.grid(row = 1, column = 1, columnspan = 2, pady = (0,20), padx = (150,0))
+
+        self.big_score = ScoreIndicatorFrame(self.scores_frame)
+        self.big_score.grid(row = 0, column = 2)
+
+        self.additonal_scores = AdditionalInfoFrame(self.scores_frame, show_all_scales=True)
+        self.additonal_scores.grid(row = 0, column = 1, pady = (0,20))
+
+
+        self.graph_emo = BarChartEmo(self)
+        self.graph_emo.create_chart()
+        self.graph_emo.grid(row = 0, column = 0, padx = 5)
+
+        self.graph_emo_over_time = GraphEmoOverTime(self)
+        self.graph_emo_over_time.grid(row = 1, column = 0, padx = 20, sticky = "n")
+        self.graph_emo_over_time.create_graph()
+
+        self.donut = DonutEmo(self)
+        self.donut.configure(width = 20, height = 20)
+        self.donut.create_chart()
+        self.donut.grid(row = 0, column = 1, padx = 20)
+        
+
+    
+    def updade_widgets(self):
+        #TODO: Fehlende Updater schreiben und hinzufügen
+        self.donut.update_widget()
+
+        self.big_score.indicator.update_widget(Main.Score_Retiva)
+        
+
+
+        #Mini Fenster Update der Emotions-Labels
+        try:
+            self.additonal_scores.emotion_label.set(Main.get_highest_EmoDb())
+            self.additonal_scores.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
+        except AttributeError:
+            pass
+        
+        #Mini Fenster Update der Scores
+        self.additonal_scores.loi_indicator.update_widget(Main.Abs_MW_Loi_Score)
+        self.additonal_scores.arousal_indicator.update_widget(Main.Abs_MW_Data_Arousal)
+        self.additonal_scores.valence_indicator.update_widget(Main.Abs_MW_Data_Valence)
+        self.additonal_scores.redeanteil.update_widget(Main.DataSpeakRatio[-1])
+        
+
+#Abc Analyse Übersicht
+class BigLiveAnalysisFrame_Abc(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.configure(fg_color = "#212121")
+
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
+
+        self.scores_frame = customtkinter.CTkFrame(self)
+        self.scores_frame.grid(row = 1, column = 1, columnspan = 2, pady = (0,20), padx = (150,0))
+
+        self.big_score = ScoreIndicatorFrame(self.scores_frame)
+        self.big_score.grid(row = 0, column = 2)
+
+        self.additonal_scores = AdditionalInfoFrame(self.scores_frame, show_all_scales=True)
+        self.additonal_scores.grid(row = 0, column = 1, pady = (0,20))
+
+       
+        self.graph_abc= BarChartAbc(self)
+        self.graph_abc.create_chart()
+        self.graph_abc.grid(row = 0, column = 0, padx = 5)
+
+        self.graph_abc_over_time = GraphAbcOverTime(self)
+        self.graph_abc_over_time.grid(row = 1, column = 0, padx = 20, sticky = "n")
+        self.graph_abc_over_time.create_graph()    
+
+
+        #TODO: In DonutAbc ändern
+        self.donut = DonutEmo(self)
+        self.donut.configure(width = 20, height = 20)
+        self.donut.create_chart()
+        self.donut.grid(row = 0, column = 1, padx = 20)
+        
+
+    
+    def updade_widgets(self):
+        #TODO: Fehlende Updater schreiben und hinzufügen
+        self.donut.update_widget()
+        self.big_score.indicator.update_widget(Main.Score_Retiva)
+        
+
+        #Mini Fenster Update der Emotions-Labels
+        try:
+            self.additonal_scores.emotion_label.set(Main.get_highest_EmoDb())
+            self.additonal_scores.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
+        except AttributeError:
+            pass
+        
+        #Mini Fenster Update der Scores
+        self.additonal_scores.loi_indicator.update_widget(Main.Abs_MW_Loi_Score)
+        self.additonal_scores.arousal_indicator.update_widget(Main.Abs_MW_Data_Arousal)
+        self.additonal_scores.valence_indicator.update_widget(Main.Abs_MW_Data_Valence)
+        self.additonal_scores.redeanteil.update_widget(Main.DataSpeakRatio[-1])
 
 
 
