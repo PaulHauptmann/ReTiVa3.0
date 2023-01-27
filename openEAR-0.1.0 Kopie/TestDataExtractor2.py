@@ -851,7 +851,7 @@ Main.Abs_MW_Data_EmodbEmotionHappiness=0.09225925
 Main.Abs_MW_Data_EmodbEmotionNeutral=0.1257095
 Main.Abs_MW_Data_EmodbEmotionSadness=0.04780175
 Main.Abs_MW_Data_Arousal= 0.432
-Main.Abs_MW_Data_Valence= 0.432
+Main.Abs_MW_Data_Valence= 0.1
 Main.Abs_MW_Data_AbcAffectAgressiv= 0.34276
 Main.Abs_MW_Data_AbcAffectCheerfull= 0.34276
 Main.Abs_MW_Data_AbcAffectIntoxicated= 0.34276
@@ -861,4 +861,5 @@ Main.Abs_MW_Data_AbcAffectTired= 0.34276
 Main.Abs_MW_Data_Loi1= 0.34276
 Main.Abs_MW_Data_Loi2= 0.34276
 Main.Abs_MW_Data_Loi3= 0.34276
+
 
