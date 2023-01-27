@@ -88,11 +88,6 @@ class App(customtkinter.CTk):
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"], command=self.change_appearance_mode_event)
         self.appearance_mode_optionemenu.grid(row=8, column=0, padx=20, pady=(10, 10))
         
-        self.scaling_label = customtkinter.CTkLabel(self.sidebar_frame, text="UI Scaling:", anchor="w")
-        self.scaling_label.grid(row=9, column=0, padx=20, pady=(10, 0))
-        
-        self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["80%", "90%", "100%", "110%", "120%"], command=self.change_scaling_event)
-        self.scaling_optionemenu.grid(row=10, column=0, padx=20, pady=(10, 20))
 
         
         # create textbox
@@ -118,7 +113,7 @@ class App(customtkinter.CTk):
         # set default values
         #self.sidebar_button_1.configure(state = "disabled")
         self.appearance_mode_optionemenu.set("System")
-        self.scaling_optionemenu.set("100%")
+        
     
     '''test = MainContainerFrame()
     test.configure(fg_color = "transparent")
@@ -134,10 +129,6 @@ class App(customtkinter.CTk):
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
-
-    def change_scaling_event(self, new_scaling: str):
-        new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        customtkinter.set_widget_scaling(new_scaling_float)
 
     def new_analysis_button_event(self):
         self.new_analysis_window = NewAnalysisWindow(self)
