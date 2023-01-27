@@ -180,7 +180,7 @@ print (archive__Data_Loi3)"""
 
 
 
-data = Get_Data("/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/test23_15:23_13_01_2023.xlsx")
+"""data = Get_Data("/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/test23_15:23_13_01_2023.xlsx")
 archive__Data_DateTime                           = data.get("Archive_Data_DateTime", "Key not found")
 archive__Data_SessionNme                         = data.get("Archive_Data_SessionName", "Key not found")
 archive__Data_Time                               = data.get("Archive_Data_Time", "Key not found")
@@ -237,60 +237,4 @@ Archive_Score_EmodbEmotions                      = data.get('Archive_Score_Emodb
 Archive_Score_AbcAffect                          = data.get('Archive_Score_AbcAffect', "Key not found")
 Archive_Score_Retiva                             = data.get('Archive_Score_Retiva', "Key not found")
 Archive_Abs_MW_Loi_Score                         = data.get('Archive_Abs_MW_Loi_Score', "Key not found")
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""

@@ -73,9 +73,10 @@ class MainContainerFrame(customtkinter.CTkFrame):
         self.__class__.big_analysis_abc = self.big_analysis_abc
         
 
+
         self.archive.lift()
         
-        
+
 
         
 
@@ -133,6 +134,8 @@ class HelloFrame(customtkinter.CTkFrame):
 
         self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
+        
+        
 
         
         
