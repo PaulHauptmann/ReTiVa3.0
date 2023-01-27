@@ -34,7 +34,8 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        global stop
+        #Funktion bei Fenster-Schließen ausführen
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         # Fenster Bildschirmfüllend starten
         self.geometry("%dx%d+0+0" % (self.winfo_screenwidth(), self.winfo_screenheight()))
@@ -161,7 +162,18 @@ class App(customtkinter.CTk):
 
 
     def stop_smilextract(self):
-        process.kill()
+        try:
+            process.kill()
+        except NameError:
+            print("Es läuft aktuell kein Prozess.")
+    
+    def on_closing(self):
+        try:
+            process.kill()
+        except NameError:
+            pass
+
+        self.destroy()
 
     
     
