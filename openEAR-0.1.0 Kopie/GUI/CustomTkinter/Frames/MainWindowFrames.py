@@ -45,7 +45,7 @@ class MainContainerFrame(customtkinter.CTkFrame):
         self.__class__.big_analysis = self.big_analysis
         
 
-        self.hello.lift()
+        self.big_analysis.lift()
         
 
         
@@ -164,7 +164,7 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
         self.big_score = ScoreIndicatorFrame(self)
         self.big_score.grid(row = 0, column = 2)
 
-        self.additonal_scores = AdditionalInfoFrame(self)
+        self.additonal_scores = AdditionalInfoFrame(self, show_all_scales=True)
         self.additonal_scores.grid(row = 1, column = 1, columnspan = 2, pady = 20)
 
         if Startupsettings.show_abc_graphs == "AbcAffect":

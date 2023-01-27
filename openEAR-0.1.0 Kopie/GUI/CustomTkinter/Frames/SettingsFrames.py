@@ -169,7 +169,7 @@ class ScalesSettingsFrame(customtkinter.CTkFrame):
 
         self.var1.trace("w", lambda *args: self.loi_select())
         self.var2.trace("w", lambda *args: self.arousal_select())
-        self.var3.trace("w", lambda *args: self.loi_select())
+        self.var3.trace("w", lambda *args: self.valence_select())
 
     def check_state(self):
         if self.var1.get() + self.var2.get() + self.var3.get() > 2:
@@ -178,13 +178,15 @@ class ScalesSettingsFrame(customtkinter.CTkFrame):
 
     def loi_select(self):
         Startupsettings.loi_scale = self.var1.get()
-        #print(Startupsettings.loi_scale)
+        print(Startupsettings.loi_scale)
 
     def arousal_select(self):
         Startupsettings.arousal_scale = self.var2.get()
+        print(Startupsettings.arousal_scale)
 
     def valence_select(self):
         Startupsettings.valence_scale = self.var3.get()
+        print(Startupsettings.valence_scale)
 
 
 class EmotionSettingsFrame(customtkinter.CTkFrame):

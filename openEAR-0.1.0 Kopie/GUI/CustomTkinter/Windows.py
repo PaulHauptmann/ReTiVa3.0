@@ -272,7 +272,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         self.var.set(True)
 
         #Additional Info Frame
-        self.additional_info_frame = AdditionalInfoFrame(self)
+        self.additional_info_frame = AdditionalInfoFrame(self, show_all_scales=False)
         self.additional_info_frame.grid(row = 0, column = 1, rowspan = 3, padx = 10, sticky = "nsew")
 
 

@@ -57,6 +57,10 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
         #Daten auf 100er Skala normieren
         DataEmodbEmotionAnger_normed = [i * 100 for i in test_list1 ]
         DataEmodbEmotionBoredom_normed = [i * 100 for i in test_list2 ]
+        
+        #DataEmodbEmotionAnger_normed = [i * 100 for i in Main.DataEmodbEmotionAnger ]
+        #DataEmodbEmotionBoredom_normed = [i * 100 for i in Main.DataEmodbEmotionBoredom ]
+        
         DataEmodbEmotionDisgust_normed = [i * 100 for i in Main.DataEmodbEmotionDisgust ]
         DataEmodbEmotionFear_normed = [i * 100 for i in Main.DataEmodbEmotionFear ]
         DataEmodbEmotionHappiness_normed = [i * 100 for i in Main.DataEmodbEmotionHappiness ]
@@ -102,8 +106,8 @@ class GraphEmoOverTime(customtkinter.CTkFrame):
         self.ax.plot(self.lists_normed[6], label=f'Sadness', color = c_7)
         self.ax.set_ylabel('Prozent', color = c_white)
         self.ax.set_ylim(0,100)
-        self.ax.set_xlabel('Time', color = c_white)
-        self.ax.set_xticklabels(["start"])
+        self.ax.set_xlabel('Time (s)', color = c_white)
+        #self.ax.set_xticklabels(["start"])
         self.ax.legend()
         self.ax.xaxis.set_visible(True)
         self.ax.legend().set_visible(True)
@@ -121,12 +125,19 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        test_list1 = [0.2, 0.3, 0.1, 0.5, 0.3]
+        test_list2 = [0.5, 0.6, 0.7, 0.4, 0.2]
+
 
         self.lists = [Main.DataAbcAffectAgressiv, Main.DataAbcAffectCheerfull,  Main.DataAbcAffectIntoxicated, Main.DataAbcAffectNervous, Main.DataAbcAffectNeutral, Main.DataAbcAffectTired]
         
         #Daten auf 100er Skala normieren
-        DataAbcAffectAgressiv_normed = [i * 100 for i in Main.DataAbcAffectAgressiv]
-        DataAbcAffectCheerfull_normed = [i * 100 for i in Main.DataAbcAffectCheerfull]
+        DataAbcAffectAgressiv_normed = [i * 100 for i in test_list1]
+        DataAbcAffectCheerfull_normed = [i * 100 for i in test_list2]
+
+        #DataAbcAffectAgressiv_normed = [i * 100 for i in Main.DataAbcAffectAgressiv]
+        #DataAbcAffectCheerfull_normed = [i * 100 for i in Main.DataAbcAffectCheerfull]
+        
         DataAbcAffectIntoxicated_normed = [i * 100 for i in Main.DataAbcAffectIntoxicated]
         DataAbcAffectNervous_normed = [i * 100 for i in Main.DataAbcAffectNervous]
         DataAbcAffectNeutral_normed = [i * 100 for i in Main.DataAbcAffectNeutral]
@@ -146,12 +157,24 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
 
 
 
-        self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(20, 2))
+        self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(7, 3))
+        self.figure.set_layout_engine("constrained")
+        
         self.ax.set_title('Zeitlicher Verlauf – AbcAffect', color = c_white)
+        
+
+        self.ax.spines['bottom'].set_color(c_white)
+        self.ax.spines['left'].set_color(c_white)
+        self.ax.spines['top'].set_color(c_background)
+        self.ax.spines['right'].set_color(c_background)
         
 
     def create_graph(self):
         #for i in range(7):
+        self.ax.tick_params(color = c_white, which = "both", labelcolor = c_white)
+        self.ax.set_facecolor(color = c_background)
+        
+
         self.ax.plot(self.lists_normed[0], label=f'Agressive', color = c_1)
         self.ax.plot(self.lists_normed[1], label=f'Cheerfull', color = c_2)
         self.ax.plot(self.lists_normed[2], label=f'Intoxicated', color = c_3)
@@ -160,11 +183,11 @@ class GraphAbcOverTime(customtkinter.CTkFrame):
         self.ax.plot(self.lists_normed[5], label=f'Tired', color = c_6)
         self.ax.set_ylabel('Prozent', color = c_white)
         self.ax.set_ylim(0,100)
-        self.ax.set_xlabel('Time')
-        self.ax.set_xticklabels(["start"])
+        self.ax.set_xlabel('Time (s)', color = c_white)
+        #self.ax.set_xticklabels(["start"])
         self.ax.legend()
-        self.ax.xaxis.set_visible(False)
-        self.ax.legend().set_visible(False)
+        self.ax.xaxis.set_visible(True)
+        self.ax.legend().set_visible(True)
         self.canvas = FigureCanvasTkAgg(self.figure, master=self)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
@@ -256,16 +279,25 @@ class BarChartAbc(customtkinter.CTkFrame):
         x = [i for i in range(1,7)]
         
         # Create a new figure
-        fig = Figure(figsize=(5,5))
+        fig = Figure(figsize=(25,4))
+        fig.set_facecolor(c_background)
         ax = fig.add_subplot(111)
+        ax.set_facecolor(c_background)
+        ax.tick_params(colors = c_white, which = "both")
+
 
         ax.set_title('Emotionsmix – AbcAffect', color = c_white)
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ['Agressiv', 'Cheerful', 'Intoxicated', 'Nervous', 'Neutral', 'Tired']
         
+        ax.spines['bottom'].set_color(c_white)
+        ax.spines['left'].set_color(c_white)
+        ax.spines['top'].set_color(c_background)
+        ax.spines['right'].set_color(c_background)
+
         # Add the bar chart to the figure
-        ax.bar(x, self.list1_normed, width=0.4, color = c_light_gray)
+        ax.bar(x, self.list1_normed, width=0.4, color = c_colors)
         ax.bar([i+0.4 for i in x], self.list2_normed, width=0.4, color = c_dark_gray)
         
         # Set the y-axis range and hide the x-axis
