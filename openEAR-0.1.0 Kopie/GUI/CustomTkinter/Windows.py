@@ -110,6 +110,10 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
         #Big Analysis Frame starten
         MainContainerFrame.show_big_analysis()
+
+        #Starte Uhr in BigAnalysis Window
+        MainContainerFrame.start_clock()
+        MainContainerFrame.set_window_session_name()
         
 
         
@@ -344,6 +348,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
     def quit_analysis_button_event(self):
         GlobalStartStop.analysis_loop = False
         MainContainerFrame.show_archive()
+        MainContainerFrame.stop_clock()
         
         print("Analyse beendet")
         self.destroy()
