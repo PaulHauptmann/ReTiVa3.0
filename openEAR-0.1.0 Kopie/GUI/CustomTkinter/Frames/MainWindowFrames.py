@@ -73,9 +73,10 @@ class MainContainerFrame(customtkinter.CTkFrame):
         self.__class__.big_analysis_abc = self.big_analysis_abc
         
 
-        self.analysis_frame.lift()
-        #self.archive.lift()
+
+        self.archive.lift()
         
+
 
         
 
@@ -292,6 +293,10 @@ class BigLiveAnalysisFrame_Emo(customtkinter.CTkFrame):
     def updade_widgets(self):
         #TODO: Fehlende Updater schreiben und hinzufügen
         self.donut.update_chart(Main.Abs_MW_Data_EmodbEmotion_List)
+        self.graph_emo.update_chart()
+        self.graph_emo_over_time.update_chart()
+        
+
 
         self.big_score.indicator.update_widget(Main.Score_Retiva)
         
@@ -350,6 +355,9 @@ class BigLiveAnalysisFrame_Abc(customtkinter.CTkFrame):
     def updade_widgets(self):
         #TODO: Fehlende Updater schreiben und hinzufügen
         self.donut.update_chart(Main.Abs_MW_Data_AbcAffect_List)
+        #self.graph_abc.update_chart()
+        self.graph_abc_over_time.update_chart()
+
         self.big_score.indicator.update_widget(Main.Score_Retiva)
         
 
