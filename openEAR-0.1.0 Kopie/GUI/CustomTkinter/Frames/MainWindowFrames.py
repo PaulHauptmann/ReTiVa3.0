@@ -289,7 +289,7 @@ class BigLiveAnalysisFrame_Emo(customtkinter.CTkFrame):
     
     def updade_widgets(self):
         #TODO: Fehlende Updater schreiben und hinzufügen
-        self.donut.update_widget()
+        self.donut.update_chart(Main.Abs_MW_Data_EmodbEmotion_List)
 
         self.big_score.indicator.update_widget(Main.Score_Retiva)
         
@@ -338,8 +338,7 @@ class BigLiveAnalysisFrame_Abc(customtkinter.CTkFrame):
         self.graph_abc_over_time.create_graph()    
 
 
-        #TODO: In DonutAbc ändern
-        self.donut = DonutEmo(self)
+        self.donut = DonutAbc(self)
         self.donut.configure(width = 20, height = 20)
         self.donut.create_chart()
         self.donut.grid(row = 0, column = 1, padx = 20)
@@ -348,7 +347,7 @@ class BigLiveAnalysisFrame_Abc(customtkinter.CTkFrame):
     
     def updade_widgets(self):
         #TODO: Fehlende Updater schreiben und hinzufügen
-        self.donut.update_widget()
+        self.donut.update_chart(Main.Abs_MW_Data_AbcAffect_List)
         self.big_score.indicator.update_widget(Main.Score_Retiva)
         
 
