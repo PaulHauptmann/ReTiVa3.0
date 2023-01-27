@@ -191,11 +191,17 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             ## Mini App Window ##
 
             
+            #Haupt-Score Update Funktion
             self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=Main.Score_Retiva)
             
-            #Hauptemotion EmoDB + Smiley Update Funktion
-            #self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
-            self.mini_app_window.additional_info_frame.emotion_label.set("Happiness")
+            #Emotionslabel Update Funktion
+            try:
+                self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
+                self.mini_app_window.additional_info_frame.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
+            except AttributeError:
+                pass
+            
+            
             #EmotionwithEmoji.set(self, "Happiness")
             
             #Loi-Score Update Funktion
@@ -212,9 +218,6 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
             #Update die Widgets im Big Analysis Window
             MainContainerFrame.update_analysis_window()
-
-            
-
 
             
 

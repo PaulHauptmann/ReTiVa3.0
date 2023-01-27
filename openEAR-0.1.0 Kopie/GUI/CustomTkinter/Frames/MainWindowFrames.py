@@ -204,6 +204,22 @@ class BigLiveAnalysisFrame(customtkinter.CTkFrame):
         self.donut.update_widget()
         self.big_score.indicator.update_widget(Main.Score_Retiva)
         print("Updated Donut")
+        
+
+
+        #Mini Fenster Update der Emotions-Labels
+        try:
+            self.additonal_scores.emotion_label.set(Main.get_highest_EmoDb())
+            self.additonal_scores.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
+        except AttributeError:
+            pass
+        
+        #Mini Fenster Update der Scores
+        self.additonal_scores.loi_indicator.update_widget(Main.Abs_MW_Loi_Score)
+        self.additonal_scores.arousal_indicator.update_widget(Main.Abs_MW_Data_Arousal)
+        self.additonal_scores.valence_indicator.update_widget(Main.Abs_MW_Data_Valence)
+        self.additonal_scores.redeanteil.update_widget(Main.DataSpeakRatio[-1])
+
 
 
         
