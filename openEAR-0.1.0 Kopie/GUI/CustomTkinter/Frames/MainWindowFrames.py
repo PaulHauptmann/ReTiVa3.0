@@ -74,7 +74,7 @@ class MainContainerFrame(customtkinter.CTkFrame):
         
 
         self.analysis_frame.lift()
-        
+        #self.archive.lift()
         
 
         

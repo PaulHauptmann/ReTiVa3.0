@@ -39,9 +39,9 @@ class Main:
 
     #path definitionen
 
-    file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
     #file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
-    directory_path = 'openEAR-0.1.0 Kopie/'
+    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
     archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
 
@@ -298,10 +298,9 @@ class Main:
         
 
     def zusammenführer():
-        if len(Main.DataTime) != len(Main.DataLength):
+        while len(Main.DataTime) != len(Main.DataLength):
             time.sleep(0.5)
             Main.get_length_of_last_added_wav(Main.directory_path)
-            Main.zusammenführer()
 
 
     def write_excel_file(directoryExcel, filename):
@@ -343,12 +342,14 @@ class Main:
         worksheet.append([Main.Soll_DataEmodbEmotionHappiness])
         worksheet.append([Main.Soll_DataEmodbEmotionNeutral])
         worksheet.append([Main.Soll_DataEmodbEmotionSadness])
+        worksheet.append(Main.Soll_Data_EmodbEmotion_List)
         worksheet.append([Main.Soll_DataAbcAffectAgressiv])
         worksheet.append([Main.Soll_DataAbcAffectCheerfull])
         worksheet.append([Main.Soll_DataAbcAffectIntoxicated])
         worksheet.append([Main.Soll_DataAbcAffectNervous])
         worksheet.append([Main.Soll_DataAbcAffectNeutral])
         worksheet.append([Main.Soll_DataAbcAffectTired])
+        worksheet.append(Main.Soll_Data_AbcAffect_List)
         worksheet.append([Main.Abs_MW_Data_Arousal])
         worksheet.append([Main.Abs_MW_Data_Valence])
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionAnger])
@@ -358,12 +359,14 @@ class Main:
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionHappiness])
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionNeutral])
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionSadness])
+        worksheet.append(Main.Abs_MW_Data_EmodbEmotion_List)
         worksheet.append([Main.Abs_MW_Data_AbcAffectAgressiv])
         worksheet.append([Main.Abs_MW_Data_AbcAffectCheerfull])
         worksheet.append([Main.Abs_MW_Data_AbcAffectIntoxicated])
         worksheet.append([Main.Abs_MW_Data_AbcAffectNervous])
         worksheet.append([Main.Abs_MW_Data_AbcAffectNeutral])
         worksheet.append([Main.Abs_MW_Data_AbcAffectTired])
+        worksheet.append(Main.Abs_MW_Data_AbcAffect_List)
         worksheet.append([Main.Abs_MW_Data_Loi1])
         worksheet.append([Main.Abs_MW_Data_Loi2])
         worksheet.append([Main.Abs_MW_Data_Loi3])
@@ -420,28 +423,25 @@ class Main:
         if float(Main.DataTime[-1]) != float(Main.timestemp2):
 
         
-            Main.MWDataSpeakRatio =                    ((sum(Main.DataSpeakRatio[-K:]))                  /      (K))
-            Main.MWDataSpeakTime =                     ((sum(Main.DataSpeakTime[-K:]))                   /      (K))
-            Main.MWDataLength =                        ((sum(Main.DataLength[-K:]))                      /      (K))
-            Main.MWDataTime =                          ((sum(Main.DataTime[-K:]))                        /      (K))
-            Main.MWDataArousal =                       ((sum(Main.DataArousal[-K:]))                     /      (K))
-            Main.MWDataValence =                       ((sum(Main.DataValence[-K:]))                     /      (K))
-            Main.MWDataEmodbEmotionAnger =             ((sum(Main.DataEmodbEmotionAnger[-K:]))           /      (K))
-            Main.MWDataEmodbEmotionBoredom =           ((sum(Main.DataEmodbEmotionBoredom[-K:]))         /      (K))
-            Main.MWDataEmodbEmotionDisgust =           ((sum(Main.DataEmodbEmotionDisgust[-K:]))         /      (K))
-            Main.MWDataEmodbEmotionFear =              ((sum(Main.DataEmodbEmotionFear[-K:]))            /      (K))
-            Main.MWDataEmodbEmotionHappiness =         ((sum(Main.DataEmodbEmotionHappiness[-K:]))       /      (K))
-            Main.MWDataEmodbEmotionNeutral =           ((sum(Main.DataEmodbEmotionNeutral[-K:]))         /      (K))
-            Main.MWDataEmodbEmotionSadness =           ((sum(Main.DataEmodbEmotionSadness[-K:]))         /      (K))
-            Main.MWDataAbcAffectAgressiv =             ((sum(Main.DataAbcAffectAgressiv[-K:]))           /      (K))
-            Main.MWDataAbcAffectCheerfull =            ((sum(Main.DataAbcAffectCheerfull[-K:]))          /      (K))
-            Main.MWDataAbcAffectIntoxicated =          ((sum(Main.DataAbcAffectIntoxicated[-K:]))        /      (K))
-            Main.MWDataAbcAffectNervous =              ((sum(Main.DataAbcAffectNervous[-K:]))            /      (K))
-            Main.MWDataAbcAffectNeutral =              ((sum(Main.DataAbcAffectNeutral[-K:]))            /      (K))
-            Main.MWDataAbcAffectTired =                ((sum(Main.DataAbcAffectTired[-K:]))              /      (K))
-            Main.MWDataLoi1 =                          ((sum(Main.DataLoi1[-K:]))                        /      (K))
-            Main.MWDataLoi2 =                          ((sum(Main.DataLoi2[-K:]))                        /      (K))
-            Main.MWDataLoi3 =                          ((sum(Main.DataLoi3[-K:]))                        /      (K))
+            
+            Main.MWDataArousal =                       ((sum(Main.Time_Norm_Data_Arousal[-K:])                      / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataValence =                       ((sum(Main.Time_Norm_Data_Valence[-K:])                      / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataEmodbEmotionAnger =             ((sum(Main.Time_Norm_Data_EmodbEmotionAnger[-K:])            / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataEmodbEmotionBoredom =           ((sum(Main.Time_Norm_Data_EmodbEmotionBoredom[-K:])          / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataEmodbEmotionDisgust =           ((sum(Main.Time_Norm_Data_EmodbEmotionDisgust[-K:])          / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataEmodbEmotionFear =              ((sum(Main.Time_Norm_Data_EmodbEmotionFear[-K:])             / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataEmodbEmotionHappiness =         ((sum(Main.Time_Norm_Data_EmodbEmotionHappiness[-K:])        / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataEmodbEmotionNeutral =           ((sum(Main.Time_Norm_Data_EmodbEmotionNeutral[-K:])          / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataEmodbEmotionSadness =           ((sum(Main.Time_Norm_Data_EmodbEmotionSadness[-K:])          / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataAbcAffectAgressiv =             ((sum(Main.Time_Norm_Data_AbcAffectAgressiv[-K:])            / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataAbcAffectCheerfull =            ((sum(Main.Time_Norm_Data_AbcAffectCheerfull[-K:])           / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataAbcAffectIntoxicated =          ((sum(Main.Time_Norm_Data_AbcAffectIntoxicated[-K:])         / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataAbcAffectNervous =              ((sum(Main.Time_Norm_Data_AbcAffectNervous[-K:])             / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataAbcAffectNeutral =              ((sum(Main.Time_Norm_Data_AbcAffectNeutral[-K:])             / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataAbcAffectTired =                ((sum(Main.Time_Norm_Data_AbcAffectTired[-K:])               / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataLoi1 =                          ((sum(Main.Time_Norm_Data_Loi1[-K:])                         / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataLoi2 =                          ((sum(Main.Time_Norm_Data_Loi2[-K:])                         / sum(Main.DataLength[-K]))                        /      (K))
+            Main.MWDataLoi3 =                          ((sum(Main.Time_Norm_Data_Loi3[-K:])                         / sum(Main.DataLength[-K]))                        /      (K))
 
         
             Main.timestemp2 = Main.timestemp1
@@ -630,9 +630,6 @@ class Main:
     def Get_Score():
         
         Main.Set_Absolut_Difference()
-        
-        
-        
         Main.Score_EmodbEmotions = (sum(Main.Data_Difference_Score_EmodbEmotion)) / (sum(Main.DataLength)+0.0000001)
         Main.Score_AbcAffect = (sum(Main.Data_Difference_Score_AbcAffect)) / (sum(Main.DataLength)+0.0000001)
         Main.Score_Retiva = (Main.Score_EmodbEmotions+Main.Score_AbcAffect)/2
@@ -642,20 +639,11 @@ class Main:
         
         Main.Set_Absolut_Difference()
         
-        
-        
         Score_EmodbEmotions = ((Main.Data_Difference_Score_EmodbEmotion)) / ((Main.DataLength))
         Score_AbcAffect = ((Main.Data_Difference_Score_AbcAffect)) / ((Main.DataLength))
         
         
         return (Score_EmodbEmotions, Score_AbcAffect)
-
-
-    def Start_Programm():
-        Main.delete_old_wav_files(Main.directory_path)
-        cmd = "echo 'hello world'"
-        
-        subprocess.run(cmd, shell=True, capture_output=True)
         
     
     def Get_Loi_Score():
