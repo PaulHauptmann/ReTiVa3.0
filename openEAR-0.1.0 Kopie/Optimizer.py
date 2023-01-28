@@ -111,7 +111,7 @@ for i in range(11):
                             
                             # Print the current combination of values for the variables
                             
-                            if Score > 10:
+                            if Score > 8:
                                 print("Score:   ", Score, "   ",F1/FG, F2/FG, F3/FG, F4/FG, F5/FG, F6/FG, F7/FG)
                                 Score_new = Score
                             Score = 0
