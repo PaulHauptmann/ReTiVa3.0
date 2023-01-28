@@ -15,13 +15,13 @@ import ctypes
 c_background = '#212121'
 c_white = '#F2F2F2'
 
-c_1 = '#EE8736'
-c_2 = '#3B75B0'
-c_3 = '#D57DBE'
-c_4 = '#78D5D2'
-c_5 = '#8D69B8'
-c_6 = '#C43A32'
-c_7 = '#529E3F'
+c_1 = '#3A65A4'
+c_2 = '#82A3D4'
+c_3 = '#C2D1E8'
+c_4 = '#FFDBBD'
+c_5 = '#FFAD69'
+c_6 = '#DE6400'
+c_7 = '#964400'
 
 c_colors = []
 c_colors.append(c_1)
@@ -34,7 +34,7 @@ c_colors.append(c_7)
 
 
 c_dark_gray = '#717171'
-c_light_gray = '#C7C7C7'
+c_light_gray = '#909090'
 
 print(c_colors)
 
@@ -601,9 +601,16 @@ class DonutAbc(customtkinter.CTkFrame):
         
     def update_chart(self, abc_list:list):
         # Update the data of the wedges and explode list
-        self.list1 = abc_list
+
+        if len(abc_list) == 7:
+            self.list1 = abc_list
+        else:
+            self.list1 = [1,3,2,2,1,1,2]
+
+        total = sum(self.list1)
+        self.list_normed = [i/total for i in self.list1]
         for i, wedge in enumerate(self.wedges):
-            wedge.set_radius(abc_list[i])
+            wedge.set_radius(self.list_normed[i])
             #wedge.set_explode(self.explode_list[i])
         
         # Remove old labels 

@@ -192,8 +192,6 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             #Startet die Datenextraktion und alle zugehörigen Funktionen
             Main.Updater()
 
-            print("Läuft")
-
             ## Mini App Window ##
 
             

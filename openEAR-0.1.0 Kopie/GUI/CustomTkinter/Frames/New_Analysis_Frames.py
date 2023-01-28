@@ -14,7 +14,7 @@ class AudioDeviceListFrame (customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args,  **kwargs)
 
-        self.header_name = "Audio-Geräteauswahl"
+        self.header_name = "Choose Audio Device: "
 
         self.header = customtkinter.CTkLabel(self, text=self.header_name, font=customtkinter.CTkFont(size= 18, weight="bold"))
         self.header.grid(row = 0, column = 0, padx=10, pady = 20)
@@ -42,12 +42,12 @@ class SessionNameFrame(customtkinter.CTkFrame):
         super().__init__(*args,  **kwargs)
         
 
-        self.header = customtkinter.CTkLabel(self, text="Optionalen Session-Name vergeben: ", font=customtkinter.CTkFont(size= 18, weight="bold"))
+        self.header = customtkinter.CTkLabel(self, text="Define a Name for this Session: ", font=customtkinter.CTkFont(size= 18, weight="bold"))
         self.header.pack(padx=10, pady = 5, anchor = "n")
 
 
         self.entry_var= tk.StringVar()
-        self.session_input = customtkinter.CTkEntry(self, textvariable=self.entry_var, width=400, height=30, placeholder_text="Name hier eingeben... ")
+        self.session_input = customtkinter.CTkEntry(self, textvariable=self.entry_var, width=400, height=30, placeholder_text="Enter Session Name here...")
         self.session_input.pack(padx = 10, pady = 10, anchor = "s")
 
 
@@ -57,7 +57,7 @@ class WeightsFrame(customtkinter.CTkFrame):
 
         
 
-        self.header = customtkinter.CTkLabel(self, text="Konfiguration der Analyse", font=customtkinter.CTkFont(size= 18, weight="bold"))
+        self.header = customtkinter.CTkLabel(self, text="Configure the Analysis", font=customtkinter.CTkFont(size= 18, weight="bold"))
         self.header.grid(row = 0, column = 0, padx=10, pady = 5)
 
         self.emo_frame = emodbSettingsFrame(self, create_pie=False)
