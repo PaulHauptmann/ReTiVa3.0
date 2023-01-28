@@ -188,9 +188,11 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
 
 
+
             #Startet die Datenextraktion und alle zugehörigen Funktionen
             Main.Updater()
 
+            print("Läuft")
 
             ## Mini App Window ##
 
@@ -199,14 +201,18 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=Main.Score_Retiva)
             
             #Emotionslabel Update Funktion
-            try:
+            '''try:
                 self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
                 self.mini_app_window.additional_info_frame.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
             except AttributeError:
+                pass'''
+            
+            try:
+                self.mini_app_window.additional_info_frame.emotion_label.set("Happiness")
+                self.mini_app_window.additional_info_frame.double_label.set("Happiness", "Neutral")
+            except AttributeError:
                 pass
             
-            
-            #EmotionwithEmoji.set(self, "Happiness")
             
             #Loi-Score Update Funktion
             self.mini_app_window.additional_info_frame.loi_indicator.update_widget(Main.Loi_Score)

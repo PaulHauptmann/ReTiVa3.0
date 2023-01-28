@@ -152,24 +152,24 @@ class Main:
     Time_Norm_Data_Loi3 = []
     
     
-    Abs_MW_Data_Arousal: float
-    Abs_MW_Data_Valence: float
-    Abs_MW_Data_EmodbEmotionAnger: float
-    Abs_MW_Data_EmodbEmotionBoredom: float
-    Abs_MW_Data_EmodbEmotionDisgust: float
-    Abs_MW_Data_EmodbEmotionFear: float
-    Abs_MW_Data_EmodbEmotionHappiness: float
-    Abs_MW_Data_EmodbEmotionNeutral: float
-    Abs_MW_Data_EmodbEmotionSadness: float
-    Abs_MW_Data_AbcAffectAgressiv: float
-    Abs_MW_Data_AbcAffectCheerfull: float
-    Abs_MW_Data_AbcAffectIntoxicated: float
-    Abs_MW_Data_AbcAffectNervous: float
-    Abs_MW_Data_AbcAffectNeutral: float
-    Abs_MW_Data_AbcAffectTired: float
-    Abs_MW_Data_Loi1: float
-    Abs_MW_Data_Loi2: float
-    Abs_MW_Data_Loi3: float
+    Abs_MW_Data_Arousal: float = 0.0
+    Abs_MW_Data_Valence: float = 0.0
+    Abs_MW_Data_EmodbEmotionAnger: float = 0.0
+    Abs_MW_Data_EmodbEmotionBoredom: float = 0.0
+    Abs_MW_Data_EmodbEmotionDisgust: float = 0.0
+    Abs_MW_Data_EmodbEmotionFear: float = 0.0
+    Abs_MW_Data_EmodbEmotionHappiness: float = 0.0
+    Abs_MW_Data_EmodbEmotionNeutral: float = 0.0
+    Abs_MW_Data_EmodbEmotionSadness: float = 0.0
+    Abs_MW_Data_AbcAffectAgressiv: float = 0.0
+    Abs_MW_Data_AbcAffectCheerfull: float = 0.0
+    Abs_MW_Data_AbcAffectIntoxicated: float = 0.0
+    Abs_MW_Data_AbcAffectNervous: float = 0.0
+    Abs_MW_Data_AbcAffectNeutral: float = 0.0
+    Abs_MW_Data_AbcAffectTired: float = 0.0
+    Abs_MW_Data_Loi1: float = 0.0
+    Abs_MW_Data_Loi2: float = 0.0
+    Abs_MW_Data_Loi3: float = 0.0
     Abs_MW_Data_EmodbEmotion_List = []
     Abs_MW_Data_AbcAffect_List = []
     
@@ -826,11 +826,11 @@ class Main:
 
 
     def Updater():
-
+        print("Updater")
 
         Main.read_log_file(Main.file_path)
         Main.get_length_of_last_added_wav(Main.directory_path)
-        Main.zusammenführer()
+        #Main.zusammenführer()
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
         Main.Set_Time_Norm_Values()
@@ -845,7 +845,7 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-Main.Set_Session_Name(None)
+#Main.Set_Session_Name(None)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
 print(Main.Excel_Filename)
@@ -873,9 +873,5 @@ Main.Abs_MW_Data_AbcAffectTired= 0.34276
 Main.Abs_MW_Data_Loi1= 0.34276
 Main.Abs_MW_Data_Loi2= 0.34276
 Main.Abs_MW_Data_Loi3= 0.34276"""
-
-
-while True:
-    Main.Updater()
 
 
