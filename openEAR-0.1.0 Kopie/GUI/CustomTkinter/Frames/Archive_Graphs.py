@@ -690,8 +690,11 @@ class DonutAbc_Archive(customtkinter.CTkFrame):
         else:
             self.list1 = [1,3,2,2,1,1]
 
-        total = sum(self.list1)
-        self.list_normed = [i/total for i in self.list1]
+        try:
+            total = sum(self.list1)
+            self.list_normed = [i/total for i in self.list1]
+        except ZeroDivisionError:
+            self.list_normed = self.list1
 
         
         # Update the data of the wedges and explode list
