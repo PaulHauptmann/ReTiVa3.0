@@ -39,9 +39,9 @@ class Main:
 
     #path definitionen
 
-    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
+    file_path = 'openEAR-0.1.0 Kopie/smile.log'
     #file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
-    directory_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/'
+    directory_path = 'openEAR-0.1.0 Kopie/'
     archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
 
@@ -59,7 +59,7 @@ class Main:
     DataSessionName = []
     DataSpeakRatio = [0.0]
     DataSpeakTime = [0.0]
-    DataLength = [0.0]
+    DataLength = []
     DataTime = [0.0]
     DataArousal = [0.0]
     DataValence = [0.0]
