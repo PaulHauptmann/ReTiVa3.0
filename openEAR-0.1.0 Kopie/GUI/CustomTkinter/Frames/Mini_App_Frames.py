@@ -41,9 +41,9 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
             self.emotion_label.set("Sadness")
         
 
-        self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
-        self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
-        self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
+        self.loi_indicator = HorizontalIndicator(self,left="Uninterested",middle="Neutral",right="Interested")
+        self.valence_indicator = HorizontalIndicator(self, left="Unpleasant", middle="", right="Pleasant")
+        self.arousal_indicator = HorizontalIndicator(self, left= "Deactivated", middle="", right="Activated")
         
 
         if show_all_scales:
@@ -61,7 +61,7 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
             if Startupsettings.arousal_scale == 1:
                 self.arousal_indicator.grid(row = 4, column = 0)
 
-        self.redeanteil = HorizontalIndicator(self, left="Redeanteil: ", middle="50%", right="100%")
+        self.redeanteil = HorizontalIndicator(self, left="Talk Ratio: ", middle="50%", right="100%")
         self.redeanteil.grid(row = 5, column = 0)
 
 
@@ -75,15 +75,14 @@ class AdditionalInfoFrame_Archive(customtkinter.CTkFrame):
         self.configure(corner_radius = 10)
 
 
-        self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
+        self.loi_indicator = HorizontalIndicator(self,left="Uninterested",middle="Neutral",right="Interested")
         self.loi_indicator.grid(row = 2, column = 0)
         
-        self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
+        self.valence_indicator = HorizontalIndicator(self, left="Unpleasant", middle="", right="Pleasant")
         self.valence_indicator.grid(row = 3, column = 0)
         
-        self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
+        self.arousal_indicator = HorizontalIndicator(self, left= "Deactivated", middle="", right="Activated")
         self.arousal_indicator.grid(row = 4, column = 0)
         
-       
-        self.redeanteil = HorizontalIndicator(self, left="Redeanteil: ", middle="50%", right="100%")
+        self.redeanteil = HorizontalIndicator(self, left="Talk Ratio: ", middle="50%", right="100%")
         self.redeanteil.grid(row = 5, column = 0)
