@@ -84,7 +84,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
 
         # Gewichte an Backend übergeben, erst dort werden sie normiert
-        Main.Get_Soll_Werte( Weights.w_emodb_anger, 
+        Main.Set_Soll_Werte(Weights.w_emodb_anger, 
                              Weights.w_emodb_boredom, 
                              Weights.w_emodb_disgust,
                              Weights.w_emodb_fear, 
@@ -114,7 +114,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         #Starte Uhr in BigAnalysis Window
         MainContainerFrame.start_clock()
         MainContainerFrame.set_window_session_name()
-        
+
+       
 
         
 

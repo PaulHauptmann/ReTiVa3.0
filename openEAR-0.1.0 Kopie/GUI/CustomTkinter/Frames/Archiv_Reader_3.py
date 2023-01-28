@@ -62,7 +62,8 @@ def Read_Excel_File(Directory):
         "Archive_Score_EmodbEmotions",
         "Archive_Score_AbcAffect",
         "Archive_Score_Retiva",
-        "Archive_Abs_MW_Loi_Score"
+        "Archive_Abs_MW_Loi_Score",
+        "Archive_MW_SpeakRatio"
     ]
 
     # Create an empty dictionary to store the rows
@@ -70,7 +71,7 @@ def Read_Excel_File(Directory):
 
     # Iterate over the rows and append each one to the data dictionary
     for i, row in enumerate(ws.iter_rows(values_only=True)):
-        if i >= 54:
+        if i >= 55:
             break
         data[list_names[i]] = [cell for cell in row if cell is not None]
     
