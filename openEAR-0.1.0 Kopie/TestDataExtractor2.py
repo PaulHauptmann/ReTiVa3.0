@@ -399,7 +399,7 @@ class Main:
 
     def Anzahl_Files_Gleitender_Mittelwert():
         # Hier kann man einstellen über wieviel sekunden der Mittelwert gehen soll
-        if sum(Main.DataLength) >= 20:
+        if sum(Main.DataLength) >= 30:
             K=1
             while sum(Main.DataLength[-K:]) <= 20:
                 K = K+1
@@ -623,7 +623,7 @@ class Main:
         Übergabe_Soll_DataAbcAffectIntoxicated,
         Übergabe_Soll_DataAbcAffectNervous,
         Übergabe_Soll_DataAbcAffectNeutral,
-        Übergabe_Soll_DataAbcAffectTired,
+        Übergabe_Soll_DataAbcAffectTired
         
     ):
         
