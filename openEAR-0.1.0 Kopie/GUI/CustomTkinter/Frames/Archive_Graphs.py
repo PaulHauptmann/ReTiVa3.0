@@ -41,6 +41,7 @@ print(c_colors)
 
 
 class Variablen():
+
     Archive_Data_DateTime                           = []
     archive_Data_SessionName                        = []
     archive_Data_Time                               = []
@@ -62,6 +63,7 @@ class Variablen():
     archive_Data_Loi1                               = []
     archive_Data_Loi2                               = []
     archive_Data_Loi3                               = []
+
     Archive_Soll_DataEmodbEmotionAnger               = []
     Archive_Soll_DataEmodbEmotionBoredom             = []
     Archive_Soll_DataEmodbEmotionDisgust             = []
@@ -104,6 +106,7 @@ class Variablen():
     
     
     def Set_Values(
+
         Set_archive_Data_DateTime,                          
         Set_archive_Data_SessionName,                        
         Set_archive_Data_Time,                              
@@ -125,6 +128,7 @@ class Variablen():
         Set_archive_Data_Loi1,                              
         Set_archive_Data_Loi2,                              
         Set_archive_Data_Loi3,                              
+
         Set_Archive_Soll_DataEmodbEmotionAnger,              
         Set_Archive_Soll_DataEmodbEmotionBoredom,            
         Set_Archive_Soll_DataEmodbEmotionDisgust,            
@@ -165,6 +169,7 @@ class Variablen():
         Set_Archive_Abs_MW_Data_EmodbEmotion_List  ,         
         Set_Archive_Abs_MW_Data_AbcAffect_List                                     
     ):
+
         Variablen.archive_Data_DateTime                     =           Set_archive_Data_DateTime
         Variablen.archive_Data_SessionName                  =           Set_archive_Data_SessionName
         Variablen.archive_Data_Time                         =           Set_archive_Data_Time
@@ -186,6 +191,7 @@ class Variablen():
         Variablen.archive_Data_Loi1                         =           Set_archive_Data_Loi1
         Variablen.archive_Data_Loi2                         =           Set_archive_Data_Loi2
         Variablen.archive_Data_Loi3                         =           Set_archive_Data_Loi3
+
         Variablen.Archive_Soll_DataEmodbEmotionAnger         =           Set_Archive_Soll_DataEmodbEmotionAnger
         Variablen.Archive_Soll_DataEmodbEmotionBoredom       =           Set_Archive_Soll_DataEmodbEmotionBoredom
         Variablen.Archive_Soll_DataEmodbEmotionDisgust       =           Set_Archive_Soll_DataEmodbEmotionDisgust
@@ -251,6 +257,7 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         #DataEmodbEmotionBoredom_normed = [i * 100 for i in test_list2 ]
         
         
+
         DataEmodbEmotionAnger_normed = [i * 100 for i in Variablen.archive_Data_EmodbEmotionAnger ]
         DataEmodbEmotionBoredom_normed = [i * 100 for i in Variablen.archive_Data_EmodbEmotionBoredm ]
         DataEmodbEmotionDisgust_normed = [i * 100 for i in Variablen.archive_Data_EmodbEmotionDisgust ]
@@ -258,7 +265,7 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         DataEmodbEmotionHappiness_normed = [i * 100 for i in Variablen.archive_Data_EmodbEmotionHappness ]
         DataEmodbEmotionNeutral_normed = [i * 100 for i in Variablen.archive_Data_EmodbEmotionNeutral ]
         DataEmodbEmotionSadness_normed = [i * 100 for i in Variablen.archive_Data_EmodbEmotionSadness ]
-        
+
         #self.lists = [Main.DataEmodbEmotionAnger, Main.DataEmodbEmotionBoredom, Main.DataEmodbEmotionDisgust, Main.DataEmodbEmotionFear, Main.DataEmodbEmotionHappiness, Main.DataEmodbEmotionNeutral, Main.DataEmodbEmotionSadness]
 
         #Neue Listen-Liste mit normierten Daten
@@ -356,15 +363,18 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
         test_list1 = [0.2, 0.3, 0.1, 0.5, 0.3]
         test_list2 = [0.5, 0.6, 0.7, 0.4, 0.2]
 
+
         '''Variablen.archive_Data_AbcAffectIntoxicatd
         Variablen.archive_Data_AbcAffectNervous
         Variablen.archive_Data_AbcAffectNeutral
         Variablen.archive_Data_AbcAffectTired'''
+
         
         
         #Daten auf 100er Skala normieren
         DataAbcAffectAgressiv_normed = [i * 100 for i in test_list1]
         DataAbcAffectCheerfull_normed = [i * 100 for i in test_list2]
+
 
         #DataAbcAffectAgressiv_normed = [i * 100 for i in Variablen.archive_Data_AbcAffectAgressiv]
         #DataAbcAffectCheerfull_normed = [i * 100 for i in Variablen.archive_Data_AbcAffectCheerful]
@@ -372,6 +382,7 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
         DataAbcAffectNervous_normed = [i * 100 for i in Variablen.archive_Data_AbcAffectNervous]
         DataAbcAffectNeutral_normed = [i * 100 for i in Variablen.archive_Data_AbcAffectNeutral]
         DataAbcAffectTired_normed = [i * 100 for i in Variablen.archive_Data_AbcAffectTired]
+
 
         #Neue Listen-Liste mit normierten Daten
         self.lists_normed = [
