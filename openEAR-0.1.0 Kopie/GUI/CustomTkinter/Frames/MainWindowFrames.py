@@ -180,11 +180,9 @@ class SettingsFrame(customtkinter.CTkFrame):
         self.scales_selector.grid(row = 2, column = 0, padx = 10)
 
         self.emotions_settings_frame = EmotionSettingsFrame(self)
-        self.emotions_settings_frame.grid(row = 3, column = 0, padx = 10)
+        self.emotions_settings_frame.grid(row = 3, column = 0, padx = 10, sticky ="ew")
 
-        self.choose_model = BigAnalysisChooseModel(self)
-        self.choose_model.grid(row = 1, column = 2, padx = 10, sticky = "ew")
-
+        
 
     def on_ok(self):
         #self.destroy()
