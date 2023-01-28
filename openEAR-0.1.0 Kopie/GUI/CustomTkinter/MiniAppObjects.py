@@ -120,12 +120,12 @@ class HorizontalIndicator(customtkinter.CTkFrame):
 emoji_dict = {
 
     "Anger" : "-1" , 
-    "Boredom" : "0" , 
+    "Boredom" : "-1" , 
     "Disgust" : "-1" , 
-    "Fear ="  : "-1" , 
+    "Fear"  : "-1" , 
     "Happiness" : "1" , 
-    "Neutral" : "0" , 
-    "Sadness" : "-1" , 
+    "Neutral" : "1" , 
+    "Sadness" : "0" , 
 }
 
 

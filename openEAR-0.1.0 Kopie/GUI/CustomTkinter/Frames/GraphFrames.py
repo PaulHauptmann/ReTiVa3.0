@@ -289,7 +289,7 @@ class BarChartEmo(customtkinter.CTkFrame):
         ax.set_facecolor(c_background)
         ax.tick_params(colors = c_white, which = "both")
 
-        ax.set_title('Mix of Emotions', color = c_white, pad=10)
+        ax.set_title('Mix of Emotions in total', color = c_white, pad=10)
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
@@ -333,7 +333,7 @@ class BarChartEmo(customtkinter.CTkFrame):
         
         ax.clear()
         
-        ax.set_title('Mix of Emotions', color = c_white, pad=10)
+        ax.set_title('Mix of Emotions in total', color = c_white, pad=10)
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
@@ -386,7 +386,7 @@ class BarChartAbc(customtkinter.CTkFrame):
         ax.tick_params(colors = c_white, which = "both")
 
 
-        ax.set_title('Mix of Emotions', color = c_white)
+        ax.set_title('Mix of Emotions in total', color = c_white)
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ['Agressiv', 'Cheerful', 'Intoxicated', 'Nervous', 'Neutral', 'Tired']
@@ -429,7 +429,7 @@ class BarChartAbc(customtkinter.CTkFrame):
         
         ax.clear()
         
-        ax.set_title('Mix of Emotions', color = c_white, pad=10)
+        ax.set_title('Mix of Emotions in total', color = c_white, pad=10)
         ax.set_ylabel('Prozent', color = c_white)
 
         labels = ['Agressiv', 'Cheerful', 'Intoxicated', 'Nervous', 'Neutral', 'Tired']

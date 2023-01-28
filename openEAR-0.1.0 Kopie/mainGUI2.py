@@ -160,23 +160,6 @@ class App(customtkinter.CTk):
         # If the STOP button is pressed then terminate the loop
         GlobalStartStop.analysis_loop = False
 
-    '''
-    def start_command(self):
-        global stop
-        stop = False
-        #T3.Main.Set_Session_Name("test")
-        while True and not stop:
-            #Textbox vollständig löschen
-            self.textbox.textbox.delete("0.0", tk.END)
-
-            #Neuen Text aus T3 einfügen
-            #self.textbox.textbox.insert("0.0", T3.Main.get_new_filename())
-            #self.textbox.textbox.insert("0.0", "Test")
-            T.Main.Updater()
-            self.textbox.textbox.insert("0.0", T.Main.Loi_Score)
-            #self.textbox.insert("0.0", Startupsettings.selected_audio_device)
-            time.sleep(0.5)
-    '''
             
 
 
