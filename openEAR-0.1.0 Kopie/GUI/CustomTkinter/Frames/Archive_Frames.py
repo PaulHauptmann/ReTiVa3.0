@@ -155,7 +155,16 @@ class ArchiveListFrame(customtkinter.CTkFrame):
 
         self.archive_frame.big_analysis_emo.donut.update_chart(test)
         self.archive_frame.big_analysis_abc.donut.update_chart(test)
+
+        self.archive_frame.big_analysis_emo.big_score.indicator.update_widget(float(Variablen.Archive_Score_Retiva[-1]))
+        self.archive_frame.big_analysis_abc.big_score.indicator.update_widget(Variablen.Archive_Score_Retiva)
+
+        self.archive_frame.big_analysis_emo.additonal_scores.loi_indicator.update_widget(Variablen.Archive_Abs_MW_Loi_Score)
+        self.archive_frame.big_analysis_abc.additonal_scores.loi_indicator.update_widget(Variablen.Archive_Abs_MW_Loi_Score)
         
+        self.archive_frame.big_analysis_emo.additonal_scores.arousal_indicator.update_widget(Variablen.Archive_Abs_MW_Data_Arousal)
+
+
         
         
         
