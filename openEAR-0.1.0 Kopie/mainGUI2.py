@@ -57,7 +57,7 @@ class App(customtkinter.CTk):
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
         
         #Neue-Analyse-Button
-        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, text="Neue Analyse", command=self.new_analysis_button_event)
+        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, text="New Analysis", command=self.new_analysis_button_event)
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
         
         #Start-Button
@@ -69,11 +69,11 @@ class App(customtkinter.CTk):
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
 
         #Einstellungen-Button
-        self.sidebar_button_settings = customtkinter.CTkButton(self.sidebar_frame, text="Einstellungen", command=self.show_settings_button_command)
+        self.sidebar_button_settings = customtkinter.CTkButton(self.sidebar_frame, text="Settings", command=self.show_settings_button_command)
         self.sidebar_button_settings.grid(row=4, column=0, padx=20, pady=10)
 
         #Archiv-Button
-        self.sidebar_button_archive = customtkinter.CTkButton(self.sidebar_frame, text= "Archiv", command=self.show_archive_button_command)
+        self.sidebar_button_archive = customtkinter.CTkButton(self.sidebar_frame, text= "Archive", command=self.show_archive_button_command)
         self.sidebar_button_archive.grid(row = 5, column = 0, padx = 20, pady = 10)
         
         #Mini-App-Button

@@ -7,6 +7,7 @@ from Frames.SettingsFrames import *
 from Frames.GraphFrames import *
 from CustomObjects import *
 import threading
+import sys 
 
 
 class MainContainerFrame(customtkinter.CTkFrame):
@@ -74,7 +75,8 @@ class MainContainerFrame(customtkinter.CTkFrame):
         
 
 
-        self.archive.lift()
+        
+        self.hello.lift()
         
 
 
@@ -131,9 +133,19 @@ class HelloFrame(customtkinter.CTkFrame):
         super().__init__(*args, **kwargs)
 
         self.columnconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
 
         self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
+
+        self.hello_text = customtkinter.CTkTextbox(self, corner_radius=20, font=customtkinter.CTkFont(size=20))
+
+        with open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/Frames/hello_text.txt", "r") as file:
+            text = file.read()
+            self.hello_text.insert("1.0", text)
+
+        self.hello_text.grid(row = 1, column = 0, sticky = "nsew", padx = 30)
+        self.hello_text.configure(state = "disabled")
         
         
 
