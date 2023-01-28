@@ -256,7 +256,7 @@ class BigLiveAnalysisFrame_old(customtkinter.CTkFrame):
 
 
 #EmoDB Analyse Übersicht
-class BigLiveAnalysisFrame_Emo(customtkinter.CTkFrame):
+class  BigLiveAnalysisFrame_Emo(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
