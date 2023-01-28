@@ -72,11 +72,8 @@ class AdditionalInfoFrame_Archive(customtkinter.CTkFrame):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
 
-        
-        self.double_label = DualEmotions(self)
-        self.double_label.grid(row = 0, column = 0,sticky = "new", padx = 30, pady = 10)
-        #self.double_label.set("Anger", "Tired")
-    
+        self.configure(corner_radius = 10)
+
 
         self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
         self.loi_indicator.grid(row = 2, column = 0)

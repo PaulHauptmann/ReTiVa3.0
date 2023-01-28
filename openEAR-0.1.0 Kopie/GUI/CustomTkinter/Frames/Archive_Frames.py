@@ -164,9 +164,27 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         print("Archiv Disgust: ", Variablen.archive_Data_EmodbEmotionDisgust)
         print("Archiv Anger: ", Variablen.archive_Data_EmodbEmotionAnger)
 
+        print("Archiv LOI: ", Variablen.Archive_Abs_MW_Loi_Score)
+        print("Archiv Arousal: ", Variablen.Archive_Abs_MW_Data_Arousal)
+        print("Archiv Valence: ", Variablen.Archive_Abs_MW_Data_Valence)
+
+        archive_list_emodb = [
+            Variablen.Archive_Abs_MW_Data_EmodbEmotionAnger[-1],
+            Variablen.Archive_Abs_MW_Data_EmodbEmotionBoredom[-1],
+            Variablen.Archive_Abs_MW_Data_EmodbEmotionDisgust[-1],
+            Variablen.Archive_Abs_MW_Data_EmodbEmotionFear[-1],
+            Variablen.Archive_Abs_MW_Data_EmodbEmotionHappiness[-1],
+            Variablen.Archive_Abs_MW_Data_EmodbEmotionNeutral[-1],
+            Variablen.Archive_Abs_MW_Data_EmodbEmotionSadness[-1],
 
 
-        self.archive_frame.big_analysis_emo.donut.update_chart(Variablen.Archive_Abs_MW_Data_EmodbEmotion_List)
+
+        ]
+
+        print("Archiv Emo Liste:" , archive_list_emodb)
+
+        #self.archive_frame.big_analysis_emo.donut.update_chart(Variablen.Archive_Abs_MW_Data_EmodbEmotion_List)
+        #self.archive_frame.big_analysis_emo.donut.update_chart(archive_list_emodb)
         self.archive_frame.big_analysis_abc.donut.update_chart(Variablen.Archive_Abs_MW_Data_AbcAffect_List)
 
         self.archive_frame.big_analysis_emo.graph_emo.update_chart()
@@ -178,7 +196,11 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         self.archive_frame.big_analysis_emo.big_score.indicator.update_widget(testscore)
         self.archive_frame.big_analysis_abc.big_score.indicator.update_widget(testscore)
 
-        self.archive_frame.big_analysis_emo.additonal_scores.double_label.set(testemotion[0], testemotion[1])
+        self.archive_frame.big_analysis_emo.additonal_scores.loi_indicator.update_widget(Variablen.Archive_Abs_MW_Loi_Score[-1])
+        self.archive_frame.big_analysis_emo.additonal_scores.arousal_indicator.update_widget(Variablen.Archive_Abs_MW_Data_Arousal[-1])
+        self.archive_frame.big_analysis_emo.additonal_scores.valence_indicator.update_widget(Variablen.Archive_Abs_MW_Data_Valence[-1])
+
+        
 
 
         
@@ -245,8 +267,7 @@ class BigLiveAnalysisFrame_Emo_Archive(customtkinter.CTkFrame):
         self.big_score.grid(row = 0, column = 2)
 
         self.additonal_scores = AdditionalInfoFrame_Archive(self.scores_frame)
-        self.additonal_scores.grid(row = 0, column = 1)
-
+        self.additonal_scores.grid(row = 0, column = 1, sticky = "s", pady = 30)
 
         self.graph_emo = BarChartEmo_Archive(self)
         self.graph_emo.create_chart()
@@ -272,14 +293,14 @@ class BigLiveAnalysisFrame_Abc_Archive(customtkinter.CTkFrame):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
 
-        self.scores_frame = customtkinter.CTkFrame(self)
+        self.scores_frame = customtkinter.CTkFrame(self, corner_radius=10)
         self.scores_frame.grid(row = 1, column = 1, columnspan = 2, pady = (0,5), padx = (10,0))
 
 
         self.big_score = ScoreIndicatorFrame(self.scores_frame)
         self.big_score.grid(row = 0, column = 2)
 
-        self.additonal_scores = AdditionalInfoFrame(self.scores_frame, show_all_scales=True)
+        self.additonal_scores = AdditionalInfoFrame_Archive(self.scores_frame)
         self.additonal_scores.grid(row = 0, column = 1)
 
        
