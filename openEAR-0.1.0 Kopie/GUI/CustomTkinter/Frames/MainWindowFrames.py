@@ -135,7 +135,7 @@ class HelloFrame(customtkinter.CTkFrame):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
 
-        self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
+        self.title = customtkinter.CTkLabel(self, text= "Welcome to ReTiVA – Real Time Voice Analytics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
 
         self.hello_text = customtkinter.CTkTextbox(self, corner_radius=20, font=customtkinter.CTkFont(size=20))
