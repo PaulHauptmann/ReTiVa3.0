@@ -9,8 +9,6 @@ def Read_Excel_File(Directory):
 
     # Create a list of list names
     list_names = [
-        "Archive_Data_DateTime",
-        "Archive_Data_SessionName",
         "Archive_Data_Time",
         "Archive_Data_Arousal",
         "Archive_Data_Valence",
@@ -29,41 +27,41 @@ def Read_Excel_File(Directory):
         "Archive_Data_AbcAffectTired",
         "Archive_Data_Loi1",
         "Archive_Data_Loi2",
-        "Archive_Data_Loi3"
-        'Archive_Soll_DataEmodbEmotionAnger'
-        'Archive_Soll_DataEmodbEmotionBoredom'
-        'Archive_Soll_DataEmodbEmotionDisgust'
-        'Archive_Soll_DataEmodbEmotionFear'
-        'Archive_Soll_DataEmodbEmotionHappiness'
-        'Archive_Soll_DataEmodbEmotionNeutral'
-        'Archive_Soll_DataEmodbEmotionSadness'
-        'Archive_Soll_DataAbcAffectAgressiv'
-        'Archive_Soll_DataAbcAffectCheerfull'
-        'Archive_Soll_DataAbcAffectIntoxicated'
-        'Archive_Soll_DataAbcAffectNervous'
-        'Archive_Soll_DataAbcAffectNeutral'
-        'Archive_Soll_DataAbcAffectTired'
-        'Archive_Abs_MW_Data_Arousal'
-        'Archive_Abs_MW_Data_Valence'
-        'Archive_Abs_MW_Data_EmodbEmotionAnger'
-        'Archive_Abs_MW_Data_EmodbEmotionBoredom'
-        'Archive_Abs_MW_Data_EmodbEmotionDisgust'
-        'Archive_Abs_MW_Data_EmodbEmotionFear'
-        'Archive_Abs_MW_Data_EmodbEmotionHappiness'
-        'Archive_Abs_MW_Data_EmodbEmotionNeutral'
-        'Archive_Abs_MW_Data_EmodbEmotionSadness'
-        'Archive_Abs_MW_Data_AbcAffectAgressiv'
-        'Archive_Abs_MW_Data_AbcAffectCheerfull'
-        'Archive_Abs_MW_Data_AbcAffectIntoxicated'
-        'Archive_Abs_MW_Data_AbcAffectNervous'
-        'Archive_Abs_MW_Data_AbcAffectNeutral'
-        'Archive_Abs_MW_Data_AbcAffectTired'
-        'Archive_Abs_MW_Data_Loi1'
-        'Archive_Abs_MW_Data_Loi2'
-        'Archive_Abs_MW_Data_Loi3'
-        'Archive_Score_EmodbEmotions'
-        'Archive_Score_AbcAffect'
-        'Archive_Score_Retiva'
+        "Archive_Data_Loi3",
+        'Archive_Soll_DataEmodbEmotionAnger',
+        'Archive_Soll_DataEmodbEmotionBoredom',
+        'Archive_Soll_DataEmodbEmotionDisgust',
+        'Archive_Soll_DataEmodbEmotionFear',
+        'Archive_Soll_DataEmodbEmotionHappiness',
+        'Archive_Soll_DataEmodbEmotionNeutral',
+        'Archive_Soll_DataEmodbEmotionSadness',
+        'Archive_Soll_DataAbcAffectAgressiv',
+        'Archive_Soll_DataAbcAffectCheerfull',
+        'Archive_Soll_DataAbcAffectIntoxicated',
+        'Archive_Soll_DataAbcAffectNervous',
+        'Archive_Soll_DataAbcAffectNeutral',
+        'Archive_Soll_DataAbcAffectTired',
+        'Archive_Abs_MW_Data_Arousal',
+        'Archive_Abs_MW_Data_Valence',
+        'Archive_Abs_MW_Data_EmodbEmotionAnger',
+        'Archive_Abs_MW_Data_EmodbEmotionBoredom',
+        'Archive_Abs_MW_Data_EmodbEmotionDisgust',
+        'Archive_Abs_MW_Data_EmodbEmotionFear',
+        'Archive_Abs_MW_Data_EmodbEmotionHappiness',
+        'Archive_Abs_MW_Data_EmodbEmotionNeutral',
+        'Archive_Abs_MW_Data_EmodbEmotionSadness',
+        'Archive_Abs_MW_Data_AbcAffectAgressiv',
+        'Archive_Abs_MW_Data_AbcAffectCheerfull',
+        'Archive_Abs_MW_Data_AbcAffectIntoxicated',
+        'Archive_Abs_MW_Data_AbcAffectNervous',
+        'Archive_Abs_MW_Data_AbcAffectNeutral',
+        'Archive_Abs_MW_Data_AbcAffectTired',
+        'Archive_Abs_MW_Data_Loi1',
+        'Archive_Abs_MW_Data_Loi2',
+        'Archive_Abs_MW_Data_Loi3',
+        'Archive_Score_EmodbEmotions',
+        'Archive_Score_AbcAffect',
+        'Archive_Score_Retiva',
         'Archive_Abs_MW_Loi_Score'
     ]
 
@@ -72,9 +70,9 @@ def Read_Excel_File(Directory):
 
     # Iterate over the rows and append each one to the data dictionary
     for i, row in enumerate(ws.iter_rows(values_only=True)):
-        if i >= 60:
+        if i >= 54:
             break
-        data[list_names[i]] = [cell for cell in row]
+        data[list_names[i]] = [cell for cell in row if cell is not None]
     
     
 
@@ -175,10 +173,8 @@ print (Archive_Data_Loi2)
 print (Archive_Data_Loi3)"""
 
 
-
+"""
 data = Get_Data('/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/Neue_Session_12:31_28_01_2023.xlsx')
-Archive_Data_DateTime                            = data.get("Archive_Data_DateTime", "Key not found")
-Archive_Data_SessionNme                          = data.get("Archive_Data_SessionName", "Key not found")
 Archive_Data_Time                                = data.get("Archive_Data_Time", "Key not found")
 Archive_Data_Aroual                              = data.get("Archive_Data_Arousal", "Key not found")
 Archive_Data_Valence                             = data.get("Archive_Data_Valence", "Key not found")
@@ -235,8 +231,7 @@ Archive_Score_Retiva                             = data.get("Archive_Score_Retiv
 Archive_Abs_MW_Loi_Score                         = data.get("Archive_Abs_MW_Loi_Score", "Key not found")
 
 
-print(Archive_Data_DateTime)
-print(Archive_Data_SessionNme)
+
 print(Archive_Data_Time)
 print(Archive_Data_Aroual)
 print(Archive_Data_Valence)
@@ -291,7 +286,7 @@ print(Archive_Score_EmodbEmotions)
 print(Archive_Score_AbcAffect)
 print(Archive_Score_Retiva)
 print(Archive_Abs_MW_Loi_Score)
-
+"""
 
 
 

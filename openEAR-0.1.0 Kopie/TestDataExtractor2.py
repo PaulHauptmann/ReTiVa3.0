@@ -314,8 +314,6 @@ class Main:
         worksheet = workbook.active
 
         # Write the 19 lists to the file
-        worksheet.append(Main.DataDateTime)
-        worksheet.append(Main.DataSessionName)
         worksheet.append(Main.DataTime)
         worksheet.append(Main.DataArousal)
         worksheet.append(Main.DataValence)
@@ -841,7 +839,7 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-Main.Set_Session_Name(None)
+Main.Set_Session_Name("Test1")
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
 print(Main.Excel_Filename)
