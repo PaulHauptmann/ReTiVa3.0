@@ -59,7 +59,7 @@ class Main:
     DataSessionName = []
     DataSpeakRatio = [0.0]
     DataSpeakTime = [0.0]
-    DataLength = []
+    DataLength = [0.0]
     DataTime = [0.0]
     DataArousal = [0.0]
     DataValence = [0.0]
@@ -286,8 +286,8 @@ class Main:
         try:
             with wave.open(os.path.join(directory, wav_file), 'rb') as w:
                 length = w.getnframes() / w.getframerate()
-                #if Main.DataLength[-1] != length and length != 0:
-                if Main.DataLength[-1] != length:
+                if Main.DataLength[-1] != length and length != 0:
+                #if Main.DataLength[-1] != length:
                     Main.DataLength.append(length)
                 return w.getnframes() / w.getframerate()
 
@@ -470,6 +470,7 @@ class Main:
             Main.MWDataLoi3 =                          ((sum(Main.Time_Norm_Data_Loi3[-C:])                         / (sum(last_C_DataLength)+0.0000000001)))
             
             Main.timestemp2 = Main.timestemp1
+    
     
     def Set_Session_Name (V1):
 
@@ -829,7 +830,7 @@ class Main:
 
         Main.read_log_file(Main.file_path)
         Main.get_length_of_last_added_wav(Main.directory_path)
-        #Main.zusammenführer()
+        Main.zusammenführer()
         Main.get_speak_ratio()
         Main.Gleitender_Mittelwert()
         Main.Set_Time_Norm_Values()
@@ -844,12 +845,13 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-#Main.Set_Session_Name(None)
+Main.Set_Session_Name(None)
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
 print(Main.Excel_Filename)
 print(Main.Soll_DataEmodbEmotionAnger)
-#Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
+
+"""#Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_AbcAffect_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095]
 #Main.Soll_Data_EmodbEmotion_List = []
@@ -870,7 +872,10 @@ Main.Abs_MW_Data_AbcAffectNeutral= 0.34276
 Main.Abs_MW_Data_AbcAffectTired= 0.34276
 Main.Abs_MW_Data_Loi1= 0.34276
 Main.Abs_MW_Data_Loi2= 0.34276
-Main.Abs_MW_Data_Loi3= 0.34276
-Main.Updater()
+Main.Abs_MW_Data_Loi3= 0.34276"""
+
+
+while True:
+    Main.Updater()
 
 
