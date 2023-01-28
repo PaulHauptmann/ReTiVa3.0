@@ -314,8 +314,6 @@ class Main:
         worksheet = workbook.active
 
         # Write the 19 lists to the file
-        worksheet.append(Main.DataDateTime)
-        worksheet.append(Main.DataSessionName)
         worksheet.append(Main.DataTime)
         worksheet.append(Main.DataArousal)
         worksheet.append(Main.DataValence)
@@ -342,14 +340,12 @@ class Main:
         worksheet.append([Main.Soll_DataEmodbEmotionHappiness])
         worksheet.append([Main.Soll_DataEmodbEmotionNeutral])
         worksheet.append([Main.Soll_DataEmodbEmotionSadness])
-        worksheet.append(Main.Soll_Data_EmodbEmotion_List)
         worksheet.append([Main.Soll_DataAbcAffectAgressiv])
         worksheet.append([Main.Soll_DataAbcAffectCheerfull])
         worksheet.append([Main.Soll_DataAbcAffectIntoxicated])
         worksheet.append([Main.Soll_DataAbcAffectNervous])
         worksheet.append([Main.Soll_DataAbcAffectNeutral])
         worksheet.append([Main.Soll_DataAbcAffectTired])
-        worksheet.append(Main.Soll_Data_AbcAffect_List)
         worksheet.append([Main.Abs_MW_Data_Arousal])
         worksheet.append([Main.Abs_MW_Data_Valence])
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionAnger])
@@ -359,14 +355,12 @@ class Main:
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionHappiness])
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionNeutral])
         worksheet.append([Main.Abs_MW_Data_EmodbEmotionSadness])
-        worksheet.append(Main.Abs_MW_Data_EmodbEmotion_List)
         worksheet.append([Main.Abs_MW_Data_AbcAffectAgressiv])
         worksheet.append([Main.Abs_MW_Data_AbcAffectCheerfull])
         worksheet.append([Main.Abs_MW_Data_AbcAffectIntoxicated])
         worksheet.append([Main.Abs_MW_Data_AbcAffectNervous])
         worksheet.append([Main.Abs_MW_Data_AbcAffectNeutral])
         worksheet.append([Main.Abs_MW_Data_AbcAffectTired])
-        worksheet.append(Main.Abs_MW_Data_AbcAffect_List)
         worksheet.append([Main.Abs_MW_Data_Loi1])
         worksheet.append([Main.Abs_MW_Data_Loi2])
         worksheet.append([Main.Abs_MW_Data_Loi3])
@@ -845,7 +839,8 @@ class Main:
 
 
 Main.delete_old_wav_files(Main.directory_path)
-#Main.Set_Session_Name(None)
+Main.Set_Session_Name(None)
+
 floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
 Main.Set_Soll_Werte(*floats)
 print(Main.Excel_Filename)
