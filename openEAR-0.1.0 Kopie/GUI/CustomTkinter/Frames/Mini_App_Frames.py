@@ -41,9 +41,9 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
             self.emotion_label.set("Sadness")
         
 
-            self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
-            self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
-            self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
+        self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
+        self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
+        self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
         
 
         if show_all_scales:
@@ -63,4 +63,30 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
 
         self.redeanteil = HorizontalIndicator(self, left="Redeanteil: ", middle="50%", right="100%")
         self.redeanteil.grid(row = 5, column = 0)
+
+
+class AdditionalInfoFrame_Archive(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(0, weight=1)
+
         
+        self.double_label = DualEmotions(self)
+        self.double_label.grid(row = 0, column = 0,sticky = "new", padx = 30, pady = 10)
+        #self.double_label.set("Anger", "Tired")
+    
+
+        self.loi_indicator = HorizontalIndicator(self,left="Desinteresse",middle="Neutral",right="Interessiert")
+        self.loi_indicator.grid(row = 2, column = 0)
+        
+        self.valence_indicator = HorizontalIndicator(self, left="Unangenehm", middle="", right="Angenehm")
+        self.valence_indicator.grid(row = 3, column = 0)
+        
+        self.arousal_indicator = HorizontalIndicator(self, left= "Deaktivierend", middle="", right="Aktivierend")
+        self.arousal_indicator.grid(row = 4, column = 0)
+        
+       
+        self.redeanteil = HorizontalIndicator(self, left="Redeanteil: ", middle="50%", right="100%")
+        self.redeanteil.grid(row = 5, column = 0)
