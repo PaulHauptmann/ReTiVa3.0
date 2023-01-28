@@ -271,7 +271,7 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
                              DataEmodbEmotionSadness_normed]
             
 
-        self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(7, 3))
+        self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(6, 2))
         self.figure.set_layout_engine("constrained")
 
         self.ax.set_title('Mix of Emotions over Time', color = c_white)
@@ -302,7 +302,7 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         #self.ax.set_xticklabels(["start"])
         self.ax.legend()
         self.ax.xaxis.set_visible(True)
-        self.ax.legend().set_visible(True)
+        self.ax.legend().set_visible(False)
         self.canvas = FigureCanvasTkAgg(self.figure, master=self)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
@@ -351,7 +351,7 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
 
 
 
-        self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(7, 3))
+        self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(6,2))
         self.figure.set_layout_engine("constrained")
         
         self.ax.set_title('Mix of Emotions over Time', color = c_white)
@@ -415,7 +415,7 @@ class BarChartEmo_Archive(customtkinter.CTkFrame):
         x = [i for i in range(1,8)]
         
         # Create a new figure
-        fig = Figure(figsize=(7,3))
+        fig = Figure(figsize=(6,2))
         fig.set_layout_engine("constrained")
         fig.set_facecolor(c_background)
         ax = fig.add_subplot(111)
@@ -478,7 +478,7 @@ class BarChartAbc_Archive(customtkinter.CTkFrame):
         x = [i for i in range(1,7)]
         
         # Create a new figure
-        fig = Figure(figsize=(7,3))
+        fig = Figure(figsize=(6,2))
         fig.set_facecolor(c_background)
         ax = fig.add_subplot(111)
         ax.set_facecolor(c_background)
@@ -507,7 +507,7 @@ class BarChartAbc_Archive(customtkinter.CTkFrame):
         # Create a canvas to display the chart
         canvas = FigureCanvasTkAgg(fig, master=self)
         canvas.draw()
-        canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+        canvas.get_tk_widget().pack(side = tk.TOP, fill=tk.BOTH, expand=1)
         
         
         
@@ -524,12 +524,6 @@ class DonutEmo_Archive(customtkinter.CTkFrame):
         
         self.labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
         self.list1 = [1,1,1,1,1,1,1]
-        self.explode_list = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
-        print(len(self.explode_list))
-        #self.ax = None
-        #self.canvas = None
-
-        #self.create_chart()
 
     
 
@@ -540,10 +534,10 @@ class DonutEmo_Archive(customtkinter.CTkFrame):
         fig.set_facecolor(c_background)
         self.ax = fig.add_subplot(111)
 
-        self.ax.set_title('Mix of Emotions over the last 20 seconds', color = c_white, pad=20)
+        self.ax.set_title('Mix of Emotions over the whole Session', color = c_white, pad=20)
 
         # Add the donut chart to the figure
-        self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), explode=self.explode_list, colors=c_colors)
+        self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
         self.ax.pie([1], radius=0.4, wedgeprops=dict(width=0.4, edgecolor=c_background, facecolor=c_background))
         
 
@@ -567,18 +561,134 @@ class DonutEmo_Archive(customtkinter.CTkFrame):
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 
+    def update_chart(self, emodb_list:list):
 
-
-    
-    def update_widget(self):
-        if len(Variablen.Archive_Abs_MW_Data_EmodbEmotion_List) == 7:
-            self.list1 = Variablen.Archive_Abs_MW_Data_EmodbEmotion_List
+        if len(emodb_list) == 7:
+            self.list1 = emodb_list
         else:
             self.list1 = [1,3,2,2,1,1,2]
 
+        total = sum(self.list1)
+        self.list_normed = [i/total for i in self.list1]
+
+        
+        # Update the data of the wedges and explode list
+        for i, wedge in enumerate(self.wedges):
+            wedge.set_radius(self.list_normed[i])
+            #wedge.set_explode(self.explode_list[i])
+        
+        # Remove old labels 
+        for text in self.ax.texts:
+            text.remove()
+
+        # Update the data and redraw the chart
+        self.wedges, self.texts = self.ax.pie(self.list_normed, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
+        self.ax.pie([1], radius=0.4, wedgeprops=dict(width=0.4, edgecolor=c_background, facecolor=c_background))
+        
+        bbox_props = dict(boxstyle="square,pad=0.3", fc=c_background, ec=c_background, lw=0.72)
+        kw = dict(arrowprops=dict(arrowstyle="-", ec= c_white), bbox=bbox_props, zorder=0, va="center")
+
+        for i, p in enumerate(self.wedges):
+            ang = (p.theta2 - p.theta1)/2. + p.theta1
+            y = np.sin(np.deg2rad(ang))
+            x = np.cos(np.deg2rad(ang))
+            self.horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+            connectionstyle = "angle,angleA=0,angleB={}".format(ang)
+            kw["arrowprops"].update({"connectionstyle": connectionstyle})
+            self.ax.annotate(self.labels[i], xy=(x, y), xytext=(1.2*np.sign(x), 1.3*y),
+                        horizontalalignment=self.horizontalalignment, color =c_white, **kw)
+
         self.canvas.draw()
+
+
+
+######################################################################
+####               DonutDiagramm mit AbcAffectEmotion            #####
+######################################################################
+
+
+
+
+class DonutAbc_Archive(customtkinter.CTkFrame):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        
+        self.labels = ['Agressiv', 'Cheerful', 'Intoxicated', 'Nervous', 'Neutral', 'Tired']
+        self.list1 = [1,1,1,1,1,1]
+
+    
+
+    def create_chart(self):
+        # Create a new figure
+        fig = Figure(figsize=(4,4))
+        fig.set_layout_engine("constrained")
+        fig.set_facecolor(c_background)
+        self.ax = fig.add_subplot(111)
+
+        self.ax.set_title('Mix of Emotions over the whole Session', color = c_white, pad=20)
+
+        # Add the donut chart to the figure
+        self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
+        self.ax.pie([1], radius=0.4, wedgeprops=dict(width=0.4, edgecolor=c_background, facecolor=c_background))
         
 
+        # Add labels and lines to the segments
+        bbox_props = dict(boxstyle="square,pad=0.3", fc=c_background, ec=c_background, lw=0.72)
+        kw = dict(arrowprops=dict(arrowstyle="-", ec= c_white), bbox=bbox_props, zorder=0, va="center")
+
+        for i, p in enumerate(self.wedges):
+            ang = (p.theta2 - p.theta1)/2. + p.theta1
+            y = np.sin(np.deg2rad(ang))
+            x = np.cos(np.deg2rad(ang))
+            self.horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+            connectionstyle = "angle,angleA=0,angleB={}".format(ang)
+            kw["arrowprops"].update({"connectionstyle": connectionstyle})
+            self.ax.annotate(self.labels[i], xy=(x, y), xytext=(1.2*np.sign(x), 1.3*y),
+                        horizontalalignment=self.horizontalalignment, color =c_white, **kw)
+
+        # Create a canvas to display the chart
+        self.canvas = FigureCanvasTkAgg(fig, master=self)
+        self.canvas.draw()
+        self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 
+    def update_chart(self, abcAffect_list:list):
 
+        if len(abcAffect_list) == 6:
+            self.list1 = abcAffect_list
+        else:
+            self.list1 = [1,3,2,2,1,1]
+
+        total = sum(self.list1)
+        self.list_normed = [i/total for i in self.list1]
+
+        
+        # Update the data of the wedges and explode list
+        for i, wedge in enumerate(self.wedges):
+            wedge.set_radius(self.list_normed[i])
+            #wedge.set_explode(self.explode_list[i])
+        
+        # Remove old labels 
+        for text in self.ax.texts:
+            text.remove()
+
+        # Update the data and redraw the chart
+        self.wedges, self.texts = self.ax.pie(self.list_normed, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
+        self.ax.pie([1], radius=0.4, wedgeprops=dict(width=0.4, edgecolor=c_background, facecolor=c_background))
+        
+        bbox_props = dict(boxstyle="square,pad=0.3", fc=c_background, ec=c_background, lw=0.72)
+        kw = dict(arrowprops=dict(arrowstyle="-", ec= c_white), bbox=bbox_props, zorder=0, va="center")
+
+        for i, p in enumerate(self.wedges):
+            ang = (p.theta2 - p.theta1)/2. + p.theta1
+            y = np.sin(np.deg2rad(ang))
+            x = np.cos(np.deg2rad(ang))
+            self.horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+            connectionstyle = "angle,angleA=0,angleB={}".format(ang)
+            kw["arrowprops"].update({"connectionstyle": connectionstyle})
+            self.ax.annotate(self.labels[i], xy=(x, y), xytext=(1.2*np.sign(x), 1.3*y),
+                        horizontalalignment=self.horizontalalignment, color =c_white, **kw)
+
+        self.canvas.draw()

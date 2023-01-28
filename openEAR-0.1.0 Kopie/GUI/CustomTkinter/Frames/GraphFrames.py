@@ -511,10 +511,17 @@ class DonutEmo(customtkinter.CTkFrame):
 
 
     def update_chart(self, emodb_list:list):
-        # Update the data of the wedges and explode list
-        self.list1 = emodb_list
+
+        if len(emodb_list) == 7:
+            self.list1 = emodb_list
+        else:
+            self.list1 = [1,3,2,2,1,1,2]
+
+        total = sum(self.list1)
+        self.list_normed = [i/total for i in self.list1]
+
         for i, wedge in enumerate(self.wedges):
-            wedge.set_radius(emodb_list[i])
+            wedge.set_radius(self.list_normed[i])
             #wedge.set_explode(self.explode_list[i])
         
         # Remove old labels 
@@ -522,8 +529,7 @@ class DonutEmo(customtkinter.CTkFrame):
             text.remove()
 
         # Update the data and redraw the chart
-        self.list1 = emodb_list
-        self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
+        self.wedges, self.texts = self.ax.pie(self.list_normed, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
         self.ax.pie([1], radius=0.4, wedgeprops=dict(width=0.4, edgecolor=c_background, facecolor=c_background))
         
         bbox_props = dict(boxstyle="square,pad=0.3", fc=c_background, ec=c_background, lw=0.72)
