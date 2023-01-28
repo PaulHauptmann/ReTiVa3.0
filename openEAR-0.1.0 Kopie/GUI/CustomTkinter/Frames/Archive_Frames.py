@@ -270,3 +270,7 @@ class BigLiveAnalysisFrame_Abc_Archive(customtkinter.CTkFrame):
         self.donut.configure(width = 20, height = 20)
         self.donut.create_chart()
         self.donut.grid(row = 0, column = 1, padx = 20)
+        
+        
+        
+        
