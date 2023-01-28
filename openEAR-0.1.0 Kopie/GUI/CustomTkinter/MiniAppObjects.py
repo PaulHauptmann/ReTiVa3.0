@@ -189,10 +189,10 @@ class DualEmotions(customtkinter.CTkFrame):
         self.columnconfigure(1, weight=1)
 
         self.left_frame = customtkinter.CTkFrame(self, fg_color= "#343434")
-        self.left_frame.grid(row = 0, column = 0)
+        self.left_frame.grid(row = 0, column = 0, padx = 5)
 
         self.right_frame = customtkinter.CTkFrame(self, fg_color= "#343434")
-        self.right_frame.grid(row = 0, column = 2)
+        self.right_frame.grid(row = 0, column = 2, padx = 5)
 
     
         self.emo_label = customtkinter.CTkLabel(self.left_frame, text="", corner_radius=5, fg_color="#343434", font=customtkinter.CTkFont(size = 20))
