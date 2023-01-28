@@ -93,7 +93,14 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         widget.activate(idx)
         selected_file = widget.get(idx)
 
-        data = AR.Get_Data("openEAR-0.1.0 Kopie/SmileArchiv/" + selected_file)
+        data = AR.Get_Data('/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/Test2_14:24_28_01_2023.xlsx')
+        
+
+
+
+        
+        
+        
         Variablen.Set_Values(
             Set_Archive_Data_Time                                = data.get("Archive_Data_Time", "Key not found"),
             Set_Archive_Data_Aroual                              = data.get("Archive_Data_Arousal", "Key not found"),
@@ -153,14 +160,16 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         
         test = [0.2, 0.1, 0.1, 0.2, 0.2, 0.1, 0.8]
 
+        
+        
         self.archive_frame.big_analysis_emo.donut.update_chart(test)
         self.archive_frame.big_analysis_abc.donut.update_chart(test)
 
         self.archive_frame.big_analysis_emo.big_score.indicator.update_widget(float(Variablen.Archive_Score_Retiva[-1]))
-        self.archive_frame.big_analysis_abc.big_score.indicator.update_widget(Variablen.Archive_Score_Retiva)
+        self.archive_frame.big_analysis_abc.big_score.indicator.update_widget(float(Variablen.Archive_Score_Retiva[-1]))
 
-        self.archive_frame.big_analysis_emo.additonal_scores.loi_indicator.update_widget(Variablen.Archive_Abs_MW_Loi_Score)
-        self.archive_frame.big_analysis_abc.additonal_scores.loi_indicator.update_widget(Variablen.Archive_Abs_MW_Loi_Score)
+        self.archive_frame.big_analysis_emo.additonal_scores.loi_indicator.update_widget(float(Variablen.Archive_Abs_MW_Loi_Score[-1]))
+        self.archive_frame.big_analysis_abc.additonal_scores.loi_indicator.update_widget(float(Variablen.Archive_Abs_MW_Loi_Score[-1]))
         
         self.archive_frame.big_analysis_emo.additonal_scores.arousal_indicator.update_widget(Variablen.Archive_Abs_MW_Data_Arousal)
 
