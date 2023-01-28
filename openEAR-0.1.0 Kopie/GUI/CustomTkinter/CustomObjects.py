@@ -377,7 +377,10 @@ class Stopwatch(customtkinter.CTkFrame):
     
     def stop(self):
         self.running = False
-        self.time = time.time() - self.start_time
+        try:
+            self.time = time.time() - self.start_time
+        except AttributeError:
+            self.time = time.time()
         minutes, seconds = divmod(self.time, 60)
         hours, minutes = divmod(minutes, 60)
         self.time_string.set("Total Analysis Duration:  %d:%02d:%02d" % (hours, minutes, seconds))
