@@ -108,7 +108,7 @@ class Main:
     
 
     #Mittelwerte Initialisierung
-    MWDataSpeakRatio: float
+    MWDataSpeakRatio: float = 0.0
     MWDataSpeakTime: float
     MWDataLength: float
     MWDataTime: float
@@ -368,6 +368,7 @@ class Main:
         worksheet.append([Main.Score_AbcAffect])
         worksheet.append([Main.Score_Retiva])
         worksheet.append([Main.Abs_MW_Loi_Score])
+        worksheet.append([Main.MWDataSpeakRatio])
 
 
 
@@ -754,7 +755,7 @@ class Main:
         Übergabe_Gewichte_DataAbcAffectIntoxicated,
         Übergabe_Gewichte_DataAbcAffectNervous,
         Übergabe_Gewichte_DataAbcAffectNeutral,
-        Übergabe_Gewichte_DataAbcAffectTired,
+        Übergabe_Gewichte_DataAbcAffectTired
     ):
         
         
@@ -841,10 +842,10 @@ class Main:
 Main.delete_old_wav_files(Main.directory_path)
 Main.Set_Session_Name(None)
 
-floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
-Main.Set_Soll_Werte(*floats)
-print(Main.Excel_Filename)
-print(Main.Soll_DataEmodbEmotionAnger)
+#floats = (0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175, 0.5911573631587611,0.006152395,0.306738115,0.23492557,0.179188181,0.272995739)
+#Main.Set_Soll_Werte23(*floats)
+#print(Main.Excel_Filename)
+#print(Main.Soll_DataEmodbEmotionAnger)
 
 """#Main.Soll_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]
 Main.Abs_MW_Data_EmodbEmotion_List = [0.06743775, 0.29886375, 0.06159575, 0.30633225, 0.09225925, 0.1257095, 0.04780175]

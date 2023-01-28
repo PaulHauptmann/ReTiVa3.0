@@ -84,7 +84,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
 
         # Gewichte an Backend übergeben, erst dort werden sie normiert
-        Main.Get_Soll_Werte( Weights.w_emodb_anger, 
+        Main.Set_Soll_Werte(Weights.w_emodb_anger, 
                              Weights.w_emodb_boredom, 
                              Weights.w_emodb_disgust,
                              Weights.w_emodb_fear, 
@@ -114,7 +114,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         #Starte Uhr in BigAnalysis Window
         MainContainerFrame.start_clock()
         MainContainerFrame.set_window_session_name()
-        
+
+       
 
         
 
@@ -338,16 +339,25 @@ class MiniAppWindow(customtkinter.CTkToplevel):
 
 
     ## Buttons ##
-    def change_width(self):
+    def change_width_old(self):
         self.current_width = self.winfo_width()
         new_width = self.current_width + 350 if self.var.get() else self.current_width - 350
         current_x = self.winfo_x()
         for i in range(self.current_width, new_width, 10 if self.var.get() else -10):
-            self.geometry("{}x{}+{}+{}".format(i, self.winfo_height(),current_x + self.current_width - i,self.winfo_y()))
+            self.geometry("{}x{}+{}+{}".format(i, self.winfo_height(), current_x + self.current_width -i , self.winfo_y()))
             self.update()
-            self.after(2)
+            #self.after(2)
         self.var.set(not self.var.get())
         self.button_change_width.configure(text="<" if self.var.get() else ">")
+    
+    def change_width(self):
+        current_width = self.winfo_width()
+        new_width = current_width + 350 if self.var.get() else current_width - 350
+        current_x = self.winfo_x()
+        self.geometry("{}x{}+{}+{}".format(new_width, self.winfo_height(), current_x + current_width - new_width, self.winfo_y()))
+        self.var.set(not self.var.get())
+        self.button_change_width.configure(text="<" if self.var.get() else ">")
+
 
     def quit_analysis_button_event(self):
         GlobalStartStop.analysis_loop = False

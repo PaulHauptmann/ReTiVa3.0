@@ -135,7 +135,7 @@ class HelloFrame(customtkinter.CTkFrame):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
 
-        self.title = customtkinter.CTkLabel(self, text= "Herzlich Willkommen zu ReTiVA – Real Time Voice Analystics!", font=customtkinter.CTkFont(size=30, weight="bold"))
+        self.title = customtkinter.CTkLabel(self, text= "Welcome to ReTiVA – Real Time Voice Analytics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
 
         self.hello_text = customtkinter.CTkTextbox(self, corner_radius=20, font=customtkinter.CTkFont(size=20))
@@ -180,11 +180,9 @@ class SettingsFrame(customtkinter.CTkFrame):
         self.scales_selector.grid(row = 2, column = 0, padx = 10)
 
         self.emotions_settings_frame = EmotionSettingsFrame(self)
-        self.emotions_settings_frame.grid(row = 3, column = 0, padx = 10)
+        self.emotions_settings_frame.grid(row = 3, column = 0, padx = 10, sticky ="ew")
 
-        self.choose_model = BigAnalysisChooseModel(self)
-        self.choose_model.grid(row = 1, column = 2, padx = 10, sticky = "ew")
-
+        
 
     def on_ok(self):
         #self.destroy()

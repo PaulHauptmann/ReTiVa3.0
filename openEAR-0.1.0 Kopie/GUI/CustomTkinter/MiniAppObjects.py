@@ -120,12 +120,12 @@ class HorizontalIndicator(customtkinter.CTkFrame):
 emoji_dict = {
 
     "Anger" : "-1" , 
-    "Boredom" : "0" , 
+    "Boredom" : "-1" , 
     "Disgust" : "-1" , 
-    "Fear ="  : "-1" , 
+    "Fear"  : "-1" , 
     "Happiness" : "1" , 
-    "Neutral" : "0" , 
-    "Sadness" : "-1" , 
+    "Neutral" : "1" , 
+    "Sadness" : "0" , 
 }
 
 
@@ -138,7 +138,7 @@ class EmotionwithEmoji(customtkinter.CTkFrame):
         
         
         self.emotion_text = ""
-        self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/happy.png"
+        self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Emoji_neutral_final.png"
 
         self.emotion_label = customtkinter.CTkLabel(self, text=self.emotion_text, font=customtkinter.CTkFont(size = 20))
         self.emotion_label.grid(row = 0, column = 1, columnspan = 3, padx = 10, sticky = "e")
@@ -159,15 +159,15 @@ class EmotionwithEmoji(customtkinter.CTkFrame):
         
         match emoji_dict.get(self.emotion_text, "Word not found"):
             case "1":
-                self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/happy.png"
+                self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Emoji_positiv_final.png"
                 
                 #print(self.emotion_text)
             case "0": 
-                self.image_path =  "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/neutral.png"
+                self.image_path =  "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Emoji_neutral_final.png"
                 #print(self.emotion_text)
 
             case "-1": 
-                self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/sad.png"
+                self.image_path = "openEAR-0.1.0 Kopie/GUI/CustomTkinter/PNG Files/Emoji_negativ_final.png"
                 #print(self.emotion_text)
             
             case _: 

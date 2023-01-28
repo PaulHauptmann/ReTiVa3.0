@@ -147,7 +147,7 @@ class ScalesSettingsFrame(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.title = customtkinter.CTkLabel(self, text="Select the Scales that should be displayed:")
+        self.title = customtkinter.CTkLabel(self, text="Select the Scales that should be displayed: (Max: 2)")
         self.title.grid(row = 0, column = 0, padx = 10, pady = 10)
 
         self.var1 = customtkinter.IntVar()
@@ -198,10 +198,10 @@ class EmotionSettingsFrame(customtkinter.CTkFrame):
 
         self.v = customtkinter.BooleanVar()
 
-        self.emotion_with_emoji = customtkinter.CTkRadioButton(self, text="One Emotion with Emoji", variable=self.v, value=False)
+        self.emotion_with_emoji = customtkinter.CTkRadioButton(self, text="Emotion with Emoji", variable=self.v, value=False)
         self.emotion_with_emoji.grid(row = 1, column = 0, padx=10, pady = 10, sticky = "w")
 
-        self.dual_emotions = customtkinter.CTkRadioButton(self, text="Two Emotions", variable=self.v, value=True)
+        self.dual_emotions = customtkinter.CTkRadioButton(self, text="Emotion and Affect", variable=self.v, value=True)
         self.dual_emotions.grid(row = 2, column = 0, padx=10, pady = 10, sticky = "w")
 
         self.v.trace("w", lambda *args: on_radio_select())
