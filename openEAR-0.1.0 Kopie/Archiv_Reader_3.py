@@ -76,7 +76,7 @@ def Read_Excel_File(Directory):
 
     # Iterate over the rows and append each one to the data dictionary
     for i, row in enumerate(ws.iter_rows(values_only=True)):
-        if i >= 60:
+        if i >= 61:
             break
         data[list_names[i]] = [cell for cell in row]
     
@@ -239,7 +239,62 @@ Archive_Score_Retiva                             = data.get('Archive_Score_Retiv
 Archive_Abs_MW_Loi_Score                         = data.get('Archive_Abs_MW_Loi_Score', "Key not found")
 
 
-
+print(Archive_Data_DateTime)
+print(Archive_Data_SessionNme)
+print(Archive_Data_Time)
+print(Archive_Data_Aroual)
+print(Archive_Data_Valence)
+print(Archive_Data_EmodbEmtionAnger)
+print(Archive_Data_EmodbEmotionBoredm)
+print(Archive_Data_EmodbEmotionDisgust)
+print(Archive_Data_EmodbEmotionFear)
+print(Archive_Data_EmodbEmotionHappness)
+print(Archive_Data_EmodbEmotionNeutral)
+print(Archive_Data_EmodbEmotionSadness)
+print(Archive_Data_AbcAffectAgressiv)
+print(Archive_Data_AbcAffectCheerful)
+print(Archive_Data_AbcAffectIntoxicatd)
+print(Archive_Data_AbcAffectNervous)
+print(Archive_Data_AbcAffectNeutral)
+print(Archive_Data_AbcAffectTired)
+print(Archive_Data_Loi1)
+print(Archive_Data_Loi2)
+print(Archive_Data_Loi3)
+print(Archive_Soll_DataEmodbEmotionAnger)
+print(Archive_Soll_DataEmodbEmotionBoredom)
+print(Archive_Soll_DataEmodbEmotionDisgust)
+print(Archive_Soll_DataEmodbEmotionFear)
+print(Archive_Soll_DataEmodbEmotionHappiness)
+print(Archive_Soll_DataEmodbEmotionNeutral)
+print(Archive_Soll_DataEmodbEmotionSadness)
+print(Archive_Soll_DataAbcAffectAgressiv)
+print(Archive_Soll_DataAbcAffectCheerfull)
+print(Archive_Soll_DataAbcAffectIntoxicated)
+print(Archive_Soll_DataAbcAffectNervous)
+print(Archive_Soll_DataAbcAffectNeutral)
+print(Archive_Soll_DataAbcAffectTired)
+print(Archive_Abs_MW_Data_Arousal)
+print(Archive_Abs_MW_Data_Valence)
+print(Archive_Abs_MW_Data_EmodbEmotionAnger)
+print(Archive_Abs_MW_Data_EmodbEmotionBoredom)
+print(Archive_Abs_MW_Data_EmodbEmotionDisgust)
+print(Archive_Abs_MW_Data_EmodbEmotionFear)
+print(Archive_Abs_MW_Data_EmodbEmotionHappiness)
+print(Archive_Abs_MW_Data_EmodbEmotionNeutral)
+print(Archive_Abs_MW_Data_EmodbEmotionSadness)
+print(Archive_Abs_MW_Data_AbcAffectAgressiv)
+print(Archive_Abs_MW_Data_AbcAffectCheerfull)
+print(Archive_Abs_MW_Data_AbcAffectIntoxicated)
+print(Archive_Abs_MW_Data_AbcAffectNervous)
+print(Archive_Abs_MW_Data_AbcAffectNeutral)
+print(Archive_Abs_MW_Data_AbcAffectTired)
+print(Archive_Abs_MW_Data_Loi1)
+print(Archive_Abs_MW_Data_Loi2)
+print(Archive_Abs_MW_Data_Loi3)
+print(Archive_Score_EmodbEmotions)
+print(Archive_Score_AbcAffect)
+print(Archive_Score_Retiva)
+print(Archive_Abs_MW_Loi_Score)
 
 
 
