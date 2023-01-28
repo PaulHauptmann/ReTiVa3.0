@@ -82,25 +82,14 @@ class App(customtkinter.CTk):
 
 
 
+        '''
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=7, column=0, padx=20, pady=(10, 0))
         
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"], command=self.change_appearance_mode_event)
         self.appearance_mode_optionemenu.grid(row=8, column=0, padx=20, pady=(10, 10))
+        '''
         
-
-        
-        # create textbox
-        #self.textbox = ArchiveListFrame(self)
-        #self.textbox.grid(row=0, column=1, padx=20, pady=20,rowspan = 3, sticky="nsew")
-        #self.settings_frame = SettingsFrame(self)
-        #self.settings_frame.grid(row = 0, column = 1, padx = 20, pady = 20, rowspan = 3, sticky = "nsew")
-        #self.score_frame = SliderScoreFrame(self)
-        #self.score_frame.grid(row = 0, column = 1, rowspan = 4, sticky = "nsew")
-
-
-
-
         ## Haupt - Frame für Anzeige diverser Funktionen
         
         self.main_frame = MainContainerFrame(self)
@@ -110,17 +99,6 @@ class App(customtkinter.CTk):
         self.main_frame.grid(row = 0, column = 1, rowspan = 4, padx = 20, pady = 20, sticky = "nsew")
     
         
-        # set default values
-        #self.sidebar_button_1.configure(state = "disabled")
-        self.appearance_mode_optionemenu.set("System")
-        
-    
-    '''test = MainContainerFrame()
-    test.configure(fg_color = "transparent")
-    test.rowconfigure(0, weight=1)
-    test.columnconfigure(0, weight=1)
-    test.grid(row = 0, column = 1, rowspan = 4, padx = 20, pady = 20, sticky = "nsew")
-'''
 
 
     def open_input_dialog_event(self):
