@@ -41,27 +41,27 @@ print(c_colors)
 
 
 class Variablen():
-    archive__Data_DateTime                           = []
-    archive__Data_SessionName                        = []
-    archive__Data_Time                               = []
-    archive__Data_Aroual                             = []
-    archive__Data_Valence                            = []
-    archive__Data_EmodbEmotionAnger                  = []
-    archive__Data_EmodbEmotionBoredm                 = []
-    archive__Data_EmodbEmotionDisgust                = []
-    archive__Data_EmodbEmotionFear                   = []
-    archive__Data_EmodbEmotionHappness               = []
-    archive__Data_EmodbEmotionNeutral                = []
-    archive__Data_EmodbEmotionSadness                = []
-    archive__Data_AbcAffectAgressiv                  = []
-    archive__Data_AbcAffectCheerful                  = []
-    archive__Data_AbcAffectIntoxicatd                = []
-    archive__Data_AbcAffectNervous                   = []
-    archive__Data_AbcAffectNeutral                   = []
-    archive__Data_AbcAffectTired                     = []
-    archive__Data_Loi1                               = []
-    archive__Data_Loi2                               = []
-    archive__Data_Loi3                               = []
+    Archive_Data_DateTime                            = []
+    Archive_Data_SessionName                         = []
+    Archive_Data_Time                                = []
+    Archive_Data_Aroual                              = []
+    Archive_Data_Valence                             = []
+    Archive_Data_EmodbEmotionAnger                   = []
+    Archive_Data_EmodbEmotionBoredm                  = []
+    Archive_Data_EmodbEmotionDisgust                 = []
+    Archive_Data_EmodbEmotionFear                    = []
+    Archive_Data_EmodbEmotionHappness                = []
+    Archive_Data_EmodbEmotionNeutral                 = []
+    Archive_Data_EmodbEmotionSadness                 = []
+    Archive_Data_AbcAffectAgressiv                   = []
+    Archive_Data_AbcAffectCheerful                   = []
+    Archive_Data_AbcAffectIntoxicatd                 = []
+    Archive_Data_AbcAffectNervous                    = []
+    Archive_Data_AbcAffectNeutral                    = []
+    Archive_Data_AbcAffectTired                      = []
+    Archive_Data_Loi1                                = []
+    Archive_Data_Loi2                                = []
+    Archive_Data_Loi3                                = []
     Archive_Soll_DataEmodbEmotionAnger               = []
     Archive_Soll_DataEmodbEmotionBoredom             = []
     Archive_Soll_DataEmodbEmotionDisgust             = []
@@ -104,27 +104,27 @@ class Variablen():
     
     
     def Set_Values(
-        Set_archive__Data_DateTime,                          
-        Set_archive__Data_SessionName,                        
-        Set_archive__Data_Time,                              
-        Set_archive__Data_Aroual,                            
-        Set_archive__Data_Valence,                           
-        Set_archive__Data_EmodbEmotionAnger,                  
-        Set_archive__Data_EmodbEmotionBoredm,                
-        Set_archive__Data_EmodbEmotionDisgust,               
-        Set_archive__Data_EmodbEmotionFear,                  
-        Set_archive__Data_EmodbEmotionHappness,              
-        Set_archive__Data_EmodbEmotionNeutral,               
-        Set_archive__Data_EmodbEmotionSadness,               
-        Set_archive__Data_AbcAffectAgressiv,                 
-        Set_archive__Data_AbcAffectCheerful,                 
-        Set_archive__Data_AbcAffectIntoxicatd,               
-        Set_archive__Data_AbcAffectNervous,                  
-        Set_archive__Data_AbcAffectNeutral,                  
-        Set_archive__Data_AbcAffectTired,                    
-        Set_archive__Data_Loi1,                              
-        Set_archive__Data_Loi2,                              
-        Set_archive__Data_Loi3,                              
+        Set_Archive_Data_DateTime,                          
+        Set_Archive_Data_SessionName,                        
+        Set_Archive_Data_Time,                              
+        Set_Archive_Data_Aroual,                            
+        Set_Archive_Data_Valence,                           
+        Set_Archive_Data_EmodbEmotionAnger,                  
+        Set_Archive_Data_EmodbEmotionBoredm,                
+        Set_Archive_Data_EmodbEmotionDisgust,               
+        Set_Archive_Data_EmodbEmotionFear,                  
+        Set_Archive_Data_EmodbEmotionHappness,              
+        Set_Archive_Data_EmodbEmotionNeutral,               
+        Set_Archive_Data_EmodbEmotionSadness,               
+        Set_Archive_Data_AbcAffectAgressiv,                 
+        Set_Archive_Data_AbcAffectCheerful,                 
+        Set_Archive_Data_AbcAffectIntoxicatd,               
+        Set_Archive_Data_AbcAffectNervous,                  
+        Set_Archive_Data_AbcAffectNeutral,                  
+        Set_Archive_Data_AbcAffectTired,                    
+        Set_Archive_Data_Loi1,                              
+        Set_Archive_Data_Loi2,                              
+        Set_Archive_Data_Loi3,                              
         Set_Archive_Soll_DataEmodbEmotionAnger,              
         Set_Archive_Soll_DataEmodbEmotionBoredom,            
         Set_Archive_Soll_DataEmodbEmotionDisgust,            
@@ -165,27 +165,27 @@ class Variablen():
         Set_Archive_Abs_MW_Data_EmodbEmotion_List  ,         
         Set_Archive_Abs_MW_Data_AbcAffect_List                                     
     ):
-        Variablen.archive__Data_DateTime                     =           Set_archive__Data_DateTime
-        Variablen.archive__Data_SessionName                  =           Set_archive__Data_SessionName
-        Variablen.archive__Data_Time                         =           Set_archive__Data_Time
-        Variablen.archive__Data_Aroual                       =           Set_archive__Data_Aroual
-        Variablen.archive__Data_Valence                      =           Set_archive__Data_Valence
-        Variablen.archive__Data_EmodbEmotionAnger            =           Set_archive__Data_EmodbEmotionAnger
-        Variablen.archive__Data_EmodbEmotionBoredm           =           Set_archive__Data_EmodbEmotionBoredm
-        Variablen.archive__Data_EmodbEmotionDisgust          =           Set_archive__Data_EmodbEmotionDisgust
-        Variablen.archive__Data_EmodbEmotionFear             =           Set_archive__Data_EmodbEmotionFear
-        Variablen.archive__Data_EmodbEmotionHappness         =           Set_archive__Data_EmodbEmotionHappness
-        Variablen.archive__Data_EmodbEmotionNeutral          =           Set_archive__Data_EmodbEmotionNeutral
-        Variablen.archive__Data_EmodbEmotionSadness          =           Set_archive__Data_EmodbEmotionSadness
-        Variablen.archive__Data_AbcAffectAgressiv            =           Set_archive__Data_AbcAffectAgressiv
-        Variablen.archive__Data_AbcAffectCheerful            =           Set_archive__Data_AbcAffectCheerful
-        Variablen.archive__Data_AbcAffectIntoxicatd          =           Set_archive__Data_AbcAffectIntoxicatd
-        Variablen.archive__Data_AbcAffectNervous             =           Set_archive__Data_AbcAffectNervous
-        Variablen.archive__Data_AbcAffectNeutral             =           Set_archive__Data_AbcAffectNeutral
-        Variablen.archive__Data_AbcAffectTired               =           Set_archive__Data_AbcAffectTired
-        Variablen.archive__Data_Loi1                         =           Set_archive__Data_Loi1
-        Variablen.archive__Data_Loi2                         =           Set_archive__Data_Loi2
-        Variablen.archive__Data_Loi3                         =           Set_archive__Data_Loi3
+        Variablen.Archive_Data_DateTime                     =           Set_Archive_Data_DateTime
+        Variablen.Archive_Data_SessionName                  =           Set_Archive_Data_SessionName
+        Variablen.Archive_Data_Time                         =           Set_Archive_Data_Time
+        Variablen.Archive_Data_Aroual                       =           Set_Archive_Data_Aroual
+        Variablen.Archive_Data_Valence                      =           Set_Archive_Data_Valence
+        Variablen.Archive_Data_EmodbEmotionAnger            =           Set_Archive_Data_EmodbEmotionAnger
+        Variablen.Archive_Data_EmodbEmotionBoredm           =           Set_Archive_Data_EmodbEmotionBoredm
+        Variablen.Archive_Data_EmodbEmotionDisgust          =           Set_Archive_Data_EmodbEmotionDisgust
+        Variablen.Archive_Data_EmodbEmotionFear             =           Set_Archive_Data_EmodbEmotionFear
+        Variablen.Archive_Data_EmodbEmotionHappness         =           Set_Archive_Data_EmodbEmotionHappness
+        Variablen.Archive_Data_EmodbEmotionNeutral          =           Set_Archive_Data_EmodbEmotionNeutral
+        Variablen.Archive_Data_EmodbEmotionSadness          =           Set_Archive_Data_EmodbEmotionSadness
+        Variablen.Archive_Data_AbcAffectAgressiv            =           Set_Archive_Data_AbcAffectAgressiv
+        Variablen.Archive_Data_AbcAffectCheerful            =           Set_Archive_Data_AbcAffectCheerful
+        Variablen.Archive_Data_AbcAffectIntoxicatd          =           Set_Archive_Data_AbcAffectIntoxicatd
+        Variablen.Archive_Data_AbcAffectNervous             =           Set_Archive_Data_AbcAffectNervous
+        Variablen.Archive_Data_AbcAffectNeutral             =           Set_Archive_Data_AbcAffectNeutral
+        Variablen.Archive_Data_AbcAffectTired               =           Set_Archive_Data_AbcAffectTired
+        Variablen.Archive_Data_Loi1                         =           Set_Archive_Data_Loi1
+        Variablen.Archive_Data_Loi2                         =           Set_Archive_Data_Loi2
+        Variablen.Archive_Data_Loi3                         =           Set_Archive_Data_Loi3
         Variablen.Archive_Soll_DataEmodbEmotionAnger         =           Set_Archive_Soll_DataEmodbEmotionAnger
         Variablen.Archive_Soll_DataEmodbEmotionBoredom       =           Set_Archive_Soll_DataEmodbEmotionBoredom
         Variablen.Archive_Soll_DataEmodbEmotionDisgust       =           Set_Archive_Soll_DataEmodbEmotionDisgust
@@ -251,13 +251,13 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         DataEmodbEmotionBoredom_normed = [i * 100 for i in test_list2 ]
         
         
-        DataEmodbEmotionAnger_normed = [i * 100 for i in Variablen.archive__Data_EmodbEmotionAnger ]
-        DataEmodbEmotionBoredom_normed = [i * 100 for i in Variablen.archive__Data_EmodbEmotionBoredm ]
-        DataEmodbEmotionDisgust_normed = [i * 100 for i in Variablen.archive__Data_EmodbEmotionDisgust ]
-        DataEmodbEmotionFear_normed = [i * 100 for i in Variablen.archive__Data_EmodbEmotionFear ]
-        DataEmodbEmotionHappiness_normed = [i * 100 for i in Variablen.archive__Data_EmodbEmotionHappness ]
-        DataEmodbEmotionNeutral_normed = [i * 100 for i in Variablen.archive__Data_EmodbEmotionNeutral ]
-        DataEmodbEmotionSadness_normed = [i * 100 for i in Variablen.archive__Data_EmodbEmotionSadness ]
+        DataEmodbEmotionAnger_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionAnger ]
+        DataEmodbEmotionBoredom_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionBoredm ]
+        DataEmodbEmotionDisgust_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionDisgust ]
+        DataEmodbEmotionFear_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionFear ]
+        DataEmodbEmotionHappiness_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionHappness ]
+        DataEmodbEmotionNeutral_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionNeutral ]
+        DataEmodbEmotionSadness_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionSadness ]
         
         #self.lists = [Main.DataEmodbEmotionAnger, Main.DataEmodbEmotionBoredom, Main.DataEmodbEmotionDisgust, Main.DataEmodbEmotionFear, Main.DataEmodbEmotionHappiness, Main.DataEmodbEmotionNeutral, Main.DataEmodbEmotionSadness]
 
@@ -320,22 +320,22 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
         test_list1 = [0.2, 0.3, 0.1, 0.5, 0.3]
         test_list2 = [0.5, 0.6, 0.7, 0.4, 0.2]
 
-        Variablen.archive__Data_AbcAffectIntoxicatd
-        Variablen.archive__Data_AbcAffectNervous
-        Variablen.archive__Data_AbcAffectNeutral
-        Variablen.archive__Data_AbcAffectTired
+        Variablen.Archive_Data_AbcAffectIntoxicatd
+        Variablen.Archive_Data_AbcAffectNervous
+        Variablen.Archive_Data_AbcAffectNeutral
+        Variablen.Archive_Data_AbcAffectTired
         
         
         #Daten auf 100er Skala normieren
         DataAbcAffectAgressiv_normed = [i * 100 for i in test_list1]
         DataAbcAffectCheerfull_normed = [i * 100 for i in test_list2]
 
-        DataAbcAffectAgressiv_normed = [i * 100 for i in Variablen.archive__Data_AbcAffectAgressiv]
-        DataAbcAffectCheerfull_normed = [i * 100 for i in Variablen.archive__Data_AbcAffectCheerful]
-        DataAbcAffectIntoxicated_normed = [i * 100 for i in Variablen.archive__Data_AbcAffectIntoxicatd]
-        DataAbcAffectNervous_normed = [i * 100 for i in Variablen.archive__Data_AbcAffectNervous]
-        DataAbcAffectNeutral_normed = [i * 100 for i in Variablen.archive__Data_AbcAffectNeutral]
-        DataAbcAffectTired_normed = [i * 100 for i in Variablen.archive__Data_AbcAffectTired]
+        DataAbcAffectAgressiv_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectAgressiv]
+        DataAbcAffectCheerfull_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectCheerful]
+        DataAbcAffectIntoxicated_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectIntoxicatd]
+        DataAbcAffectNervous_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectNervous]
+        DataAbcAffectNeutral_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectNeutral]
+        DataAbcAffectTired_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectTired]
 
         #Neue Listen-Liste mit normierten Daten
         self.lists_normed = [

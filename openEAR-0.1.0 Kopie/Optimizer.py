@@ -1,16 +1,24 @@
-import Archiv_Reader_3 as AR
+import Archive_Reader_4 as AR
 
 
 data = AR.Get_Data("/Users/paul/Desktop/Mappe1.xlsx")
-V1 = data.get("Archive_Data_EmodbEmotionAnger", "Key not found")
-V2 = data.get("Archive_Data_EmodbEmotionBoredom", "Key not found")
-V3 = data.get("Archive_Data_EmodbEmotionDisgust", "Key not found")
-V4 = data.get("Archive_Data_EmodbEmotionFear", "Key not found")
-V5 = data.get("Archive_Data_EmodbEmotionHappiness", "Key not found")
-V6 = data.get("Archive_Data_EmodbEmotionNeutral", "Key not found")
-V7 = data.get("Archive_Data_EmodbEmotionSadness", "Key not found")
-WE = data.get("Archive_Data_Wahre_Emotion", "Key not found")
+AAV1 = data.get("Archive_Data_EmodbEmotionAnger", "Key not found")
+AAV2 = data.get("Archive_Data_EmodbEmotionBoredom", "Key not found")
+AAV3 = data.get("Archive_Data_EmodbEmotionDisgust", "Key not found")
+AAV4 = data.get("Archive_Data_EmodbEmotionFear", "Key not found")
+AAV5 = data.get("Archive_Data_EmodbEmotionHappiness", "Key not found")
+AAV6 = data.get("Archive_Data_EmodbEmotionNeutral", "Key not found")
+AAV7 = data.get("Archive_Data_EmodbEmotionSadness", "Key not found")
+AAWE = data.get("Archive_Data_TrueEmotions", "Key not found")
 
+V1 = [float(x) for x in AAV1]
+V2 = [float(x) for x in AAV2]
+V3 = [float(x) for x in AAV3]
+V4 = [float(x) for x in AAV4]
+V5 = [float(x) for x in AAV5]
+V6 = [float(x) for x in AAV6]
+V7 = [float(x) for x in AAV7]
+WE = [float(x) for x in AAWE]
 
 
 
@@ -25,6 +33,7 @@ WE = data.get("Archive_Data_Wahre_Emotion", "Key not found")
 # Initialize the variables F1 to F7 as integers
 F1, F2, F3, F4, F5, F6, F7 = (0, 0, 0, 0, 0, 0, 1)
 Score = int(0)
+Score_new = int(0)
 
 # Use nested for loops to iterate through each variable from 0 to 100
 for i in range(11):
@@ -102,6 +111,7 @@ for i in range(11):
                             
                             # Print the current combination of values for the variables
                             
-                            if Score >=4:
+                            if Score > 10:
                                 print("Score:   ", Score, "   ",F1/FG, F2/FG, F3/FG, F4/FG, F5/FG, F6/FG, F7/FG)
+                                Score_new = Score
                             Score = 0
