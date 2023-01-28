@@ -4,7 +4,8 @@ import os
 from openpyxl import *
 import Frames.Archiv_Reader_3 as AR
 from Frames.Archive_Graphs import *
-
+from CustomObjects import *
+from Frames.Mini_App_Frames import *
 
 
 class ShelfListbox(tk.Listbox):
@@ -35,12 +36,14 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         self.columnconfigure(1, weight=2)
 
         # create listbox
-        self.listbox = tk.Listbox(self, borderwidth=0, selectbackground= '#F2F2F2', background='#212121', fg="#F2F2F2", width=30)
+        self.listbox = tk.Listbox(self, borderwidth=0, selectbackground= '#F2F2F2', background='#212121', fg="#F2F2F2", width=23)
         self.listbox.grid(row = 1, column = 0, rowspan=2, padx=10, pady=10, sticky="nsew")
+
+        #create Archive view
+        self.archive_frame = ArchiveGraphsFrame(self)
+        self.archive_frame.grid(row = 0, column = 1, rowspan = 2, padx = 10, pady = 10, sticky = "nsew")
         
-        self.archive_frame = GraphEmoOverTime_Archive(self)
-        self.archive_frame.create_graph()
-        self.archive_frame.grid(row = 1, column = 1, sticky = "nsew")
+        
 
         # populate listbox with Excel file names
         for file in os.listdir(self.filepath):
@@ -90,70 +93,73 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         selected_file = widget.get(idx)
 
         data = AR.Get_Data("openEAR-0.1.0 Kopie/SmileArchiv/" + selected_file)
-        Variablen.Set_Values(
-            archive__Data_DateTime                           = AR.data.get("Archive_Data_DateTime", "Key not found"),
-            archive__Data_SessionNme                         = AR.data.get("Archive_Data_SessionName", "Key not found"),
-            archive__Data_Time                               = AR.data.get("Archive_Data_Time", "Key not found"),
-            archive__Data_Aroual                             = AR.data.get("Archive_Data_Arousal", "Key not found"),
-            archive__Data_Valence                            = AR.data.get("Archive_Data_Valence", "Key not found"),
-            archive__Data_EmodbEmtionAnger                   = AR.data.get("Archive_Data_EmodbEmotionAnger", "Key not found"),
-            archive__Data_EmodbEmotionBoredm                 = AR.data.get("Archive_Data_EmodbEmotionBoredom", "Key not found"),
-            archive__Data_EmodbEmotionDisgust                = AR.data.get("Archive_Data_EmodbEmotionDisgust", "Key not found"),
-            archive__Data_EmodbEmotionFear                   = AR.data.get("Archive_Data_EmodbEmotionFear", "Key not found"),
-            archive__Data_EmodbEmotionHappness               = AR.data.get("Archive_Data_EmodbEmotionHappiness", "Key not found"),
-            archive__Data_EmodbEmotionNeutral                = AR.data.get("Archive_Data_EmodbEmotionNeutral", "Key not found"),
-            archive__Data_EmodbEmotionSadness                = AR.data.get("Archive_Data_EmodbEmotionSadness", "Key not found"),
-            archive__Data_AbcAffectAgressiv                  = AR.data.get("Archive_Data_AbcAffectAgressiv", "Key not found"),
-            archive__Data_AbcAffectCheerful                  = AR.data.get("Archive_Data_AbcAffectCheerfull", "Key not found"),
-            archive__Data_AbcAffectIntoxicatd                = AR.data.get("Archive_Data_AbcAffectIntoxicated", "Key not found"),
-            archive__Data_AbcAffectNervous                   = AR.data.get("Archive_Data_AbcAffectNervous", "Key not found"),
-            archive__Data_AbcAffectNeutral                   = AR.data.get("Archive_Data_AbcAffectNeutral", "Key not found"),
-            archive__Data_AbcAffectTired                     = AR.data.get("Archive_Data_AbcAffectTired", "Key not found"),
-            archive__Data_Loi1                               = AR.data.get("Archive_Data_Loi1", "Key not found"),
-            archive__Data_Loi2                               = AR.data.get("Archive_Data_Loi2", "Key not found"),
-            archive__Data_Loi3                               = AR.data.get("Archive_Data_Loi3", "Key not found"),
-            Archive_Soll_DataEmodbEmotionAnger               = AR.data.get('Archive_Soll_DataEmodbEmotionAnger', "Key not found"),
-            Archive_Soll_DataEmodbEmotionBoredom             = AR.data.get('Archive_Soll_DataEmodbEmotionBoredom', "Key not found"),
-            Archive_Soll_DataEmodbEmotionDisgust             = AR.data.get('Archive_Soll_DataEmodbEmotionDisgust', "Key not found"),
-            Archive_Soll_DataEmodbEmotionFear                = AR.data.get('Archive_Soll_DataEmodbEmotionFear', "Key not found"),
-            Archive_Soll_DataEmodbEmotionHappiness           = AR.data.get('Archive_Soll_DataEmodbEmotionHappiness', "Key not found"),
-            Archive_Soll_DataEmodbEmotionNeutral             = AR.data.get('Archive_Soll_DataEmodbEmotionNeutral', "Key not found"),
-            Archive_Soll_DataEmodbEmotionSadness             = AR.data.get('Archive_Soll_DataEmodbEmotionSadness', "Key not found"),
-            Archive_Soll_DataEmodbEmotion_List               = AR.data.get('Archive_Soll_DataEmodbEmotion_List',  "Key not found"),
-            Archive_Soll_DataAbcAffectAgressiv               = AR.data.get('Archive_Soll_DataAbcAffectAgressiv', "Key not found"),
-            Archive_Soll_DataAbcAffectCheerfull              = AR.data.get('Archive_Soll_DataAbcAffectCheerfull', "Key not found"),
-            Archive_Soll_DataAbcAffectIntoxicated            = AR.data.get('Archive_Soll_DataAbcAffectIntoxicated', "Key not found"),
-            Archive_Soll_DataAbcAffectNervous                = AR.data.get('Archive_Soll_DataAbcAffectNervous', "Key not found"),
-            Archive_Soll_DataAbcAffectNeutral                = AR.data.get('Archive_Soll_DataAbcAffectNeutral', "Key not found"),
-            Archive_Soll_DataAbcAffectTired                  = AR.data.get('Archive_Soll_DataAbcAffectTired', "Key not found"),
-            Archive_Soll_DataAbcAffect_List                  = AR.data.get('Archive_Soll_DataAbcAffect_List',  "Key not found"),
-            Archive_Abs_MW_Data_Arousal                      = AR.data.get('Archive_Abs_MW_Data_Arousal', "Key not found"),
-            Archive_Abs_MW_Data_Valence                      = AR.data.get('Archive_Abs_MW_Data_Valence', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotionAnger            = AR.data.get('Archive_Abs_MW_Data_EmodbEmotionAnger', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotionBoredom          = AR.data.get('Archive_Abs_MW_Data_EmodbEmotionBoredom', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotionDisgust          = AR.data.get('Archive_Abs_MW_Data_EmodbEmotionDisgust', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotionFear             = AR.data.get('Archive_Abs_MW_Data_EmodbEmotionFear', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotionHappiness        = AR.data.get('Archive_Abs_MW_Data_EmodbEmotionHappiness', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotionNeutral          = AR.data.get('Archive_Abs_MW_Data_EmodbEmotionNeutral', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotionSadness          = AR.data.get('Archive_Abs_MW_Data_EmodbEmotionSadness', "Key not found"),
-            Archive_Abs_MW_Data_EmodbEmotion_List            = AR.data.get('Archive_Abs_MW_Data_EmodbEmotion_List',  "Key not found"),
-            Archive_Abs_MW_Data_AbcAffectAgressiv            = AR.data.get('Archive_Abs_MW_Data_AbcAffectAgressiv', "Key not found"),
-            Archive_Abs_MW_Data_AbcAffectCheerfull           = AR.data.get('Archive_Abs_MW_Data_AbcAffectCheerfull', "Key not found"),
-            Archive_Abs_MW_Data_AbcAffectIntoxicated         = AR.data.get('Archive_Abs_MW_Data_AbcAffectIntoxicated', "Key not found"),
-            Archive_Abs_MW_Data_AbcAffectNervous             = AR.data.get('Archive_Abs_MW_Data_AbcAffectNervous', "Key not found"),
-            Archive_Abs_MW_Data_AbcAffectNeutral             = AR.data.get('Archive_Abs_MW_Data_AbcAffectNeutral', "Key not found"),
-            Archive_Abs_MW_Data_AbcAffectTired               = AR.data.get('Archive_Abs_MW_Data_AbcAffectTired', "Key not found"),
-            Archive_Abs_MW_Data_AbcAffect_List               = AR.data.get('Archive_Abs_MW_Data_AbcAffect_List',  "Key not found"),
-            Archive_Abs_MW_Data_Loi1                         = AR.data.get('Archive_Abs_MW_Data_Loi1', "Key not found"),
-            Archive_Abs_MW_Data_Loi2                         = AR.data.get('Archive_Abs_MW_Data_Loi2', "Key not found"),
-            Archive_Abs_MW_Data_Loi3                         = AR.data.get('Archive_Abs_MW_Data_Loi3', "Key not found"),
-            Archive_Score_EmodbEmotions                      = AR.data.get('Archive_Score_EmodbEmotions', "Key not found"),
-            Archive_Score_AbcAffect                          = AR.data.get('Archive_Score_AbcAffect', "Key not found"),
-            Archive_Score_Retiva                             = AR.data.get('Archive_Score_Retiva', "Key not found"),
-            Archive_Abs_MW_Loi_Score                         = AR.data.get('Archive_Abs_MW_Loi_Score', "Key not found")
-        )
+        '''Variablen.Set_Values(
+            archive__Data_DateTime                           = data.get("Archive_Data_DateTime", "Key not found"),
+            archive__Data_SessionNme                         = data.get("Archive_Data_SessionName", "Key not found"),
+            archive__Data_Time                               = data.get("Archive_Data_Time", "Key not found"),
+            archive__Data_Aroual                             = data.get("Archive_Data_Arousal", "Key not found"),
+            archive__Data_Valence                            = data.get("Archive_Data_Valence", "Key not found"),
+            archive__Data_EmodbEmtionAnger                   = data.get("Archive_Data_EmodbEmotionAnger", "Key not found"),
+            archive__Data_EmodbEmotionBoredm                 = data.get("Archive_Data_EmodbEmotionBoredom", "Key not found"),
+            archive__Data_EmodbEmotionDisgust                = data.get("Archive_Data_EmodbEmotionDisgust", "Key not found"),
+            archive__Data_EmodbEmotionFear                   = data.get("Archive_Data_EmodbEmotionFear", "Key not found"),
+            archive__Data_EmodbEmotionHappness               = data.get("Archive_Data_EmodbEmotionHappiness", "Key not found"),
+            archive__Data_EmodbEmotionNeutral                = data.get("Archive_Data_EmodbEmotionNeutral", "Key not found"),
+            archive__Data_EmodbEmotionSadness                = data.get("Archive_Data_EmodbEmotionSadness", "Key not found"),
+            archive__Data_AbcAffectAgressiv                  = data.get("Archive_Data_AbcAffectAgressiv", "Key not found"),
+            archive__Data_AbcAffectCheerful                  = data.get("Archive_Data_AbcAffectCheerfull", "Key not found"),
+            archive__Data_AbcAffectIntoxicatd                = data.get("Archive_Data_AbcAffectIntoxicated", "Key not found"),
+            archive__Data_AbcAffectNervous                   = data.get("Archive_Data_AbcAffectNervous", "Key not found"),
+            archive__Data_AbcAffectNeutral                   = data.get("Archive_Data_AbcAffectNeutral", "Key not found"),
+            archive__Data_AbcAffectTired                     = data.get("Archive_Data_AbcAffectTired", "Key not found"),
+            archive__Data_Loi1                               = data.get("Archive_Data_Loi1", "Key not found"),
+            archive__Data_Loi2                               = data.get("Archive_Data_Loi2", "Key not found"),
+            archive__Data_Loi3                               = data.get("Archive_Data_Loi3", "Key not found"),
+            Archive_Soll_DataEmodbEmotionAnger               = data.get('Archive_Soll_DataEmodbEmotionAnger', "Key not found"),
+            Archive_Soll_DataEmodbEmotionBoredom             = data.get('Archive_Soll_DataEmodbEmotionBoredom', "Key not found"),
+            Archive_Soll_DataEmodbEmotionDisgust             = data.get('Archive_Soll_DataEmodbEmotionDisgust', "Key not found"),
+            Archive_Soll_DataEmodbEmotionFear                = data.get('Archive_Soll_DataEmodbEmotionFear', "Key not found"),
+            Archive_Soll_DataEmodbEmotionHappiness           = data.get('Archive_Soll_DataEmodbEmotionHappiness', "Key not found"),
+            Archive_Soll_DataEmodbEmotionNeutral             = data.get('Archive_Soll_DataEmodbEmotionNeutral', "Key not found"),
+            Archive_Soll_DataEmodbEmotionSadness             = data.get('Archive_Soll_DataEmodbEmotionSadness', "Key not found"),
+            Archive_Soll_DataEmodbEmotion_List               = data.get('Archive_Soll_DataEmodbEmotion_List',  "Key not found"),
+            Archive_Soll_DataAbcAffectAgressiv               = data.get('Archive_Soll_DataAbcAffectAgressiv', "Key not found"),
+            Archive_Soll_DataAbcAffectCheerfull              = data.get('Archive_Soll_DataAbcAffectCheerfull', "Key not found"),
+            Archive_Soll_DataAbcAffectIntoxicated            = data.get('Archive_Soll_DataAbcAffectIntoxicated', "Key not found"),
+            Archive_Soll_DataAbcAffectNervous                = data.get('Archive_Soll_DataAbcAffectNervous', "Key not found"),
+            Archive_Soll_DataAbcAffectNeutral                = data.get('Archive_Soll_DataAbcAffectNeutral', "Key not found"),
+            Archive_Soll_DataAbcAffectTired                  = data.get('Archive_Soll_DataAbcAffectTired', "Key not found"),
+            Archive_Soll_DataAbcAffect_List                  = data.get('Archive_Soll_DataAbcAffect_List',  "Key not found"),
+            Archive_Abs_MW_Data_Arousal                      = data.get('Archive_Abs_MW_Data_Arousal', "Key not found"),
+            Archive_Abs_MW_Data_Valence                      = data.get('Archive_Abs_MW_Data_Valence', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotionAnger            = data.get('Archive_Abs_MW_Data_EmodbEmotionAnger', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotionBoredom          = data.get('Archive_Abs_MW_Data_EmodbEmotionBoredom', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotionDisgust          = data.get('Archive_Abs_MW_Data_EmodbEmotionDisgust', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotionFear             = data.get('Archive_Abs_MW_Data_EmodbEmotionFear', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotionHappiness        = data.get('Archive_Abs_MW_Data_EmodbEmotionHappiness', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotionNeutral          = data.get('Archive_Abs_MW_Data_EmodbEmotionNeutral', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotionSadness          = data.get('Archive_Abs_MW_Data_EmodbEmotionSadness', "Key not found"),
+            Archive_Abs_MW_Data_EmodbEmotion_List            = data.get('Archive_Abs_MW_Data_EmodbEmotion_List',  "Key not found"),
+            Archive_Abs_MW_Data_AbcAffectAgressiv            = data.get('Archive_Abs_MW_Data_AbcAffectAgressiv', "Key not found"),
+            Archive_Abs_MW_Data_AbcAffectCheerfull           = data.get('Archive_Abs_MW_Data_AbcAffectCheerfull', "Key not found"),
+            Archive_Abs_MW_Data_AbcAffectIntoxicated         = data.get('Archive_Abs_MW_Data_AbcAffectIntoxicated', "Key not found"),
+            Archive_Abs_MW_Data_AbcAffectNervous             = data.get('Archive_Abs_MW_Data_AbcAffectNervous', "Key not found"),
+            Archive_Abs_MW_Data_AbcAffectNeutral             = data.get('Archive_Abs_MW_Data_AbcAffectNeutral', "Key not found"),
+            Archive_Abs_MW_Data_AbcAffectTired               = data.get('Archive_Abs_MW_Data_AbcAffectTired', "Key not found"),
+            Archive_Abs_MW_Data_AbcAffect_List               = data.get('Archive_Abs_MW_Data_AbcAffect_List',  "Key not found"),
+            Archive_Abs_MW_Data_Loi1                         = data.get('Archive_Abs_MW_Data_Loi1', "Key not found"),
+            Archive_Abs_MW_Data_Loi2                         = data.get('Archive_Abs_MW_Data_Loi2', "Key not found"),
+            Archive_Abs_MW_Data_Loi3                         = data.get('Archive_Abs_MW_Data_Loi3', "Key not found"),
+            Archive_Score_EmodbEmotions                      = data.get('Archive_Score_EmodbEmotions', "Key not found"),
+            Archive_Score_AbcAffect                          = data.get('Archive_Score_AbcAffect', "Key not found"),
+            Archive_Score_Retiva                             = data.get('Archive_Score_Retiva', "Key not found"),
+            Archive_Abs_MW_Loi_Score                         = data.get('Archive_Abs_MW_Loi_Score', "Key not found")
+        )'''
         
-        
+        test = [0.2, 0.1, 0.1, 0.2, 0.2, 0.1, 0.8]
+
+        self.archive_frame.big_analysis_emo.donut.update_chart(test)
+        self.archive_frame.big_analysis_abc.donut.update_chart(test)
         
         
         
@@ -161,4 +167,111 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         # Hier Klassenmethode zum Laden des Archivs feuern
         print(selected_file)
         
-#print("Hello World")
+
+
+
+class ArchiveGraphsFrame(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
+        self.analysis_frame = customtkinter.CTkFrame(self)
+        self.analysis_frame.grid(row = 0, column = 0, sticky = "nsew")
+        self.__class__.analysis_frame = self.analysis_frame
+
+        self.current_time = Stopwatch(self.analysis_frame)
+        #self.current_time.grid(row = 0, column = 0, sticky = "ne", padx = 20, pady = (15,0))
+        self.__class__.current_time= self.current_time
+
+
+        self.current_session_name = customtkinter.CTkLabel(self.analysis_frame, text=" ", font=customtkinter.CTkFont(size=20))
+        #self.current_session_name.grid(row = 0, column = 0, sticky = "nw", padx = 20, pady = (10,0))
+        self.__class__.current_session_name = self.current_session_name
+
+
+        #Tabs erstellen
+        self.tabview = customtkinter.CTkTabview(self.analysis_frame)
+        self.tabview.grid(row = 0, column = 0, sticky = "nsew")
+
+        emo_tab = self.tabview.add('EmoDB')
+        abc_tab = self.tabview.add('AbcAffect')
+
+
+        self.big_analysis_emo = BigLiveAnalysisFrame_Emo_Archive(emo_tab)
+        self.big_analysis_emo.grid(row = 0, column = 0, sticky = "nsew")
+        self.__class__.big_analysis_emo = self.big_analysis_emo
+
+        self.big_analysis_abc = BigLiveAnalysisFrame_Abc_Archive(abc_tab)
+        self.big_analysis_abc.grid(row = 0, column = 0, sticky = "nsew")
+        self.__class__.big_analysis_abc = self.big_analysis_abc
+
+
+
+
+class BigLiveAnalysisFrame_Emo_Archive(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.configure(fg_color = "#212121")
+
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
+        
+        self.scores_frame = customtkinter.CTkFrame(self)
+        self.scores_frame.grid(row = 1, column = 1, columnspan = 2, pady = (0,5), padx = (10,0))
+
+        self.big_score = ScoreIndicatorFrame(self.scores_frame)
+        self.big_score.grid(row = 0, column = 2)
+
+        self.additonal_scores = AdditionalInfoFrame(self.scores_frame, show_all_scales=True)
+        self.additonal_scores.grid(row = 0, column = 1)
+
+
+        self.graph_emo = BarChartEmo_Archive(self)
+        self.graph_emo.create_chart()
+        self.graph_emo.grid(row = 0, column = 0, padx = 5)
+
+        self.graph_emo_over_time = GraphEmoOverTime_Archive(self)
+        self.graph_emo_over_time.grid(row = 1, column = 0, padx = 10, sticky = "s")
+        self.graph_emo_over_time.create_graph()
+
+        self.donut = DonutEmo_Archive(self)
+        self.donut.configure(width = 20, height = 20)
+        self.donut.create_chart()
+        self.donut.grid(row = 0, column = 1, padx = 10)
+
+
+
+class BigLiveAnalysisFrame_Abc_Archive(customtkinter.CTkFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.configure(fg_color = "#212121")
+
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
+
+        self.scores_frame = customtkinter.CTkFrame(self)
+        self.scores_frame.grid(row = 1, column = 1, columnspan = 2, pady = (0,5), padx = (10,0))
+
+
+        self.big_score = ScoreIndicatorFrame(self.scores_frame)
+        self.big_score.grid(row = 0, column = 2)
+
+        self.additonal_scores = AdditionalInfoFrame(self.scores_frame, show_all_scales=True)
+        self.additonal_scores.grid(row = 0, column = 1)
+
+       
+        self.graph_abc= BarChartAbc_Archive(self)
+        self.graph_abc.create_chart()
+        self.graph_abc.grid(row = 0, column = 0, padx = 5)
+
+        self.graph_abc_over_time = GraphAbcOverTime_Archive(self)
+        self.graph_abc_over_time.create_graph()    
+        self.graph_abc_over_time.grid(row = 1, column = 0, padx = 10, sticky = "s")
+
+
+        self.donut = DonutAbc_Archive(self)
+        self.donut.configure(width = 20, height = 20)
+        self.donut.create_chart()
+        self.donut.grid(row = 0, column = 1, padx = 20)
