@@ -1,6 +1,6 @@
 from typing import Union, Callable
 import customtkinter
-from openpyxl import *
+import openpyxl
 from Frames.Observer import *
 import time
 from Frames.GraphFrames import *
@@ -100,7 +100,7 @@ class Weights(Subject):
     ## die aus der ersten Spalte gezogen werden
 
     def Read_Weights_from_Excel(cls, selected_working_mode):
-        wb = load_workbook('openEAR-0.1.0 Kopie/GUI/Default Weights/default_weights.xlsx')
+        wb = openpyxl.load_workbook('openEAR-0.1.0 Kopie/GUI/Default Weights/default_weights.xlsx')
         
         # Select the sheet
         ws = wb['Gewichte']

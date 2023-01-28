@@ -1,7 +1,8 @@
 import customtkinter
 import tkinter as tk
 import os
-from openpyxl import *
+#from openpyxl import *
+import openpyxl
 import Frames.Archiv_Reader_3 as AR
 from Frames.Archive_Graphs import *
 from CustomObjects import *
@@ -27,7 +28,7 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         self.filepath = "openEAR-0.1.0 Kopie/SmileArchiv"
 
         #Label
-        self.title_label = customtkinter.CTkLabel(self, text = "Archiv: ", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.title_label = customtkinter.CTkLabel(self, text = "Archive: ", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.title_label.grid(row = 0, column = 0, pady = 20)
         
         #Grid
@@ -71,7 +72,7 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         idx = widget.nearest(event.y)
         widget.activate(idx)
         selected_file = widget.get(idx)
-        workbook = load_workbook(os.path.join(self.filepath, selected_file))
+        workbook = openpyxl.load_workbook(os.path.join(self.filepath, selected_file))
         sheet = workbook.active
         # Clear the textbox
         self.textbox.delete("1.0", tk.END)

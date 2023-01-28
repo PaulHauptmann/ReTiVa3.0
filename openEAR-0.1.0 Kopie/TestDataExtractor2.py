@@ -820,7 +820,7 @@ class Main:
 
 
     def Updater():
-        print("Updater")
+        print("The analysis is running... ")
 
         Main.read_log_file(Main.file_path)
         Main.get_length_of_last_added_wav(Main.directory_path)

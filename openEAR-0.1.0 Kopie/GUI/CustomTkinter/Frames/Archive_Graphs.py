@@ -15,13 +15,14 @@ import ctypes
 c_background = '#212121'
 c_white = '#F2F2F2'
 
-c_1 = '#EE8736'
-c_2 = '#3B75B0'
-c_3 = '#D57DBE'
-c_4 = '#78D5D2'
-c_5 = '#8D69B8'
-c_6 = '#C43A32'
-c_7 = '#529E3F'
+c_1 = '#3A65A4'
+c_2 = '#82A3D4'
+c_3 = '#C2D1E8'
+c_4 = '#FFDBBD'
+c_5 = '#FFAD69'
+c_6 = '#DE6400'
+c_7 = '#964400'
+
 
 c_colors = []
 c_colors.append(c_1)
@@ -34,7 +35,7 @@ c_colors.append(c_7)
 
 
 c_dark_gray = '#717171'
-c_light_gray = '#C7C7C7'
+c_light_gray = '#909090'
 
 print(c_colors)
 
@@ -106,9 +107,7 @@ class Variablen():
     
     
     def Set_Values(
-
-        Set_archive_Data_DateTime,                          
-        Set_archive_Data_SessionName,                        
+                        
         Set_archive_Data_Time,                              
         Set_archive_Data_Aroual,                            
         Set_archive_Data_Valence,                           
@@ -163,15 +162,9 @@ class Variablen():
         Set_Archive_Score_EmodbEmotions,                     
         Set_Archive_Score_AbcAffect,                         
         Set_Archive_Score_Retiva,                            
-        Set_Archive_Abs_MW_Loi_Score,
-        Set_Archive_Soll_DataEmodbEmotion_List ,              
-        Set_Archive_Soll_DataAbcAffect_List  ,                
-        Set_Archive_Abs_MW_Data_EmodbEmotion_List  ,         
-        Set_Archive_Abs_MW_Data_AbcAffect_List                                     
+        Set_Archive_Abs_MW_Loi_Score,                     
     ):
 
-        Variablen.archive_Data_DateTime                     =           Set_archive_Data_DateTime
-        Variablen.archive_Data_SessionName                  =           Set_archive_Data_SessionName
         Variablen.archive_Data_Time                         =           Set_archive_Data_Time
         Variablen.archive_Data_Aroual                       =           Set_archive_Data_Aroual
         Variablen.archive_Data_Valence                      =           Set_archive_Data_Valence
@@ -227,12 +220,6 @@ class Variablen():
         Variablen.Archive_Score_AbcAffect                    =           Set_Archive_Score_AbcAffect
         Variablen.Archive_Score_Retiva                       =           Set_Archive_Score_Retiva
         Variablen.Archive_Abs_MW_Loi_Score                   =           Set_Archive_Abs_MW_Loi_Score
-        Variablen.Archive_Soll_DataEmodbEmotion_List         =           Set_Archive_Soll_DataEmodbEmotion_List               
-        Variablen.Archive_Soll_DataAbcAffect_List            =           Set_Archive_Soll_DataAbcAffect_List                  
-        Variablen.Archive_Abs_MW_Data_EmodbEmotion_List      =           Set_Archive_Abs_MW_Data_EmodbEmotion_List           
-        Variablen.Archive_Abs_MW_Data_AbcAffect_List         =           Set_Archive_Abs_MW_Data_AbcAffect_List
-    
-    
 
     
 
