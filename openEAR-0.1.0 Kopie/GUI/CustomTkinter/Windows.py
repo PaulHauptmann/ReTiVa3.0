@@ -14,6 +14,7 @@ import subprocess
 
 
 class NewAnalysisWindow(customtkinter.CTkToplevel):
+    process = None
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -61,9 +62,22 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         return 0
     
     
-    
-    
     def on_ok(self):
+        self.ai_loop()
+
+        MainContainerFrame.show_wait_frame()
+        print("Bitte warten...")
+
+        self.after(5000, self.start_gui())
+
+
+    
+    def start_gui(self):
+
+
+        #Starte den Smile Extractor
+        #self.ai_loop()
+        
         
         
 
@@ -84,7 +98,7 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
 
         # Gewichte an Backend übergeben, erst dort werden sie normiert
-        Main.Set_Soll_Werte(Weights.w_emodb_anger, 
+        Main.Get_Soll_Werte(Weights.w_emodb_anger, 
                              Weights.w_emodb_boredom, 
                              Weights.w_emodb_disgust,
                              Weights.w_emodb_fear, 
@@ -165,20 +179,22 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     '''def run_smilextract():
         global process
         process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
-
-    def stop_smilextract():
-        process.kill()
-'''
+    '''
 
 
     def ai_loop(self):
         
+        global process
         try:
-            subprocess.run(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
-        except FileNotFoundError:
-            pass
+            process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+        except FileNotFoundError: 
+            print("SMILExtract ist auf diesem PC leider nicht verfügbar.")
 
 
+    @classmethod
+    def stop_ai(cls):
+        process.kill()
+        print("##### SMILE Stopped ####")
 
 
 
@@ -200,17 +216,17 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             self.mini_app_window.linear_score_frame.indicator.update_widget(rel_y=Main.Score_Retiva)
             
             #Emotionslabel Update Funktion
-            '''try:
+            try:
                 self.mini_app_window.additional_info_frame.emotion_label.set(Main.get_highest_EmoDb())
                 self.mini_app_window.additional_info_frame.double_label.set(Main.get_highest_EmoDb(), Main.get_highest_AbcAffect())
             except AttributeError:
-                pass'''
+                pass
             
-            try:
+            '''try:
                 self.mini_app_window.additional_info_frame.emotion_label.set("Happiness")
                 self.mini_app_window.additional_info_frame.double_label.set("Happiness", "Neutral")
             except AttributeError:
-                pass
+                pass'''
             
             
             #Loi-Score Update Funktion
@@ -363,6 +379,7 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         GlobalStartStop.analysis_loop = False
         MainContainerFrame.show_archive()
         MainContainerFrame.stop_clock()
+        NewAnalysisWindow.stop_ai()
         
         print("Analyse beendet")
         self.destroy()

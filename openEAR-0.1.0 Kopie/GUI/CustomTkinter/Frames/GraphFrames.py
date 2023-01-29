@@ -323,7 +323,7 @@ class BarChartEmo(customtkinter.CTkFrame):
             self.list2 = Main.Soll_Data_EmodbEmotion_List
         else:
             self.list1 = [0.14,0.28,0.42,0.56,0.70,0.85,1]
-            self.list2 = [1,0.2,0.5,0.1,0.8,0.2,1]
+            self.list2 = [0.1, 0.2, 0.1, 0.3, 0.1, 0.1, 0.1]
         
         self.list1_normed = [i * 100 for i in self.list1]
         self.list2_normed = [i * 100 for i in self.list2]
@@ -418,8 +418,8 @@ class BarChartAbc(customtkinter.CTkFrame):
             self.list1 = Main.Abs_MW_Data_AbcAffect_List
             self.list2 = Main.Soll_Data_AbcAffect_List
         else:
-            self.list1 = [0.14,0.28,0.42,0.56,0.70,0.85,1]
-            self.list2 = [1,0.2,0.5,0.1,0.8,0.2,1]
+            self.list1 = [0.14,0.28,0.42,0.56,0.70,0.85]
+            self.list2 = [0.1,0.2,0.3,0.1,0.1,0.2]
         
         self.list1_normed = [i * 100 for i in self.list1]
         self.list2_normed = [i * 100 for i in self.list2]
@@ -439,7 +439,7 @@ class BarChartAbc(customtkinter.CTkFrame):
         ax.spines['top'].set_color(c_background)
         ax.spines['right'].set_color(c_background)
         
-        x = [i for i in range(1,8)]
+        x = [i for i in range(1,7)]
         
         ax.bar(x, self.list1_normed, width=0.4, color = c_colors)
         ax.bar([i+0.4 for i in x], self.list2_normed, width=0.4, color = c_dark_gray)
@@ -602,10 +602,10 @@ class DonutAbc(customtkinter.CTkFrame):
     def update_chart(self, abc_list:list):
         # Update the data of the wedges and explode list
 
-        if len(abc_list) == 7:
+        if len(abc_list) == 6:
             self.list1 = abc_list
         else:
-            self.list1 = [1,3,2,2,1,1,2]
+            self.list1 = [1,3,2,2,1,1]
 
         total = sum(self.list1)
         self.list_normed = [i/total for i in self.list1]
@@ -618,7 +618,6 @@ class DonutAbc(customtkinter.CTkFrame):
             text.remove()
 
         # Update the data and redraw the chart
-        self.list1 = abc_list
         self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
         self.ax.pie([1], radius=0.4, wedgeprops=dict(width=0.4, edgecolor=c_background, facecolor=c_background))
         
@@ -635,5 +634,8 @@ class DonutAbc(customtkinter.CTkFrame):
             self.ax.annotate(self.labels[i], xy=(x, y), xytext=(1.2*np.sign(x), 1.3*y),
                         horizontalalignment=self.horizontalalignment, color =c_white, **kw)
 
-        self.canvas.draw()
+        try:
+            self.canvas.draw()
+        except ValueError:
+            print("There was an error drawing the abc Donut")
 

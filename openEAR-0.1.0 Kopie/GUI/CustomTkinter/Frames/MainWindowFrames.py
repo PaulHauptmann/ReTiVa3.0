@@ -19,11 +19,18 @@ class MainContainerFrame(customtkinter.CTkFrame):
     analysis_frame = None
     current_time = None
     current_session_name = None
+    wait = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.rowconfigure(1, weight=1)
+
+        self.wait = customtkinter.CTkFrame(self)
+        self.wait_text = customtkinter.CTkLabel(self.wait, text="Please wait while the Program is starting up...", font=customtkinter.CTkFont(size=40, weight="bold"))
+        self.wait_text.grid(row = 0, column = 0, padx = 30, sticky = "nsew")
+        self.wait.grid(row = 0, column = 0, sticky = "nsew")
+        self.__class__.wait = self.wait
         
         self.hello = HelloFrame(self)
         self.hello.grid(row = 0, column = 0, sticky = "nsew")
@@ -76,7 +83,7 @@ class MainContainerFrame(customtkinter.CTkFrame):
 
 
         
-        self.hello.lift()
+        self.analysis_frame.lift()
         
 
 
@@ -117,6 +124,10 @@ class MainContainerFrame(customtkinter.CTkFrame):
     @classmethod
     def stop_clock(cls):
         cls.current_time.stop()
+    
+    @classmethod
+    def show_wait_frame(cls):
+        cls.wait.lift()
 
         
     
@@ -365,7 +376,7 @@ class BigLiveAnalysisFrame_Abc(customtkinter.CTkFrame):
     def updade_widgets(self):
         #TODO: Fehlende Updater schreiben und hinzufügen
         self.donut.update_chart(Main.Abs_MW_Data_AbcAffect_List)
-        #self.graph_abc.update_chart()
+        self.graph_abc.update_chart()
         self.graph_abc_over_time.update_chart()
 
         self.big_score.indicator.update_widget(Main.Score_Retiva)

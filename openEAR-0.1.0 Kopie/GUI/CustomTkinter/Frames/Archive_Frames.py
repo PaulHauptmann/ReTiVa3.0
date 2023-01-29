@@ -176,11 +176,6 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         self.archive_frame.big_analysis_emo.additonal_scores.redeanteil.update_widget(float(Variablen.Archive_MW_SpeakRatio[-1]))
         self.archive_frame.big_analysis_abc.additonal_scores.redeanteil.update_widget(float(Variablen.Archive_MW_SpeakRatio[-1]))
 
-        ## Graphen emodb ##
-        self.archive_frame.big_analysis_emo.donut.update_chart(emotion_list_emodb)
-
-        self.archive_frame.big_analysis_emo.graph_emo.update_chart()
-        self.archive_frame.big_analysis_emo.graph_emo_over_time.update_chart()
 
         ## Graphen abc ##
         self.archive_frame.big_analysis_abc.donut.update_chart(emotion_list_abc)
@@ -189,6 +184,11 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         self.archive_frame.big_analysis_abc.graph_abc_over_time.update_chart()
 
 
+        ## Graphen emodb ##
+        self.archive_frame.big_analysis_emo.donut.update_chart(emotion_list_emodb)
+
+        self.archive_frame.big_analysis_emo.graph_emo.update_chart()
+        self.archive_frame.big_analysis_emo.graph_emo_over_time.update_chart()
 
 
 
