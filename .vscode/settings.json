@@ -3,5 +3,6 @@
     "python.analysis.extraPaths": [
         "./openEAR-0.1.0 Kopie/GUI/CustomTkinter/Frames",
         "./openEAR-0.1.0 Kopie/GUI/CustomTkinter"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "off"
 }

@@ -1,0 +1,14 @@
+import tkinter as tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import matplotlib.pyplot as plt
+from GUI.CustomTkinter.Frames.GraphFrames import *
+from TestDataExtractor2 import *
+
+print(Main.Abs_MW_Data_EmodbEmotion_List)
+root = tk.Tk()
+root.geometry(f"{1100}x{580}")
+list1 = [1, 2, 3, 4, 5, 6, 7]
+list2 = [7, 6, 5, 4, 3, 2, 1]
+chart = DonutEmo(root)
+chart.create_chart()
+root.mainloop()
