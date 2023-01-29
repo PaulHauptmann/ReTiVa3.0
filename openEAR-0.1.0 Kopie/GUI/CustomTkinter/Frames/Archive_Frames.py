@@ -58,7 +58,7 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         #Graphen-Frame importieren
         
 
-
+    
 
 
 
@@ -151,6 +151,7 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         Variablen.Archive_Abs_MW_Loi_Score                         = data.get("Archive_Abs_MW_Loi_Score", "Key not found")
         Variablen.Archive_MW_SpeakRatio                            = data.get("Archive_MW_SpeakRatio", "Key not found")
         
+        
 
         test = [0.2, 0.1, 0.1, 0.2, 0.2, 0.1, 0.8]
 
@@ -159,7 +160,6 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         emotion_list_emodb = [Variablen.Archive_Abs_MW_Data_EmodbEmotionAnger[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionBoredom[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionDisgust[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionFear[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionHappiness[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionNeutral[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionSadness[-1]]
         emotion_list_abc = [Variablen.Archive_Abs_MW_Data_AbcAffectAgressiv[-1],Variablen.Archive_Abs_MW_Data_AbcAffectCheerfull[-1],Variablen.Archive_Abs_MW_Data_AbcAffectIntoxicated[-1],Variablen.Archive_Abs_MW_Data_AbcAffectNervous[-1],Variablen.Archive_Abs_MW_Data_AbcAffectNeutral[-1],Variablen.Archive_Abs_MW_Data_AbcAffectTired[-1]]
         
-        self.archive_frame.big_analysis_abc.donut.update_chart(emotion_list_abc)
 
         self.archive_frame.big_analysis_emo.big_score.indicator.update_widget(float(Variablen.Archive_Score_Retiva[-1]))
         self.archive_frame.big_analysis_abc.big_score.indicator.update_widget(float(Variablen.Archive_Score_Retiva[-1]))
@@ -183,6 +183,7 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         self.archive_frame.big_analysis_emo.graph_emo_over_time.update_chart()
 
         ## Graphen abc ##
+        self.archive_frame.big_analysis_abc.donut.update_chart(emotion_list_abc)
         
         self.archive_frame.big_analysis_abc.graph_abc.update_chart()
         self.archive_frame.big_analysis_abc.graph_abc_over_time.update_chart()

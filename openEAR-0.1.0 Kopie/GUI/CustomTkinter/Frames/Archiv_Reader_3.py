@@ -71,7 +71,7 @@ def Read_Excel_File(Directory):
 
     # Iterate over the rows and append each one to the data dictionary
     for i, row in enumerate(ws.iter_rows(values_only=True)):
-        if i >= 55:
+        if i >= 56:
             break
         data[list_names[i]] = [cell for cell in row if cell is not None]
     
@@ -81,7 +81,6 @@ def Read_Excel_File(Directory):
 
 def Get_Data(Directory):
     return Read_Excel_File(Directory)
-
 
 
 """data = Get_Data('/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/SmileArchiv/Test2_14:24_28_01_2023.xlsx')

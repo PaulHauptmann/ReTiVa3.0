@@ -148,7 +148,7 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         self.ax.spines['left'].set_color(c_white)
         self.ax.spines['top'].set_color(c_background)
         self.ax.spines['right'].set_color(c_background)
-        
+        print(self.lists_normed)
 
     def create_graph(self):
         #for i in range(7):
@@ -175,6 +175,8 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
+        
+
     def update_chart(self):
         
         test_list2 = [0.2, 0.3, 0.1, 0.5, 0.3]
@@ -184,6 +186,8 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         #DataEmodbEmotionAnger_normed = [i * 100 for i in test_list1 ]
         #DataEmodbEmotionBoredom_normed = [i * 100 for i in test_list2 ]
         
+
+
         
         DataEmodbEmotionAnger_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionAnger ]
         DataEmodbEmotionBoredom_normed = [i * 100 for i in Variablen.Archive_Data_EmodbEmotionBoredm ]
@@ -210,6 +214,7 @@ class GraphEmoOverTime_Archive(customtkinter.CTkFrame):
         self.ax.relim()
         self.ax.autoscale_view()
         self.figure.canvas.draw()
+        print("update emo:     ",   self.lists_normed)
     
 
 #############################################################################
@@ -233,12 +238,14 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
         
         
         #Daten auf 100er Skala normieren
-        DataAbcAffectAgressiv_normed = [i * 100 for i in test_list1]
-        DataAbcAffectCheerfull_normed = [i * 100 for i in test_list2]
+        #DataAbcAffectAgressiv_normed = [i * 100 for i in test_list1]
+        #DataAbcAffectCheerfull_normed = [i * 100 for i in test_list2]
+
+        
 
 
-        #DataAbcAffectAgressiv_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectAgressiv]
-        #DataAbcAffectCheerfull_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectCheerful]
+        DataAbcAffectAgressiv_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectAgressiv]
+        DataAbcAffectCheerfull_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectCheerful]
         DataAbcAffectIntoxicated_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectIntoxicatd]
         DataAbcAffectNervous_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectNervous]
         DataAbcAffectNeutral_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectNeutral]
@@ -257,7 +264,7 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
 
 
 
-
+        print(self.lists_normed)
 
         self.figure, self.ax = plt.subplots(facecolor=c_background, figsize=(6,2))
         self.figure.set_layout_engine("constrained")
@@ -286,7 +293,7 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
         self.ax.set_ylabel('Percentage', color = c_white)
         self.ax.set_ylim(0,100)
         self.ax.set_xlabel('Time (s)', color = c_white)
-        #self.ax.set_xticklabels(["start"])
+        self.ax.set_xticklabels(["start"])
         self.ax.legend()
         self.ax.xaxis.set_visible(True)
         self.ax.legend().set_visible(False)
@@ -306,15 +313,17 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
         '''
         
         #Daten auf 100er Skala normieren
-        DataAbcAffectAgressiv_normed = [i * 100 for i in test_list1]
-        DataAbcAffectCheerfull_normed = [i * 100 for i in test_list2]
+        #DataAbcAffectAgressiv_normed = [i * 100 for i in test_list1]
+        #DataAbcAffectCheerfull_normed = [i * 100 for i in test_list2]
 
-        #DataAbcAffectAgressiv_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectAgressiv]
-        #DataAbcAffectCheerfull_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectCheerful]
+        DataAbcAffectAgressiv_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectAgressiv]
+        DataAbcAffectCheerfull_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectCheerful]
         DataAbcAffectIntoxicated_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectIntoxicatd]
         DataAbcAffectNervous_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectNervous]
         DataAbcAffectNeutral_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectNeutral]
         DataAbcAffectTired_normed = [i * 100 for i in Variablen.Archive_Data_AbcAffectTired]
+
+        
 
         #Neue Listen-Liste mit normierten Daten
         self.lists_normed = [
@@ -325,6 +334,8 @@ class GraphAbcOverTime_Archive(customtkinter.CTkFrame):
                                 DataAbcAffectNeutral_normed,
                                 DataAbcAffectTired_normed
                             ]
+        
+        print("Update Abc:     ",self.lists_normed)
         
         lines = self.ax.get_lines()
         for i in range(len(lines)):
@@ -455,12 +466,17 @@ class BarChartAbc_Archive(customtkinter.CTkFrame):
         if Variablen.Archive_Abs_MW_Data_AbcAffectAgressiv != None and Variablen.Archive_Soll_DataAbcAffectAgressiv != None:
             self.list1 = [Variablen.Archive_Abs_MW_Data_AbcAffectAgressiv[-1],Variablen.Archive_Abs_MW_Data_AbcAffectCheerfull[-1],Variablen.Archive_Abs_MW_Data_AbcAffectIntoxicated[-1],Variablen.Archive_Abs_MW_Data_AbcAffectNervous[-1],Variablen.Archive_Abs_MW_Data_AbcAffectNeutral[-1],Variablen.Archive_Abs_MW_Data_AbcAffectTired[-1]]
             self.list2 = [Variablen.Archive_Soll_DataAbcAffectAgressiv[-1],Variablen.Archive_Soll_DataAbcAffectCheerfull[-1],Variablen.Archive_Soll_DataAbcAffectIntoxicated[-1],Variablen.Archive_Soll_DataAbcAffectNervous[-1],Variablen.Archive_Soll_DataAbcAffectNeutral[-1],Variablen.Archive_Soll_DataAbcAffectTired[-1]]
+            print("if bei barchart abc")
         else:
             self.list1 = [0.17,0.34,0.51,0.68,0.85,1]
             self.list2 = [0.17,0.34,0.51,0.68,0.85,1]
 
         self.list1_normed = [i * 100 for i in self.list1]
         self.list2_normed = [i * 100 for i in self.list2]
+        
+        print("Listen barchart abc")
+        print(self.list1_normed)
+        print(self.list2_normed)
 
     def create_chart(self):
         x = [i for i in range(1,7)]
@@ -468,6 +484,7 @@ class BarChartAbc_Archive(customtkinter.CTkFrame):
         # Create a new figure
         fig = Figure(figsize=(6,2))
         fig.set_facecolor(c_background)
+        fig.set_layout_engine("constrained")
         ax = fig.add_subplot(111)
         ax.set_facecolor(c_background)
         ax.tick_params(colors = c_white, which = "both")
@@ -510,6 +527,11 @@ class BarChartAbc_Archive(customtkinter.CTkFrame):
 
         self.list1_normed = [i * 100 for i in self.list1]
         self.list2_normed = [i * 100 for i in self.list2]
+       
+        print("Update barchart abc")
+        print(self.list1_normed)
+        print(self.list2_normed)
+
         
         
         fig = self.canvas.figure
@@ -520,14 +542,14 @@ class BarChartAbc_Archive(customtkinter.CTkFrame):
         ax.set_title('Mix of Emotions in total', color = c_white, pad=10)
         ax.set_ylabel('Percentage', color = c_white)
 
-        labels = ["Anger", "Boredom" , "Disgust", "Fear", "Happiness", "Neutral", "Sadness"]
+        labels = ['Agressiv', 'Cheerful', 'Intoxicated', 'Nervous', 'Neutral', 'Tired']
         
         ax.spines['bottom'].set_color(c_white)
         ax.spines['left'].set_color(c_white)
         ax.spines['top'].set_color(c_background)
         ax.spines['right'].set_color(c_background)
         
-        x = [i for i in range(1,8)]
+        x = [i for i in range(1,7)]
         
         ax.bar(x, self.list1_normed, width=0.4, color = c_colors)
         ax.bar([i+0.4 for i in x], self.list2_normed, width=0.4, color = c_dark_gray)
