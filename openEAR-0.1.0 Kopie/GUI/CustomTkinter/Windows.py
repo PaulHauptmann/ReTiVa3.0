@@ -63,12 +63,13 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     
     
     def on_ok(self):
-        self.ai_loop()
+        #self.ai_loop()
 
-        MainContainerFrame.show_wait_frame()
+        #MainContainerFrame.show_wait_frame()
         print("Bitte warten...")
 
-        self.after(5000, self.start_gui())
+        #time.sleep(5)
+        self.start_gui()
 
 
     
@@ -133,9 +134,9 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
 
         
 
-        """t2 = threading.Thread(target=self.ai_loop)
+        '''t2 = threading.Thread(target=self.ai_loop)
         t2.start()
-        print("AI_Thread")"""
+        print("AI_Thread")'''
 
         # Mini App Window starten und Main Analysis Loop fahren
         
@@ -177,8 +178,8 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
     ##################################################
 
     '''def run_smilextract():
-        global process
-        process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
+    global process
+    process = subprocess.Popen(["SMILExtract", "-C", "config/emobase_live4.conf"], cwd="/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/")
     '''
 
 
@@ -197,10 +198,13 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
         print("##### SMILE Stopped ####")
 
 
+   
+
 
 
 
     def main_analysis_loop(self):
+
         while True and GlobalStartStop.analysis_loop == True:
 
 
@@ -222,11 +226,11 @@ class NewAnalysisWindow(customtkinter.CTkToplevel):
             except AttributeError:
                 pass
             
-            '''try:
+            try:
                 self.mini_app_window.additional_info_frame.emotion_label.set("Happiness")
                 self.mini_app_window.additional_info_frame.double_label.set("Happiness", "Neutral")
             except AttributeError:
-                pass'''
+                pass
             
             
             #Loi-Score Update Funktion
@@ -379,8 +383,11 @@ class MiniAppWindow(customtkinter.CTkToplevel):
         GlobalStartStop.analysis_loop = False
         MainContainerFrame.show_archive()
         MainContainerFrame.stop_clock()
-        NewAnalysisWindow.stop_ai()
         
+        try:
+            NewAnalysisWindow.stop_ai()
+        except:
+            pass
         print("Analyse beendet")
         self.destroy()
     

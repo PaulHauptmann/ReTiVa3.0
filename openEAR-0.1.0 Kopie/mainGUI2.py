@@ -61,24 +61,24 @@ class App(customtkinter.CTk):
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
         
         #Start-Button
-        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Start", state="disabled")
-        self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
+        #self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Start", state="disabled")
+        #self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
         
         #Stop-Button
-        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Stop (Smile)", command=self.stop_smilextract)
-        self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
+        #self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Stop", command=self.stop_smilextract)
+        #self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
 
         #Stop Analysis
-        self.sidebar_button_stop_analysis = customtkinter.CTkButton(self.sidebar_frame, text = "Stop Analysis", hover_color="red", )
+        self.sidebar_button_stop_analysis = customtkinter.CTkButton(self.sidebar_frame, text = "Stop Analysis", hover_color="red", state = "disabled" )
         self.sidebar_button_stop_analysis.grid(row=4, column=0, padx=20, pady=10)
         
         #Einstellungen-Button
         self.sidebar_button_settings = customtkinter.CTkButton(self.sidebar_frame, text="Settings", command=self.show_settings_button_command)
-        self.sidebar_button_settings.grid(row=5, column=0, padx=20, pady=10)
+        self.sidebar_button_settings.grid(row=2, column=0, padx=20, pady=10)
 
         #Archiv-Button
         self.sidebar_button_archive = customtkinter.CTkButton(self.sidebar_frame, text= "Archive", command=self.show_archive_button_command)
-        self.sidebar_button_archive.grid(row = 6, column = 0, padx = 20, pady = 10)
+        self.sidebar_button_archive.grid(row = 3, column = 0, padx = 20, pady = 10)
         
         #Mini-App-Button
         self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text = "Mini-App", command = self.mini_app_button_event)

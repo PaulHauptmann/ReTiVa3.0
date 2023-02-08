@@ -58,7 +58,15 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         #Graphen-Frame importieren
         
 
-    
+    def update_list(self):
+        
+        print("Update listbox")
+
+        self.listbox.delete(0,tk.END)
+
+        for file in os.listdir(self.filepath):
+            if file.endswith(".xlsx"):
+                self.listbox.insert(tk.END, file)
 
 
 
@@ -160,6 +168,8 @@ class ArchiveListFrame(customtkinter.CTkFrame):
         emotion_list_emodb = [Variablen.Archive_Abs_MW_Data_EmodbEmotionAnger[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionBoredom[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionDisgust[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionFear[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionHappiness[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionNeutral[-1],Variablen.Archive_Abs_MW_Data_EmodbEmotionSadness[-1]]
         emotion_list_abc = [Variablen.Archive_Abs_MW_Data_AbcAffectAgressiv[-1],Variablen.Archive_Abs_MW_Data_AbcAffectCheerfull[-1],Variablen.Archive_Abs_MW_Data_AbcAffectIntoxicated[-1],Variablen.Archive_Abs_MW_Data_AbcAffectNervous[-1],Variablen.Archive_Abs_MW_Data_AbcAffectNeutral[-1],Variablen.Archive_Abs_MW_Data_AbcAffectTired[-1]]
         
+        self.archive_frame.big_analysis_emo.additonal_scores.emotion_label.set(Main.get_highest_EmoDb())
+        self.archive_frame.big_analysis_abc.additonal_scores.emotion_label.set(Main.get_highest_EmoDb())
 
         self.archive_frame.big_analysis_emo.big_score.indicator.update_widget(float(Variablen.Archive_Score_Retiva[-1]))
         self.archive_frame.big_analysis_abc.big_score.indicator.update_widget(float(Variablen.Archive_Score_Retiva[-1]))

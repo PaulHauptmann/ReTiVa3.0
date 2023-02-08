@@ -482,7 +482,7 @@ class DonutEmo(customtkinter.CTkFrame):
         fig.set_facecolor(c_background)
         self.ax = fig.add_subplot(111)
 
-        self.ax.set_title('Mix of Emotions over the last 20 seconds', color = c_white, pad=20)
+        self.ax.set_title('Mix of Emotions over the last 30 seconds', color = c_white, pad=20)
 
         # Add the donut chart to the figure
         self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)
@@ -572,7 +572,7 @@ class DonutAbc(customtkinter.CTkFrame):
         fig.set_facecolor(c_background)
         self.ax = fig.add_subplot(111)
 
-        self.ax.set_title('Mix of Emotions over the last 20 seconds', color = c_white, pad=20)
+        self.ax.set_title('Mix of Emotions over the last 30 seconds', color = c_white, pad=20)
 
         # Add the donut chart to the figure
         self.wedges, self.texts = self.ax.pie(self.list1, radius=0.8, wedgeprops=dict(width=0.4, edgecolor=c_background), colors=c_colors)

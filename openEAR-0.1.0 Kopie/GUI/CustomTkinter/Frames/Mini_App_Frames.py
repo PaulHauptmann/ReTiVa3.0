@@ -34,17 +34,21 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
         if Startupsettings.show_dual_emotions:
             self.double_label = DualEmotions(self)
             self.double_label.grid(row = 0, column = 0,sticky = "new", padx = 30, pady = 10)
-            self.double_label.set("Anger", "Tired")
+            #self.double_label.set("Anger", "Tired")
         else:
             self.emotion_label = EmotionwithEmoji(self)
             self.emotion_label.grid(row = 0, column = 0, sticky = "new", padx = 60, pady = 10)
-            self.emotion_label.set("Sadness")
+            self.emotion_label.set("Happiness")
         
 
         self.loi_indicator = HorizontalIndicator(self,left="Uninterested",middle="Neutral",right="Interested")
         self.valence_indicator = HorizontalIndicator(self, left="Unpleasant", middle="", right="Pleasant")
         self.arousal_indicator = HorizontalIndicator(self, left= "Deactivated", middle="", right="Activated")
         
+        self.loi_indicator.update_widget(0.8)
+        self.valence_indicator.update_widget(0.6)
+        self.arousal_indicator.update_widget(0.2)
+
 
         if show_all_scales:
             self.loi_indicator.grid(row = 2, column = 0)
@@ -63,6 +67,8 @@ class AdditionalInfoFrame(customtkinter.CTkFrame):
 
         self.redeanteil = HorizontalIndicator(self, left="Talk Ratio: ", middle="50%", right="100%")
         self.redeanteil.grid(row = 5, column = 0)
+
+        self.redeanteil.update_widget(0.3)
 
 
 class AdditionalInfoFrame_Archive(customtkinter.CTkFrame):

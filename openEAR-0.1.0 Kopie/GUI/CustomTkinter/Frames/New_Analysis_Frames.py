@@ -79,13 +79,13 @@ class WeightsFrame(customtkinter.CTkFrame):
 
         self.v = customtkinter.StringVar()
         
-        self.workingmode_pitchsession = customtkinter.CTkRadioButton(self.radio_frame, text="Pitch – Session", variable=self.v, value= "Pitch – Session")
+        self.workingmode_pitchsession = customtkinter.CTkRadioButton(self.radio_frame, text="Sales Presentation", variable=self.v, value= "Sales Presentation")
         self.workingmode_pitchsession.grid(row = 0, column = 0, padx=10, pady = 5)
 
-        self.workingmode_conversation = customtkinter.CTkRadioButton(self.radio_frame, text="Gespräch", variable=self.v, value= "Gespräch")
+        self.workingmode_conversation = customtkinter.CTkRadioButton(self.radio_frame, text="Conversation", variable=self.v, value= "Conversation")
         self.workingmode_conversation.grid(row = 0, column = 1, padx=10, pady = 5)
 
-        self.workingmode_custom = customtkinter.CTkRadioButton(self.radio_frame, text= "Benutzerdefiniert", variable=self.v, value="Benutzerdefiniert")
+        self.workingmode_custom = customtkinter.CTkRadioButton(self.radio_frame, text= "Custom", variable=self.v, value="Benutzerdefiniert")
         self.workingmode_custom.grid(row = 0, column = 2, padx=10, pady = 5)
 
         

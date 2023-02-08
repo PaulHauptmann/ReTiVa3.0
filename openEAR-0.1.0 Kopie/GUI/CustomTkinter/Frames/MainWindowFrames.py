@@ -83,7 +83,7 @@ class MainContainerFrame(customtkinter.CTkFrame):
 
 
         
-        self.analysis_frame.lift()
+        self.hello.lift()
         
 
 
@@ -96,6 +96,7 @@ class MainContainerFrame(customtkinter.CTkFrame):
 
     @classmethod
     def show_archive(cls):
+        cls.archive.update_list()
         cls.archive.lift()
         print("Archiv")
 
@@ -149,14 +150,14 @@ class HelloFrame(customtkinter.CTkFrame):
         self.title = customtkinter.CTkLabel(self, text= "Welcome to ReTiVA – Real Time Voice Analytics!", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.title.grid(row = 0, column = 0, sticky = "n", pady = 30)
 
-        self.hello_text = customtkinter.CTkTextbox(self, corner_radius=20, font=customtkinter.CTkFont(size=20))
+        '''self.hello_text = customtkinter.CTkTextbox(self, corner_radius=20, font=customtkinter.CTkFont(size=20))
+        self.hello_text.configure(state = "disabled")
 
         with open("openEAR-0.1.0 Kopie/GUI/CustomTkinter/Frames/hello_text.txt", "r") as file:
             text = file.read()
             self.hello_text.insert("1.0", text)
 
-        self.hello_text.grid(row = 1, column = 0, sticky = "nsew", padx = 30)
-        self.hello_text.configure(state = "disabled")
+        self.hello_text.grid(row = 1, column = 0, sticky = "nsew", padx = 30, pady = (0,30))'''
         
         
 

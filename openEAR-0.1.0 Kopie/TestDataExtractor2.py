@@ -39,8 +39,8 @@ class Main:
 
     #path definitionen
 
-    file_path = 'openEAR-0.1.0 Kopie/smile.log'
-    #file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/Smile1.log'
+    #file_path = 'openEAR-0.1.0 Kopie/smile.log'
+    file_path = '/Users/paul/Documents/GitHub/ReTiVa3.0/openEAR-0.1.0 Kopie/smile.log'
     directory_path = 'openEAR-0.1.0 Kopie/'
     archive_path = 'openEAR-0.1.0 Kopie/SmileArchiv/'
 
@@ -834,7 +834,7 @@ class Main:
         Main.Get_Loi_Score()
         Main.Get_Abs_Loi_Score()
         Main.Get_MWLoi_Score()
-        Main.Printer()
+        #Main.Printer()
         Main.write_excel_file(Main.archive_path, Main.Excel_Filename)
 
 

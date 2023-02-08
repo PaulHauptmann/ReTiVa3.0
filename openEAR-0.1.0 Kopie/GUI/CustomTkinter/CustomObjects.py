@@ -107,9 +107,9 @@ class Weights(Subject):
 
         #Select the right Column based on the selected working mode
         column_selected = 0
-        if selected_working_mode == "Pitch – Session":
+        if selected_working_mode =="Sales Presentation":
             column_selected = 1
-        elif selected_working_mode == "Gespräch":
+        elif selected_working_mode == "Conversation":
             column_selected = 2
         else:
             column_selected = 3
